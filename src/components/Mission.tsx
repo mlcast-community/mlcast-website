@@ -9,7 +9,7 @@ export const Mission = () => {
           
           <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-4">
             <p>
-              We're building an <span className="text-foreground font-semibold">open-source community</span> dedicated 
+              We are an <span className="text-foreground font-semibold">open-source community</span> dedicated 
               to advancing machine learning for weather nowcasting through collaborative development and shared resources.
             </p>
             
