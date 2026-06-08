@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/mlcast-website-idea/",
+  base: process.env.BASE_PATH ?? "/",
   server: {
     host: "::",
     port: 8080,
