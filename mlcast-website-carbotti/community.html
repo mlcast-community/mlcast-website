@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Find your path into the MLCast community and make your first contribution."/>
+    <title>MLCast Community - Contribute</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ffffff",
+                        "primary-fixed": "#5ffbd6",
+                        "background": "#07122a",
+                        "surface-container": "#0b1830",
+                        "surface-container-high": "#102042",
+                        "on-surface": "#d9e2ff",
+                        "on-surface-variant": "#bacac3",
+                        "on-primary-fixed": "#002019",
+                        "outline-variant": "#3c4a45"
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                    spacing: {
+                        "md": "16px",
+                        "lg": "24px",
+                        "xl": "40px",
+                        "sm": "8px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px"
+                    },
+                    fontFamily: {
+                        "headline-xl": ["Geist"],
+                        "body-lg": ["Inter"],
+                        "label-tag": ["JetBrains Mono"]
+                    }
+                }
+            }
+        };
+    </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="home.css"/>
+
+    <style>
+        html {
+            scroll-padding-top: 172px;
+        }
+
+        .path-nav {
+            scrollbar-width: none;
+            min-height: 64px;
+            box-shadow: 0 0 18px rgba(255, 255, 255, 0.1);
+        }
+
+        .path-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .path-link {
+            align-items: center;
+            display: inline-flex;
+            justify-content: center;
+            min-height: 44px;
+            color: #bacac3;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .path-link:hover {
+            color: #ffffff;
+        }
+
+        .path-link[aria-current="true"] {
+            color: #002019;
+            background: #5ffbd6;
+            box-shadow: 0 0 24px rgba(95, 251, 214, 0.16);
+        }
+
+        .contribution-card {
+            scroll-margin-top: 172px;
+        }
+
+        .contribution-card:hover .path-icon {
+            color: #5ffbd6;
+            border-color: rgba(95, 251, 214, 0.55);
+            background: rgba(95, 251, 214, 0.08);
+        }
+
+        .issue-card {
+            background: rgba(11, 24, 48, 0.72);
+        }
+
+        @media (max-width: 767px) {
+            html {
+                scroll-padding-top: 142px;
+            }
+
+            .contribution-card {
+                scroll-margin-top: 142px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-background text-on-surface antialiased font-sans min-h-screen flex flex-col">
+    <header class="fixed top-0 z-50 w-full border-b border-outline-variant/20 bg-background/80 backdrop-blur-xl">
+        <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md w-full max-w-[1440px] mx-auto">
+            <a href="home.html" class="text-xl md:text-2xl font-bold text-primary-fixed tracking-tight hover:opacity-80 transition-opacity">
+                MLCast Community
+            </a>
+
+            <nav class="hidden md:flex items-center gap-lg" aria-label="Main navigation">
+                <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#get-started">About</a>
+                <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="software.html">Software</a>
+                <a class="text-primary-fixed text-sm uppercase tracking-wider hover:text-primary transition-colors" href="community.html" aria-current="page">Community</a>
+                <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="docs.html">Documentation</a>
+                <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#news">News</a>
+                <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#faq">FAQ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow pt-[76px]">
+        <div class="sticky top-[76px] z-40 mt-4 px-margin-mobile md:px-margin-desktop pointer-events-none">
+            <nav class="path-nav pointer-events-auto flex items-center md:justify-between gap-1.5 max-w-[1180px] mx-auto overflow-x-auto rounded-full border border-outline-variant/30 bg-[#0b1830]/90 px-2 py-2 backdrop-blur-xl" aria-label="Contribution paths">
+                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#build-software" aria-current="true">Build software</a>
+                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#share-data">Share data</a>
+                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#improve-models">Improve models</a>
+                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#validate-results">Validate results</a>
+                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#teach-support">Teach &amp; support</a>
+                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#documentation">Documentation</a>
+            </nav>
+        </div>
+
+        <section class="px-margin-mobile md:px-margin-desktop pt-20 pb-16 md:pt-28 md:pb-24">
+            <div class="max-w-[1180px] mx-auto">
+                <div class="max-w-4xl border-l-4 border-primary-fixed pl-6 md:pl-8">
+                    <div class="font-label-tag text-[11px] text-primary-fixed mb-5 uppercase tracking-[0.2em]">[CONTRIBUTE TO MLCAST]</div>
+                    <h1 class="font-headline-xl text-5xl md:text-7xl font-bold text-primary tracking-[-0.04em] leading-[1.02]">
+                        There is more than one way to contribute.
+                    </h1>
+                    <p class="mt-7 max-w-3xl text-lg md:text-xl text-on-surface-variant leading-relaxed">
+                        MLCast is a collaborative community advancing weather nowcasting through machine learning by openly sharing datasets, software, experiments, and expertise.
+                    </p>
+                    <a href="#build-software" class="mt-8 inline-flex items-center gap-2 rounded bg-primary-fixed px-6 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed transition-opacity hover:opacity-90">
+                        Find your path
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">south</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-margin-mobile md:px-margin-desktop pb-24" aria-labelledby="paths-heading">
+            <div class="max-w-[1180px] mx-auto">
+                <div class="mb-10">
+                    <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[SUGGESTED CONTRIBUTOR PATHS]</div>
+                    <h2 id="paths-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">Choose the work that feels like you.</h2>
+                </div>
+
+                <div class="flex flex-col gap-10">
+                    <div>
+                        <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[SOFTWARE &amp; MODELS]</div>
+                        <div class="flex flex-col gap-6">
+                            <article id="build-software" class="contribution-card glass-card rounded-2xl p-6 md:p-8 max-w-3xl flex items-start gap-8">
+                                <div class="flex-1 min-w-0">
+                                    <h3 class="text-2xl font-bold text-primary">Build Software</h3>
+                                    <p class="mt-4 text-on-surface-variant leading-relaxed">Turn ideas and models into real tools, features, APIs, and integrations.</p>
+                                    <p class="mt-3 text-on-surface-variant leading-relaxed">You help make mlcast more usable, stable, and ready for real-world workflows.</p>
+                                    <p class="mt-3 text-on-surface-variant leading-relaxed">Even a small improvement can make the whole project easier to adopt.</p>
+                                </div>
+                                <img src="img/ContributionFlowImage.png" alt="Contribution flow diagram" class="w-48 md:w-56 shrink-0 rounded-lg"/>
+                            </article>
+
+                            <article id="improve-models" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-primary">Improve Models</h3>
+                                <p class="mt-4 text-on-surface-variant leading-relaxed">Try new architectures, tune parameters, and explore different nowcasting approaches.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">You help improve accuracy, stability, and the overall performance of the models.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">Even a simple idea can lead to stronger and more interesting results.</p>
+                            </article>
+
+                            <article id="validate-results" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-primary">Validate Results</h3>
+                                <p class="mt-4 text-on-surface-variant leading-relaxed">Check performance, compare experiments, and make sure results are reliable.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">Your critical eye helps the community understand what truly works and what needs improvement.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">You help the project grow on a stronger and more trustworthy foundation.</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[TEACH &amp; SUPPORT]</div>
+                        <div class="flex flex-col gap-6">
+                            <article id="teach-support" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-primary">Teach &amp; Support</h3>
+                                <p class="mt-4 text-on-surface-variant leading-relaxed">Welcome new contributors, answer questions, and help people get started.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">Your support makes the community more open, clearer, and easier to join.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">Often, a simple guide is enough to help someone feel part of the project right away.</p>
+                            </article>
+
+                            <article id="share-data" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-primary">Share Data</h3>
+                                <p class="mt-4 text-on-surface-variant leading-relaxed">Contribute datasets, ingestion pipelines, or data schemas that help the project grow.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">Your work makes testing more realistic and results more useful for everyone.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">A well-prepared dataset can become the foundation for many new experiments.</p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[DOCUMENTATION]</div>
+                        <div class="flex flex-col gap-6">
+                            <article id="documentation" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
+                                <h3 class="text-2xl font-bold text-primary">Documentation</h3>
+                                <p class="mt-4 text-on-surface-variant leading-relaxed">Make the project easier to understand with guides, examples, tutorials, and clear explanations.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">Good documentation saves time and helps more people start contributing without friction.</p>
+                                <p class="mt-3 text-on-surface-variant leading-relaxed">You can turn complex ideas into simple steps anyone can follow.</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="border-y border-outline-variant/20 bg-[#08152e] px-margin-mobile md:px-margin-desktop py-20" aria-labelledby="process-heading">
+            <div class="max-w-[1180px] mx-auto">
+                <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[HOW CONTRIBUTIONS WORK]</div>
+                <h2 id="process-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">A short path from interest to impact.</h2>
+
+                <ol class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <li class="rounded-xl border border-outline-variant/30 bg-background/60 p-6">
+                        <span class="font-label-tag text-sm text-primary-fixed">01</span>
+                        <h3 class="mt-5 text-xl font-bold text-primary">Choose a path</h3>
+                        <p class="mt-3 text-sm leading-relaxed text-on-surface-variant">Pick the kind of contribution that fits your interests and experience.</p>
+                    </li>
+                    <li class="rounded-xl border border-outline-variant/30 bg-background/60 p-6">
+                        <span class="font-label-tag text-sm text-primary-fixed">02</span>
+                        <h3 class="mt-5 text-xl font-bold text-primary">Complete a starter task</h3>
+                        <p class="mt-3 text-sm leading-relaxed text-on-surface-variant">Use a small, documented task to learn the workflow without a large commitment.</p>
+                    </li>
+                    <li class="rounded-xl border border-outline-variant/30 bg-background/60 p-6">
+                        <span class="font-label-tag text-sm text-primary-fixed">03</span>
+                        <h3 class="mt-5 text-xl font-bold text-primary">Share your result</h3>
+                        <p class="mt-3 text-sm leading-relaxed text-on-surface-variant">Open a pull request, contribute a dataset, or bring your findings to the community.</p>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="px-margin-mobile md:px-margin-desktop py-24" aria-labelledby="issues-heading">
+            <div class="max-w-[1180px] mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                    <div>
+                        <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[LOW-FRICTION STARTERS]</div>
+                        <h2 id="issues-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">Current good first issues</h2>
+                        <p class="mt-4 max-w-2xl text-on-surface-variant">Small, clearly scoped tasks from MLCast repositories. Pick one and ask for context before you begin.</p>
+                    </div>
+                    <a href="https://github.com/search?q=org%3Amlcast-community+label%3A%22good+first+issue%22+state%3Aopen&type=issues" target="_blank" rel="noreferrer" class="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary-fixed hover:text-primary transition-colors">
+                        View all on GitHub
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">open_in_new</span>
+                    </a>
+                </div>
+
+                <div id="issue-list" class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4" aria-live="polite">
+                    <div class="issue-card rounded-xl border border-outline-variant/30 p-6">
+                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">GitHub</span>
+                        <p class="mt-4 text-sm text-on-surface-variant">Loading current issues…</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-margin-mobile md:px-margin-desktop pb-24" aria-labelledby="unsure-heading">
+            <div class="max-w-[1180px] mx-auto overflow-hidden rounded-2xl border border-primary-fixed/30 bg-primary-fixed/[0.06] p-7 md:p-10">
+                <div class="grid lg:grid-cols-[1fr_auto] lg:items-center gap-8">
+                    <div>
+                        <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[NOT SURE WHERE YOU FIT?]</div>
+                        <h2 id="unsure-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">Start with a conversation.</h2>
+                        <p class="mt-4 max-w-2xl text-on-surface-variant">You do not need a finished idea. Tell us what you are interested in and we’ll help you find a useful first step.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row lg:flex-col gap-3">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
+                            Join #start-here
+                            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">forum</span>
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded border border-outline-variant px-5 py-3 text-sm font-semibold text-primary hover:border-primary-fixed hover:text-primary-fixed transition-colors">
+                            Attend a weekly meeting
+                            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">calendar_month</span>
+                        </a>
+                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded border border-outline-variant px-5 py-3 text-sm font-semibold text-primary hover:border-primary-fixed hover:text-primary-fixed transition-colors">
+                            Contribution-interest form
+                            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">assignment</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-outline-variant/20 py-xl">
+        <div class="max-w-[1180px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between gap-6 text-sm">
+            <div>
+                <p class="font-bold text-primary">MLCast Community</p>
+                <p class="mt-2 text-on-surface-variant">Open tools, data, and research for better nowcasting.</p>
+            </div>
+            <div class="flex flex-wrap gap-6 text-on-surface-variant">
+                <a href="https://github.com/mlcast-community" target="_blank" rel="noreferrer" class="hover:text-primary-fixed">GitHub</a>
+                <a href="docs.html" class="hover:text-primary-fixed">Documentation</a>
+                <a href="#" class="hover:text-primary-fixed">Code of Conduct</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const pathNav = document.querySelector(".path-nav");
+        const pathLinks = Array.from(document.querySelectorAll(".path-link"));
+        const pathSections = pathLinks
+            .map((link) => document.querySelector(link.getAttribute("href")))
+            .filter(Boolean);
+        let activePathId = "build-software";
+
+        const revealPathLink = (link) => {
+            if (!pathNav || pathNav.scrollWidth <= pathNav.clientWidth) return;
+
+            const navRect = pathNav.getBoundingClientRect();
+            const linkRect = link.getBoundingClientRect();
+            const edgeInset = 8;
+            let leftDelta = 0;
+
+            if (linkRect.left < navRect.left + edgeInset) {
+                leftDelta = linkRect.left - navRect.left - edgeInset;
+            } else if (linkRect.right > navRect.right - edgeInset) {
+                leftDelta = linkRect.right - navRect.right + edgeInset;
+            }
+
+            if (leftDelta) {
+                pathNav.scrollBy({ left: leftDelta, behavior: "smooth" });
+            }
+        };
+
+        const setActivePath = (sectionId) => {
+            activePathId = sectionId;
+            pathLinks.forEach((link) => {
+                const isActive = link.getAttribute("href") === `#${sectionId}`;
+                link.setAttribute("aria-current", isActive ? "true" : "false");
+                if (isActive) revealPathLink(link);
+            });
+        };
+
+        const pathObserver = new IntersectionObserver((entries) => {
+            const visible = entries
+                .filter((entry) => entry.isIntersecting)
+                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+            if (!visible.length) return;
+
+            const bestMatch = visible[0];
+            const currentMatch = visible.find((entry) => entry.target.id === activePathId);
+            const isEffectivelyTied = currentMatch
+                && Math.abs(currentMatch.intersectionRatio - bestMatch.intersectionRatio) < 0.05;
+
+            if (!isEffectivelyTied) setActivePath(bestMatch.target.id);
+        }, {
+            rootMargin: "-170px 0px -48% 0px",
+            threshold: [0.15, 0.35, 0.6]
+        });
+
+        pathSections.forEach((section) => pathObserver.observe(section));
+        pathLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                setActivePath(link.getAttribute("href").slice(1));
+            });
+        });
+
+        const issueList = document.getElementById("issue-list");
+        const issuesSearchUrl = "https://github.com/search?q=org%3Amlcast-community+label%3A%22good+first+issue%22+state%3Aopen&type=issues";
+        const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            "\"": "&quot;",
+            "'": "&#039;"
+        })[character]);
+
+        const renderIssueFallback = () => {
+            issueList.innerHTML = `
+                <a href="${issuesSearchUrl}" target="_blank" rel="noreferrer" class="issue-card group rounded-xl border border-outline-variant/30 p-6 transition-colors hover:border-primary-fixed/60 md:col-span-3">
+                    <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">GitHub search</span>
+                    <div class="mt-4 flex items-center justify-between gap-4">
+                        <p class="font-semibold text-primary">Browse all open issues labeled “good first issue”</p>
+                        <span class="material-symbols-outlined text-primary-fixed transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span>
+                    </div>
+                </a>`;
+        };
+
+        fetch("https://api.github.com/search/issues?q=org:mlcast-community+label:%22good+first+issue%22+state:open&sort=updated&order=desc&per_page=3")
+            .then((response) => {
+                if (!response.ok) throw new Error("GitHub request failed");
+                return response.json();
+            })
+            .then((data) => {
+                if (!data.items || !data.items.length) {
+                    renderIssueFallback();
+                    return;
+                }
+
+                issueList.innerHTML = data.items.map((issue) => {
+                    const repository = escapeHtml(issue.repository_url.split("/").pop());
+                    const title = escapeHtml(issue.title);
+                    const issueNumber = escapeHtml(issue.number);
+                    const issueUrl = encodeURI(issue.html_url);
+                    return `
+                        <a href="${issueUrl}" target="_blank" rel="noreferrer" class="issue-card group flex min-h-48 flex-col rounded-xl border border-outline-variant/30 p-6 transition-colors hover:border-primary-fixed/60">
+                            <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">${repository}</span>
+                            <h3 class="mt-4 font-semibold leading-snug text-primary">${title}</h3>
+                            <div class="mt-auto flex items-center justify-between gap-4 pt-7 text-xs text-on-surface-variant">
+                                <span>#${issueNumber}</span>
+                                <span class="material-symbols-outlined text-[18px] text-primary-fixed transition-transform group-hover:translate-x-1" aria-hidden="true">arrow_forward</span>
+                            </div>
+                        </a>`;
+                }).join("");
+            })
+            .catch(renderIssueFallback);
+    </script>
+</body>
+</html>
