@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css">
+
+</head>
+<body>
+    <!-- Sezione Datasets & ARCO -->
+<section id="datasets" class="py-24 px-margin-desktop">
+    <div class="max-w-[1440px] mx-auto">
+        
+        <!-- Header di Sezione -->
+        <div class="mb-16">
+            <span class="text-primary-fixed font-mono tracking-widest uppercase text-sm">[DATA_INFRASTRUCTURE]</span>
+            <h2 class="text-4xl md:text-5xl font-bold text-primary mt-2">ARCO-Ready Data Access</h2>
+            <p class="text-on-surface-variant max-w-2xl mt-6 text-lg">
+                We leverage <strong>ARCO (Analysis-Ready, Cloud-Optimized)</strong> data patterns. By using Zarr and xarray, we ensure datasets are <strong>code-addressable</strong>, allowing you to stream terabytes of radar data directly into your training pipeline without local downloads.
+            </p>
+        </div>
+
+        <!-- 3 Colonne per i concetti chiave -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- 1. Standardized -->
+            <div class="glass-card p-6 border border-primary-fixed/20">
+                <h3 class="text-primary font-bold mb-3">Standardized</h3>
+                <p class="text-sm text-on-surface-variant">All datasets are curated into unified schemas, ensuring consistent coordinate systems and metadata compliant with CF-conventions.</p>
+            </div>
+            <!-- 2. EWC & Cloud -->
+            <div class="glass-card p-6 border border-primary-fixed/20">
+                <h3 class="text-primary font-bold mb-3">EWC Hosted</h3>
+                <p class="text-sm text-on-surface-variant">Stored on the <strong>European Weather Cloud (EWC)</strong>, minimizing latency and egress costs for high-throughput machine learning research.</p>
+            </div>
+            <!-- 3. Open Source -->
+            <div class="glass-card p-6 border border-primary-fixed/20">
+                <h3 class="text-primary font-bold mb-3">Open & Accessible</h3>
+                <p class="text-sm text-on-surface-variant">Fully open-source catalog. Contribution is encouraged via PRs, making it a living community repository fornowcasting data.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="pb-24 px-margin-desktop">
+    <div class="max-w-[1440px] mx-auto bg-[#050f24] rounded-2xl border border-outline-variant p-8 md:p-12">
+        <h3 class="text-2xl font-bold text-primary mb-6">Access in 3 lines of code</h3>
+        <div class="grid md:grid-cols-2 gap-12">
+            <div class="font-mono text-sm space-y-4 text-primary-fixed/90">
+                <p class="text-primary-fixed/50"># Install the catalog interface</p>
+                <code>pip install mlcast-datasets</code>
+                <p class="text-primary-fixed/50 mt-4"># Load data instantly</p>
+                <div class="bg-[#020712] p-4 rounded border border-primary/10">
+                    import mlcast_datasets<br>
+                    cat = mlcast_datasets.open_catalog()<br>
+                    ds = cat.precipitation.radklim_5_minutes.to_dask()
+                </div>
+            </div>
+            <div class="text-on-surface-variant text-sm space-y-4">
+                <p>The <strong>MLCast Catalog</strong> acts as a single point of entry for all curated weather datasets. It leverages <code>intake</code> to map cloud-hosted Zarr stores into your local Python environment.</p>
+                <a href="#" class="inline-flex items-center gap-2 text-primary-fixed hover:underline">
+                    View full catalog documentation <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>
