@@ -137,10 +137,10 @@
         <div class="sticky top-[76px] z-40 mt-4 px-margin-mobile md:px-margin-desktop pointer-events-none">
             <nav class="path-nav pointer-events-auto flex items-center md:justify-between gap-1.5 max-w-[1180px] mx-auto overflow-x-auto rounded-full border border-outline-variant/30 bg-[#0b1830]/90 px-2 py-2 backdrop-blur-xl" aria-label="Contribution paths">
                 <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#build-software" aria-current="true">Build software</a>
-                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#share-data">Share data</a>
                 <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#improve-models">Improve models</a>
                 <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#validate-results">Validate results</a>
                 <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#teach-support">Teach &amp; support</a>
+                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#share-data">Share data</a>
                 <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#documentation">Documentation</a>
             </nav>
         </div>
@@ -155,6 +155,9 @@
                     <p class="mt-7 max-w-3xl text-lg md:text-xl text-on-surface-variant leading-relaxed">
                         MLCast is a collaborative community advancing weather nowcasting through machine learning by openly sharing datasets, software, experiments, and expertise.
                     </p>
+                    <h2 class="mt-8 max-w-3xl font-headline-xl text-2xl md:text-3xl font-bold text-primary leading-tight">
+                        Scientists, researchers, software engineers, and curious builders can all contribute in different ways.
+                    </h2>
                     <a href="#build-software" class="mt-8 inline-flex items-center gap-2 rounded bg-primary-fixed px-6 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed transition-opacity hover:opacity-90">
                         Find your path
                         <span class="material-symbols-outlined text-[18px]" aria-hidden="true">south</span>
@@ -165,29 +168,33 @@
 
         <section class="px-margin-mobile md:px-margin-desktop pb-24" aria-labelledby="paths-heading">
             <div class="max-w-[1180px] mx-auto">
-                <div class="mb-6 text-center">
+                <div class="mb-16 text-center">
                     <h2 id="paths-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">Choose the work that feels like you.</h2>
                     <p class="mt-4 text-xs text-on-surface-variant/60 animate-bounce tracking-widest">&#8595; SCROLL DOWN &#8595;</p>
                 </div>
 
-                <div class="flex flex-col gap-10">
+                <div class="flex flex-col gap-[200px]">
                     <div>
-                        <div class="flex flex-col gap-6">
-                            <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-10">
-                                <div>
+                        <div class="flex flex-col gap-[200px]">
+                            <div id="build-software" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
+                                <div class="min-w-0">
                                     <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Build Software</h3>
                                     <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Turn ideas and models into real tools, features, APIs, and integrations.</p>
                                     <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">You help make mlcast more usable, stable, and ready for real-world workflows.</p>
                                     <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Even a small improvement can make the whole project easier to adopt.</p>
+                                    <button type="button" aria-disabled="true" class="mt-7 inline-flex items-center gap-2 rounded bg-primary-fixed px-5 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed">
+                                        Start with software
+                                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                                    </button>
                                 </div>
-                                <div class="w-48 md:w-64 rounded-lg bg-[#0b1830] border border-outline-variant/30 overflow-hidden">
+                                <div class="w-full min-w-0 rounded-lg bg-[#0b1830] border border-outline-variant/30 overflow-hidden lg:justify-self-end">
                                     <div class="flex items-center gap-1.5 px-3 py-2 bg-[#0b1830] border-b border-outline-variant/20">
                                         <span class="w-2.5 h-2.5 rounded-full bg-[#ff5f56]"></span>
                                         <span class="w-2.5 h-2.5 rounded-full bg-[#ffbd2e]"></span>
                                         <span class="w-2.5 h-2.5 rounded-full bg-[#27c93f]"></span>
                                         <span class="ml-2 text-[10px] text-on-surface-variant/40 font-label-tag">bash</span>
                                     </div>
-                                    <pre class="p-4 text-xs leading-relaxed overflow-x-auto font-label-tag text-on-surface-variant"><code>$ git commit -m "add ci pipeline"
+                                    <pre class="p-4 text-xs sm:text-sm leading-relaxed overflow-x-auto font-label-tag text-on-surface-variant"><code>$ git commit -m "add ci pipeline"
 $ pytest tests/
 ===========================
 8 passed in 2.34s
@@ -197,50 +204,239 @@ $ kubectl rollout status deploy</code></pre>
                                 </div>
                             </div>
 
-                            <article id="improve-models" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
-                                <h3 class="text-2xl font-bold text-primary">Improve Models</h3>
-                                <p class="mt-4 text-on-surface-variant leading-relaxed">Try new architectures, tune parameters, and explore different nowcasting approaches.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">You help improve accuracy, stability, and the overall performance of the models.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">Even a simple idea can lead to stronger and more interesting results.</p>
-                            </article>
+                            <div id="improve-models" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
+                                <div class="min-w-0">
+                                    <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Improve Models</h3>
+                                    <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Try new architectures, tune parameters, and explore different nowcasting approaches.</p>
+                                    <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">You help improve accuracy, stability, and the overall performance of the models.</p>
+                                    <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Even a simple idea can lead to stronger and more interesting results.</p>
+                                    <button type="button" aria-disabled="true" class="mt-7 inline-flex items-center gap-2 rounded bg-primary-fixed px-5 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed">
+                                        Improve a model
+                                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                                    </button>
+                                </div>
+                                <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-[#0b1830] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
+                                    <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
+                                        <div>
+                                            <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Experiment Run</p>
+                                            <h4 class="mt-2 text-lg font-bold text-primary">ConvGRU baseline sweep</h4>
+                                        </div>
+                                        <span class="rounded-full border border-primary-fixed/30 bg-primary-fixed/10 px-3 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Best</span>
+                                    </div>
 
-                            <article id="validate-results" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
-                                <h3 class="text-2xl font-bold text-primary">Validate Results</h3>
-                                <p class="mt-4 text-on-surface-variant leading-relaxed">Check performance, compare experiments, and make sure results are reliable.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">Your critical eye helps the community understand what truly works and what needs improvement.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">You help the project grow on a stronger and more trustworthy foundation.</p>
-                            </article>
+                                    <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                                        <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                            <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">CSI</p>
+                                            <p class="mt-2 text-2xl font-bold text-primary-fixed">+6.4%</p>
+                                        </div>
+                                        <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                            <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">MAE</p>
+                                            <p class="mt-2 text-2xl font-bold text-primary">-0.12</p>
+                                        </div>
+                                        <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                            <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Lead</p>
+                                            <p class="mt-2 text-2xl font-bold text-primary">+15m</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-5 rounded border border-outline-variant/25 bg-[#050f24] p-4">
+                                        <div class="mb-4 flex items-center justify-between gap-4">
+                                            <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Validation skill</span>
+                                            <span class="font-label-tag text-[10px] text-primary-fixed">epoch 24</span>
+                                        </div>
+                                        <div class="flex h-32 items-end gap-2" aria-hidden="true">
+                                            <span class="h-[42%] flex-1 rounded-t bg-outline-variant/50"></span>
+                                            <span class="h-[50%] flex-1 rounded-t bg-outline-variant/50"></span>
+                                            <span class="h-[58%] flex-1 rounded-t bg-outline-variant/50"></span>
+                                            <span class="h-[66%] flex-1 rounded-t bg-primary-fixed/40"></span>
+                                            <span class="h-[74%] flex-1 rounded-t bg-primary-fixed/55"></span>
+                                            <span class="h-[82%] flex-1 rounded-t bg-primary-fixed/70"></span>
+                                            <span class="h-[91%] flex-1 rounded-t bg-primary-fixed"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="validate-results" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
+                                <div class="min-w-0">
+                                    <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Validate Results</h3>
+                                    <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Check performance, compare experiments, and make sure results are reliable.</p>
+                                    <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Your critical eye helps the community understand what truly works and what needs improvement.</p>
+                                    <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">You help the project grow on a stronger and more trustworthy foundation.</p>
+                                    <button type="button" aria-disabled="true" class="mt-7 inline-flex items-center gap-2 rounded bg-primary-fixed px-5 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed">
+                                        Validate results
+                                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                                    </button>
+                                </div>
+                                <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-[#0b1830] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
+                                    <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
+                                        <div>
+                                            <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Evaluation Report</p>
+                                            <h4 class="mt-2 text-lg font-bold text-primary">Storm event holdout</h4>
+                                        </div>
+                                        <span class="material-symbols-outlined rounded-full border border-primary-fixed/30 bg-primary-fixed/10 p-2 text-[20px] text-primary-fixed" aria-hidden="true">verified</span>
+                                    </div>
+
+                                    <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                                        <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                            <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">POD</p>
+                                            <p class="mt-2 text-2xl font-bold text-primary">0.82</p>
+                                        </div>
+                                        <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                            <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">FAR</p>
+                                            <p class="mt-2 text-2xl font-bold text-primary-fixed">0.18</p>
+                                        </div>
+                                        <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                            <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">RMSE</p>
+                                            <p class="mt-2 text-2xl font-bold text-primary-fixed">-9%</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="mt-5 rounded border border-outline-variant/25 bg-[#050f24] p-4">
+                                        <div class="grid grid-cols-[1fr_auto] gap-x-4 gap-y-3 text-sm">
+                                            <span class="text-on-surface-variant">Baseline comparison</span>
+                                            <span class="font-label-tag text-primary-fixed">passed</span>
+                                            <span class="text-on-surface-variant">Lead-time split</span>
+                                            <span class="font-label-tag text-primary-fixed">stable</span>
+                                            <span class="text-on-surface-variant">Extreme rainfall cases</span>
+                                            <span class="font-label-tag text-primary-fixed">reviewed</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div>
-                        <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[TEACH &amp; SUPPORT]</div>
-                        <div class="flex flex-col gap-6">
-                            <article id="teach-support" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
-                                <h3 class="text-2xl font-bold text-primary">Teach &amp; Support</h3>
-                                <p class="mt-4 text-on-surface-variant leading-relaxed">Welcome new contributors, answer questions, and help people get started.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">Your support makes the community more open, clearer, and easier to join.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">Often, a simple guide is enough to help someone feel part of the project right away.</p>
-                            </article>
+                    <div id="teach-support" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
+                        <div class="min-w-0">
+                            <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Teach &amp; Support</h3>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Welcome new contributors, answer questions, and help people get started.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Your support makes the community more open, clearer, and easier to join.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Often, a simple guide is enough to help someone feel part of the project right away.</p>
+                            <button type="button" aria-disabled="true" class="mt-7 inline-flex items-center gap-2 rounded bg-primary-fixed px-5 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed">
+                                Help contributors
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                            </button>
+                        </div>
+                        <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-[#0b1830] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
+                            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
+                                <div>
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Support Thread</p>
+                                    <h4 class="mt-2 text-lg font-bold text-primary">First dataset question</h4>
+                                </div>
+                                <span class="rounded-full border border-primary-fixed/30 bg-primary-fixed/10 px-3 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Answered</span>
+                            </div>
 
-                            <article id="share-data" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
-                                <h3 class="text-2xl font-bold text-primary">Share Data</h3>
-                                <p class="mt-4 text-on-surface-variant leading-relaxed">Contribute datasets, ingestion pipelines, or data schemas that help the project grow.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">Your work makes testing more realistic and results more useful for everyone.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">A well-prepared dataset can become the foundation for many new experiments.</p>
-                            </article>
+                            <div class="mt-5 space-y-3">
+                                <div class="rounded border border-outline-variant/25 bg-background/45 p-4">
+                                    <p class="text-sm font-semibold text-primary">How do I validate a new Zarr dataset?</p>
+                                    <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">Start with the source-data spec, then run the validator before opening the pull request.</p>
+                                </div>
+                                <div class="rounded border border-primary-fixed/25 bg-primary-fixed/[0.06] p-4">
+                                    <div class="flex items-center gap-2 text-primary-fixed">
+                                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+                                        <span class="font-label-tag text-[10px] uppercase tracking-widest">Linked guide</span>
+                                    </div>
+                                    <p class="mt-2 text-sm text-on-surface-variant">Dataset contribution checklist</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div>
-                        <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[DOCUMENTATION]</div>
-                        <div class="flex flex-col gap-6">
-                            <article id="documentation" class="contribution-card glass-card rounded-2xl p-6 md:p-8">
-                                <h3 class="text-2xl font-bold text-primary">Documentation</h3>
-                                <p class="mt-4 text-on-surface-variant leading-relaxed">Make the project easier to understand with guides, examples, tutorials, and clear explanations.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">Good documentation saves time and helps more people start contributing without friction.</p>
-                                <p class="mt-3 text-on-surface-variant leading-relaxed">You can turn complex ideas into simple steps anyone can follow.</p>
-                            </article>
+                    <div id="share-data" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
+                        <div class="min-w-0">
+                            <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Share Data</h3>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Contribute datasets, ingestion pipelines, or data schemas that help the project grow.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Your work makes testing more realistic and results more useful for everyone.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">A well-prepared dataset can become the foundation for many new experiments.</p>
+                            <button type="button" aria-disabled="true" class="mt-7 inline-flex items-center gap-2 rounded bg-primary-fixed px-5 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed">
+                                Share a dataset
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                            </button>
+                        </div>
+                        <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-[#0b1830] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
+                            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
+                                <div>
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Dataset Intake</p>
+                                    <h4 class="mt-2 text-lg font-bold text-primary">Radar precip package</h4>
+                                </div>
+                                <span class="rounded-full border border-primary-fixed/30 bg-primary-fixed/10 px-3 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Ready</span>
+                            </div>
+
+                            <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
+                                <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Stations</p>
+                                    <p class="mt-2 text-2xl font-bold text-primary">12</p>
+                                </div>
+                                <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Cadence</p>
+                                    <p class="mt-2 text-2xl font-bold text-primary-fixed">5m</p>
+                                </div>
+                                <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Years</p>
+                                    <p class="mt-2 text-2xl font-bold text-primary">2019-24</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-5 space-y-3 rounded border border-outline-variant/25 bg-[#050f24] p-4">
+                                <div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="font-label-tag uppercase tracking-widest text-on-surface-variant/60">Schema</span>
+                                        <span class="text-primary-fixed">100%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-outline-variant/30"><div class="h-full w-full rounded-full bg-primary-fixed"></div></div>
+                                </div>
+                                <div>
+                                    <div class="flex items-center justify-between text-xs">
+                                        <span class="font-label-tag uppercase tracking-widest text-on-surface-variant/60">Metadata</span>
+                                        <span class="text-primary-fixed">92%</span>
+                                    </div>
+                                    <div class="mt-2 h-2 rounded-full bg-outline-variant/30"><div class="h-full w-[92%] rounded-full bg-primary-fixed/80"></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="documentation" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
+                        <div class="min-w-0">
+                            <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Documentation</h3>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Make the project easier to understand with guides, examples, tutorials, and clear explanations.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Good documentation saves time and helps more people start contributing without friction.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">You can turn complex ideas into simple steps anyone can follow.</p>
+                            <button type="button" aria-disabled="true" class="mt-7 inline-flex items-center gap-2 rounded bg-primary-fixed px-5 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed">
+                                Improve the docs
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">arrow_forward</span>
+                            </button>
+                        </div>
+                        <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-[#0b1830] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
+                            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
+                                <div>
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Docs Patch</p>
+                                    <h4 class="mt-2 text-lg font-bold text-primary">Quickstart guide rewrite</h4>
+                                </div>
+                                <span class="rounded-full border border-primary-fixed/30 bg-primary-fixed/10 px-3 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Review</span>
+                            </div>
+
+                            <div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-[0.8fr_1.2fr]">
+                                <div class="rounded border border-outline-variant/25 bg-[#050f24] p-4">
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Outline</p>
+                                    <div class="mt-4 space-y-3 text-sm text-on-surface-variant">
+                                        <p class="text-primary-fixed">01 Install</p>
+                                        <p>02 Validate data</p>
+                                        <p>03 Run example</p>
+                                    </div>
+                                </div>
+                                <div class="rounded border border-outline-variant/25 bg-background/45 p-4">
+                                    <p class="h-2 w-2/3 rounded-full bg-primary"></p>
+                                    <p class="mt-4 h-2 w-full rounded-full bg-on-surface-variant/30"></p>
+                                    <p class="mt-2 h-2 w-5/6 rounded-full bg-on-surface-variant/30"></p>
+                                    <p class="mt-5 h-10 rounded border border-primary-fixed/25 bg-primary-fixed/[0.08]"></p>
+                                    <div class="mt-4 flex items-center gap-2 text-primary-fixed">
+                                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">check_circle</span>
+                                        <span class="font-label-tag text-[10px] uppercase tracking-widest">Examples checked</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -343,6 +539,9 @@ $ kubectl rollout status deploy</code></pre>
             .map((link) => document.querySelector(link.getAttribute("href")))
             .filter(Boolean);
         let activePathId = "build-software";
+        let pathSyncQueued = false;
+        let lockedPathId = null;
+        let lockedPathUntil = 0;
 
         const revealPathLink = (link) => {
             if (!pathNav || pathNav.scrollWidth <= pathNav.clientWidth) return;
@@ -364,6 +563,8 @@ $ kubectl rollout status deploy</code></pre>
         };
 
         const setActivePath = (sectionId) => {
+            if (!sectionId || sectionId === activePathId) return;
+
             activePathId = sectionId;
             pathLinks.forEach((link) => {
                 const isActive = link.getAttribute("href") === `#${sectionId}`;
@@ -372,30 +573,77 @@ $ kubectl rollout status deploy</code></pre>
             });
         };
 
-        const pathObserver = new IntersectionObserver((entries) => {
-            const visible = entries
-                .filter((entry) => entry.isIntersecting)
-                .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        const getPathTargetY = () => {
+            const scrollPaddingTop = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop);
+            return Number.isNaN(scrollPaddingTop) ? 172 : scrollPaddingTop;
+        };
 
-            if (!visible.length) return;
+        const getPathActivationY = () => Math.min(window.innerHeight * 0.45, getPathTargetY() + 220);
 
-            const bestMatch = visible[0];
-            const currentMatch = visible.find((entry) => entry.target.id === activePathId);
-            const isEffectivelyTied = currentMatch
-                && Math.abs(currentMatch.intersectionRatio - bestMatch.intersectionRatio) < 0.05;
+        const getCurrentPathId = () => {
+            if (!pathSections.length) return activePathId;
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+                return pathSections[pathSections.length - 1].id;
+            }
 
-            if (!isEffectivelyTied) setActivePath(bestMatch.target.id);
-        }, {
-            rootMargin: "-170px 0px -48% 0px",
-            threshold: [0.15, 0.35, 0.6]
-        });
+            const activationY = getPathActivationY();
+            let currentSection = pathSections[0];
 
-        pathSections.forEach((section) => pathObserver.observe(section));
+            for (const section of pathSections) {
+                if (section.getBoundingClientRect().top <= activationY) {
+                    currentSection = section;
+                } else {
+                    break;
+                }
+            }
+
+            return currentSection.id;
+        };
+
+        const syncActivePath = () => {
+            pathSyncQueued = false;
+
+            if (lockedPathId && Date.now() < lockedPathUntil) {
+                const lockedSection = document.getElementById(lockedPathId);
+                const hasReachedTarget = lockedSection
+                    && lockedSection.getBoundingClientRect().top <= getPathActivationY() + 24;
+
+                if (!hasReachedTarget) return;
+            }
+
+            lockedPathId = null;
+            lockedPathUntil = 0;
+            setActivePath(getCurrentPathId());
+        };
+
+        const requestPathSync = () => {
+            if (pathSyncQueued) return;
+            pathSyncQueued = true;
+            requestAnimationFrame(syncActivePath);
+        };
+
+        const releasePathLock = () => {
+            lockedPathId = null;
+            lockedPathUntil = 0;
+            requestPathSync();
+        };
+
         pathLinks.forEach((link) => {
             link.addEventListener("click", () => {
-                setActivePath(link.getAttribute("href").slice(1));
+                lockedPathId = link.getAttribute("href").slice(1);
+                lockedPathUntil = Date.now() + 2200;
+                setActivePath(lockedPathId);
             });
         });
+        window.addEventListener("scroll", requestPathSync, { passive: true });
+        window.addEventListener("resize", requestPathSync);
+        window.addEventListener("wheel", releasePathLock, { passive: true });
+        window.addEventListener("touchstart", releasePathLock, { passive: true });
+        window.addEventListener("keydown", (event) => {
+            const scrollKeys = ["ArrowDown", "ArrowUp", "End", "Home", "PageDown", "PageUp", " "];
+            if (scrollKeys.includes(event.key)) releasePathLock();
+        });
+        requestPathSync();
 
         const issueList = document.getElementById("issue-list");
         const issuesSearchUrl = "https://github.com/search?q=org%3Amlcast-community+label%3A%22good+first+issue%22+state%3Aopen&type=issues";
