@@ -11,7 +11,7 @@ The diagram below (from the
 shows the intended data flow and how the intake catalog fits into the overall
 architecture of the MLCast project.
 
-![MLCast data infrastructure](<img width="1920" height="1080" alt="ML CAST DATA INFRASTRUCTURE (1)" src="https://github.com/user-attachments/assets/6fe0f228-a3fc-44ae-866b-0522c433960d" />)
+![MLCast data infrastructure](https://github.com/user-attachments/assets/6fe0f228-a3fc-44ae-866b-0522c433960d)
 
 [source for this graphic](https://docs.google.com/presentation/d/1hIlPOer4T9hlxp0mnQ8WQRggSzVUqMID/edit?slide=id.p1#slide=id.p1)
 
