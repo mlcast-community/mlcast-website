@@ -36,9 +36,15 @@ jobs:
         env:
           # Served under <pages-url>/docs, so links must resolve against that subpath
           BASE_URL: /mlcast-website/docs
-        run: uv run jupyter book build --html
+        run: uv run jupyter book build --html --ci
       - name: Stage book into site
         run: |
+          echo "=== _build tree ==="
+          find _build -maxdepth 2 || true
+          if [ ! -f _build/html/index.html ]; then
+            echo "::error::_build/html/index.html missing — book build produced no static HTML"
+            exit 1
+          fi
           mkdir -p dist/docs
           cp -r _build/html/. dist/docs/
 
