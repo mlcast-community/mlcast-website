@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MLCast Community - AI Meteorological Nowcasting</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+    
+    <!-- Collegamento al CSS Esterno -->
+    <link rel="stylesheet" href="home.css">
+
+    <script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                  "primary": "#ffffff",
+                  "primary-fixed": "#5ffbd6",
+                  "background": "#07122a",
+                  "on-surface": "#d9e2ff",
+                  "on-surface-variant": "#bacac3",
+                  "on-primary-fixed": "#002019",
+                  "outline-variant": "#3c4a45"
+              },
+              borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+              spacing: { "md": "16px", "lg": "24px", "xl": "40px", "sm": "8px", "margin-mobile": "16px", "margin-desktop": "48px" },
+              fontFamily: { "headline-xl": ["Geist"], "body-lg": ["Inter"], "label-tag": ["JetBrains Mono"] }
+            },
+          },
+        }
+    </script>
+    <style>
+    /* Animazione di pressione (click) */
+ 
+</style>
+</head>
+<body class="bg-background text-on-surface antialiased font-sans min-h-screen flex flex-col">
+<header class="fixed top-0 z-50 w-full border-b border-outline-variant/20 bg-background/80 backdrop-blur-xl">
+    <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md w-full max-w-[1440px] mx-auto">
+        <!-- Logo: punta sempre alla radice della Home -->
+        <a href="index.html" class="text-2xl font-bold text-primary-fixed tracking-tight hover:opacity-80 transition-opacity">
+            MLCast Community
+        </a>
+        
+        <nav class="hidden md:flex items-center gap-lg">
+    <!-- Usa home.html#id per assicurarti che funzioni correttamente -->
+    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#get-started">About</a>
+    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="software.html">Software</a>
+    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#datasets">Community</a>
+    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#documentation">Documentation</a>
+    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#news">News</a>
+    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#faq">FAQ</a>
+    </nav>
+
+    </div>
+</header>
+    <main class="flex-grow">
+        <!-- Sezione Hero: Layout diviso -->
+<section class="relative min-h-screen flex items-center pt-24 px-margin-mobile md:px-margin-desktop">
+    
+    <!-- Canvas Background rimane fisso -->
+    <div class="absolute inset-0 w-full h-full opacity-60 mix-blend-screen -z-10">
+        <canvas id="shader-canvas" class="w-full h-full"></canvas>
+    </div>
+
+    <div class="w-full max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center gap-12">
+        
+        <!-- TESTO A SINISTRA -->
+<div class="w-full lg:w-1/2 flex flex-col gap-lg border-l-4 border-primary-fixed pl-6">
+    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary-fixed/30 bg-primary-fixed/10 w-fit">
+        <span class="w-2 h-2 rounded-full bg-primary-fixed animate-pulse"></span>
+        <span class="text-xs text-primary-fixed uppercase tracking-wider font-mono">System Operational</span>
+    </div>
+    
+    <h1 class="text-5xl md:text-7xl font-bold text-primary tracking-tighter leading-[1.1]">
+        Open-Source Meteorological <br/>
+        <span class="text-primary-fixed text-glow">Nowcasting with AI</span>
+    </h1>
+    
+    <p class="text-lg text-on-surface-variant max-w-2xl">
+        A collaborative scientific infrastructure dedicated to advancing short-term weather prediction through machine learning and high-resolution radar data.
+    </p>
+            
+            <div class="flex flex-col sm:flex-row gap-md mt-4">
+                <a class="flex items-center justify-center gap-2 bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity" href="#">
+                    <span class="material-symbols-outlined text-[18px]">terminal</span>
+                    Explore Documentation
+                </a>
+                <a class="flex items-center justify-center gap-2 border border-outline-variant text-primary px-8 py-3 rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:border-primary-fixed hover:text-primary-fixed transition-colors" 
+                   href="https://github.com/mlcast-community" target="_blank">
+                    <span class="material-symbols-outlined text-[18px]">code</span>
+                    GitHub Community
+                </a>
+            </div>
+        </div>
+<!-- VIDEO A DESTRA: Aggiornato per compatibilità -->
+<div class="w-full lg:w-1/2 flex justify-center">
+    <div class="relative w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden border border-outline-variant/30 bg-background shadow-2xl">
+        <video id="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" class="w-full h-full object-cover">
+            <source src="mlcast_radar_hero (4).mp4" type="video/mp4">
+            Il tuo browser non supporta il tag video.
+        </video>
+        <!-- Overlay HUD decorativo -->
+        <div class="absolute bottom-4 left-4 z-10 font-mono text-[10px] text-primary-fixed/70 bg-background/80 backdrop-blur px-2 py-1 border border-primary-fixed/20">
+            SCAN_REF: 04.2026_MLC
+        </div>
+    </div>
+</div>
+        
+    </div>
+</section>
+        <!-- What is MLCast Section -->
+    <!-- What is MLCast Section -->
+<!-- What is MLCast Section: Spostato a sinistra con Radar a destra -->
+<!-- What is MLCast Section -->
+<!-- Inizio contenitore -->
+<div id="about">
+
+    <!-- Sezione 1: What is MLCast -->
+    <section class="py-24 px-margin-mobile md:px-margin-desktop w-full max-w-[1440px] mx-auto" id="get-started">
+        <div class="max-w-3xl">
+            <div class="font-label-tag text-label-tag text-primary-fixed mb-4 uppercase tracking-widest">[OVERVIEW]</div>
+            <h2 class="font-headline-xl text-4xl md:text-5xl font-bold text-primary mb-6">What is MLCast?</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                MLCast Community is a decentralized ecosystem of researchers, engineers, and meteorologists building open-source infrastructure for high-precision weather nowcasting. We leverage modern machine learning techniques to process vast amounts of radar data in real-time, providing critical lead time for severe weather events.
+            </p>
+        </div>
+    </section>
+
+    <!-- Sezione 2: MLCast Plan -->
+    <section class="py-24 px-margin-mobile md:px-margin-desktop w-full max-w-[1440px] mx-auto" id="objectives">
+        <div class="mb-16">
+            <div class="font-label-tag text-label-tag text-primary-fixed mb-4 uppercase tracking-widest">[THE MLCAST PLAN]</div>
+            <h2 class="font-headline-xl text-4xl md:text-5xl font-bold text-primary">Strategic Objectives</h2>
+        </div>
+
+        <!-- Griglia dei Punti Chiave -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card 1 -->
+            <div class="glass-card p-6 border border-outline-variant/30 rounded-xl hover:border-primary-fixed/50 transition-all">
+                <div class="text-primary-fixed mb-2"><span class="material-symbols-outlined">layers</span></div>
+                <h3 class="text-lg font-bold text-primary mb-2">Unified Python Package</h3>
+                <p class="text-on-surface-variant text-sm mb-4">A unified framework designed specifically for the nowcasting community. Currently in design phase.</p>
+                <span class="text-[10px] uppercase tracking-widest font-mono text-primary-fixed/60">In Design Phase</span>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="glass-card p-6 border border-outline-variant/30 rounded-xl hover:border-primary-fixed/50 transition-all">
+                <div class="text-primary-fixed mb-2"><span class="material-symbols-outlined">api</span></div>
+                <h3 class="text-lg font-bold text-primary mb-2">Simple & Clean API</h3>
+                <p class="text-on-surface-variant text-sm mb-4">Easy-to-use interface for calling different pre-trained ML nowcasting algorithms.</p>
+                <span class="text-[10px] uppercase tracking-widest font-mono text-primary-fixed/60">Coming Soon</span>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="glass-card p-6 border border-outline-variant/30 rounded-xl hover:border-primary-fixed/50 transition-all">
+                <div class="text-primary-fixed mb-2"><span class="material-symbols-outlined">psychology</span></div>
+                <h3 class="text-lg font-bold text-primary mb-2">Model Training</h3>
+                <p class="text-on-surface-variant text-sm mb-4">Comprehensive functionality for training custom ML-based nowcasting algorithms locally or on cloud.</p>
+                <span class="text-[10px] uppercase tracking-widest font-mono text-primary-fixed/60">Functional</span>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="glass-card p-6 border border-outline-variant/30 rounded-xl hover:border-primary-fixed/50 transition-all">
+                <div class="text-primary-fixed mb-2"><span class="material-symbols-outlined">storage</span></div>
+                <h3 class="text-lg font-bold text-primary mb-2">Source & Training Data</h3>
+                <p class="text-on-surface-variant text-sm mb-4">Access datasets stored on European Weather Cloud S3 directly in your Python code.</p>
+                <span class="text-[10px] uppercase tracking-widest font-mono text-primary-fixed/60">In Progress</span>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="glass-card p-6 border border-outline-variant/30 rounded-xl hover:border-primary-fixed/50 transition-all">
+                <div class="text-primary-fixed mb-2"><span class="material-symbols-outlined">rocket_launch</span></div>
+                <h3 class="text-lg font-bold text-primary mb-2">CI/CD Pipeline</h3>
+                <p class="text-on-surface-variant text-sm mb-4">Automated testing and validation workflows through GitHub Actions with GPU support.</p>
+                <span class="text-[10px] uppercase tracking-widest font-mono text-primary-fixed/60">Operational</span>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="glass-card p-6 border border-outline-variant/30 rounded-xl hover:border-primary-fixed/50 transition-all">
+                <div class="text-primary-fixed mb-2"><span class="material-symbols-outlined">balance</span></div>
+                <h3 class="text-lg font-bold text-primary mb-2">Ownership & Benchmarking</h3>
+                <p class="text-on-surface-variant text-sm mb-4">Equal contributor ownership and built-in tools to benchmark and compare architecture performance.</p>
+                <span class="text-[10px] uppercase tracking-widest font-mono text-primary-fixed/60">Planned</span>
+            </div>
+        </div> <!-- Chiusura Griglia -->
+    </section> <!-- Chiusura Sezione Plan -->
+
+</div> <!-- Chiusura finale del div id="about" -->
+
+<!-- Sezione Mission: Adattata allo stile MLCast -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop w-full max-w-[1440px] mx-auto">
+    <div class="flex flex-col lg:flex-row gap-xl items-center">
+        
+        <!-- Testo e Punti Chiave -->
+        <div class="lg:w-1/2 w-full space-y-6">
+            <div class="font-label-tag text-label-tag text-primary-fixed uppercase tracking-widest">[MISSION]</div>
+            <h2 class="font-headline-xl text-4xl md:text-5xl font-bold text-primary tracking-tight">
+                Collaborative Research Ecosystem
+            </h2>
+            <p class="font-body-md text-on-surface-variant leading-relaxed">
+                Our mission is to democratize access to advanced meteorological prediction tools. By fostering an open-source community, we aim to accelerate innovation in weather nowcasting, bridging the gap between academic research and operational deployment.
+            </p>
+            
+            <ul class="flex flex-col gap-4 mt-8">
+                <li class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
+                    <span class="font-body-md font-bold text-on-surface">Standardized, documented benchmark datasets for ML weather prediction.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
+                    <span class="font-body-md font-bold text-on-surface">Modular architecture supporting drop-in replacement of modeling architectures.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
+                    <span class="font-body-md font-bold text-on-surface">Transparent evaluation frameworks preventing "black box" science.</span>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Immagine con Effetto Glass/HUD -->
+        <div class="lg:w-1/2 w-full">
+            <div class="glass-card rounded-2xl p-1 overflow-hidden relative aspect-video shadow-2xl border border-outline-variant/30">
+                <div class="absolute inset-0 bg-background/20 z-10"></div>
+                <img class="w-full h-full object-cover rounded-xl opacity-80" 
+                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYVDcKY30EyLnCKk-JCinOwv50aO0uDKhwVdogbC8c_DXXc8SlOIMfjzWM3DKO3nnEwzi9XTJPhO85AxT9132X1Lywf5hu3qNEFNQrbVTs4b74U3Z4QIZW2txGhkA_qnN4PEJxahFFrY182RBlhce4myE39-Tg5mLbbOjSQ-E_NNmJACxmhnXGRWDelhQcXHR_uX51B8gO-F9unozyLz8tJZK39SAp6-8eNcwaTVKOq0E-MfiDyjJYTFwLEmE6jf1C7wzqqBZ-38TN" 
+                     alt="Meteorological Visualization">    
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer: Elegante e professionale -->
+<footer class="border-t border-outline-variant/20 bg-[#050f24] py-xl mt-24">
+    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-lg text-sm">
+        
+        <!-- Colonna 1: Info Progetto -->
+        <div class="col-span-2 md:col-span-1">
+            <h4 class="font-bold text-primary mb-md">MLCast Community</h4>
+            <p class="text-on-surface-variant leading-relaxed">
+                Advancing meteorological intelligence through open-source collaboration and high-resolution data.
+            </p>
+        </div>
+
+        <!-- Colonna 2: Risorse -->
+        <div>
+            <h4 class="font-bold text-primary mb-md">Resources</h4>
+            <ul class="space-y-sm text-on-surface-variant">
+                <li><a href="#" class="hover:text-primary-fixed">Documentation</a></li>
+                <li><a href="#" class="hover:text-primary-fixed">API Reference</a></li>
+                <li><a href="#" class="hover:text-primary-fixed">Dataset Catalog</a></li>
+                <li><a href="#" class="hover:text-primary-fixed">Validation Tool</a></li>
+            </ul>
+        </div>
+
+        <!-- Colonna 3: Community -->
+        <div>
+            <h4 class="font-bold text-primary mb-md">Community</h4>
+            <ul class="space-y-sm text-on-surface-variant">
+                <li><a href="#" class="hover:text-primary-fixed">GitHub</a></li>
+                <li><a href="#" class="hover:text-primary-fixed">Discussions</a></li>
+                <li><a href="#" class="hover:text-primary-fixed">Code of Conduct</a></li>
+                <li><a href="#" class="hover:text-primary-fixed">Contributors</a></li>
+            </ul>
+        </div>
+
+        <!-- Colonna 4: Legal/Status -->
+        <div>
+            <h4 class="font-bold text-primary mb-md">Status</h4>
+            <div class="flex items-center gap-2 text-green-400">
+                <span class="w-2 h-2 rounded-full bg-green-400"></span>
+                <span>Systems Operational</span>
+            </div>
+            <p class="text-on-surface-variant mt-4 text-xs italic">
+                © 2026 MLCast Community. Released under MIT License.
+            </p>
+        </div>
+    </div>
+</footer>
+<!-- La sezione "Our Mission" è stata eliminata come richiesto -->
+</main>
+
+<script>
+
+    // --- PARTE 1: Gestione Canvas ---
+    const canvas = document.getElementById('shader-canvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function init() {
+        const parent = canvas.parentElement;
+        canvas.width = parent.clientWidth;
+        canvas.height = parent.clientHeight;
+        
+        particles = Array.from({ length: 60 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5
+        }));
+    }
+
+    function draw() {
+        ctx.fillStyle = 'rgba(7, 18, 42, 0.2)'; 
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        
+        ctx.strokeStyle = 'rgba(95, 251, 214, 0.2)';
+        ctx.lineWidth = 1;
+
+        particles.forEach((p, i) => {
+            p.x += p.vx;
+            p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+            for(let j = i + 1; j < particles.length; j++) {
+                let dx = p.x - particles[j].x;
+                let dy = p.y - particles[j].y;
+                if (Math.sqrt(dx*dx + dy*dy) < 150) {
+                    ctx.beginPath();
+                    ctx.moveTo(p.x, p.y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+        });
+        requestAnimationFrame(draw);
+    }
+
+    window.addEventListener('resize', () => init());
+    
+    setTimeout(() => {
+        init();
+        draw();
+    }, 100);
+
+    // --- PARTE 3: Forza autoplay del video hero ---
+    const heroVideo = document.getElementById('hero-video');
+    const startHeroVideo = () => {
+        if (!heroVideo) return;
+
+        heroVideo.autoplay = true;
+        heroVideo.loop = true;
+        heroVideo.defaultMuted = true;
+        heroVideo.muted = true;
+        heroVideo.volume = 0;
+        heroVideo.playsInline = true;
+        heroVideo.setAttribute('muted', '');
+        heroVideo.setAttribute('playsinline', '');
+        heroVideo.setAttribute('webkit-playsinline', '');
+        heroVideo.load();
+
+        heroVideo.play().catch(() => {
+            heroVideo.addEventListener('canplay', () => {
+                heroVideo.play().catch(() => {});
+            }, { once: true });
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startHeroVideo, { once: true });
+    } else {
+        startHeroVideo();
+    }
+
+
+    // --- PARTE 2: Funzione Universale Copia (Aggiornata) ---
+    function copySnippet(elementId, btn) {
+        const textElement = document.getElementById(elementId);
+        if (!textElement) return;
+
+        const text = textElement.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const originalContent = btn.innerHTML;
+            
+            // Feedback visivo
+            btn.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span> Copied';
+            btn.classList.remove('text-primary');
+            btn.classList.add('text-green-500');
+
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.classList.remove('text-green-500');
+                btn.classList.add('text-primary');
+            }, 2000);
+        });
+    }
+
+</script>
+
+</body>
+</html>
