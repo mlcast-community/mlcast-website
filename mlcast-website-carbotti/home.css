@@ -21,12 +21,22 @@ canvas {
 
 /* 2. Componenti Custom (Glassmorphism) */
 .glass-card {
+    position: relative;
+    z-index: 0;
     background: rgba(17, 34, 64, 0.4);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border: 1px solid rgba(133, 148, 142, 0.2);
     border-radius: 0.5rem; /* Corrisponde a 'lg' nella config Tailwind */
     transition: border-color 0.3s ease;
+}
+
+.glass-card:has(.output-popover[open]) {
+    z-index: 20;
+}
+
+.output-popover {
+    z-index: 30;
 }
 
 .glass-card:hover {

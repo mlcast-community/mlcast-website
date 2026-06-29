@@ -56,7 +56,7 @@
         <nav class="hidden md:flex items-center gap-lg">
     <!-- Usa home.html#id per assicurarti che funzioni correttamente -->
     <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#get-started">About</a>
-    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#models">Software</a>
+    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="software.html">Software</a>
     <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#datasets">Community</a>
     <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#documentation">Documentation</a>
     <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#news">News</a>
@@ -100,14 +100,14 @@
                 <a class="flex items-center justify-center gap-2 border border-outline-variant text-primary px-8 py-3 rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:border-primary-fixed hover:text-primary-fixed transition-colors" 
                    href="https://github.com/mlcast-community" target="_blank">
                     <span class="material-symbols-outlined text-[18px]">code</span>
-                    GitHub Repository
+                    GitHub Community
                 </a>
             </div>
         </div>
 <!-- VIDEO A DESTRA: Aggiornato per compatibilità -->
 <div class="w-full lg:w-1/2 flex justify-center">
     <div class="relative w-full max-w-[500px] aspect-square rounded-2xl overflow-hidden border border-outline-variant/30 bg-background shadow-2xl">
-        <video autoplay loop muted playsinline preload="auto" class="w-full h-full object-cover">
+        <video id="hero-video" autoplay loop muted playsinline webkit-playsinline preload="auto" class="w-full h-full object-cover">
             <source src="mlcast_radar_hero (4).mp4" type="video/mp4">
             Il tuo browser non supporta il tag video.
         </video>
@@ -217,15 +217,15 @@
             <ul class="flex flex-col gap-4 mt-8">
                 <li class="flex items-start gap-4">
                     <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
-                    <span class="font-body-md text-on-surface">Standardized, documented benchmark datasets for ML weather prediction.</span>
+                    <span class="font-body-md font-bold text-on-surface">Standardized, documented benchmark datasets for ML weather prediction.</span>
                 </li>
                 <li class="flex items-start gap-4">
                     <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
-                    <span class="font-body-md text-on-surface">Modular architecture supporting drop-in replacement of modeling architectures.</span>
+                    <span class="font-body-md font-bold text-on-surface">Modular architecture supporting drop-in replacement of modeling architectures.</span>
                 </li>
                 <li class="flex items-start gap-4">
                     <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
-                    <span class="font-body-md text-on-surface">Transparent evaluation frameworks preventing "black box" science.</span>
+                    <span class="font-body-md font-bold text-on-surface">Transparent evaluation frameworks preventing "black box" science.</span>
                 </li>
             </ul>
         </div>
@@ -236,174 +236,13 @@
                 <div class="absolute inset-0 bg-background/20 z-10"></div>
                 <img class="w-full h-full object-cover rounded-xl opacity-80" 
                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYVDcKY30EyLnCKk-JCinOwv50aO0uDKhwVdogbC8c_DXXc8SlOIMfjzWM3DKO3nnEwzi9XTJPhO85AxT9132X1Lywf5hu3qNEFNQrbVTs4b74U3Z4QIZW2txGhkA_qnN4PEJxahFFrY182RBlhce4myE39-Tg5mLbbOjSQ-E_NNmJACxmhnXGRWDelhQcXHR_uX51B8gO-F9unozyLz8tJZK39SAp6-8eNcwaTVKOq0E-MfiDyjJYTFwLEmE6jf1C7wzqqBZ-38TN" 
-                     alt="Meteorological Visualization">
-                
-                <!-- HUD Element -->
-                <div class="absolute top-4 right-4 z-20 font-mono text-[10px] text-primary-fixed bg-background/80 backdrop-blur-md px-3 py-1 rounded border border-primary-fixed/30 uppercase tracking-widest">
-                    DATA_STREAM: ACTIVE
-                </div>
+                     alt="Meteorological Visualization">    
             </div>
         </div>
     </div>
 </section>
 
-<!-- Sezione Modificata: Organizzazione Verticale -->
-<!-- Sezione Modificata: Allineata a sinistra e con layout interno aggiornato -->
-<section class="py-24 px-margin-mobile md:px-margin-desktop w-full max-w-[1440px] mx-auto space-y-12" id="features">
-    
-    <!-- 1. DATASETS -->
-    <div class="glass-card p-lg md:p-xl rounded-2xl flex flex-col md:flex-row gap-8 items-start border border-outline-variant/30">
-        <div class="md:w-1/3 space-y-4">
-            <div class="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-fixed">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dataset</span>
-            </div>
-            <h3 class="text-2xl font-bold text-primary">Datasets</h3>
-            <p class="text-on-surface-variant">Standardized, high-res radar archives for ML. Access data streams via our Python interface with dask-backed xarray support.</p>
-            <!-- Sostituisci la parte dei bottoni (Docs/Repo) in ognuna delle 3 card con questo blocco: -->
-
-<div class="flex gap-sm pt-4">
-    <a href="#" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
-        <span class="material-symbols-outlined text-[14px]">menu_book</span> Docs
-    </a>
-    <a href="https://mlcast-community.github.io/mlcast-datasets/intro.html" target="_blank" 
-       class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider transition-all hover:bg-primary-fixed hover:text-on-primary-fixed hover:border-primary-fixed">
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg> 
-        Repo
-    </a>
-</div>
-        </div>
-        <div class="md:w-2/3 flex gap-4 items-start">
-            <div class="flex-grow">
-                <div class="flex justify-between items-center mb-1 px-1">
-                    <span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60">Quick Access</span>
-                    <button onclick="copySnippet('dataset-code', this)" class="flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
-                        <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
-                    </button>
-                </div>
-                <div id="dataset-code" class="p-4 bg-[#050f24] rounded-lg border border-primary/20 font-mono text-[12px] text-primary-fixed/90 shadow-inner">
-                    <span class="text-primary-fixed/50"># Install the catalog package</span><br>
-                    pip install mlcast-datasets<br><br>
-                    <span class="text-primary-fixed/50"># Open and list available sources</span><br>
-                    import mlcast_datasets<br>
-                    cat = mlcast_datasets.open_catalog()<br>
-                    list(cat)
-                </div>
-            </div>
-            <details class="group mt-6">
-                <summary class="list-none cursor-pointer flex flex-col items-center gap-2 text-primary hover:text-primary-fixed">
-                    <span class="material-symbols-outlined bg-surface-container-high p-2 rounded-lg border border-outline-variant">terminal</span>
-                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Output</span>
-                </summary>
-                <div class="absolute mt-2 p-3 bg-[#0a1a36] rounded border border-outline-variant/30 font-mono text-[10px] text-primary-fixed/80 max-w-[300px] z-30">
-                    &lt;xarray.Dataset&gt;<br>Dimensions: (time: 8760, x: 256, y: 256)<br>Data variables: radar_precip (time, x, y)
-                </div>
-            </details>
-        </div>
-    </div>
-
-    <!-- 2. VALIDATOR -->
-    <div class="glass-card p-lg md:p-xl rounded-2xl flex flex-col md:flex-row gap-8 items-start border border-outline-variant/30">
-        <div class="md:w-1/3 space-y-4">
-            <div class="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-fixed">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
-            </div>
-            <h3 class="text-2xl font-bold text-primary">Validator</h3>
-            <p class="text-on-surface-variant">Verify dataset compliance. Automated checks for Zarr specs, metadata integrity, and geospatial tool-chain interoperability.</p>
-            <!-- Sostituisci la parte dei bottoni (Docs/Repo) in ognuna delle 3 card con questo blocco: -->
-
-<div class="flex gap-sm pt-4">
-    <a href="#" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
-        <span class="material-symbols-outlined text-[14px]">menu_book</span> Docs
-    </a>
-    <a href="https://mlcast-community.github.io/mlcast-dataset-validator/specs/source_data/radar_precipitation/" target="_blank" 
-       class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider transition-all hover:bg-primary-fixed hover:text-on-primary-fixed hover:border-primary-fixed">
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg> 
-        Repo
-    </a>
-</div>
-        </div>
-        <div class="md:w-2/3 flex gap-4 items-start">
-            <div class="flex-grow">
-                <div class="flex justify-between items-center mb-1 px-1">
-                    <span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60">Execution</span>
-                    <button onclick="copySnippet('validator-code', this)" class="flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
-                        <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
-                    </button>
-                </div>
-                <div id="validator-code" class="p-4 bg-[#050f24] rounded-lg border border-primary/20 font-mono text-[12px] text-primary-fixed/90 shadow-inner">
-                    <span class="text-primary-fixed/50"># Validate local Zarr</span><br>
-                    uvx --from mlcast-dataset-validator \<br>
-                    mlcast.validate_dataset source_data \<br>
-                    radar_precipitation path/to/dataset.zarr
-                </div>
-            </div>
-            <details class="group mt-6">
-                <summary class="list-none cursor-pointer flex flex-col items-center gap-2 text-primary hover:text-primary-fixed">
-                    <span class="material-symbols-outlined bg-surface-container-high p-2 rounded-lg border border-outline-variant">check_circle</span>
-                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Report</span>
-                </summary>
-                <div class="absolute mt-2 p-3 bg-[#0a1a36] rounded border border-outline-variant/30 font-mono text-[10px] text-primary-fixed/80 max-w-[300px] z-30">
-                    [✓] Spatial domain: Consistent<br>[✓] GDAL compatibility: Verified<br><span class="text-green-500">SUCCESS</span>
-                </div>
-            </details>
-        </div>
-    </div>
-
-    <!-- 3. MACHINE LEARNING -->
-    <div class="glass-card p-lg md:p-xl rounded-2xl flex flex-col md:flex-row gap-8 items-start border border-outline-variant/30">
-        <div class="md:w-1/3 space-y-4">
-            <div class="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-fixed">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
-            </div>
-            <h3 class="text-2xl font-bold text-primary">Machine Learning</h3>
-            <p class="text-on-surface-variant">Unified Python framework for AI nowcasting. Build experiments using Fiddle-based configurations.</p>
-            <!-- Sostituisci la parte dei bottoni (Docs/Repo) in ognuna delle 3 card con questo blocco: -->
-
-<div class="flex gap-sm pt-4">
-    <a href="#" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
-        <span class="material-symbols-outlined text-[14px]">menu_book</span> Docs
-    </a>
-    <a href="https://github.com/mlcast-community/mlcast" target="_blank" 
-       class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider transition-all hover:bg-primary-fixed hover:text-on-primary-fixed hover:border-primary-fixed">
-        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg> 
-        Repo
-    </a>
-</div>
-        </div>
-        <div class="md:w-2/3 flex gap-4 items-start">
-            <div class="flex-grow">
-                <div class="flex justify-between items-center mb-1 px-1">
-                    <span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60">Quick Setup</span>
-                    <button onclick="copySnippet('ml-code', this)" class="flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
-                        <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
-                    </button>
-                </div>
-                <div id="ml-code" class="p-4 bg-[#050f24] rounded-lg border border-primary/20 font-mono text-[12px] text-primary-fixed/90 shadow-inner">
-                    <span class="text-primary-fixed/50"># 1. Create venv & install</span><br>
-                    uv venv && source .venv/bin/activate<br>
-                    uv pip install mlcast<br><br>
-                    <span class="text-primary-fixed/50"># 2. Run initial test</span><br>
-                    mlcast train --config fiddler:base
-                </div>
-            </div>
-            <details class="group mt-6">
-                <summary class="list-none cursor-pointer flex flex-col items-center gap-2 text-primary hover:text-primary-fixed">
-                    <span class="material-symbols-outlined bg-surface-container-high p-2 rounded-lg border border-outline-variant">rocket_launch</span>
-                    <span class="text-[9px] font-bold uppercase tracking-widest text-center">Logs</span>
-                </summary>
-                <div class="absolute mt-2 p-3 bg-[#0a1a36] rounded border border-outline-variant/30 font-mono text-[10px] text-primary-fixed/80 max-w-[300px] z-30">
-                    [Model] ConvGRU loaded<br>[Train] Epoch 1/50... loss=0.482<br><span class="text-primary-fixed/50"># Artifacts saved</span>
-                </div>
-            </details>
-        </div>
-    </div>
-</section><!-- Footer: Elegante e professionale -->
+<!-- Footer: Elegante e professionale -->
 <footer class="border-t border-outline-variant/20 bg-[#050f24] py-xl mt-24">
     <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-lg text-sm">
         
@@ -506,6 +345,35 @@
         init();
         draw();
     }, 100);
+
+    // --- PARTE 3: Forza autoplay del video hero ---
+    const heroVideo = document.getElementById('hero-video');
+    const startHeroVideo = () => {
+        if (!heroVideo) return;
+
+        heroVideo.autoplay = true;
+        heroVideo.loop = true;
+        heroVideo.defaultMuted = true;
+        heroVideo.muted = true;
+        heroVideo.volume = 0;
+        heroVideo.playsInline = true;
+        heroVideo.setAttribute('muted', '');
+        heroVideo.setAttribute('playsinline', '');
+        heroVideo.setAttribute('webkit-playsinline', '');
+        heroVideo.load();
+
+        heroVideo.play().catch(() => {
+            heroVideo.addEventListener('canplay', () => {
+                heroVideo.play().catch(() => {});
+            }, { once: true });
+        });
+    };
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', startHeroVideo, { once: true });
+    } else {
+        startHeroVideo();
+    }
 
 
     // --- PARTE 2: Funzione Universale Copia (Aggiornata) ---
