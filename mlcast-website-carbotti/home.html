@@ -68,11 +68,11 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.38 6.84 9.74.5.09.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.33 9.33 0 0 1 12 7.01c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.49A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
                 </svg>
-                <span>GitHub</span>
+                <span class="max-sm:hidden">GitHub</span>
             </a>
             <a class="navbar-icon-link navbar-icon-link--labeled" href="https://webvalley2026.github.io/mlcast-website/docs/" target="_blank" rel="noreferrer" aria-label="MLCast documentation" title="Documentation">
                 <span class="material-symbols-outlined" aria-hidden="true">description</span>
-                <span>Docs</span>
+                <span class="max-sm:hidden">Docs</span>
             </a>
         </div>
 
@@ -88,7 +88,7 @@
 
     <main class="flex-grow">
         <!-- Sezione Hero: Layout diviso -->
-<section class="relative min-h-screen flex items-center pt-24 px-margin-mobile md:px-margin-desktop">
+<section class="relative min-h-[calc(100vh-6rem)] flex items-center pt-24 px-margin-mobile md:px-margin-desktop">
     
     <!-- Canvas Background rimane fisso -->
     <div class="absolute inset-0 w-full h-full opacity-30 mix-blend-multiply -z-10">
@@ -111,11 +111,11 @@
     </p>
             
             <div class="flex flex-col sm:flex-row gap-md mt-4">
-                <a class="flex items-center justify-center gap-2 bg-primary-fixed text-on-primary-fixed px-8 py-3 rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity" href="#">
+                <a class="flex items-center justify-center gap-2 bg-primary-fixed text-on-primary-fixed px-8 py-3 min-h-[44px] rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity" href="#">
                     <span class="material-symbols-outlined text-[18px]">terminal</span>
                     Join the community
                 </a>
-                <a class="flex items-center justify-center gap-2 border border-outline-variant text-primary px-8 py-3 rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:border-primary-fixed hover:text-primary-fixed transition-colors" 
+                <a class="flex items-center justify-center gap-2 border border-outline-variant text-primary px-8 py-3 min-h-[44px] rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:border-primary-fixed hover:text-primary-fixed transition-colors" 
                    href="https://github.com/mlcast-community" target="_blank">
                     <span class="material-symbols-outlined text-[18px]">code</span>
                     Get Started
@@ -264,9 +264,9 @@
 
                 <!-- Zoom controls (fixed to viewport) -->
                 <div class="absolute right-3 top-3 z-30 flex flex-col gap-1.5">
-                    <button type="button" data-coverage-zoom="in" aria-label="Zoom in" class="flex h-9 w-9 items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span></button>
-                    <button type="button" data-coverage-zoom="out" aria-label="Zoom out" class="flex h-9 w-9 items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">remove</span></button>
-                    <button type="button" data-coverage-zoom="reset" aria-label="Reset view" class="flex h-9 w-9 items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[18px]" aria-hidden="true">restart_alt</span></button>
+                    <button type="button" data-coverage-zoom="in" aria-label="Zoom in" class="flex h-9 w-9 min-h-[44px] min-w-[44px] items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span></button>
+                    <button type="button" data-coverage-zoom="out" aria-label="Zoom out" class="flex h-9 w-9 min-h-[44px] min-w-[44px] items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">remove</span></button>
+                    <button type="button" data-coverage-zoom="reset" aria-label="Reset view" class="flex h-9 w-9 min-h-[44px] min-w-[44px] items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[18px]" aria-hidden="true">restart_alt</span></button>
                 </div>
 
                 <!-- Legend -->
@@ -278,15 +278,15 @@
                 <!-- Stats overlay (fixed to viewport, bottom) -->
                 <div class="pointer-events-none absolute bottom-3 right-3 z-30 flex gap-2">
                     <div class="rounded border border-outline-variant/25 bg-[#F0E8DE]/85 px-3 py-1.5 backdrop-blur-sm">
-                        <p class="font-label-tag text-[9px] uppercase tracking-widest text-on-surface-variant/60">Countries</p>
+                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Countries</p>
                         <p class="mt-0.5 text-lg font-bold leading-none text-primary">5</p>
                     </div>
                     <div class="rounded border border-outline-variant/25 bg-[#F0E8DE]/85 px-3 py-1.5 backdrop-blur-sm">
-                        <p class="font-label-tag text-[9px] uppercase tracking-widest text-on-surface-variant/60">Years of rain</p>
+                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Years of rain</p>
                         <p class="mt-0.5 text-lg font-bold leading-none text-primary-fixed">~70</p>
                     </div>
                     <div class="rounded border border-outline-variant/25 bg-[#F0E8DE]/85 px-3 py-1.5 backdrop-blur-sm">
-                        <p class="font-label-tag text-[9px] uppercase tracking-widest text-on-surface-variant/60">Cadence</p>
+                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Cadence</p>
                         <p class="mt-0.5 text-lg font-bold leading-none text-primary">5m</p>
                     </div>
                 </div>
@@ -496,29 +496,29 @@
                 </div>
 
                 <!-- Communication tool grid -->
-                <div class="grid grid-cols-2 gap-3 mb-6">
-                    <div class="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-white/80 px-4 py-3 hover:border-primary-fixed/50 transition-colors">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
+                    <div class="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-white/80 px-4 py-3 min-h-[44px] hover:border-primary-fixed/50 transition-colors">
                         <span class="material-symbols-outlined text-primary-fixed">forum</span>
                         <div class="leading-tight">
                             <div class="font-bold text-sm text-on-surface">Slack</div>
                             <div class="font-mono text-[10px] text-on-surface-variant">24 channels</div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-white/80 px-4 py-3 hover:border-primary-fixed/50 transition-colors">
+                    <div class="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-white/80 px-4 py-3 min-h-[44px] hover:border-primary-fixed/50 transition-colors">
                         <span class="material-symbols-outlined text-primary-fixed">videocam</span>
                         <div class="leading-tight">
                             <div class="font-bold text-sm text-on-surface">Meet</div>
                             <div class="font-mono text-[10px] text-on-surface-variant">Weekly sync</div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-white/80 px-4 py-3 hover:border-primary-fixed/50 transition-colors">
+                    <div class="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-white/80 px-4 py-3 min-h-[44px] hover:border-primary-fixed/50 transition-colors">
                         <span class="material-symbols-outlined text-primary-fixed">description</span>
                         <div class="leading-tight">
                             <div class="font-bold text-sm text-on-surface">Google Docs</div>
                             <div class="font-mono text-[10px] text-on-surface-variant">Shared RFCs</div>
                         </div>
                     </div>
-                    <div class="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-white/80 px-4 py-3 hover:border-primary-fixed/50 transition-colors">
+                    <div class="flex items-center gap-3 rounded-xl border border-outline-variant/30 bg-white/80 px-4 py-3 min-h-[44px] hover:border-primary-fixed/50 transition-colors">
                         <span class="material-symbols-outlined text-primary-fixed">code</span>
                         <div class="leading-tight">
                             <div class="font-bold text-sm text-on-surface">GitHub</div>
@@ -528,7 +528,7 @@
                 </div>
 
                 <!-- Stat strip -->
-                <div class="grid grid-cols-3 gap-3 border-t border-outline-variant/20 pt-5">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 border-t border-outline-variant/20 pt-5">
                     <div class="text-center">
                         <div class="font-headline-xl text-2xl font-bold text-primary">132</div>
                         <div class="font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Contributors</div>
@@ -549,7 +549,7 @@
 
 <!-- Footer: Elegante e professionale -->
 <footer class="border-t border-outline-variant/20 bg-surface-creme py-xl mt-24">
-    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-lg text-sm">
+    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">
         
         <!-- Colonna 1: Info Progetto -->
         <div class="col-span-2 md:col-span-1">

@@ -69,11 +69,11 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.38 6.84 9.74.5.09.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.33 9.33 0 0 1 12 7.01c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.49A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
                 </svg>
-                <span>GitHub</span>
+                <span class="max-sm:hidden">GitHub</span>
             </a>
             <a class="navbar-icon-link navbar-icon-link--labeled" href="https://webvalley2026.github.io/mlcast-website/docs/" target="_blank" rel="noreferrer" aria-label="MLCast documentation" title="Documentation">
                 <span class="material-symbols-outlined" aria-hidden="true">description</span>
-                <span>Docs</span>
+                <span class="max-sm:hidden">Docs</span>
             </a>
         </div>
 
@@ -138,7 +138,7 @@
                 <div class="relative w-full lg:max-w-sm">
                     <label for="dataset-search" class="sr-only">Search catalog datasets</label>
                     <span class="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[20px] text-on-surface-variant/70" aria-hidden="true">search</span>
-                    <input id="dataset-search" type="search" autocomplete="off" placeholder="Search datasets..." class="dataset-search-input w-full rounded-lg border border-outline-variant/40 bg-[#F0E8DE] py-3 pl-12 pr-4 text-sm text-primary placeholder:text-on-surface-variant/55 transition-colors focus:border-primary-fixed focus:ring-primary-fixed/30"/>
+                    <input id="dataset-search" type="search" autocomplete="off" placeholder="Search datasets..." class="dataset-search-input w-full rounded-lg border border-outline-variant/40 bg-[#F0E8DE] py-3 min-h-[44px] pl-12 pr-4 text-sm text-primary placeholder:text-on-surface-variant/55 transition-colors focus:border-primary-fixed focus:ring-primary-fixed/30"/>
                 </div>
             </div>
 
@@ -161,7 +161,7 @@
         </section>
 
         <!-- Access Methods -->
-        <section id="access" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid md:grid-cols-2 gap-12 mb-16">
+        <section id="access" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
             <div class="glass-card p-8 rounded-2xl border border-outline-variant/30 hover:border-primary-fixed/30 transition-all duration-300">
                 <div class="flex items-center gap-3 mb-4">
                     <span class="material-symbols-outlined text-primary-fixed text-2xl">cloud</span>
@@ -195,8 +195,8 @@
                 <h2 class="text-3xl font-bold text-primary mb-8">Quick Exploration</h2>
                 <div class="space-y-6">
                     <p class="text-on-surface-variant">Once you have the catalog open, you can start exploring the data instantly:</p>
-                    <div class="grid md:grid-cols-2 gap-8 items-center">
-                        <div class="terminal-window font-mono text-xs">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="terminal-window font-mono text-xs overflow-x-auto">
                             <span class="terminal-comment"># List available sources</span><br>
                             print(list(cat))<br>
                             <span class="terminal-output"># -&gt; ['precipitation']</span><br><br>
@@ -216,7 +216,7 @@
 
         <!-- Why MLCast Data Section -->
 <section class="py-20 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
-    <div class="grid md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="glass-card p-8 rounded-2xl border border-primary-fixed/20">
             <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
                 <span class="material-symbols-outlined text-primary-fixed">cloud_upload</span> ARCO Standard
@@ -268,7 +268,7 @@
     
     <!-- Footer: Elegante e professionale -->
 <footer class="border-t border-outline-variant/20 bg-[#F0E8DE] py-xl mt-24">
-    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-lg text-sm">
+    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">
         
         <!-- Colonna 1: Info Progetto -->
         <div class="col-span-2 md:col-span-1">
@@ -542,13 +542,13 @@
                             <div class="mt-3 flex flex-wrap items-center gap-3">
                                 ${impacts.map(imp => `
                                     <span class="inline-flex items-center gap-1.5 rounded-md border border-outline-variant/20 bg-background/40 px-2.5 py-1">
-                                        <span class="font-label-tag text-[9px] uppercase tracking-widest text-on-surface-variant/60">${imp.label}</span>
+                                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">${imp.label}</span>
                                         <span class="text-xs font-semibold text-primary">${imp.value}</span>
                                     </span>
                                 `).join("")}
-                                ${driverMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[9px] uppercase tracking-widest text-primary-fixed/80">${driverMeta}</span>` : ""}
-                                ${consolidatedMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[9px] uppercase tracking-widest text-primary-fixed/80">${consolidatedMeta}</span>` : ""}
-                                ${endpointMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[9px] uppercase tracking-widest text-primary-fixed/80">${endpointMeta}</span>` : ""}
+                                ${driverMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">${driverMeta}</span>` : ""}
+                                ${consolidatedMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">${consolidatedMeta}</span>` : ""}
+                                ${endpointMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">${endpointMeta}</span>` : ""}
                             </div>
                         </div>
                         <span class="material-symbols-outlined shrink-0 mt-2 text-[22px] text-on-surface-variant/40 group-hover:text-primary-fixed group-hover:translate-x-1 transition-all" aria-hidden="true">chevron_right</span>

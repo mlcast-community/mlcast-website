@@ -58,7 +58,7 @@
 
     <style>
         html {
-            scroll-padding-top: 172px;
+            scroll-padding-top: 96px;
         }
 
         .path-nav {
@@ -66,9 +66,7 @@
             z-index: 1;
             scrollbar-width: none;
             min-height: 64px;
-            box-shadow:
-                0 0 28px rgba(255, 255, 255, 0.08),
-                0 0 56px rgba(95, 251, 214, 0.045);
+            box-shadow: 0 0 28px rgba(238, 150, 75, 0.06);
         }
 
         .path-nav-shell {
@@ -130,13 +128,13 @@
             background: rgba(247, 237, 226, 0.85);
         }
 
-        @media (max-width: 767px) {
+        @media (max-width: 767.98px) {
             html {
-                scroll-padding-top: 142px;
+                scroll-padding-top: 96px;
             }
 
             .contribution-card {
-                scroll-margin-top: 142px;
+                scroll-margin-top: 96px;
             }
         }
     </style>
@@ -161,11 +159,11 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.38 6.84 9.74.5.09.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.33 9.33 0 0 1 12 7.01c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.49A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
                 </svg>
-                <span>GitHub</span>
+                <span class="max-sm:hidden">GitHub</span>
             </a>
             <a class="navbar-icon-link navbar-icon-link--labeled" href="https://webvalley2026.github.io/mlcast-website/docs/" target="_blank" rel="noreferrer" aria-label="MLCast documentation" title="Documentation">
                 <span class="material-symbols-outlined" aria-hidden="true">description</span>
-                <span>Docs</span>
+                <span class="max-sm:hidden">Docs</span>
             </a>
         </div>
 
@@ -196,7 +194,7 @@
                         Scientists, researchers, software engineers, and curious builders can all contribute in different ways.
                     </h2>
                     <div class="mt-8 flex flex-wrap items-center gap-5">
-                        <a href="#build-software" class="inline-flex items-center gap-2 rounded bg-primary-fixed px-6 py-3 text-sm font-bold uppercase tracking-wider text-on-primary-fixed transition-opacity hover:opacity-90">
+                        <a href="#build-software" class="inline-flex items-center gap-2 rounded bg-primary-fixed px-6 py-3 min-h-[44px] text-sm font-bold uppercase tracking-wider text-on-primary-fixed transition-opacity hover:opacity-90">
                             Find your path
                             <span class="material-symbols-outlined text-[18px]" aria-hidden="true">south</span>
                         </a>
@@ -244,7 +242,7 @@
 
                             <div id="contrib-coverage-viewport" class="relative mt-5 aspect-[95/62] w-full select-none overflow-hidden rounded border border-outline-variant/25 bg-[#F0E8DE] touch-none cursor-grab" style="background-image:radial-gradient(rgba(120,160,220,0.08) 1px,transparent 1px);background-size:16px 16px;">
                                 <div id="contrib-coverage-map" class="absolute inset-0 origin-top-left will-change-transform" style="transform:translate(0px,0px) scale(1);">
-                                <img src="img/world.svg" alt="World map" class="absolute inset-0 h-full w-full rounded object-fill opacity-90" draggable="false" aria-hidden="true">
+                                <img src="img/world.svg" alt="World map" class="absolute inset-0 h-full w-full rounded object-contain opacity-90" draggable="false" aria-hidden="true">
 
                                 <!-- Covered countries -->
                                 <div class="absolute -translate-x-1/2 -translate-y-1/2" style="left:45.5%;top:26.5%">
@@ -332,9 +330,9 @@
 
                                 <!-- Zoom controls (fixed to viewport) -->
                                 <div class="absolute right-3 top-3 z-30 flex flex-col gap-1.5">
-                                    <button type="button" data-contrib-zoom="in" aria-label="Zoom in" class="flex h-9 w-9 items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span></button>
-                                    <button type="button" data-contrib-zoom="out" aria-label="Zoom out" class="flex h-9 w-9 items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">remove</span></button>
-                                    <button type="button" data-contrib-zoom="reset" aria-label="Reset view" class="flex h-9 w-9 items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[18px]" aria-hidden="true">restart_alt</span></button>
+                                    <button type="button" data-contrib-zoom="in" aria-label="Zoom in" class="flex h-9 w-9 min-h-[44px] min-w-[44px] items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">add</span></button>
+                                    <button type="button" data-contrib-zoom="out" aria-label="Zoom out" class="flex h-9 w-9 min-h-[44px] min-w-[44px] items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[20px]" aria-hidden="true">remove</span></button>
+                                    <button type="button" data-contrib-zoom="reset" aria-label="Reset view" class="flex h-9 w-9 min-h-[44px] min-w-[44px] items-center justify-center rounded border border-outline-variant/30 bg-surface-creme/90 text-primary shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition hover:border-primary-fixed/60 hover:text-primary-fixed"><span class="material-symbols-outlined text-[18px]" aria-hidden="true">restart_alt</span></button>
                                 </div>
 
                                 <div class="pointer-events-none absolute bottom-2 left-2 z-30 flex items-center gap-3 rounded bg-[#F0E8DE]/80 px-2.5 py-1.5 text-[10px] font-label-tag uppercase tracking-widest">
@@ -391,7 +389,7 @@
                                     <path fill="url(#pyYel)" d="M94 32.5v10.7c0 9.9-8.4 18.2-17.9 18.2H45.9c-7.8 0-14.3 6.7-14.3 14.6v27.4c0 7.8 6.8 12.4 14.3 14.6 9 2.6 17.6 3.1 30.2 0 7.2-2.1 14.3-6.3 14.3-14.6v-11H60.3v-3.8h45.3c8.3 0 11.4-5.8 14.3-14.5 3-9 2.9-17.6 0-29.1-2.1-8.3-6-14.5-14.3-14.5H94zm-17 73c3.2 0 5.7 2.5 5.7 5.7 0 3.2-2.5 5.8-5.7 5.8-3.1 0-5.7-2.6-5.7-5.8 0-3.2 2.5-5.7 5.7-5.7z"/>
                                 </svg>
                                 <span class="text-[11px] text-on-surface-variant/70 font-label-tag">nowcast_model.py</span>
-                                <span class="ml-auto rounded border border-primary-fixed/30 bg-primary-fixed/10 px-2 py-0.5 text-[9px] font-label-tag uppercase tracking-widest text-primary-fixed">Fill the blanks</span>
+                                <span class="ml-auto rounded border border-primary-fixed/30 bg-primary-fixed/10 px-2 py-0.5 text-[10px] font-label-tag uppercase tracking-widest text-primary-fixed">Fill the blanks</span>
                             </div>
                             <pre class="p-4 text-xs sm:text-sm leading-relaxed overflow-x-auto font-label-tag"><code><span class="text-[#5A9FD4]">import</span> <span class="text-on-surface-variant">torch</span>
 <span class="text-[#5A9FD4]">import</span> <span class="text-on-surface-variant">torch.nn</span> <span class="text-[#5A9FD4]">as</span> <span class="text-on-surface-variant">nn</span>
@@ -471,7 +469,7 @@
                                     <polyline points="0,12 30,40 60,58 90,68 120,75 150,80 180,84 210,87 240,89 270,91 300,92" fill="none" stroke="#EE964B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
                                     <polyline points="0,8 30,32 60,48 90,58 120,64 150,68 180,70 210,71 240,71 270,70 300,68" fill="none" stroke="rgba(186,202,195,0.75)" stroke-width="1.6" stroke-dasharray="4 3" stroke-linejoin="round" stroke-linecap="round"/>
                                 </svg>
-                                <div class="mt-1 flex justify-between font-label-tag text-[9px] text-on-surface-variant/40"><span>epoch 0</span><span>epoch 24</span></div>
+                                <div class="mt-1 flex justify-between font-label-tag text-[10px] text-on-surface-variant/40"><span>epoch 0</span><span>epoch 24</span></div>
                             </div>
 
                             <div class="rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
@@ -676,7 +674,7 @@
                         <h2 id="issues-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">Current good first issues</h2>
                         <p class="mt-4 max-w-2xl text-on-surface-variant">Small, clearly scoped tasks from MLCast repositories. Pick one and ask for context before you begin.</p>
                     </div>
-                    <a href="https://github.com/search?q=org%3Amlcast-community+label%3A%22good+first+issue%22+state%3Aopen&type=issues" target="_blank" rel="noreferrer" class="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary-fixed hover:text-primary transition-colors">
+                    <a href="https://github.com/search?q=org%3Amlcast-community+label%3A%22good+first+issue%22+state%3Aopen&type=issues" target="_blank" rel="noreferrer" class="inline-flex shrink-0 items-center gap-2 text-sm font-semibold text-primary-fixed hover:text-primary transition-colors min-h-[44px]">
                         View all on GitHub
                         <span class="material-symbols-outlined text-[18px]" aria-hidden="true">open_in_new</span>
                     </a>
@@ -700,15 +698,15 @@
                         <p class="mt-4 max-w-2xl text-on-surface-variant">You do not need a finished idea. Tell us what you are interested in and we’ll help you find a useful first step.</p>
                     </div>
                     <div class="flex flex-col sm:flex-row lg:flex-col gap-3">
-                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 min-h-[44px] text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
                             Join #start-here
                             <span class="material-symbols-outlined text-[18px]" aria-hidden="true">forum</span>
                         </a>
-                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded border border-outline-variant px-5 py-3 text-sm font-semibold text-primary hover:border-primary-fixed hover:text-primary-fixed transition-colors">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded border border-outline-variant px-5 py-3 min-h-[44px] text-sm font-semibold text-primary hover:border-primary-fixed hover:text-primary-fixed transition-colors">
                             Attend a weekly meeting
                             <span class="material-symbols-outlined text-[18px]" aria-hidden="true">calendar_month</span>
                         </a>
-                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded border border-outline-variant px-5 py-3 text-sm font-semibold text-primary hover:border-primary-fixed hover:text-primary-fixed transition-colors">
+                        <a href="#" class="inline-flex items-center justify-center gap-2 rounded border border-outline-variant px-5 py-3 min-h-[44px] text-sm font-semibold text-primary hover:border-primary-fixed hover:text-primary-fixed transition-colors">
                             Contribution-interest form
                             <span class="material-symbols-outlined text-[18px]" aria-hidden="true">assignment</span>
                         </a>
@@ -721,7 +719,7 @@
   
     <!-- Footer: Elegante e professionale -->
 <footer class="border-t border-outline-variant/20 bg-[#F0E8DE] py-xl mt-24">
-    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-lg text-sm">
+    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">
         
         <!-- Colonna 1: Info Progetto -->
         <div class="col-span-2 md:col-span-1">

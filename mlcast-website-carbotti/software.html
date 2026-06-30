@@ -114,7 +114,7 @@
 
                 <div class="mt-4">
                     <div class="flex justify-between items-center mb-1 px-1">
-                        <span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60">Quick Access</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">Quick Access</span>
                         <button onclick="copySnippet('dataset-code', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
                             <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
                         </button>
@@ -156,7 +156,7 @@
 
                 <div class="mt-4">
                     <div class="flex justify-between items-center mb-1 px-1">
-                        <span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60">Execution</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">Execution</span>
                         <button onclick="copySnippet('validator-code', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
                             <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
                         </button>
@@ -196,7 +196,7 @@
 
                 <div class="mt-4">
                     <div class="flex justify-between items-center mb-1 px-1">
-                        <span class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60">Quick Setup</span>
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">Quick Setup</span>
                         <button onclick="copySnippet('code-block', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
                             <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
                         </button>
@@ -281,7 +281,7 @@
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-md mt-6">
                     <div class="glass-card rounded-xl p-md">
-                        <span class="font-label-tag text-[9px] uppercase tracking-widest text-primary-fixed/60">Fiddlers</span>
+                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/60">Fiddlers</span>
                         <ul class="mt-2 space-y-1 text-sm text-on-surface-variant">
                             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">check</span> <span><strong class="text-primary">use_random_sampler</strong> — on-the-fly random sampling</span></li>
                             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">check</span> <span><strong class="text-primary">use_mlflow_logger</strong> — MLflow tracking</span></li>
@@ -291,7 +291,7 @@
                         </ul>
                     </div>
                     <div class="glass-card rounded-xl p-md">
-                        <span class="font-label-tag text-[9px] uppercase tracking-widest text-primary-fixed/60">Config Consistency</span>
+                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/60">Config Consistency</span>
                         <ul class="mt-2 space-y-1 text-sm text-on-surface-variant">
                             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">sync</span> <span>Input channels match dataset variables</span></li>
                             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">sync</span> <span>Width divisible by <code class="text-primary-fixed text-xs">2<sup>num_blocks</sup></code></span></li>
@@ -300,7 +300,7 @@
                         </ul>
                     </div>
                     <div class="glass-card rounded-xl p-md">
-                        <span class="font-label-tag text-[9px] uppercase tracking-widest text-primary-fixed/60">Experiment Tracking</span>
+                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/60">Experiment Tracking</span>
                         <ul class="mt-2 space-y-1 text-sm text-on-surface-variant">
                             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">assessment</span> <span>TensorBoard (default)</span></li>
                             <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">assessment</span> <span>MLflow (optional)</span></li>
@@ -369,10 +369,10 @@
 
             <!-- Step indicators -->
             <div id="step-indicators" class="flex gap-2 mb-8">
-                <button data-step="1" class="step-btn active-step flex-1 py-3 rounded-lg text-center text-sm font-bold transition-all bg-primary-fixed text-on-primary-fixed">1. Install</button>
-                <button data-step="2" class="step-btn flex-1 py-3 rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">2. Prepare Data</button>
-                <button data-step="3" class="step-btn flex-1 py-3 rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">3. Configure</button>
-                <button data-step="4" class="step-btn flex-1 py-3 rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">4. Train</button>
+                <button data-step="1" class="step-btn active-step flex-1 py-3 min-h-[44px] rounded-lg text-center text-sm font-bold transition-all bg-primary-fixed text-on-primary-fixed">1. Install</button>
+                <button data-step="2" class="step-btn flex-1 py-3 min-h-[44px] rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">2. Prepare Data</button>
+                <button data-step="3" class="step-btn flex-1 py-3 min-h-[44px] rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">3. Configure</button>
+                <button data-step="4" class="step-btn flex-1 py-3 min-h-[44px] rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">4. Train</button>
             </div>
 
             <!-- Step content -->
@@ -417,15 +417,15 @@
                     <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Override training parameters and apply semantic fiddlers to customize your run. Use the config builder below to generate your CLI command.</p>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-4">
                         <div>
-                            <label class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Batch Size</label>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Batch Size</label>
                             <input id="cfg-batch" type="number" value="16" min="1" max="256" class="w-full p-2 bg-[#F0E8DE] border border-outline-variant/40 rounded text-sm text-primary font-mono">
                         </div>
                         <div>
-                            <label class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Max Epochs</label>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Max Epochs</label>
                             <input id="cfg-epochs" type="number" value="50" min="1" max="500" class="w-full p-2 bg-[#F0E8DE] border border-outline-variant/40 rounded text-sm text-primary font-mono">
                         </div>
                         <div>
-                            <label class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Loss Function</label>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Loss Function</label>
                             <select id="cfg-loss" class="w-full p-2 bg-[#F0E8DE] border border-outline-variant/40 rounded text-sm text-primary font-mono">
                                 <option value="crps">CRPS</option>
                                 <option value="mse">MSE</option>
@@ -434,7 +434,7 @@
                             </select>
                         </div>
                         <div>
-                            <label class="text-[9px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Sampler</label>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Sampler</label>
                             <select id="cfg-sampler" class="w-full p-2 bg-[#F0E8DE] border border-outline-variant/40 rounded text-sm text-primary font-mono">
                                 <option value="">Precomputed (CSV)</option>
                                 <option value="fiddler:use_random_sampler">Random (on-the-fly)</option>
@@ -560,7 +560,7 @@
 
 <!-- FOOTER -->
 <footer class="border-t border-outline-variant/20 bg-[#F0E8DE] py-xl mt-24">
-    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-lg text-sm">
+    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">
         <div class="col-span-2 md:col-span-1">
             <h4 class="font-bold text-primary mb-md">MLCast Community</h4>
             <p class="text-on-surface-variant leading-relaxed">Advancing meteorological intelligence through open-source collaboration and high-resolution data.</p>
