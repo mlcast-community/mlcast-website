@@ -60,6 +60,56 @@ canvas {
     letter-spacing: 0.05em;
 }
 
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 16px;
+    border-left: 1px solid rgba(60, 74, 69, 0.45);
+}
+
+.navbar-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(60, 74, 69, 0.75);
+    border-radius: 9999px;
+    color: #bacac3;
+    background: rgba(11, 24, 48, 0.48);
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.navbar-icon-link:hover {
+    color: #5ffbd6;
+    border-color: #5ffbd6;
+    background-color: rgba(95, 251, 214, 0.1);
+}
+
+.navbar-icon-link svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.navbar-icon-link .material-symbols-outlined {
+    font-size: 20px;
+    line-height: 1;
+}
+
+@media (max-width: 767px) {
+    .navbar-actions {
+        padding-left: 0;
+        border-left: 0;
+    }
+
+    .navbar-icon-link {
+        width: 34px;
+        height: 34px;
+    }
+}
+
 /* Aggiungilo nel tuo home.css */
 #shader-canvas {
     display: block !important;
