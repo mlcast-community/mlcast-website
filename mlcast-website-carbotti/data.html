@@ -61,7 +61,7 @@
     <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="software_and_data.html">Software and Data</a>
     <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="community.html">Community</a>
     <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="contributing.html">Contributing</a>
-    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="faq.html">FAQ</a>
+    <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#faq">FAQ</a>
     </nav>
 
         <div class="navbar-actions" aria-label="Project links">
@@ -77,44 +77,17 @@
             </a>
         </div>
 
-        <button id="hamburger-btn" class="hamburger-btn md:hidden" aria-label="Menu" aria-expanded="false">
-            <span class="material-symbols-outlined">menu</span>
-        </button>
-
     </div>
 </header>
 
-<div id="mobile-menu-overlay" class="mobile-menu-overlay" aria-hidden="true"></div>
-<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation">
-    <a href="software_and_data.html">Software and Data</a>
-    <a href="community.html">Community</a>
-    <a href="contributing.html">Contributing</a>
-    <a href="home.html#faq">FAQ</a>
-    <div class="mobile-menu-actions">
-        <a href="https://github.com/mlcast-community" target="_blank" rel="noreferrer" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" aria-hidden="true" style="width:16px;height:16px;fill:currentColor">
-                <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.38 6.84 9.74.5.09.68-.22.68-.49 0-.24-.01-.88-.01-1.73-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.63.07-.63 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.06 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05A9.33 9.33 0 0 1 12 7.01c.85 0 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.93-2.34 4.8-4.57 5.05.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.59.69.49A10.08 10.08 0 0 0 22 12.26C22 6.58 17.52 2 12 2z"/>
-            </svg>
-            GitHub
-        </a>
-        <a href="https://webvalley2026.github.io/mlcast-website/docs/" target="_blank" rel="noreferrer" aria-label="Documentation">
-            <span class="material-symbols-outlined" style="font-size:16px">description</span>
-            Docs
-        </a>
-    </div>
-</nav>
-
     <!-- Indice di pagina (navbar sezioni, lato sinistro) -->
     <nav class="section-nav" aria-label="Page sections">
-        <button class="section-nav__dot" aria-label="Page sections" title="On this page"></button>
-        <div class="section-nav__panel">
-            <span class="section-nav__title">On this page</span>
-            <a href="#dataset-catalog" data-section-link>Dataset Catalog</a>
-            <a href="#access" data-section-link>Accessing Data</a>
-            <a href="#quick-exploration" data-section-link>Quick Exploration</a>
-            <a href="#architecture" data-section-link>Catalog Architecture</a>
-            <a href="#metadata" data-section-link>Transparency &amp; Metadata</a>
-        </div>
+        <span class="section-nav__title">On this page</span>
+        <a href="#dataset-catalog" data-section-link>Dataset Catalog</a>
+        <a href="#access" data-section-link>Accessing Data</a>
+        <a href="#quick-exploration" data-section-link>Quick Exploration</a>
+        <a href="#architecture" data-section-link>Catalog Architecture</a>
+        <a href="#metadata" data-section-link>Transparency &amp; Metadata</a>
     </nav>
 
     <main class="pt-32 pb-24">
@@ -188,37 +161,62 @@
         </section>
 
         <!-- Access Methods -->
-        <section id="access" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid md:grid-cols-2 items-stretch gap-12">
-            <div class="glass-card flex flex-col p-8 rounded-2xl border border-outline-variant/30 hover:border-primary-fixed/30 transition-all duration-300">
-                <div class="flex items-center gap-3 mb-4">
-                    <span class="material-symbols-outlined text-primary-fixed text-2xl">package_2</span>
-                    <h3 class="text-xl font-bold text-primary">Option A: Python Package</h3>
-                </div>
-                <p class="text-on-surface-variant text-sm mb-6">Install our stable <code class="text-primary-fixed">mlcast-datasets</code> package from PyPI for consistent versioning.</p>
-                <div class="mt-auto bg-[#F0E8DE] p-4 rounded-lg font-mono text-xs overflow-x-auto text-on-surface-variant/90 border border-primary/10">
-                    pip install mlcast-datasets<br><br>
-                    import mlcast_datasets<br>
-                    cat = mlcast_datasets.open_catalog()
-                </div>
-            </div>
-
-            <div class="glass-card flex flex-col p-8 rounded-2xl border border-outline-variant/30 hover:border-primary-fixed/30 transition-all duration-300">
+        <section id="access" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <div class="glass-card p-8 rounded-2xl border border-outline-variant/30 hover:border-primary-fixed/30 transition-all duration-300">
                 <div class="flex items-center gap-3 mb-4">
                     <span class="material-symbols-outlined text-primary-fixed text-2xl">cloud</span>
-                    <h3 class="text-xl font-bold text-primary">Option B: Direct Access</h3>
+                    <h3 class="text-xl font-bold text-primary">Option A: Direct GitHub Access</h3>
                 </div>
                 <p class="text-on-surface-variant text-sm mb-6">Use the most recent version of the catalog directly from our source repository.</p>
-                <div class="mt-auto bg-[#F0E8DE] p-4 rounded-lg font-mono text-xs overflow-x-auto text-on-surface-variant/90 border border-primary/10">
+                <div class="terminal-window font-mono text-xs">
                     pip install intake intake-xarray zarr jinja2<br><br>
                     import intake<br>
                     cat = intake.open_catalog("https://raw.githubusercontent.com/mlcast-community/mlcast-datasets/main/src/mlcast_datasets/catalog/catalog.yml")
                 </div>
             </div>
+
+            <div class="glass-card p-8 rounded-2xl border border-outline-variant/30 hover:border-primary-fixed/30 transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="material-symbols-outlined text-primary-fixed text-2xl">package_2</span>
+                    <h3 class="text-xl font-bold text-primary">Option B: Python Package</h3>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-6">Install our stable <code class="text-primary-fixed">mlcast-datasets</code> package from PyPI for consistent versioning.</p>
+                <div class="terminal-window font-mono text-xs">
+                    pip install mlcast-datasets<br><br>
+                    import mlcast_datasets<br>
+                    cat = mlcast_datasets.open_catalog()
+                </div>
+            </div>
+        </section>
+
+        <!-- Example Dataset Exploration -->
+        <section id="quick-exploration" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+            <div class="bg-[#F0E8DE] p-8 md:p-12 rounded-3xl border border-outline-variant/30">
+                <h2 class="text-3xl font-bold text-primary mb-8">Quick Exploration</h2>
+                <div class="space-y-6">
+                    <p class="text-on-surface-variant">Once you have the catalog open, you can start exploring the data instantly:</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                        <div class="terminal-window font-mono text-xs">
+                            # List available sources<br>
+                            print(list(cat))<br>
+                            # -> ['precipitation']<br><br>
+                            # Access a specific radar dataset<br>
+                            ds = cat.precipitation.radklim_5_minutes.to_dask()
+                        </div>
+                        <ul class="space-y-4 text-sm text-on-surface-variant">
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Dask-backed xarray datasets</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> CF-1.6 Convention compliant</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Cloud-native Zarr format</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> EWC hosted for low latency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Why MLCast Data Section -->
-<section class="pt-8 pb-20 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
-    <div class="grid md:grid-cols-3 gap-8">
+<section class="py-20 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <div class="glass-card p-8 rounded-2xl border border-primary-fixed/20">
             <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
                 <span class="material-symbols-outlined text-primary-fixed">cloud_upload</span> ARCO Standard
@@ -236,6 +234,31 @@
                 <span class="material-symbols-outlined text-primary-fixed">code</span> Code-Addressable
             </h3>
             <p class="text-sm text-on-surface-variant">Data is not a static file; it's an object in your Python pipeline. Using <code>intake</code>, every dataset is queryable, version-controlled, and ready for training.</p>
+        </div>
+    </div>
+</section>
+<section id="architecture" class="py-10 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+    <div class="border-l-4 border-primary-fixed pl-8">
+        <h2 class="text-3xl font-bold text-primary mb-4">The Catalog Architecture</h2>
+        <p class="text-on-surface-variant max-w-3xl">
+            The MLCast Intake Catalog serves as the <strong>single source of truth</strong> for all community-curated data. 
+            By centralizing metadata and access paths, we ensure that every researcher uses the exact same data versioning, coordinate systems, and schema, 
+            eliminating the "data cleaning" bottleneck in machine learning experiments.
+        </p>
+    </div>
+</section>
+<!-- Aggiornamento sezione Quick Exploration -->
+<section id="metadata" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
+    <div class="bg-[#F0E8DE] p-8 md:p-12 rounded-3xl border border-outline-variant/30">
+        <h2 class="text-3xl font-bold text-primary mb-6">Transparency & Metadata</h2>
+        <p class="text-on-surface-variant mb-8">Every dataset in our catalog includes rich provenance metadata (Author, Conventions, Creation Date), ensuring full scientific traceability:</p>
+        
+        <div class="terminal-window font-mono text-xs">
+            # Full dataset attributes available instantly<br>
+            print(ds.attrs['reference'])<br>
+            # -> '10.5676/DWD/RADKLIM_YW_V2017.002'<br><br>
+            print(ds.attrs['mlcast_dataset_identifier'])<br>
+            # -> 'DE-DWD-radar_precipitation-RADKLIM'
         </div>
     </div>
 </section>
@@ -574,59 +597,6 @@
             });
         }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
         map.forEach(function (link, target) { observer.observe(target); });
-    })();
-</script>
-
-<!-- Dot position tracking -->
-<script>
-    (function () {
-        const nav = document.querySelector(".section-nav");
-        const links = Array.from(document.querySelectorAll(".section-nav [data-section-link]"));
-        if (!nav || links.length < 2) return;
-        let ticking = false;
-        function updateDot() {
-            ticking = false;
-            const rangeTop = 0.25;
-            const rangeBottom = 0.75;
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const progress = docHeight > 0 ? Math.min(1, scrollTop / docHeight) : 0;
-            const top = (rangeTop + progress * (rangeBottom - rangeTop)) * window.innerHeight;
-            nav.style.top = top + "px";
-        }
-        function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(updateDot); } }
-        window.addEventListener("scroll", onScroll, { passive: true });
-        window.addEventListener("resize", updateDot);
-        updateDot();
-    })();
-</script>
-<script>
-    (function() {
-        const btn = document.getElementById('hamburger-btn');
-        const menu = document.getElementById('mobile-menu');
-        const overlay = document.getElementById('mobile-menu-overlay');
-        if (!btn || !menu || !overlay) return;
-        function open() {
-            menu.classList.add('open');
-            overlay.classList.add('open');
-            btn.setAttribute('aria-expanded', 'true');
-            btn.querySelector('.material-symbols-outlined').textContent = 'close';
-            document.body.style.overflow = 'hidden';
-        }
-        function close() {
-            menu.classList.remove('open');
-            overlay.classList.remove('open');
-            btn.setAttribute('aria-expanded', 'false');
-            btn.querySelector('.material-symbols-outlined').textContent = 'menu';
-            document.body.style.overflow = '';
-        }
-        btn.addEventListener('click', function() {
-            menu.classList.contains('open') ? close() : open();
-        });
-        overlay.addEventListener('click', close);
-        menu.querySelectorAll('a').forEach(function(a) {
-            a.addEventListener('click', close);
-        });
     })();
 </script>
 </body>
