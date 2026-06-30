@@ -249,8 +249,156 @@
             </div>
         </div>
     </section>
+
+    <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto text-center mb-20">
+            <span class="text-primary-fixed font-mono text-sm tracking-[0.3em] uppercase">[DATA_INFRASTRUCTURE]</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-primary mt-6 tracking-tighter">Community Intake Catalog</h1>
+            <p class="text-on-surface-variant text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
+                A curated collection of meteorological datasets designed for machine learning workflows. ARCO-ready, cloud-optimized, and directly accessible via Python.
+            </p>
+        </section>
+
+        <!-- Access Methods Section -->
+        <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid md:grid-cols-2 gap-12 mb-24">
+            <!-- Card Metodo A -->
+            <div class="glass-card p-8 rounded-2xl border border-outline-variant/30">
+                <h3 class="text-xl font-bold text-primary mb-4">Option A: Direct GitHub Access</h3>
+                <p class="text-on-surface-variant text-sm mb-6">Use the most recent version of the catalog directly from our source repository.</p>
+                <div class="bg-[#020712] p-4 rounded-lg font-mono text-xs overflow-x-auto text-primary-fixed">
+                    pip install intake intake-xarray zarr jinja2<br><br>
+                    import intake<br>
+                    cat = intake.open_catalog("https://raw.githubusercontent.com/mlcast-community/mlcast-datasets/main/src/mlcast_datasets/catalog/catalog.yml")
+                </div>
+            </div>
+
+            <!-- Card Metodo B -->
+            <div class="glass-card p-8 rounded-2xl border border-outline-variant/30">
+                <h3 class="text-xl font-bold text-primary mb-4">Option B: Python Package</h3>
+                <p class="text-on-surface-variant text-sm mb-6">Install our stable `mlcast-datasets` package from PyPI for consistent versioning.</p>
+                <div class="bg-[#020712] p-4 rounded-lg font-mono text-xs overflow-x-auto text-primary-fixed">
+                    pip install mlcast-datasets<br><br>
+                    import mlcast_datasets<br>
+                    cat = mlcast_datasets.open_catalog()
+                </div>
+            </div>
+        </section>
+
+        <section id="dataset-catalog" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24" aria-labelledby="dataset-catalog-heading">
+            <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                    <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[INTAKE CATALOG SOURCES]</div>
+                    <h2 id="dataset-catalog-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">Available precipitation datasets</h2>
+                    <p class="mt-4 max-w-2xl text-on-surface-variant">
+                        Dataset entries fetched from the live MLCast precipitation catalog, exposed as a reusable link array and filtered live as you type.
+                    </p>
+                </div>
+
+                <div class="relative w-full lg:max-w-sm">
+                    <label for="dataset-search" class="sr-only">Search catalog datasets</label>
+                    <span class="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[20px] text-on-surface-variant/70" aria-hidden="true">search</span>
+                    <input id="dataset-search" type="search" autocomplete="off" placeholder="Search datasets..." class="dataset-search-input w-full rounded-lg border border-outline-variant/40 bg-[#050f24] py-3 pl-12 pr-4 text-sm text-primary placeholder:text-on-surface-variant/55 transition-colors focus:border-primary-fixed focus:ring-primary-fixed/30"/>
+                </div>
+            </div>
+
+            <div class="mt-8 overflow-hidden rounded-xl border border-outline-variant/30 bg-[#0b1830]/70 shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
+                <div class="flex flex-col gap-2 border-b border-outline-variant/20 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+                    <span id="dataset-catalog-count" class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Loading catalog sources</span>
+                    <a href="https://mlcast-community.github.io/mlcast-datasets/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-primary-fixed hover:text-primary transition-colors">
+                        View catalog file
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">open_in_new</span>
+                    </a>
+                </div>
+
+                <div id="dataset-catalog-list" class="divide-y divide-outline-variant/20" aria-live="polite">
+                    <div class="p-5">
+                        <p class="text-sm text-on-surface-variant">Loading catalog datasets...</p>
+                    </div>
+                </div>
+                <p id="dataset-catalog-status" class="sr-only" aria-live="polite">Loading catalog datasets.</p>
+            </div>
+        </section>
+
+        <!-- Example Dataset Exploration -->
+        <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+            <div class="bg-[#050f24] p-8 md:p-12 rounded-3xl border border-outline-variant/30">
+                <h2 class="text-3xl font-bold text-primary mb-8">Quick Exploration</h2>
+                <div class="space-y-6">
+                    <p class="text-on-surface-variant">Once you have the catalog open, you can start exploring the data instantly:</p>
+                    <div class="grid md:grid-cols-2 gap-8 items-center">
+                        <div class="bg-[#020712] p-6 rounded-xl font-mono text-xs text-primary-fixed border border-primary-fixed/10">
+                            # List available sources<br>
+                            print(list(cat))<br>
+                            # -> ['precipitation']<br><br>
+                            # Access a specific radar dataset<br>
+                            ds = cat.precipitation.radklim_5_minutes.to_dask()
+                        </div>
+                        <ul class="space-y-4 text-sm text-on-surface-variant">
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Dask-backed xarray datasets</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> CF-1.6 Convention compliant</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Cloud-native Zarr format</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> EWC hosted for low latency</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why MLCast Data Section -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+    <div class="grid md:grid-cols-3 gap-8">
+        <div class="glass-card p-8 rounded-2xl border border-primary-fixed/20">
+            <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-fixed">cloud_upload</span> ARCO Standard
+            </h3>
+            <p class="text-sm text-on-surface-variant">We adopt the ARCO (Analysis-Ready, Cloud-Optimized) pattern. Our data is stored in Zarr format, enabling partial reads and streaming directly from the cloud without massive local storage.</p>
+        </div>
+        <div class="glass-card p-8 rounded-2xl border border-primary-fixed/20">
+            <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-fixed">storage</span> EWC Infrastructure
+            </h3>
+            <p class="text-sm text-on-surface-variant">Hosted on the <strong>European Weather Cloud</strong>, our datasets benefit from high-throughput connectivity to meteorological supercomputers, minimizing egress latency.</p>
+        </div>
+        <div class="glass-card p-8 rounded-2xl border border-primary-fixed/20">
+            <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-fixed">code</span> Code-Addressable
+            </h3>
+            <p class="text-sm text-on-surface-variant">Data is not a static file; it's an object in your Python pipeline. Using <code>intake</code>, every dataset is queryable, version-controlled, and ready for training.</p>
+        </div>
+    </div>
+</section>
+<section class="py-10 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+    <div class="border-l-4 border-primary-fixed pl-8">
+        <h2 class="text-3xl font-bold text-primary mb-4">The Catalog Architecture</h2>
+        <p class="text-on-surface-variant max-w-3xl">
+            The MLCast Intake Catalog serves as the <strong>single source of truth</strong> for all community-curated data. 
+            By centralizing metadata and access paths, we ensure that every researcher uses the exact same data versioning, coordinate systems, and schema, 
+            eliminating the "data cleaning" bottleneck in machine learning experiments.
+        </p>
+    </div>
+</section>
+<!-- Aggiornamento sezione Quick Exploration -->
+<section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
+    <div class="bg-[#050f24] p-8 md:p-12 rounded-3xl border border-outline-variant/30">
+        <h2 class="text-3xl font-bold text-primary mb-6">Transparency & Metadata</h2>
+        <p class="text-on-surface-variant mb-8">Every dataset in our catalog includes rich provenance metadata (Author, Conventions, Creation Date), ensuring full scientific traceability:</p>
+        
+        <div class="bg-[#020712] p-6 rounded-xl border border-primary-fixed/10 font-mono text-xs text-primary-fixed/80 overflow-x-auto">
+            # Full dataset attributes available instantly<br>
+            print(ds.attrs['reference'])<br>
+            # -> '10.5676/DWD/RADKLIM_YW_V2017.002'<br><br>
+            print(ds.attrs['mlcast_dataset_identifier'])<br>
+            # -> 'DE-DWD-radar_precipitation-RADKLIM'
+        </div>
+    </div>
+</section>
+
+    </main>
+
 </main>
 
+    <!-- Footer: Elegante e professionale -->
+
+    
     <!-- Footer: Elegante e professionale -->
 <footer class="border-t border-outline-variant/20 bg-[#050f24] py-xl mt-24">
     <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-2 md:grid-cols-4 gap-lg text-sm">
@@ -297,8 +445,7 @@
             </p>
         </div>
     </div>
-</footer><
-<script>
+</footer><script>
     function copySnippet(elementId, btn) {
         const snippet = document.getElementById(elementId);
         if (!snippet) return;
