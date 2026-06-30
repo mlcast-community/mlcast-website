@@ -220,42 +220,54 @@
                         <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-[#0b1830] p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
                             <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
                                 <div>
-                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Dataset Intake</p>
-                                    <h4 class="mt-2 text-lg font-bold text-primary">Radar precip package</h4>
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Dataset Catalog</p>
+                                    <h4 class="mt-2 text-lg font-bold text-primary">Radar precipitation</h4>
                                 </div>
-                                <span class="rounded-full border border-primary-fixed/30 bg-primary-fixed/10 px-3 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Ready</span>
+                                <span class="rounded-full border border-primary-fixed/30 bg-primary-fixed/10 px-3 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Open</span>
                             </div>
 
                             <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
                                 <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
-                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Stations</p>
-                                    <p class="mt-2 text-2xl font-bold text-primary">12</p>
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Countries</p>
+                                    <p class="mt-2 text-2xl font-bold text-primary">5</p>
+                                </div>
+                                <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Timestamps</p>
+                                    <p class="mt-2 text-2xl font-bold text-primary-fixed">6.7M</p>
                                 </div>
                                 <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
                                     <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Cadence</p>
-                                    <p class="mt-2 text-2xl font-bold text-primary-fixed">5m</p>
-                                </div>
-                                <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
-                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Years</p>
-                                    <p class="mt-2 text-2xl font-bold text-primary">2019-24</p>
+                                    <p class="mt-2 text-2xl font-bold text-primary">5m</p>
                                 </div>
                             </div>
 
-                            <div class="mt-5 space-y-3 rounded border border-outline-variant/25 bg-[#050f24] p-4">
-                                <div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="font-label-tag uppercase tracking-widest text-on-surface-variant/60">Schema</span>
-                                        <span class="text-primary-fixed">100%</span>
-                                    </div>
-                                    <div class="mt-2 h-2 rounded-full bg-outline-variant/30"><div class="h-full w-full rounded-full bg-primary-fixed"></div></div>
+                            <div class="mt-5 rounded border border-outline-variant/25 bg-[#050f24] p-4">
+                                <div class="flex items-center justify-between border-b border-outline-variant/15 pb-2 text-[10px] font-label-tag uppercase tracking-widest text-on-surface-variant/50">
+                                    <span>Country</span>
+                                    <span>Variable · Resolution</span>
                                 </div>
-                                <div>
-                                    <div class="flex items-center justify-between text-xs">
-                                        <span class="font-label-tag uppercase tracking-widest text-on-surface-variant/60">Metadata</span>
-                                        <span class="text-primary-fixed">92%</span>
-                                    </div>
-                                    <div class="mt-2 h-2 rounded-full bg-outline-variant/30"><div class="h-full w-[92%] rounded-full bg-primary-fixed/80"></div></div>
-                                </div>
+                                <ul class="mt-2 divide-y divide-outline-variant/10 text-sm">
+                                    <li class="flex items-center justify-between py-2">
+                                        <span class="font-semibold text-primary">Belgium</span>
+                                        <span class="text-right text-on-surface-variant"><span class="text-primary-fixed">rain_rate</span> · 1&nbsp;km · 700×700</span>
+                                    </li>
+                                    <li class="flex items-center justify-between py-2">
+                                        <span class="font-semibold text-primary">Denmark</span>
+                                        <span class="text-right text-on-surface-variant"><span class="text-primary-fixed">dbz</span> · 500&nbsp;m · 1984×1728</span>
+                                    </li>
+                                    <li class="flex items-center justify-between py-2">
+                                        <span class="font-semibold text-primary">Germany</span>
+                                        <span class="text-right text-on-surface-variant"><span class="text-primary-fixed">rainfall_amount</span> · 1&nbsp;km · 1100×900</span>
+                                    </li>
+                                    <li class="flex items-center justify-between py-2">
+                                        <span class="font-semibold text-primary">Italy</span>
+                                        <span class="text-right text-on-surface-variant"><span class="text-primary-fixed">RR</span> · 1&nbsp;km · 1200×1400</span>
+                                    </li>
+                                    <li class="flex items-center justify-between py-2">
+                                        <span class="font-semibold text-primary">UK</span>
+                                        <span class="text-right text-on-surface-variant"><span class="text-primary-fixed">RR</span> · 1&nbsp;km · 1725×2175</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
