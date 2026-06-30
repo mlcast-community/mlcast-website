@@ -105,87 +105,116 @@ canvas {
     white-space: nowrap;
 }
 
-/* Section nav (indice laterale) */
+/* Section nav: dot + hover-expand panel overlay */
 .section-nav {
     position: fixed;
-    top: 50%;
-    left: 40px;
-    transform: translateY(-50%);
     z-index: 40;
-    visibility: hidden;
+    left: 16px;
+    margin-top: 0;
+}
+
+/* The dot trigger */
+.section-nav__dot {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #EE964B;
+    border: 3px solid #F7EDE2;
+    box-shadow: 0 0 10px rgba(238, 150, 75, 0.35);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+    min-width: 22px;
+    min-height: 22px;
+}
+
+.section-nav__dot:hover,
+.section-nav__dot:focus-visible {
+    transform: scale(1.25);
+    box-shadow: 0 0 22px rgba(238, 150, 75, 0.6);
+}
+
+/* The expanded panel - hidden by default, shown on hover/focus */
+.section-nav__panel {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-6px);
     opacity: 0;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 2px;
-    padding: 4px 0;
-    max-width: 230px;
-    border-right: 2px solid rgba(232, 221, 212, 0.6);
-    transition: opacity 0.12s linear, transform 0.12s linear, visibility 0.12s linear;
+    visibility: hidden;
+    pointer-events: none;
+    background: #F7EDE2;
+    border: 1px solid #E8DDD4;
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    max-width: min(280px, calc(100vw - 80px));
 }
 
-@media (min-width: 1280px) {
-    .section-nav {
-        visibility: visible;
-        opacity: 1;
-    }
+.section-nav:hover .section-nav__panel,
+.section-nav:focus-within .section-nav__panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
 }
 
-.section-nav__title {
+.section-nav__panel .section-nav__title {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 10px;
+    font-size: 9px;
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    text-align: right;
-    color: rgba(238, 150, 75, 0.55);
-    padding: 0 22px 10px 0;
+    color: rgba(238, 150, 75, 0.5);
+    padding: 0 0 6px 0;
+    display: block;
+    white-space: nowrap;
 }
 
-.section-nav a {
+.section-nav__panel a {
     position: relative;
     display: block;
-    text-align: right;
-    padding: 9px 22px 9px 0;
-    font-size: 15px;
+    padding: 6px 14px 6px 0;
+    font-size: 13px;
     font-weight: 500;
     line-height: 1.2;
     color: #6B7F82;
     text-decoration: none;
-    transform-origin: right center;
-    transition: color 0.25s ease, transform 0.25s ease, font-size 0.25s ease, opacity 0.25s ease;
+    border-right: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
 }
 
-.section-nav a::after {
-    content: "";
-    position: absolute;
-    right: -2px;
-    top: 50%;
-    width: 2px;
-    height: 0;
-    background: #EE964B;
-    transform: translateY(-50%);
-    transition: height 0.25s ease, box-shadow 0.25s ease;
-}
-
-.section-nav a:hover {
+.section-nav__panel a:hover {
     color: #005B63;
-    transform: translateX(-4px);
 }
 
-.section-nav a:hover::after {
-    height: 40%;
-}
-
-.section-nav a.is-active {
+.section-nav__panel a.is-active {
     color: #EE964B;
     font-weight: 700;
-    font-size: 18px;
-    text-shadow: 0 0 14px rgba(238, 150, 75, 0.45);
+    border-right-color: #EE964B;
 }
 
-.section-nav a.is-active::after {
-    height: 80%;
-    box-shadow: 0 0 10px rgba(238, 150, 75, 0.9);
+@media (max-width: 767.98px) {
+    .section-nav {
+        left: 8px;
+    }
+    .section-nav__dot {
+        width: 18px;
+        height: 18px;
+        min-width: 18px;
+        min-height: 18px;
+    }
+    .section-nav__panel {
+        left: 16px;
+        padding: 12px 14px;
+    }
+    .section-nav__panel a {
+        font-size: 12px;
+        padding: 5px 10px 5px 0;
+    }
 }
 
 @media (max-width: 767.98px) {
@@ -322,18 +351,33 @@ footer {
     box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
 }
 
+/* Terminal window: macOS style with traffic-light dots */
 .terminal-window {
     position: relative;
-    overflow-x: auto;
-    padding: 18px !important;
-    border: 1px solid rgba(0, 91, 99, 0.12) !important;
+    padding: 42px 18px 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
     border-radius: 12px !important;
-    background: #F0E8DE !important;
-    color: #6B7F82 !important;
+    background: #0D2D31 !important;
+    color: #C8D6D8 !important;
     font-family: 'JetBrains Mono', monospace;
     line-height: 1.7;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 4px 16px rgba(0, 0, 0, 0.04) !important;
-    scrollbar-color: #E8DDD4 #F0E8DE;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+    overflow-x: auto;
+    scrollbar-color: #1F4A4E #0D2D31;
+}
+
+/* macOS traffic-light dots */
+.terminal-window::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #FF5F56;
+    box-shadow: 16px 0 0 #FFBD2E, 32px 0 0 #27C93F;
+    z-index: 1;
 }
 
 .terminal-window--card {
@@ -350,7 +394,7 @@ footer {
 
 .terminal-window [class*="text-primary-fixed/50"],
 .terminal-window .terminal-comment {
-    color: #8A9CA6 !important;
+    color: #6B969B !important;
 }
 
 .terminal-window [class*="text-primary-fixed/90"],
@@ -361,22 +405,23 @@ footer {
 
 .terminal-window [class*="text-green-400"],
 .terminal-window .terminal-prompt {
-    color: #2B9A66 !important;
+    color: #4EC9B0 !important;
 }
 
 .terminal-window [class*="text-on-surface-variant"],
 .terminal-window .terminal-output {
-    color: #6B7F82 !important;
+    color: #8A9CA6 !important;
 }
 
 .terminal-window .terminal-keyword {
-    color: #7C3AED !important;
+    color: #569CD6 !important;
 }
 
+/* Copy button on dark terminal */
 .terminal-control {
-    color: #6B7F82 !important;
-    background: #F7EDE2 !important;
-    border: 1px solid #E8DDD4;
+    color: #8A9CA6 !important;
+    background: #1A3E42 !important;
+    border: 1px solid #2A5257;
 }
 
 .terminal-control:hover {

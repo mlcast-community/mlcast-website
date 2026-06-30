@@ -196,11 +196,14 @@
 
     <!-- Indice di pagina (navbar sezioni, lato sinistro) -->
     <nav class="section-nav" aria-label="Page sections">
-        <span class="section-nav__title">On this page</span>
-        <a href="#overview" data-section-link>Overview</a>
-        <a href="#paths-heading" data-section-link>Ways to Contribute</a>
-        <a href="#issues-heading" data-section-link>Good First Issues</a>
-        <a href="#unsure-heading" data-section-link>Get in Touch</a>
+        <button class="section-nav__dot" aria-label="Page sections" title="On this page"></button>
+        <div class="section-nav__panel">
+            <span class="section-nav__title">On this page</span>
+            <a href="#overview" data-section-link>Overview</a>
+            <a href="#paths-heading" data-section-link>Ways to Contribute</a>
+            <a href="#issues-heading" data-section-link>Good First Issues</a>
+            <a href="#unsure-heading" data-section-link>Get in Touch</a>
+        </div>
     </nav>
 
     <main class="flex-grow pt-[76px]">
@@ -1054,6 +1057,30 @@
             });
         }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
         map.forEach(function (link, target) { observer.observe(target); });
+    })();
+</script>
+
+<!-- Dot position tracking -->
+<script>
+    (function () {
+        const nav = document.querySelector(".section-nav");
+        const links = Array.from(document.querySelectorAll(".section-nav [data-section-link]"));
+        if (!nav || links.length < 2) return;
+        let ticking = false;
+        function updateDot() {
+            ticking = false;
+            const rangeTop = 0.25;
+            const rangeBottom = 0.75;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? Math.min(1, scrollTop / docHeight) : 0;
+            const top = (rangeTop + progress * (rangeBottom - rangeTop)) * window.innerHeight;
+            nav.style.top = top + "px";
+        }
+        function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(updateDot); } }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", updateDot);
+        updateDot();
     })();
 </script>
 <script>

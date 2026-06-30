@@ -104,10 +104,13 @@
 </nav>
     <!-- Indice di pagina (navbar sezioni, lato sinistro) -->
     <nav class="section-nav" aria-label="Page sections">
-        <span class="section-nav__title">On this page</span>
-        <a href="#get-started" data-section-link>Overview</a>
-        <a href="#objectives" data-section-link>The MLCast Plan</a>
-        <a href="#mission" data-section-link>The Mission</a>
+        <button class="section-nav__dot" aria-label="Page sections" title="On this page"></button>
+        <div class="section-nav__panel">
+            <span class="section-nav__title">On this page</span>
+            <a href="#get-started" data-section-link>Overview</a>
+            <a href="#objectives" data-section-link>The MLCast Plan</a>
+            <a href="#mission" data-section-link>The Mission</a>
+        </div>
     </nav>
 
     <main class="flex-grow">
@@ -791,13 +794,12 @@
         function update() {
             ticking = false;
             const y = window.scrollY || window.pageYOffset;
-            // inizia ad apparire dopo un po' di scroll, piena quando si raggiunge l'overview
             const start = 80;
             const end = Math.max(start + 1, overview.offsetTop - window.innerHeight * 0.55);
             let p = (y - start) / (end - start);
             p = Math.min(1, Math.max(0, p));
             nav.style.opacity = p;
-            nav.style.transform = "translateY(-50%) translateX(" + (-(1 - p) * 24) + "px)";
+            nav.style.transform = "translateX(" + (-(1 - p) * 12) + "px)";
             nav.style.pointerEvents = p < 0.05 ? "none" : "auto";
         }
         function onScroll() {
@@ -807,6 +809,30 @@
         window.addEventListener("scroll", onScroll, { passive: true });
         window.addEventListener("resize", update);
         update();
+    })();
+</script>
+
+<!-- Dot position tracking -->
+<script>
+    (function () {
+        const nav = document.querySelector(".section-nav");
+        const links = Array.from(document.querySelectorAll(".section-nav [data-section-link]"));
+        if (!nav || links.length < 2) return;
+        let ticking = false;
+        function updateDot() {
+            ticking = false;
+            const rangeTop = 0.25;
+            const rangeBottom = 0.75;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? Math.min(1, scrollTop / docHeight) : 0;
+            const top = (rangeTop + progress * (rangeBottom - rangeTop)) * window.innerHeight;
+            nav.style.top = top + "px";
+        }
+        function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(updateDot); } }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", updateDot);
+        updateDot();
     })();
 </script>
 
