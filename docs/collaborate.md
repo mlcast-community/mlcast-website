@@ -31,4 +31,4 @@ If you're interested in machine learning, you can learn how the training pipelin
 
 Before making larger changes, join the community discussions to ask questions, share ideas, or propose new features. Collaborating with other contributors early helps avoid duplicate work and ensures your contributions align with the project's goals.
 
-When you're ready, create a new branch, make your changes, test them thoroughly, and submit a pull request. Community maintainers will review your contribution, provide feedback if needed, and help guide it through the review process. Every contribution, no matter how small, helps move the project forward.
+When you're ready, create a new branch, make your changes, test them thoroughly, and submit a pull request. Community maintainers will review your contribution, provide feedback if needed, and help guide it through the review process. Every contribution, no matter how small, helps move the project forward. For more information see [Get Started](get-started.md).
