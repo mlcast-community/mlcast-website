@@ -1,0 +1,111 @@
+# UI palette, colors, and UX rules
+
+## Design direction
+
+The current site is a light, editorial technical interface: white and cream
+surfaces, deep teal content, orange actions, restrained borders, and monospace
+metadata. Preserve this hierarchy instead of introducing unrelated colors or
+heavy visual effects.
+
+## Color palette
+
+| Token or use | Value | Guidance |
+| --- | --- | --- |
+| `background` | `#FFFFFF` | Main page and high-contrast section background. |
+| `surface-creme` / `surface-container` | `#F7EDE2` | Cards, menus, footer, and soft alternating sections. |
+| `surface-container-high` | `#F0E8DE` | Stronger cream panels and inputs. |
+| `primary` / `on-surface` | `#005B63` | Headlines, strong body text, controls, and core identity. |
+| `primary-fixed` | `#EE964B` | Primary CTA, active state, label, focus, and small emphasis. |
+| `on-primary-fixed` | `#FFFFFF` | Text/icons on orange controls. |
+| `on-surface-variant` | `#6B7F82` | Secondary copy and inactive navigation. |
+| `outline-variant` | `#E8DDD4` | Dividers and quiet borders. |
+| `accent-2` | `#F4D35E` | Rare secondary highlight; do not compete with orange. |
+| Terminal background | `#0D2D31` | Code/CLI examples only. |
+
+The same tokens are repeated in each page's inline Tailwind configuration.
+`home.css` also contains literal versions. Search all occurrences before
+changing a palette value.
+
+## Typography
+
+- Geist is the display/headline face through `font-headline-xl`.
+- JetBrains Mono is used for labels, code, statistics, and technical metadata
+  through `font-label-tag`, `font-mono`, and terminal styles.
+- Inter is imported and registered as `font-body-lg`, although body classes are
+  not fully standardized across pages. Preserve the existing local pattern or
+  normalize it across all pages deliberately.
+- Headlines are bold with tight leading; body text uses comfortable line height.
+- Eyebrow labels are small, uppercase, orange, and often bracketed.
+- Do not use tiny or low-opacity text for essential instructions.
+
+## Components and layout
+
+### Page frame
+
+- Fixed translucent header with a subtle bottom border and blur.
+- Content widths commonly use `max-w-[1180px]` for editorial sections and
+  `max-w-[1440px]` for broader page frames.
+- Horizontal page padding is 16px on mobile and 48px from `md` upward.
+- Large sections generally use 80–112px vertical spacing.
+- Alternate white and cream sections to establish rhythm.
+
+### Buttons and links
+
+- Primary actions use orange backgrounds and white text.
+- Secondary actions use teal text with a quiet cream border/background.
+- Interactive controls should provide hover and `focus-visible` states.
+- Preserve a minimum 44×44px pointer target where practical.
+- External links opened in a new tab should use `rel="noreferrer"` or
+  `rel="noopener"`.
+
+### Cards and data panels
+
+- `.glass-card` is a light cream translucent panel with a quiet border and blur.
+- Use restrained shadows; importance should come from spacing, hierarchy, and
+  contrast rather than glow.
+- Terminal/code panels use the shared dark terminal treatment.
+- Full-width ruled rows suit editorial material such as testimonials; compact
+  cards suit repeatable tools or metrics.
+
+### Navigation
+
+- Desktop navigation is centered in the fixed header.
+- GitHub and documentation actions use shared `.navbar-actions` and
+  `.navbar-icon-link` styles.
+- Mobile navigation uses a right-side panel plus overlay and must keep
+  `aria-expanded`, scroll locking, and close behavior synchronized.
+- Section navigation depends on matching anchor targets and active-state scripts.
+
+## Responsive behavior
+
+- Tailwind `sm`, `md`, and `lg` breakpoints control most layout changes.
+- Build mobile-first: single-column content, then introduce multi-column layouts.
+- Avoid fixed widths that exceed the 16px mobile gutters.
+- Keep important content in the DOM once; use layout/order utilities instead of
+  duplicating it for different breakpoints.
+- Test the 768px and 1024px transitions because navigation and complex grids
+  change there.
+
+## Accessibility and interaction
+
+- Preserve semantic headings, `<nav>`, `<main>`, `<section>`, `<details>`, and
+  `<blockquote>` structures.
+- Images need meaningful `alt` text unless decorative, in which case use
+  `alt=""`.
+- Dynamic loading/status regions should use `aria-live` without stealing focus.
+- Never remove focus outlines without an equivalent `focus-visible` treatment.
+- Keep text contrast readable when using opacity modifiers.
+- New motion should honor `prefers-reduced-motion`; the community stepper already
+  provides a local example.
+- Clipboard actions need success and failure behavior; current helpers provide
+  success feedback but do not expose a failure message.
+
+## Guidelines for future edits
+
+1. Reuse the shared palette, spacing, radius, and type system.
+2. Prefer updating `home.css` for genuinely shared components.
+3. Keep page-local styles limited to page-specific behavior.
+4. Verify header/footer/mobile-menu consistency on every affected page.
+5. Check keyboard use, focus order, zoom, narrow screens, and long text.
+6. Avoid inventing live-looking values; use explicit placeholders or real data
+   with a documented fallback.
