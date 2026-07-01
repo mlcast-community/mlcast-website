@@ -56,6 +56,110 @@
       .font-body-sm { font-size: 0.875rem; }
       .text-body-sm { font-size: 0.875rem; line-height: 1.5; }
       .font-label-tag { font-family: 'JetBrains Mono', monospace; }
+
+      input, textarea {
+        outline: none;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+      input:focus, textarea:focus {
+        border-color: #EE964B !important;
+        box-shadow: 0 0 0 2px rgba(238, 150, 75, 0.2);
+      }
+      .custom-select {
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+      }
+      .custom-select .select-trigger {
+        width: 100%;
+        padding: 0.5rem;
+        background: #F0E8DE;
+        border: 1px solid rgba(232, 221, 212, 0.4);
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        color: #005B63;
+        font-family: 'JetBrains Mono', monospace;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+      .custom-select .select-trigger:hover {
+        border-color: rgba(238, 150, 75, 0.5);
+      }
+      .custom-select.is-open .select-trigger {
+        border-color: #EE964B !important;
+        box-shadow: 0 0 0 2px rgba(238, 150, 75, 0.2);
+      }
+      .custom-select .select-trigger .arrow {
+        font-size: 14px;
+        color: #6B7F82;
+        transition: transform 0.2s ease;
+      }
+      .custom-select.is-open .select-trigger .arrow {
+        transform: rotate(180deg);
+      }
+      .custom-select .select-dropdown {
+        display: none;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: #F7EDE2;
+        border: 1px solid rgba(238, 150, 75, 0.3);
+        border-radius: 0.25rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .custom-select.is-open .select-dropdown {
+        display: block;
+      }
+      .custom-select .select-dropdown .option {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        color: #005B63;
+        font-family: 'JetBrains Mono', monospace;
+        transition: background 0.1s ease;
+      }
+      .custom-select .select-dropdown .option:hover {
+        background: rgba(238, 150, 75, 0.2);
+      }
+      .custom-select .select-dropdown .option.is-selected {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
+      .custom-select.is-open .select-trigger {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .copy-toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: #005B63;
+        color: #FFFFFF;
+        padding: 10px 24px;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        pointer-events: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+      }
+      .copy-toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+      ::selection {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
     </style>
 </head>
 <body class="bg-background text-on-surface antialiased font-sans min-h-screen flex flex-col">
@@ -67,7 +171,6 @@
         </a>
         
         <nav class="hidden md:flex items-center gap-lg">
-            <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="home.html#get-started">About</a>
             <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="software_and_data.html">Software and Data</a>
             <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="community.html">Community</a>
             <a class="text-on-surface-variant text-sm uppercase tracking-wider hover:text-primary transition-colors" href="https://webvalley2026.github.io/mlcast-website/docs/">Documentation</a>
@@ -461,19 +564,21 @@
                         </div>
                         <div>
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Loss Function</label>
-                            <select id="cfg-loss" class="w-full p-2 bg-[#F0E8DE] border border-outline-variant/40 rounded text-sm text-primary font-mono">
+                            <select id="cfg-loss" class="hidden">
                                 <option value="crps">CRPS</option>
                                 <option value="mse">MSE</option>
                                 <option value="mae">MAE</option>
                                 <option value="afcrps">AFCRPS</option>
                             </select>
+                            <div class="custom-select" data-select-id="cfg-loss"></div>
                         </div>
                         <div>
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Sampler</label>
-                            <select id="cfg-sampler" class="w-full p-2 bg-[#F0E8DE] border border-outline-variant/40 rounded text-sm text-primary font-mono">
+                            <select id="cfg-sampler" class="hidden">
                                 <option value="">Precomputed (CSV)</option>
                                 <option value="fiddler:use_random_sampler">Random (on-the-fly)</option>
                             </select>
+                            <div class="custom-select" data-select-id="cfg-sampler"></div>
                         </div>
                     </div>
                     <div class="relative">
@@ -672,6 +777,105 @@
     cfgEpochs.addEventListener('input', updateConfigPreview);
     cfgLoss.addEventListener('change', updateConfigPreview);
     cfgSampler.addEventListener('change', updateConfigPreview);
+
+    // Custom select initializer
+    (function () {
+        var selectors = document.querySelectorAll('.custom-select');
+        selectors.forEach(function (wrapper) {
+            var selectId = wrapper.getAttribute('data-select-id');
+            var select = document.getElementById(selectId);
+            if (!select) return;
+
+            function render() {
+                var selected = select.options[select.selectedIndex];
+                wrapper.innerHTML =
+                    '<div class="select-trigger">' +
+                    '<span>' + (selected ? selected.text : '') + '</span>' +
+                    '<span class="material-symbols-outlined arrow">expand_more</span>' +
+                    '</div>' +
+                    '<div class="select-dropdown"></div>';
+
+                var trigger = wrapper.querySelector('.select-trigger');
+                var dropdown = wrapper.querySelector('.select-dropdown');
+
+                for (var i = 0; i < select.options.length; i++) {
+                    var opt = document.createElement('div');
+                    opt.className = 'option' + (i === select.selectedIndex ? ' is-selected' : '');
+                    opt.textContent = select.options[i].text;
+                    opt.dataset.index = i;
+                    opt.addEventListener('click', function (e) {
+                        var idx = parseInt(this.dataset.index);
+                        select.selectedIndex = idx;
+                        select.dispatchEvent(new Event('change'));
+                        wrapper.classList.remove('is-open');
+                        render();
+                        e.stopPropagation();
+                    });
+                    dropdown.appendChild(opt);
+                }
+
+                trigger.addEventListener('click', function (e) {
+                    var isOpen = wrapper.classList.contains('is-open');
+                    closeAllCustomSelects();
+                    if (!isOpen) wrapper.classList.add('is-open');
+                    e.stopPropagation();
+                });
+            }
+
+            render();
+        });
+
+        function closeAllCustomSelects() {
+            document.querySelectorAll('.custom-select.is-open').forEach(function (el) {
+                el.classList.remove('is-open');
+            });
+        }
+
+        document.addEventListener('click', closeAllCustomSelects);
+    })();
+
+    // Copy-on-select for terminal windows
+    (function () {
+        var toast = document.createElement('div');
+        toast.className = 'copy-toast';
+        toast.textContent = 'Copied to clipboard';
+        document.body.appendChild(toast);
+
+        var timer = null;
+
+        function showToast(msg) {
+            if (msg) toast.textContent = msg;
+            toast.classList.add('show');
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () {
+                toast.classList.remove('show');
+            }, 1800);
+        }
+
+        document.addEventListener('mouseup', function (e) {
+            var term = e.target.closest('.terminal-window');
+            if (!term) return;
+            setTimeout(function () {
+                var sel = window.getSelection();
+                if (!sel || sel.isCollapsed) return;
+                var text = sel.toString().trim();
+                if (!text) return;
+                try {
+                    var ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    showToast('Copied to clipboard');
+                } catch (e) {
+                    showToast('Copy failed');
+                }
+            }, 10);
+        });
+    })();
 </script>
 </body>
 </html>

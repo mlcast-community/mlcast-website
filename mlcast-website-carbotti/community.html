@@ -122,6 +122,10 @@
                 transition: none !important;
             }
         }
+      ::selection {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
     </style>
 </head>
 
@@ -301,12 +305,11 @@
                 <h2 id="voices-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">What people bring to MLCast.</h2>
             </div>
 
-            <div class="mt-12 border-b border-outline-variant md:mt-16">
+            <div id="voices-list" class="mt-12 border-b border-outline-variant md:mt-16">
                 <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
                     <img src="img/people/Gabriele-Franch.png" alt="Gabriele Franch" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
                     <div class="min-w-0">
-                        <div class="font-label-tag text-[10px] text-primary-fixed">[01]</div>
-                        <p class="mt-2 text-base font-bold text-primary md:text-lg">Gabriele Franch</p>
+                        <p class="text-base font-bold text-primary md:text-lg">Gabriele Franch</p>
                         <blockquote class="mt-4 font-headline-xl text-xl font-semibold leading-snug text-primary md:text-2xl">
                             <span class="text-primary-fixed" aria-hidden="true">“</span>The community gives us a common language for turning local radar archives into reusable training data.<span class="text-primary-fixed" aria-hidden="true">”</span>
                         </blockquote>
@@ -324,8 +327,7 @@
                 <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
                     <img src="img/people/Leif.png" alt="Leif Denby" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
                     <div class="min-w-0">
-                        <div class="font-label-tag text-[10px] text-primary-fixed">[02]</div>
-                        <p class="mt-2 text-base font-bold text-primary md:text-lg">Leif Denby</p>
+                        <p class="text-base font-bold text-primary md:text-lg">Leif Denby</p>
                         <blockquote class="mt-4 font-headline-xl text-xl font-semibold leading-snug text-primary md:text-2xl">
                             <span class="text-primary-fixed" aria-hidden="true">“</span>I bring experience in operational meteorology and a practical perspective on what forecasters actually need from machine-learning tools.<span class="text-primary-fixed" aria-hidden="true">”</span>
                         </blockquote>
@@ -343,8 +345,7 @@
                 <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
                     <img src="img/people/Irene.png" alt="Irene Livia Kruse" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
                     <div class="min-w-0">
-                        <div class="font-label-tag text-[10px] text-primary-fixed">[03]</div>
-                        <p class="mt-2 text-base font-bold text-primary md:text-lg">Irene Livia Kruse</p>
+                        <p class="text-base font-bold text-primary md:text-lg">Irene Livia Kruse</p>
                         <blockquote class="mt-4 font-headline-xl text-xl font-semibold leading-snug text-primary md:text-2xl">
                             <span class="text-primary-fixed" aria-hidden="true">“</span>Working at the intersection of data engineering and atmospheric science, I help turn raw radar data into clean, well-documented datasets.<span class="text-primary-fixed" aria-hidden="true">”</span>
                         </blockquote>
@@ -484,5 +485,20 @@
         activate(0);
     })();
 </script>
+
+<script>
+    (function () {
+        var container = document.getElementById("voices-list");
+        if (!container) return;
+        var articles = Array.from(container.querySelectorAll("article"));
+        if (articles.length < 2) return;
+        for (var i = articles.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            container.appendChild(articles[j]);
+            articles.splice(j, 1);
+        }
+    })();
+</script>
+
 </body>
 </html>

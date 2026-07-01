@@ -137,6 +137,33 @@
                 scroll-margin-top: 96px;
             }
         }
+
+      .copy-toast {
+        position: fixed;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%) translateY(80px);
+        background: #005B63;
+        color: #FFFFFF;
+        padding: 10px 24px;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.25s ease, transform 0.25s ease;
+        pointer-events: none;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+      }
+      .copy-toast.show {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      ::selection {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
     </style>
 </head>
 
@@ -1127,6 +1154,50 @@
         overlay.addEventListener('click', close);
         menu.querySelectorAll('a').forEach(function(a) {
             a.addEventListener('click', close);
+        });
+    })();
+</script>
+<script>
+    // Copy-on-select for terminal windows
+    (function () {
+        var toast = document.createElement('div');
+        toast.className = 'copy-toast';
+        toast.textContent = 'Copied to clipboard';
+        document.body.appendChild(toast);
+
+        var timer = null;
+
+        function showToast(msg) {
+            if (msg) toast.textContent = msg;
+            toast.classList.add('show');
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () {
+                toast.classList.remove('show');
+            }, 1800);
+        }
+
+        document.addEventListener('mouseup', function (e) {
+            var term = e.target.closest('.terminal-window');
+            if (!term) return;
+            setTimeout(function () {
+                var sel = window.getSelection();
+                if (!sel || sel.isCollapsed) return;
+                var text = sel.toString().trim();
+                if (!text) return;
+                try {
+                    var ta = document.createElement('textarea');
+                    ta.value = text;
+                    ta.style.position = 'fixed';
+                    ta.style.left = '-9999px';
+                    document.body.appendChild(ta);
+                    ta.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(ta);
+                    showToast('Copied to clipboard');
+                } catch (e) {
+                    showToast('Copy failed');
+                }
+            }, 10);
         });
     })();
 </script>
