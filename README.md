@@ -5,7 +5,7 @@ machine learning "nowcasting" models for weather prediction.
 
 Two parts are deployed together to GitHub Pages:
 
-- **Static marketing site** (`mlcast-website-carbotti/`) — plain HTML/CSS, served
+- **Static marketing site** (repo root) — plain HTML/CSS, served
   at the site root.
 - **Documentation** (`docs/` + `myst.yml`) — a [Jupyter Book](https://next.jupyterbook.org/)
   (MyST) site, served under `/docs`.
@@ -18,7 +18,7 @@ artifact:
 
 ## Static site
 
-Edit the HTML/CSS in `mlcast-website-carbotti/`. `home.html` is the landing page
+Edit the HTML/CSS in the repo root. `home.html` is the landing page
 (published as `index.html`). Open the files directly in a browser to preview.
 
 ## Documentation (Jupyter Book)

@@ -24,11 +24,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      # --- Static site (mlcast-website-carbotti) -> dist/ ---
+      # --- Static site (repo root) -> dist/ ---
       - name: Assemble static site
         run: |
           mkdir -p dist
-          cp -r mlcast-website-carbotti/. dist/
+          cp -r *.html *.css *.js img video dist/
           # Site entry point: home.html is the landing page; the nav brand
           # links to index.html, so publish home.html as index.html too.
           cp dist/home.html dist/index.html
