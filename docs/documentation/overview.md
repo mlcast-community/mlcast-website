@@ -1,4 +1,4 @@
-# 🌦️ Project Overview
+# Project Overview
 
 Welcome to the **MLCast (Machine Learning Nowcasting) Community**.
 
