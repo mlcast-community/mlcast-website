@@ -4,6 +4,9 @@ on:
   push:
     branches: ['main']
   workflow_dispatch:
+  schedule:
+    # Daily 06:00 UTC — refresh community stats even without pushes.
+    - cron: '0 6 * * *'
 
 permissions:
   contents: read
