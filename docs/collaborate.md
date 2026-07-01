@@ -1,34 +1,30 @@
 # Collaborate
-# Why Collaborate with MLCast?
 
-## Build Better Models Together
+MLCast is an open-source community building machine learning models for weather nowcasting. Researchers, developers, students, and weather enthusiasts contribute code, datasets, documentation, and compute—and everyone is welcome.
 
-Weather nowcasting is a complex challenge that benefits from many perspectives. By collaborating as an open-source community, researchers, developers, students, and weather enthusiasts can combine their knowledge to create more accurate, reliable, and innovative machine learning models. Every contribution—whether it's improving code, refining documentation, or testing new ideas—helps strengthen the project for everyone.
+## Why Collaborate
 
-## Share Resources and Expertise
+- **Build better models together.** Many perspectives make models more accurate, reliable, and innovative.
+- **Share resources and expertise.** Institutions with GPUs train large models; others contribute software, data validation, evaluation, or docs. No specialized hardware required.
+- **Accelerate innovation.** Build on each other's work instead of starting from scratch. Community feedback catches bugs and drives new features.
+- **Learn and grow.** Gain hands-on experience with ML, software development, weather science, and open-source collaboration—from your first pull request to advanced model architectures.
+- **Open future for weather AI.** Models, datasets, and software developed transparently and shared freely, so anyone can benefit.
 
-Developing state-of-the-art machine learning models often requires significant computing power, specialized knowledge, and high-quality datasets. Through collaboration, institutions with access to GPUs can train large models, while others can contribute by developing software, validating data, evaluating models, or improving documentation. This shared approach makes advanced weather AI research more accessible than it would be for individuals working alone.
+## Getting Started
 
-## Accelerate Innovation
+1. Explore the [MLCast GitHub organization](https://github.com/mlcast-community) and read the docs to see how the community is organized.
+2. Follow the [Get Started guide](get-started.md) to set up the development environment.
+3. Pick up a [good first issue](https://github.com/search?q=org%3Amlcast-community+label%3A%22good+first+issue%22+state%3Aopen&type=issues)—designed to help new contributors learn the codebase while making meaningful contributions.
+4. Discuss larger changes early on [Slack](https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg) to avoid duplicate work and align with project goals.
+5. Create a branch, make and test your changes, and open a pull request. Maintainers review, give feedback, and guide it through.
 
-Open collaboration allows ideas to be shared, tested, and improved quickly. Contributors can build on each other's work instead of starting from scratch, leading to faster development and more robust solutions. Community feedback also helps identify bugs, improve model performance, and introduce new features that benefit all users.
+With GPUs? Train and benchmark models. Without? Contribute through development, documentation, testing, and code reviews.
 
-## Learn and Grow
+## Connect
 
-MLCast provides an opportunity to gain hands-on experience with machine learning, software development, weather science, and open-source collaboration. Whether you're writing your first pull request or researching advanced model architectures, you'll work alongside a community that values learning, knowledge sharing, and continuous improvement.
+- **[Join our Slack](https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg)** — questions, discussions, and real-time help.
+- **[Subscribe to the mailing list](mailto:mlcastcommunity+subscribe@googlegroups.com)** — send a blank email from the address you want to subscribe.
+- **[GitHub organization](https://github.com/mlcast-community)** — repositories, issues, and pull requests.
+- **[Community & News](community-and-news.md)** — monthly community meetings and meeting notes.
 
-## Create an Open Future for Weather AI
-
-Our goal is to make high-quality weather nowcasting tools available to everyone. By contributing to MLCast, you're helping build an open ecosystem where models, datasets, and software are developed transparently and shared freely. Together, we can reduce barriers to cutting-edge weather prediction and enable researchers, organizations, and communities around the world to benefit from open-source innovation.
-
-# Getting Started
-
-Joining MLCast is simple. Start by exploring the project's repositories and reading the documentation to understand how the community is organized. Follow the installation guide to set up the development environment on your computer and familiarize yourself with the project's structure.
-
-Once you're set up, browse the list of open issues and look for tasks labeled as beginner-friendly or good first issues. These are designed to help new contributors become familiar with the codebase while making meaningful contributions.
-
-If you're interested in machine learning, you can learn how the training pipeline works, experiment with datasets, evaluate existing models, or help improve preprocessing and validation tools. Contributors with access to GPUs are encouraged to train and benchmark models, while those without specialized hardware can still contribute through development, documentation, testing, and code reviews.
-
-Before making larger changes, join the community discussions to ask questions, share ideas, or propose new features. Collaborating with other contributors early helps avoid duplicate work and ensures your contributions align with the project's goals.
-
-When you're ready, create a new branch, make your changes, test them thoroughly, and submit a pull request. Community maintainers will review your contribution, provide feedback if needed, and help guide it through the review process. Every contribution, no matter how small, helps move the project forward. For more information see [Get Started](get-started.md).
+Every contribution, no matter how small, moves the project forward.
