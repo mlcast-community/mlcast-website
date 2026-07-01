@@ -7,47 +7,7 @@
     <title>MLCast Community - Community</title>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#005B63",
-                        "primary-fixed": "#EE964B",
-                        "background": "#FFFFFF",
-                        "surface-container": "#F7EDE2",
-                        "surface-container-high": "#F0E8DE",
-                        "on-surface": "#005B63",
-                        "on-surface-variant": "#6B7F82",
-                        "on-primary-fixed": "#FFFFFF",
-                        "outline-variant": "#E8DDD4",
-                        "accent-2": "#F4D35E",
-                        "surface-creme": "#F7EDE2"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    spacing: {
-                        "md": "16px",
-                        "lg": "24px",
-                        "xl": "40px",
-                        "sm": "8px",
-                        "margin-mobile": "16px",
-                        "margin-desktop": "48px"
-                    },
-                    fontFamily: {
-                        "headline-xl": ["Geist"],
-                        "body-lg": ["Inter"],
-                        "label-tag": ["JetBrains Mono"]
-                    }
-                }
-            }
-        };
-    </script>
+    <script src="tailwind-config.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -324,43 +284,7 @@
 
 </main>
 
-<footer class="border-t border-outline-variant/20 bg-[#F0E8DE] py-xl mt-24">
-    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">
-        <div class="col-span-2 md:col-span-1">
-            <h4 class="font-bold text-primary mb-md">MLCast Community</h4>
-            <p class="text-on-surface-variant leading-relaxed">
-                Advancing meteorological intelligence through open-source collaboration and high-resolution data.
-            </p>
-        </div>
-
-        <div>
-            <h4 class="font-bold text-primary mb-md">Resources</h4>
-            <ul class="space-y-sm text-on-surface-variant">
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/" class="hover:text-primary-fixed">Documentation</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/api-reference/" class="hover:text-primary-fixed">API Reference</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/data/" class="hover:text-primary-fixed">Dataset Catalog</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/validator/" class="hover:text-primary-fixed">Validation Tool</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4 class="font-bold text-primary mb-md">Community</h4>
-            <ul class="space-y-sm text-on-surface-variant">
-                <li><a href="https://github.com/mlcast-community" class="hover:text-primary-fixed">GitHub</a></li>
-                <li><a href="https://mlcast.slack.com/join/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg#/shared-invite/email" class="hover:text-primary-fixed">Discussions</a></li>
-                <li><a href="mailto:mlcastcommunity%2Bsubscribe@googlegroups.com" class="hover:text-primary-fixed">Newsletter</a></li>
-                <li><a href="https://github.com/orgs/mlcast-community/people" class="hover:text-primary-fixed">Contributors</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <h4 class="font-bold text-primary mb-md">Legal</h4>
-            <p class="text-on-surface-variant text-xs italic">
-                © 2026 MLCast Community. Released under MIT License.
-            </p>
-        </div>
-    </div>
-</footer>
+<div id="site-footer"></div>
 <script>
 
     // Who / What / Why scroll stepper

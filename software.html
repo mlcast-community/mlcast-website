@@ -20,30 +20,7 @@
     <link rel="stylesheet" href="home.css">
     <script src="header.js" defer></script>
 
-    <script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              colors: {
-                  "primary": "#005B63",
-                  "primary-fixed": "#EE964B",
-                  "background": "#FFFFFF",
-                  "on-surface": "#005B63",
-                  "on-surface-variant": "#6B7F82",
-                  "on-primary-fixed": "#FFFFFF",
-                  "outline-variant": "#E8DDD4",
-                  "accent-2": "#F4D35E",
-                  "surface-creme": "#F7EDE2",
-                  "surface-container-high": "#F0E8DE"
-              },
-              borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
-              spacing: { "md": "16px", "lg": "24px", "xl": "40px", "sm": "8px", "margin-mobile": "16px", "margin-desktop": "48px" },
-              fontFamily: { "headline-xl": ["Geist"], "body-lg": ["Inter"], "label-tag": ["JetBrains Mono"] }
-            },
-          },
-        }
-    </script>
+    <script src="tailwind-config.js"></script>
     <style>
       .card-icon-box {
         background-color: #F7EDE2;
@@ -136,27 +113,6 @@
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
       }
-      .copy-toast {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%) translateY(80px);
-        background: #005B63;
-        color: #FFFFFF;
-        padding: 10px 24px;
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.25s ease, transform 0.25s ease;
-        pointer-events: none;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-      }
-      .copy-toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
       ::selection {
         background: #EE964B;
         color: #FFFFFF;
@@ -230,7 +186,7 @@
                     <a href="data.html" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
                         <span class="material-symbols-outlined text-[14px]">menu_book</span> Catalog
                     </a>
-                    <a href="https://github.com/mlcast-community/mlcast-datasets" target="_blank" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
+                    <a href="https://github.com/mlcast-community/mlcast-datasets" target="_blank" rel="noreferrer" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
@@ -277,10 +233,10 @@
                 </div>
 
                 <div class="flex gap-sm pt-2 mt-auto">
-                    <a href="https://mlcast-community.github.io/mlcast-dataset-validator/specs/source_data/radar_precipitation/" target="_blank" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
+                    <a href="https://mlcast-community.github.io/mlcast-dataset-validator/specs/source_data/radar_precipitation/" target="_blank" rel="noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
                         <span class="material-symbols-outlined text-[14px]">menu_book</span> Specs
                     </a>
-                    <a href="https://github.com/mlcast-community/mlcast-dataset-validator" target="_blank" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
+                    <a href="https://github.com/mlcast-community/mlcast-dataset-validator" target="_blank" rel="noreferrer" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
@@ -327,10 +283,10 @@
                 </div>
 
                 <div class="flex gap-sm pt-2 mt-auto">
-                    <a href="https://github.com/mlcast-community/mlcast" target="_blank" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
+                    <a href="https://github.com/mlcast-community/mlcast" target="_blank" rel="noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
                         <span class="material-symbols-outlined text-[14px]">menu_book</span> Docs
                     </a>
-                    <a href="https://github.com/mlcast-community/mlcast" target="_blank" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
+                    <a href="https://github.com/mlcast-community/mlcast" target="_blank" rel="noreferrer" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
                         <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
                             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
                         </svg>
@@ -613,42 +569,42 @@
                 <h2 class="text-3xl font-bold text-primary">Ecosystem Packages</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
-                <a href="https://github.com/mlcast-community/mlcast-dataset-sampler" target="_blank" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                <a href="https://github.com/mlcast-community/mlcast-dataset-sampler" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
                     <div class="flex items-center gap-3 mb-2">
                         <span class="material-symbols-outlined text-primary-fixed">content_paste_go</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">Dataset Sampler</h3>
                     </div>
                     <p class="text-sm text-on-surface-variant leading-relaxed">Utility to sample source datasets (from the Intake catalog) and generate training-ready data in Zarr format.</p>
                 </a>
-                <a href="https://github.com/mlcast-community/mlcast-dataset-validator" target="_blank" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                <a href="https://github.com/mlcast-community/mlcast-dataset-validator" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
                     <div class="flex items-center gap-3 mb-2">
                         <span class="material-symbols-outlined text-primary-fixed">verified</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">Dataset Validator</h3>
                     </div>
                     <p class="text-sm text-on-surface-variant leading-relaxed">Automated compliance checks for Zarr specs, metadata integrity, and geospatial interoperability.</p>
                 </a>
-                <a href="https://github.com/mlcast-community/mlcast-benchmarks" target="_blank" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                <a href="https://github.com/mlcast-community/mlcast-benchmarks" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
                     <div class="flex items-center gap-3 mb-2">
                         <span class="material-symbols-outlined text-primary-fixed">leaderboard</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">Benchmarks</h3>
                     </div>
                     <p class="text-sm text-on-surface-variant leading-relaxed">(Coming soon) Community benchmarks for standardized evaluation of nowcasting models.</p>
                 </a>
-                <a href="https://github.com/mlcast-community/mlcast-dataset-tiff2zarr" target="_blank" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                <a href="https://github.com/mlcast-community/mlcast-dataset-tiff2zarr" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
                     <div class="flex items-center gap-3 mb-2">
                         <span class="material-symbols-outlined text-primary-fixed">transform</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">tiff2zarr</h3>
                     </div>
                     <p class="text-sm text-on-surface-variant leading-relaxed">Generic GeoTIFF to mlcast-compliant Zarr v3 converter for ingesting new data sources.</p>
                 </a>
-                <a href="https://github.com/mlcast-community/mlcast-dataset-IT-DPC-SRI" target="_blank" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                <a href="https://github.com/mlcast-community/mlcast-dataset-IT-DPC-SRI" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
                     <div class="flex items-center gap-3 mb-2">
                         <span class="material-symbols-outlined text-primary-fixed">map</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">IT-DPC Converter</h3>
                     </div>
                     <p class="text-sm text-on-surface-variant leading-relaxed">Convert Italian radar composite TIFFs to Zarr format.</p>
                 </a>
-                <a href="https://github.com/mlcast-community/mlcast-dataset-metoffice-nimrod" target="_blank" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                <a href="https://github.com/mlcast-community/mlcast-dataset-metoffice-nimrod" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
                     <div class="flex items-center gap-3 mb-2">
                         <span class="material-symbols-outlined text-primary-fixed">map</span>
                         <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">UK Met Office Converter</h3>
@@ -662,36 +618,7 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="border-t border-outline-variant/20 bg-[#F0E8DE] py-xl mt-24">
-    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">
-        <div class="col-span-2 md:col-span-1">
-            <h4 class="font-bold text-primary mb-md">MLCast Community</h4>
-            <p class="text-on-surface-variant leading-relaxed">Advancing meteorological intelligence through open-source collaboration and high-resolution data.</p>
-        </div>
-        <div>
-            <h4 class="font-bold text-primary mb-md">Resources</h4>
-            <ul class="space-y-sm text-on-surface-variant">
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/" class="hover:text-primary-fixed">Documentation</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/api-reference/" class="hover:text-primary-fixed">API Reference</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/data/" class="hover:text-primary-fixed">Dataset Catalog</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/validator/" class="hover:text-primary-fixed">Validation Tool</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="font-bold text-primary mb-md">Community</h4>
-            <ul class="space-y-sm text-on-surface-variant">
-                <li><a href="https://github.com/mlcast-community" class="hover:text-primary-fixed">GitHub</a></li>
-                <li><a href="https://mlcast.slack.com/join/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg#/shared-invite/email" class="hover:text-primary-fixed">Discussions</a></li>
-                <li><a href="mailto:mlcastcommunity%2Bsubscribe@googlegroups.com" class="hover:text-primary-fixed">Newsletter</a></li>
-                <li><a href="https://github.com/orgs/mlcast-community/people" class="hover:text-primary-fixed">Contributors</a></li>
-            </ul>
-        </div>
-        <div>
-            <h4 class="font-bold text-primary mb-md">Legal</h4>
-            <p class="text-on-surface-variant text-xs italic">© 2026 MLCast Community. Released under MIT License.</p>
-        </div>
-    </div>
-</footer>
+<div id="site-footer"></div>
 
 <script>
     function copySnippet(elementId, btn) {
@@ -810,48 +737,6 @@
         document.addEventListener('click', closeAllCustomSelects);
     })();
 
-    // Copy-on-select for terminal windows
-    (function () {
-        var toast = document.createElement('div');
-        toast.className = 'copy-toast';
-        toast.textContent = 'Copied to clipboard';
-        document.body.appendChild(toast);
-
-        var timer = null;
-
-        function showToast(msg) {
-            if (msg) toast.textContent = msg;
-            toast.classList.add('show');
-            if (timer) clearTimeout(timer);
-            timer = setTimeout(function () {
-                toast.classList.remove('show');
-            }, 1800);
-        }
-
-        document.addEventListener('mouseup', function (e) {
-            var term = e.target.closest('.terminal-window');
-            if (!term) return;
-            setTimeout(function () {
-                var sel = window.getSelection();
-                if (!sel || sel.isCollapsed) return;
-                var text = sel.toString().trim();
-                if (!text) return;
-                try {
-                    var ta = document.createElement('textarea');
-                    ta.value = text;
-                    ta.style.position = 'fixed';
-                    ta.style.left = '-9999px';
-                    document.body.appendChild(ta);
-                    ta.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(ta);
-                    showToast('Copied to clipboard');
-                } catch (e) {
-                    showToast('Copy failed');
-                }
-            }, 10);
-        });
-    })();
 </script>
 </body>
 </html>

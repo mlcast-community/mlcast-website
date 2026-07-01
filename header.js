@@ -1,6 +1,6 @@
-// Shared site header + mobile menu.
-// Usage: put <div id="site-header"></div> where the header should render,
-// then load this file with <script src="header.js" defer></script>.
+// Shared site chrome: header + mobile menu, footer, and copy-on-select.
+// Usage: put <div id="site-header"></div> and <div id="site-footer"></div>
+// where each should render, then load with <script src="header.js" defer></script>.
 // Injecting markup here (instead of fetch) keeps it working on file:// too.
 (function () {
     "use strict";
@@ -69,8 +69,94 @@
         "</nav>";
 
     var mount = document.getElementById("site-header");
-    if (!mount) return;
-    mount.outerHTML = markup;
+    if (mount) mount.outerHTML = markup;
+
+    // --- Shared footer ---
+    var footerMarkup =
+        '<footer class="border-t border-outline-variant/20 bg-surface-creme py-xl mt-24">' +
+        '  <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">' +
+        '    <div class="col-span-2 md:col-span-1">' +
+        '      <h4 class="font-bold text-primary mb-md">MLCast Community</h4>' +
+        '      <p class="text-on-surface-variant leading-relaxed">Advancing meteorological intelligence through open-source collaboration and high-resolution data.</p>' +
+        "    </div>" +
+        "    <div>" +
+        '      <h4 class="font-bold text-primary mb-md">Resources</h4>' +
+        '      <ul class="space-y-sm text-on-surface-variant">' +
+        '        <li><a href="' + DOCS_URL + '" class="hover:text-primary-fixed">Documentation</a></li>' +
+        '        <li><a href="' + DOCS_URL + 'api-reference/" class="hover:text-primary-fixed">API Reference</a></li>' +
+        '        <li><a href="' + DOCS_URL + 'data/" class="hover:text-primary-fixed">Dataset Catalog</a></li>' +
+        '        <li><a href="' + DOCS_URL + 'validator/" class="hover:text-primary-fixed">Validation Tool</a></li>' +
+        "      </ul>" +
+        "    </div>" +
+        "    <div>" +
+        '      <h4 class="font-bold text-primary mb-md">Community</h4>' +
+        '      <ul class="space-y-sm text-on-surface-variant">' +
+        '        <li><a href="' + GITHUB_URL + '" class="hover:text-primary-fixed">GitHub</a></li>' +
+        '        <li><a href="https://mlcast.slack.com/join/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg#/shared-invite/email" class="hover:text-primary-fixed">Discussions</a></li>' +
+        '        <li><a href="mailto:mlcastcommunity%2Bsubscribe@googlegroups.com" class="hover:text-primary-fixed">Newsletter</a></li>' +
+        '        <li><a href="https://github.com/orgs/mlcast-community/people" class="hover:text-primary-fixed">Contributors</a></li>' +
+        "      </ul>" +
+        "    </div>" +
+        "    <div>" +
+        '      <h4 class="font-bold text-primary mb-md">Legal</h4>' +
+        '      <p class="text-on-surface-variant text-xs italic">© 2026 MLCast Community. Released under MIT License.</p>' +
+        "    </div>" +
+        "  </div>" +
+        "</footer>";
+
+    var footerMount = document.getElementById("site-footer");
+    if (footerMount) footerMount.outerHTML = footerMarkup;
+
+    // --- Copy-on-select for terminal windows ---
+    // Selecting text inside a .terminal-window copies it and shows a toast.
+    // Delegated on document so it also covers terminals injected later.
+    (function () {
+        var toast = null;
+        var timer = null;
+
+        function showToast(msg) {
+            if (!toast) {
+                toast = document.createElement("div");
+                toast.className = "copy-toast";
+                document.body.appendChild(toast);
+            }
+            toast.textContent = msg;
+            toast.classList.add("show");
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () { toast.classList.remove("show"); }, 1800);
+        }
+
+        function copyText(text) {
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                return navigator.clipboard.writeText(text);
+            }
+            return new Promise(function (resolve, reject) {
+                var ta = document.createElement("textarea");
+                ta.value = text;
+                ta.style.position = "fixed";
+                ta.style.left = "-9999px";
+                document.body.appendChild(ta);
+                ta.select();
+                var ok = document.execCommand("copy");
+                document.body.removeChild(ta);
+                ok ? resolve() : reject();
+            });
+        }
+
+        document.addEventListener("mouseup", function (e) {
+            if (!e.target.closest(".terminal-window")) return;
+            setTimeout(function () {
+                var sel = window.getSelection();
+                if (!sel || sel.isCollapsed) return;
+                var text = sel.toString().trim();
+                if (!text) return;
+                copyText(text).then(
+                    function () { showToast("Copied to clipboard"); },
+                    function () { showToast("Copy failed"); }
+                );
+            }, 10);
+        });
+    })();
 
     // Hamburger menu
     var btn = document.getElementById("hamburger-btn");

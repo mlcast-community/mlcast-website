@@ -617,3 +617,26 @@ footer a:not(.footer-brand) {
     color: #EE964B !important;
     border-color: #EE964B;
 }
+
+/* Copy-to-clipboard toast (shown by header.js copy-on-select). */
+.copy-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #005B63;
+    color: #FFFFFF;
+    padding: 10px 24px;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+.copy-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

@@ -39,6 +39,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bash scripts/fetch-gh-stats.sh mlcast-community dist/gh-stats.json
 
+      # --- "Good first issue" list fetched at build time (same rationale) ---
+      - name: Fetch GitHub good-first-issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/fetch-gh-issues.sh mlcast-community dist/gh-issues.json
+
       # --- MyST / Jupyter Book docs -> dist/docs/ ---
       - uses: astral-sh/setup-uv@v5
         with:

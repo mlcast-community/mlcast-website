@@ -7,48 +7,7 @@
     <title>MLCast Community - Contribute</title>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#005B63",
-                        "primary-fixed": "#EE964B",
-                        "background": "#FFFFFF",
-                        "surface-container": "#F7EDE2",
-                        "surface-container-high": "#F0E8DE",
-                        "on-surface": "#005B63",
-                        "on-surface-variant": "#6B7F82",
-                        "on-primary-fixed": "#FFFFFF",
-                        "outline-variant": "#E8DDD4",
-                        "accent-2": "#F4D35E",
-                        "surface-creme": "#F7EDE2"
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                        "full": "9999px"
-                    },
-                    spacing: {
-                        "md": "16px",
-                        "lg": "24px",
-                        "xl": "40px",
-                        "sm": "8px",
-                        "margin-mobile": "16px",
-                        "margin-desktop": "48px"
-                    },
-                    fontFamily: {
-                        "headline-xl": ["Geist"],
-                        "body-lg": ["Inter"],
-                        "label-tag": ["JetBrains Mono"]
-                    }
-                }
-            }
-        };
-    </script>
+    <script src="tailwind-config.js"></script>
 
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
@@ -139,27 +98,6 @@
             }
         }
 
-      .copy-toast {
-        position: fixed;
-        bottom: 24px;
-        left: 50%;
-        transform: translateX(-50%) translateY(80px);
-        background: #005B63;
-        color: #FFFFFF;
-        padding: 10px 24px;
-        border-radius: 0.5rem;
-        font-size: 0.875rem;
-        font-weight: 600;
-        z-index: 9999;
-        opacity: 0;
-        transition: opacity 0.25s ease, transform 0.25s ease;
-        pointer-events: none;
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
-      }
-      .copy-toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
 
       ::selection {
         background: #EE964B;
@@ -708,48 +646,7 @@
 
   
     <!-- Footer: Elegante e professionale -->
-<footer class="border-t border-outline-variant/20 bg-[#F0E8DE] py-xl mt-24">
-    <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">
-        
-        <!-- Colonna 1: Info Progetto -->
-        <div class="col-span-2 md:col-span-1">
-            <h4 class="font-bold text-primary mb-md">MLCast Community</h4>
-            <p class="text-on-surface-variant leading-relaxed">
-                Advancing meteorological intelligence through open-source collaboration and high-resolution data.
-            </p>
-        </div>
-
-        <!-- Colonna 2: Risorse -->
-        <div>
-            <h4 class="font-bold text-primary mb-md">Resources</h4>
-            <ul class="space-y-sm text-on-surface-variant">
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/" class="hover:text-primary-fixed">Documentation</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/api-reference/" class="hover:text-primary-fixed">API Reference</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/data/" class="hover:text-primary-fixed">Dataset Catalog</a></li>
-                <li><a href="https://webvalley2026.github.io/mlcast-website/docs/validator/" class="hover:text-primary-fixed">Validation Tool</a></li>
-            </ul>
-        </div>
-
-        <!-- Colonna 3: Community -->
-        <div>
-            <h4 class="font-bold text-primary mb-md">Community</h4>
-            <ul class="space-y-sm text-on-surface-variant">
-                <li><a href="https://github.com/mlcast-community" class="hover:text-primary-fixed">GitHub</a></li>
-                <li><a href="https://mlcast.slack.com/join/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg#/shared-invite/email" class="hover:text-primary-fixed">Discussions</a></li>
-                <li><a href="mailto:mlcastcommunity%2Bsubscribe@googlegroups.com" class="hover:text-primary-fixed">Newsletter</a></li>
-                <li><a href="https://github.com/orgs/mlcast-community/people" class="hover:text-primary-fixed">Contributors</a></li>
-            </ul>
-        </div>
-
-        <!-- Colonna 4: Legal/Status -->
-        <div>
-            <h4 class="font-bold text-primary mb-md">Legal</h4>
-            <p class="text-on-surface-variant text-xs italic">
-                © 2026 MLCast Community. Released under MIT License.
-            </p>
-        </div>
-    </div>
-</footer>
+<div id="site-footer"></div>
 
     <script>
         const pathNav = document.querySelector(".path-nav");
@@ -886,9 +783,13 @@
                 </a>`;
         };
 
-        fetch("https://api.github.com/search/issues?q=org:mlcast-community+label:%22good+first+issue%22+state:open&sort=updated&order=desc&per_page=3")
+        // Issues are fetched at build time by scripts/fetch-gh-issues.sh
+        // (authenticated GitHub API, 5000 req/hr) and served as a static JSON.
+        // No client-side GitHub API calls -> no 60 req/hr rate-limit 429s.
+        // If the fetch fails or the file is missing, the fallback link renders.
+        fetch("gh-issues.json", { cache: "no-cache" })
             .then((response) => {
-                if (!response.ok) throw new Error("GitHub request failed");
+                if (!response.ok) throw new Error("issues request failed");
                 return response.json();
             })
             .then((data) => {
@@ -898,10 +799,10 @@
                 }
 
                 issueList.innerHTML = data.items.map((issue) => {
-                    const repository = escapeHtml(issue.repository_url.split("/").pop());
+                    const repository = escapeHtml(issue.repo);
                     const title = escapeHtml(issue.title);
                     const issueNumber = escapeHtml(issue.number);
-                    const issueUrl = encodeURI(issue.html_url);
+                    const issueUrl = encodeURI(issue.url);
                     return `
                         <a href="${issueUrl}" target="_blank" rel="noreferrer" class="issue-card group flex min-h-48 flex-col rounded-xl border border-outline-variant/30 p-6 transition-colors hover:border-primary-fixed/60">
                             <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">${repository}</span>
@@ -915,51 +816,5 @@
             })
             .catch(renderIssueFallback);
     </script>
-    <script>
-</script>
-<script>
-    // Copy-on-select for terminal windows
-    (function () {
-        var toast = document.createElement('div');
-        toast.className = 'copy-toast';
-        toast.textContent = 'Copied to clipboard';
-        document.body.appendChild(toast);
-
-        var timer = null;
-
-        function showToast(msg) {
-            if (msg) toast.textContent = msg;
-            toast.classList.add('show');
-            if (timer) clearTimeout(timer);
-            timer = setTimeout(function () {
-                toast.classList.remove('show');
-            }, 1800);
-        }
-
-        document.addEventListener('mouseup', function (e) {
-            var term = e.target.closest('.terminal-window');
-            if (!term) return;
-            setTimeout(function () {
-                var sel = window.getSelection();
-                if (!sel || sel.isCollapsed) return;
-                var text = sel.toString().trim();
-                if (!text) return;
-                try {
-                    var ta = document.createElement('textarea');
-                    ta.value = text;
-                    ta.style.position = 'fixed';
-                    ta.style.left = '-9999px';
-                    document.body.appendChild(ta);
-                    ta.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(ta);
-                    showToast('Copied to clipboard');
-                } catch (e) {
-                    showToast('Copy failed');
-                }
-            }, 10);
-        });
-    })();
-</script>
 </body>
 </html>
