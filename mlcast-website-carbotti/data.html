@@ -87,9 +87,6 @@
             <span class="section-nav__title">On this page</span>
             <a href="#dataset-catalog" data-section-link>Dataset Catalog</a>
             <a href="#access" data-section-link>Accessing Data</a>
-            <a href="#quick-exploration" data-section-link>Quick Exploration</a>
-            <a href="#architecture" data-section-link>Catalog Architecture</a>
-            <a href="#metadata" data-section-link>Transparency &amp; Metadata</a>
         </div>
     </nav>
 
@@ -199,31 +196,6 @@
             </div>
         </section>
 
-        <!-- Example Dataset Exploration -->
-        <section id="quick-exploration" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
-            <div class="bg-[#F0E8DE] p-8 md:p-12 rounded-3xl border border-outline-variant/30">
-                <h2 class="text-3xl font-bold text-primary mb-8">Quick Exploration</h2>
-                <div class="space-y-6">
-                    <p class="text-on-surface-variant">Once you have the catalog open, you can start exploring the data instantly:</p>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                        <div class="terminal-window font-mono text-xs">
-                            # List available sources<br>
-                            print(list(cat))<br>
-                            # -> ['precipitation']<br><br>
-                            # Access a specific radar dataset<br>
-                            ds = cat.precipitation.radklim_5_minutes.to_dask()
-                        </div>
-                        <ul class="space-y-4 text-sm text-on-surface-variant">
-                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Dask-backed xarray datasets</li>
-                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> CF-1.6 Convention compliant</li>
-                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> Cloud-native Zarr format</li>
-                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-primary-fixed">check</span> EWC hosted for low latency</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <!-- Why MLCast Data Section -->
 <section class="py-20 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -244,31 +216,6 @@
                 <span class="material-symbols-outlined text-primary-fixed">code</span> Code-Addressable
             </h3>
             <p class="text-sm text-on-surface-variant">Data is not a static file; it's an object in your Python pipeline. Using <code>intake</code>, every dataset is queryable, version-controlled, and ready for training.</p>
-        </div>
-    </div>
-</section>
-<section id="architecture" class="py-10 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
-    <div class="border-l-4 border-primary-fixed pl-8">
-        <h2 class="text-3xl font-bold text-primary mb-4">The Catalog Architecture</h2>
-        <p class="text-on-surface-variant max-w-3xl">
-            The MLCast Intake Catalog serves as the <strong>single source of truth</strong> for all community-curated data. 
-            By centralizing metadata and access paths, we ensure that every researcher uses the exact same data versioning, coordinate systems, and schema, 
-            eliminating the "data cleaning" bottleneck in machine learning experiments.
-        </p>
-    </div>
-</section>
-<!-- Aggiornamento sezione Quick Exploration -->
-<section id="metadata" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
-    <div class="bg-[#F0E8DE] p-8 md:p-12 rounded-3xl border border-outline-variant/30">
-        <h2 class="text-3xl font-bold text-primary mb-6">Transparency & Metadata</h2>
-        <p class="text-on-surface-variant mb-8">Every dataset in our catalog includes rich provenance metadata (Author, Conventions, Creation Date), ensuring full scientific traceability:</p>
-        
-        <div class="terminal-window font-mono text-xs">
-            # Full dataset attributes available instantly<br>
-            print(ds.attrs['reference'])<br>
-            # -> '10.5676/DWD/RADKLIM_YW_V2017.002'<br><br>
-            print(ds.attrs['mlcast_dataset_identifier'])<br>
-            # -> 'DE-DWD-radar_precipitation-RADKLIM'
         </div>
     </div>
 </section>
