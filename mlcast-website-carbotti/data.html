@@ -486,15 +486,7 @@
         datasetCatalogStatus.textContent = total ? `${visible} catalog datasets shown.` : "No catalog datasets loaded.";
     };
 
-    const getDatasetIcon = (sourceName) => {
-        const s = sourceName.toLowerCase();
-        if (s.includes("radklim") || s.includes("radclim")) return "radar";
-        if (s.includes("dmi")) return "ac_unit";
-        if (s.includes("metoffice") || s.includes("uk")) return "cloud";
-        if (s.includes("dpc") || s.includes("it")) return "sunny";
-        if (s.includes("rmi") || s.includes("be") || s.includes("mfb")) return "rainy";
-        return "database";
-    };
+    const getDatasetIcon = () => "rainy";
 
     const getDatasetImpacts = (sourceName) => {
         const s = sourceName.toLowerCase();
