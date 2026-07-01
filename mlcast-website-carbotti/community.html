@@ -63,6 +63,65 @@
                 #F7EDE2;
         }
 
+        /* --- Who / What / Why scroll stepper --- */
+        .www-line {
+            position: absolute;
+            left: 11px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: #E8DDD4;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .www-line-fill {
+            position: absolute;
+            inset: 0;
+            background: #EE964B;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform .5s cubic-bezier(.22, .61, .36, 1);
+        }
+        .www-step {
+            position: relative;
+            padding-left: 44px;
+        }
+        .www-dot {
+            position: absolute;
+            left: 3px;
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 9999px;
+            background: #F0E8DE;
+            border: 2px solid #E8DDD4;
+            transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+        }
+        .www-step.active .www-dot {
+            background: #EE964B;
+            border-color: #EE964B;
+            box-shadow: 0 0 0 6px rgba(238, 150, 75, .16);
+        }
+        @media (min-width: 1024px) {
+            .www-rail-inner {
+                position: sticky;
+                top: 108px;
+            }
+            .is-enhanced .www-step {
+                opacity: .35;
+                transition: opacity .45s ease;
+            }
+            .is-enhanced .www-step.active {
+                opacity: 1;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .www-line-fill,
+            .www-dot,
+            .is-enhanced .www-step {
+                transition: none !important;
+            }
+        }
     </style>
 </head>
 
@@ -166,86 +225,139 @@
         </div>
     </section>
 
-    <section class="border-y border-outline-variant/20 bg-[#F0E8DE] px-margin-mobile py-20 md:px-margin-desktop md:py-24" aria-label="About the MLCast community">
-        <div class="mx-auto max-w-[1320px]">
-            <div class="divide-y divide-outline-variant/20">
-                <article class="grid grid-cols-1 gap-8 pb-16 md:pb-20 lg:grid-cols-[1.7fr_1fr] lg:items-center lg:gap-16">
-                    <div>
-                        <h2 class="font-headline-xl text-3xl font-bold text-primary md:text-4xl">Who We Are</h2>
-                        <blockquote class="mt-4 max-w-2xl rounded-lg border-l-4 border-primary-fixed bg-background/60 p-5 text-sm italic leading-relaxed text-on-surface-variant md:text-base">
-                            An open network of people who care about reproducible nowcasting, shared data, and useful forecasting infrastructure.
-                        </blockquote>
-                    </div>
-                    <img src="img/MLCast-Group-Picture.png" alt="MLCast community members gathered at the Copenhagen conference" class="aspect-[3/2] w-full max-w-sm rounded-lg object-cover lg:ml-auto"/>
-                </article>
+    <section id="ethos" class="border-y border-outline-variant/20 bg-[#F0E8DE] px-margin-mobile py-20 md:px-margin-desktop md:py-28" aria-labelledby="ethos-heading">
+        <div class="mx-auto max-w-[1180px]">
+            <div class="max-w-3xl">
+                <div class="font-label-tag text-[10px] uppercase text-primary-fixed mb-3">[ WHO · WHAT · WHY ]</div>
+                <h2 id="ethos-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">What we're about.</h2>
+                <p class="mt-4 text-base md:text-lg leading-relaxed text-on-surface-variant">
+                    Placeholder intro — a short line framing who the community is and where the story below leads.
+                </p>
+            </div>
 
-                <article class="grid grid-cols-1 gap-8 py-16 md:py-20 lg:grid-cols-[1fr_1.7fr] lg:items-center lg:gap-16">
-                    <div class="lg:order-2">
-                        <h2 class="font-headline-xl text-3xl font-bold text-primary md:text-4xl">What We Do</h2>
-                        <blockquote class="mt-4 max-w-2xl rounded-lg border-l-4 border-primary-fixed bg-background/60 p-5 text-sm italic leading-relaxed text-on-surface-variant md:text-base">
-                            We build datasets, validators, model code, documentation, and examples that help teams compare and improve precipitation forecasts.
-                        </blockquote>
-                    </div>
-                    <img src="img/Copenhagen-Conference.png" alt="A presentation on machine-learning nowcasting at the Copenhagen conference" class="aspect-[3/2] w-full max-w-sm rounded-lg object-cover lg:order-1 lg:mr-auto"/>
-                </article>
+            <div id="www-grid" class="mt-14 grid grid-cols-1 gap-10 md:mt-16 lg:grid-cols-[minmax(380px,460px)_1fr] lg:gap-16">
+                <!-- LEFT: sticky progress rail -->
+                <div class="www-rail">
+                    <div class="www-rail-inner">
+                        <div class="relative">
+                            <div class="www-line" aria-hidden="true"><div class="www-line-fill" id="www-fill"></div></div>
+                            <ol class="list-none pl-0 m-0 flex flex-col gap-12 lg:gap-24">
+                                <li class="www-step active" data-step="0">
+                                    <span class="www-dot" aria-hidden="true"></span>
+                                    <div class="font-label-tag text-[11px] text-primary-fixed">01</div>
+                                    <h3 class="mt-1 font-headline-xl text-2xl md:text-3xl font-bold text-primary">Who we are</h3>
+                                    <p class="mt-2 text-sm md:text-base leading-relaxed text-on-surface-variant">
+                                        Placeholder text — an open network of people who care about reproducible nowcasting and shared data.
+                                    </p>
+                                    <img src="img/MLCast-Group-Picture.png" alt="MLCast community members gathered at the Copenhagen conference" loading="lazy" class="mt-5 aspect-[4/3] w-full rounded-lg object-cover shadow-lg lg:hidden"/>
+                                </li>
 
-                <article class="pt-16 md:pt-20">
-                    <h2 class="font-headline-xl text-3xl font-bold text-primary md:text-4xl">Why</h2>
-                    <blockquote class="mt-4 max-w-3xl rounded-lg border-l-4 border-primary-fixed bg-background/60 p-5 text-sm italic leading-relaxed text-on-surface-variant md:text-base">
-                        Better open tools can make severe-weather research easier to verify, easier to reuse, and more useful for the people who need lead time.
-                    </blockquote>
-                </article>
+                                <li class="www-step" data-step="1">
+                                    <span class="www-dot" aria-hidden="true"></span>
+                                    <div class="font-label-tag text-[11px] text-primary-fixed">02</div>
+                                    <h3 class="mt-1 font-headline-xl text-2xl md:text-3xl font-bold text-primary">What we do</h3>
+                                    <p class="mt-2 text-sm md:text-base leading-relaxed text-on-surface-variant">
+                                        Placeholder text — we build datasets, validators, model code and examples that help teams compare precipitation forecasts.
+                                    </p>
+                                    <img src="img/Copenhagen-Conference.png" alt="A presentation on machine-learning nowcasting at the Copenhagen conference" loading="lazy" class="mt-5 aspect-[4/3] w-full rounded-lg object-cover shadow-lg lg:hidden"/>
+                                </li>
+
+                                <li class="www-step" data-step="2">
+                                    <span class="www-dot" aria-hidden="true"></span>
+                                    <div class="font-label-tag text-[11px] text-primary-fixed">03</div>
+                                    <h3 class="mt-1 font-headline-xl text-2xl md:text-3xl font-bold text-primary">Why it matters</h3>
+                                    <p class="mt-2 text-sm md:text-base leading-relaxed text-on-surface-variant">
+                                        Placeholder text — better open tools make severe-weather research easier to verify, reuse, and act on with more lead time.
+                                    </p>
+                                    <img src="img/Group-Restaurant-Picture.jpeg" alt="MLCast community members sharing a meal at a restaurant" loading="lazy" class="mt-5 aspect-[4/3] w-full rounded-lg object-cover shadow-lg lg:hidden"/>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: scrolling photos (desktop) -->
+                <div class="hidden lg:block" aria-hidden="true">
+                    <div class="flex flex-col">
+                        <div class="www-media-panel flex min-h-[80vh] items-center" data-step="0">
+                            <img src="img/MLCast-Group-Picture.png" alt="" loading="lazy" class="ml-auto aspect-[4/3] w-full max-w-[540px] rounded-xl object-cover shadow-2xl"/>
+                        </div>
+                        <div class="www-media-panel flex min-h-[80vh] items-center" data-step="1">
+                            <img src="img/Copenhagen-Conference.png" alt="" loading="lazy" class="ml-auto aspect-[4/3] w-full max-w-[540px] rounded-xl object-cover shadow-2xl"/>
+                        </div>
+                        <div class="www-media-panel flex min-h-[80vh] items-center" data-step="2">
+                            <img src="img/Group-Restaurant-Picture.jpeg" alt="" loading="lazy" class="ml-auto aspect-[4/3] w-full max-w-[540px] rounded-xl object-cover shadow-2xl"/>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <section class="px-margin-mobile md:px-margin-desktop py-20 border-y border-outline-variant/20 bg-[#F0E8DE]" aria-labelledby="voices-heading">
+    <section class="border-y border-outline-variant/20 bg-background px-margin-mobile py-24 md:px-margin-desktop md:py-28" aria-labelledby="voices-heading">
         <div class="max-w-[1180px] mx-auto">
             <div class="max-w-3xl">
                 <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase">[COMMUNITY VOICES]</div>
                 <h2 id="voices-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">What people bring to MLCast.</h2>
             </div>
 
-            <div class="mt-10 flex flex-col gap-md lg:flex-row lg:flex-wrap">
-                <article class="glass-card rounded-lg p-5 lg:flex-[1_1_30%]">
-                    <div class="flex gap-4">
-                        <img src="img/people/Gabriele-Franch.png" alt="Gabriele Franch" class="h-20 w-20 shrink-0 rounded-lg border border-primary-fixed/30 object-cover"/>
+            <div class="mt-12 border-b border-outline-variant md:mt-16">
+                <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
+                    <img src="img/people/Gabriele-Franch.png" alt="Gabriele Franch" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
+                    <div class="min-w-0">
+                        <div class="font-label-tag text-[10px] text-primary-fixed">[01]</div>
+                        <p class="mt-2 text-base font-bold text-primary md:text-lg">Gabriele Franch</p>
+                        <blockquote class="mt-4 font-headline-xl text-xl font-semibold leading-snug text-primary md:text-2xl">
+                            <span class="text-primary-fixed" aria-hidden="true">“</span>The community gives us a common language for turning local radar archives into reusable training data.<span class="text-primary-fixed" aria-hidden="true">”</span>
+                        </blockquote>
+                    </div>
+                    <div class="col-start-2 mt-5 flex items-center gap-3 lg:col-start-3 lg:row-start-1 lg:mt-0 lg:self-center">
+                        <span class="h-11 w-11 shrink-0 rounded-full border border-primary-fixed/40 bg-surface-container" aria-hidden="true"></span>
                         <div class="min-w-0">
-                            <p class="mt-0 text-base font-bold text-primary">Gabriele Franch</p>
-
-                            <p class="text-sm leading-relaxed text-on-surface-variant">
-                                The community gives us a common language for turning local radar archives into reusable training data.
-                            </p>
+                            <div class="font-label-tag text-[9px] uppercase tracking-wider text-primary-fixed">Organisation</div>
+                            <p class="mt-1 text-sm font-semibold text-primary">Organisation name</p>
+                            <p class="mt-1 text-xs text-on-surface-variant">Location</p>
                         </div>
                     </div>
                 </article>
 
-                <article class="glass-card rounded-lg p-5 lg:flex-[1_1_30%]">
-                    <div class="flex gap-4">
-                        <img src="img/people/Leif.png" alt="Leif" class="h-20 w-20 shrink-0 rounded-lg border border-primary-fixed/30 object-cover"/>
+                <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
+                    <img src="img/people/Leif.png" alt="Leif Denby" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
+                    <div class="min-w-0">
+                        <div class="font-label-tag text-[10px] text-primary-fixed">[02]</div>
+                        <p class="mt-2 text-base font-bold text-primary md:text-lg">Leif Denby</p>
+                        <blockquote class="mt-4 font-headline-xl text-xl font-semibold leading-snug text-primary md:text-2xl">
+                            <span class="text-primary-fixed" aria-hidden="true">“</span>I bring experience in operational meteorology and a practical perspective on what forecasters actually need from machine-learning tools.<span class="text-primary-fixed" aria-hidden="true">”</span>
+                        </blockquote>
+                    </div>
+                    <div class="col-start-2 mt-5 flex items-center gap-3 lg:col-start-3 lg:row-start-1 lg:mt-0 lg:self-center">
+                        <span class="h-11 w-11 shrink-0 rounded-full border border-primary-fixed/40 bg-surface-container" aria-hidden="true"></span>
                         <div class="min-w-0">
-                            <p class="mt-0 text-base font-bold text-primary">Leif Denby</p>
-
-                            <p class="text-sm leading-relaxed text-on-surface-variant">
-                                I bring experience in operational meteorology and a practical perspective on what forecasters actually need from machine-learning tools.
-                            </p>
+                            <div class="font-label-tag text-[9px] uppercase tracking-wider text-primary-fixed">Organisation</div>
+                            <p class="mt-1 text-sm font-semibold text-primary">Organisation name</p>
+                            <p class="mt-1 text-xs text-on-surface-variant">Location</p>
                         </div>
                     </div>
                 </article>
 
-                <article class="glass-card rounded-lg p-5 lg:flex-[1_1_30%]">
-                    <div class="flex gap-4">
-                        <img src="img/people/Irene.png" alt="Irene" class="h-20 w-20 shrink-0 rounded-lg border border-primary-fixed/30 object-cover"/>
+                <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
+                    <img src="img/people/Irene.png" alt="Irene Livia Kruse" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
+                    <div class="min-w-0">
+                        <div class="font-label-tag text-[10px] text-primary-fixed">[03]</div>
+                        <p class="mt-2 text-base font-bold text-primary md:text-lg">Irene Livia Kruse</p>
+                        <blockquote class="mt-4 font-headline-xl text-xl font-semibold leading-snug text-primary md:text-2xl">
+                            <span class="text-primary-fixed" aria-hidden="true">“</span>Working at the intersection of data engineering and atmospheric science, I help turn raw radar data into clean, well-documented datasets.<span class="text-primary-fixed" aria-hidden="true">”</span>
+                        </blockquote>
+                    </div>
+                    <div class="col-start-2 mt-5 flex items-center gap-3 lg:col-start-3 lg:row-start-1 lg:mt-0 lg:self-center">
+                        <span class="h-11 w-11 shrink-0 rounded-full border border-primary-fixed/40 bg-surface-container" aria-hidden="true"></span>
                         <div class="min-w-0">
-                            <p class="mt-0 text-base font-bold text-primary">Irene Livia Kruse</p>
-
-                            <p class="text-sm leading-relaxed text-on-surface-variant">
-                                Working at the intersection of data engineering and atmospheric science, I help turn raw radar data into clean, well-documented datasets.
-                            </p>
+                            <div class="font-label-tag text-[9px] uppercase tracking-wider text-primary-fixed">Organisation</div>
+                            <p class="mt-1 text-sm font-semibold text-primary">Organisation name</p>
+                            <p class="mt-1 text-xs text-on-surface-variant">Location</p>
                         </div>
                     </div>
                 </article>
-
             </div>
         </div>
     </section>
@@ -327,6 +439,49 @@
         menu.querySelectorAll('a').forEach(function(a) {
             a.addEventListener('click', close);
         });
+    })();
+
+    // Who / What / Why scroll stepper
+    (function() {
+        const grid = document.getElementById('www-grid');
+        if (!grid) return;
+        const steps = Array.prototype.slice.call(document.querySelectorAll('.www-step'));
+        const panels = Array.prototype.slice.call(document.querySelectorAll('.www-media-panel'));
+        const fill = document.getElementById('www-fill');
+        const line = document.querySelector('.www-line');
+        if (!steps.length) return;
+
+        grid.classList.add('is-enhanced');
+
+        function activate(i) {
+            steps.forEach(function(s, idx) { s.classList.toggle('active', idx === i); });
+            if (!fill || !line) return;
+            const dot = steps[i].querySelector('.www-dot');
+            const lr = line.getBoundingClientRect();
+            const dr = dot.getBoundingClientRect();
+            let frac = (dr.top + dr.height / 2 - lr.top) / lr.height;
+            frac = Math.max(0, Math.min(1, frac));
+            fill.style.transform = 'scaleY(' + frac + ')';
+        }
+
+        // Click a step to jump to its photo panel (desktop)
+        steps.forEach(function(s, idx) {
+            s.addEventListener('click', function() {
+                if (panels[idx]) panels[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+
+        if (panels.length && 'IntersectionObserver' in window) {
+            const io = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) activate(parseInt(e.target.dataset.step, 10));
+                });
+            }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+            panels.forEach(function(p) { io.observe(p); });
+        }
+
+        window.addEventListener('load', function() { activate(0); });
+        activate(0);
     })();
 </script>
 </body>
