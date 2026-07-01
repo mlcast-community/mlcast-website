@@ -143,7 +143,7 @@
             });
         }
 
-        document.addEventListener("mouseup", function (e) {
+        function handleSelection(e) {
             if (!e.target.closest(".terminal-window")) return;
             setTimeout(function () {
                 var sel = window.getSelection();
@@ -155,6 +155,22 @@
                     function () { showToast("Copy failed"); }
                 );
             }, 10);
+        }
+
+        document.addEventListener("mouseup", handleSelection);
+        // touchend needs a longer delay so the text selection settles on mobile.
+        document.addEventListener("touchend", function (e) {
+            if (!e.target.closest(".terminal-window")) return;
+            setTimeout(function () {
+                var sel = window.getSelection();
+                if (!sel || sel.isCollapsed) return;
+                var text = sel.toString().trim();
+                if (!text) return;
+                copyText(text).then(
+                    function () { showToast("Copied to clipboard"); },
+                    function () { showToast("Copy failed"); }
+                );
+            }, 300);
         });
     })();
 
