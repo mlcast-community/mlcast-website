@@ -30,6 +30,12 @@ jobs:
           # links to index.html, so publish home.html as index.html too.
           cp dist/home.html dist/index.html
 
+      # --- Community stats fetched at build time (authenticated: 5000 req/hr) ---
+      - name: Fetch GitHub community stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/fetch-gh-stats.sh mlcast-community dist/gh-stats.json
+
       # --- MyST / Jupyter Book docs -> dist/docs/ ---
       - uses: astral-sh/setup-uv@v5
         with:
