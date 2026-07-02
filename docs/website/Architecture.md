@@ -82,7 +82,11 @@ data.html
 
 ### `home.html`
 
-- Local coverage-map pan and zoom.
+- Local coverage-map pan and zoom. Markers counter-scale with zoom (set via the
+  `--marker-scale` CSS variable on `#coverage-map`) so pins/tooltips shrink
+  partially when zooming in and grow when zooming out, clamped at both ends. The
+  dashed expansion ("Help us with your data!") markers are links to
+  `contributing.html`.
 - Hero canvas animation and muted inline video playback.
 - Clipboard helper and section-navigation scroll behavior.
 - Fetches same-origin `gh-stats.json` and updates community counts/avatars.
@@ -98,6 +102,8 @@ data.html
 - Contributor-path navigation with click locking and scroll synchronization.
 - Fetches same-origin `gh-issues.json`, renders issue cards, and falls back to a
   GitHub search link.
+- The "Share Data" coverage map is a static display (live-country flags only); it
+  has no pan/zoom script and no expansion markers.
 
 The dataset/repository/contributor fields currently present in the support card
 have no updater and remain static placeholders.

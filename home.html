@@ -26,6 +26,12 @@
         background: #EE964B;
         color: #FFFFFF;
       }
+      /* Map markers counter-scale so they shrink (partially) on zoom-in and
+         grow on zoom-out, clamped. --marker-scale is set from JS. */
+      #coverage-map .map-marker {
+        transform: translate(-50%, -50%) scale(var(--marker-scale, 1));
+        transform-origin: center;
+      }
 </style>
 </head>
 <body class="bg-background text-on-surface antialiased font-sans min-h-screen flex flex-col">
@@ -125,35 +131,35 @@
                     <img src="img/world.svg" alt="World map" class="absolute inset-0 h-full w-full object-fill opacity-90" draggable="false" aria-hidden="true">
 
                     <!-- Covered countries -->
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20" style="left:45.5%;top:26.5%">
+                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20 map-marker" style="left:45.5%;top:26.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-1.5 -translate-x-1/2 z-30 w-max rounded border border-primary-fixed/40 bg-surface-creme px-1.5 py-1 text-left opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100"><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Provider:</span> Met Office</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Data range:</span> 2005–2025</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Sampling rate:</span> 5 min</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Resolution:</span> 1 km</span></span>
                         <span class="relative flex h-4 w-4 items-center justify-center">
                             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40"></span>
                             <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/gb.svg" alt="UK" loading="lazy" class="h-full w-full object-cover"></span>
                         </span>
                     </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20" style="left:50.5%;top:24.5%">
+                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20 map-marker" style="left:50.5%;top:24.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-1.5 -translate-x-1/2 z-30 w-max rounded border border-primary-fixed/40 bg-surface-creme px-1.5 py-1 text-left opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100"><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Provider:</span> DMI</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Data range:</span> 2016–2025</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Sampling rate:</span> 10 min</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Resolution:</span> 2 km</span></span>
                         <span class="relative flex h-4 w-4 items-center justify-center">
                             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40" style="animation-delay:.4s"></span>
                             <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/dk.svg" alt="Denmark" loading="lazy" class="h-full w-full object-cover"></span>
                         </span>
                     </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20" style="left:47.8%;top:29.5%">
+                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20 map-marker" style="left:47.8%;top:29.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-1.5 -translate-x-1/2 z-30 w-max rounded border border-primary-fixed/40 bg-surface-creme px-1.5 py-1 text-left opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100"><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Provider:</span> RMI</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Data range:</span> 2017–2023</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Sampling rate:</span> 5 min</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Resolution:</span> 600 m</span></span>
                         <span class="relative flex h-4 w-4 items-center justify-center">
                             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40" style="animation-delay:.8s"></span>
                             <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/be.svg" alt="Belgium" loading="lazy" class="h-full w-full object-cover"></span>
                         </span>
                     </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20" style="left:51.0%;top:28.5%">
+                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20 map-marker" style="left:51.0%;top:28.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-1.5 -translate-x-1/2 z-30 w-max rounded border border-primary-fixed/40 bg-surface-creme px-1.5 py-1 text-left opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100"><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Provider:</span> DWD</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Data range:</span> 2001–2023</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Sampling rate:</span> 5 min</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Resolution:</span> 1 km</span></span>
                         <span class="relative flex h-4 w-4 items-center justify-center">
                             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40" style="animation-delay:1.2s"></span>
                             <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/de.svg" alt="Germany" loading="lazy" class="h-full w-full object-cover"></span>
                         </span>
                     </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20" style="left:51.8%;top:33.5%">
+                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 hover:z-20 map-marker" style="left:51.8%;top:33.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-1.5 -translate-x-1/2 z-30 w-max rounded border border-primary-fixed/40 bg-surface-creme px-1.5 py-1 text-left opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100"><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Provider:</span> DPC</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Data range:</span> 2010–2025</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Sampling rate:</span> 5 min</span><span class="block text-[9px] leading-tight text-on-surface-variant"><span class="text-primary-fixed font-semibold">Resolution:</span> 1 km</span></span>
                         <span class="relative flex h-4 w-4 items-center justify-center">
                             <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40" style="animation-delay:1.6s"></span>
@@ -161,55 +167,55 @@
                         </span>
                     </div>
 
-                    <!-- Expansion targets (global) -->
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:21.7%;top:33.6%">
+                    <!-- Expansion targets (global) — link to the contributing page -->
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:21.7%;top:33.6%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:31.7%;top:61.6%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:31.7%;top:61.6%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:71.5%;top:43.6%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:71.5%;top:43.6%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:85.7%;top:70.1%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:85.7%;top:70.1%">
                         <span class="pointer-events-none absolute bottom-full right-0 mb-2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:16.5%;top:36.0%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:16.5%;top:36.0%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:21.5%;top:24.5%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:21.5%;top:24.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:48.5%;top:52.5%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:48.5%;top:52.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:53.0%;top:77.5%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:53.0%;top:77.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:58.0%;top:42.5%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:58.0%;top:42.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:67.5%;top:46.5%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:67.5%;top:46.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:78.5%;top:38.5%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:78.5%;top:38.5%">
                         <span class="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
-                    <div class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20" style="left:84.0%;top:37.0%">
+                    </a>
+                    <a href="contributing.html" aria-label="Help us with your data — contribute" class="group absolute z-10 -translate-x-1/2 -translate-y-1/2 cursor-pointer hover:z-20 map-marker" style="left:84.0%;top:37.0%">
                         <span class="pointer-events-none absolute bottom-full right-0 mb-2 whitespace-nowrap rounded-md border border-primary-fixed/40 bg-surface-creme px-2.5 py-1 text-xs font-semibold text-primary opacity-0 shadow-[0_6px_20px_rgba(0,0,0,0.5)] transition-opacity duration-150 group-hover:opacity-100">Help us with your data!</span>
                         <span class="flex h-4 w-4 items-center justify-center rounded-full border border-dashed border-on-surface-variant/50 bg-white/80 text-on-surface-variant/70 transition group-hover:scale-110 group-hover:border-primary-fixed group-hover:bg-primary-fixed/10 group-hover:text-primary-fixed"><span class="material-symbols-outlined text-[10px]" aria-hidden="true">add</span></span>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- Zoom controls (fixed to viewport) -->
@@ -264,9 +270,17 @@
                 tx = Math.min(0, Math.max(minTx, tx));
                 ty = Math.min(0, Math.max(minTy, ty));
             }
+            function markerScale() {
+                // Partial counter-scale: markers shrink a bit as the map zooms in
+                // and grow as it zooms out, clamped at both ends.
+                var rendered = 1.95 * Math.pow(scale, -0.28);
+                rendered = Math.max(0.7, Math.min(3.0, rendered));
+                return rendered / scale;
+            }
             function apply() {
                 clamp();
                 map.style.transform = "translate(" + tx + "px," + ty + "px) scale(" + scale + ")";
+                map.style.setProperty("--marker-scale", markerScale());
             }
             function zoomAt(cx, cy, factor) {
                 const prev = scale;
