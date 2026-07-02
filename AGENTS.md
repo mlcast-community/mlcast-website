@@ -71,5 +71,6 @@ workflow guidance.
   copy buttons, and reduced-motion behavior.
 - Recheck local links and every script-owned DOM ID after structural edits.
 - For deployment-sensitive changes, inspect `.github/workflows/deploy.yml`; it
-  stages root HTML/CSS/JS plus `img/` and `video/`, generates GitHub JSON data,
-  duplicates `home.html` as `index.html`, and builds the MyST site under `/docs`.
+  stages root HTML/CSS/JS plus `img/` and `video/`, generates GitHub JSON data
+  and `catalog-stats.json` from catalog Zarr metadata, duplicates `home.html` as
+  `index.html`, and builds the MyST site under `/docs`.

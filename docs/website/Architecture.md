@@ -21,11 +21,13 @@ dataset catalog is fetched by the visitor's browser.
 3. Run `scripts/fetch-gh-stats.sh` and `scripts/fetch-gh-issues.sh` with the
    Actions `GITHUB_TOKEN`, producing `dist/gh-stats.json` and
    `dist/gh-issues.json` when GitHub returns usable data.
-4. Build the MyST site and stage it in `dist/docs/`.
-5. Upload and deploy the combined artifact.
+4. Run `scripts/fetch-catalog-stats.py` (via `uv run`) to read the precipitation
+   catalog's Zarr metadata and produce `dist/catalog-stats.json`.
+5. Build the MyST site and stage it in `dist/docs/`.
+6. Upload and deploy the combined artifact.
 
-The daily schedule refreshes GitHub-derived JSON even when the website source
-has not changed.
+The daily schedule refreshes GitHub-derived JSON and the catalog stats even when
+the website source has not changed.
 
 ## Page map
 
@@ -33,8 +35,7 @@ has not changed.
 | --- | --- |
 | `home.html` | Landing page, coverage map, project overview, and community summary loaded from `gh-stats.json`. |
 | `software.html` | Software ecosystem, copyable commands, step navigation, and client-side configuration preview. |
-| `data.html` | Dataset overview and remote precipitation catalog browser. |
-| `software_and_data.html` | Legacy combined overview for software and dataset details. No longer linked from the primary header nav; reachable via the "back to overview" links on `software.html`/`data.html` and direct URL. |
+| `data.html` | Dataset overview, remote precipitation catalog browser, and impact-spotlight counters loaded from `catalog-stats.json`. |
 | `community.html` | Community introduction, scroll-linked story, testimonials, and contact links. |
 | `contributing.html` | Contributor paths and starter issues loaded from `gh-issues.json`. |
 | `faq.html` | Static FAQ using native `<details>` elements. |
@@ -95,6 +96,9 @@ data.html
 
 - Fetches and parses the remote precipitation catalog.
 - Builds searchable dataset cards and copyable `xarray` examples.
+- Fetches same-origin `catalog-stats.json` and updates the impact-spotlight
+  counters (`#stat-countries`, `#stat-years`, `#stat-timesteps`,
+  `#stat-cadence`), keeping the hard-coded card values on failure.
 - Section-navigation scroll behavior.
 
 ### `contributing.html`

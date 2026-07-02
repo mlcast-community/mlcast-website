@@ -169,13 +169,66 @@ change to an explicit “Unable to load” state. There is no retry or cache.
 - Search by name, description, driver, path, and endpoint.
 - Verify flags, metadata, and copied code examples for each source.
 
+## Dataset impact spotlight
+
+### Purpose
+
+Keep the four "Dataset Impact Spotlight" counters on `data.html` (countries,
+cumulative years, time steps, best cadence) in sync with the actual catalog
+instead of maintaining hard-coded numbers by hand.
+
+### Locations
+
+- Producer: `scripts/fetch-catalog-stats.py`
+- Deployment call: `.github/workflows/deploy.yml` (`uv run --with s3fs --with
+  pyyaml`)
+- Generated artifact: `dist/catalog-stats.json`
+- Consumer: impact-spotlight script in `data.html`
+- DOM targets: `#stat-countries`, `#stat-years`, `#stat-timesteps`,
+  `#stat-cadence`
+
+### How it works
+
+1. The producer fetches the same precipitation `catalog.yml` the browser reads
+   and iterates its `sources`.
+2. For each source it reads **only the Zarr metadata** — consolidated
+   `.zmetadata`, unconsolidated `.zarray`, or Zarr v3 `zarr.json` — never the
+   array data. The `time` array shape gives the step count.
+3. Cadence is parsed from the source name (`*_hourly`, `*_5_minutes`, …) and the
+   country is inferred from the source name, so no coordinate values are read.
+4. It writes `{countries, cumulative_years, time_steps, best_cadence_minutes,
+   datasets, generated}` to `dist/catalog-stats.json`.
+5. `data.html` fetches `catalog-stats.json` with `cache: "no-cache"`, formats the
+   raw numbers (e.g. `6959729` → `6.9M+`, `5` → `5 min`), and updates the cards.
+
+`cumulative_years` is the sum of each dataset's date range. The start comes from
+the `time` variable's `units` attribute and the span is `steps × cadence`, which
+equals end−start for these regular time axes; reading exact end timestamps would
+require downloading whole time arrays (16 MB for one source), so it is avoided.
+
+### Failure handling
+
+A source that cannot be read is skipped. If the catalog fetch fails or no source
+resolves, the producer exits without writing the file, and `data.html` keeps the
+hard-coded fallback values baked into the cards (mirroring `gh-stats.json`).
+
+### Safe modification notes
+
+- The cadence and country heuristics are keyed on source names; update them when
+  upstream renames sources or adds new countries.
+- Version the producer and the `data.html` consumer/formatters together if the
+  JSON schema changes.
+- Keep reads metadata-only; do not switch to `xarray.open_dataset(...).time`
+  values, which downloads coordinate arrays.
+
 ## Shared external dependencies
 
 | Service | Use |
 | --- | --- |
 | GitHub REST API | Build-time repositories, contributor totals, and starter issues. |
 | GitHub profile images | Browser-loaded top-contributor avatars. |
-| Raw GitHub content | Browser-loaded precipitation YAML. |
+| Raw GitHub content | Browser-loaded precipitation YAML; build-time catalog read. |
+| ECMWF S3 (object store) | Build-time Zarr metadata reads for catalog impact stats. |
 | Tailwind browser CDN | Runtime utility CSS with forms/container-query plugins. |
 | Google Fonts | Geist, Inter, JetBrains Mono, and Material Symbols. |
 | FlagCDN | Coverage-map and dataset country flags. |
@@ -187,5 +240,5 @@ change to an explicit “Unable to load” state. There is no retry or cache.
   populated by a script.
 - There is no analytics beacon, iframe, WebSocket, EventSource, query-parameter
   reader, authenticated browser request, or native form-submission script.
-- Generated `gh-stats.json` and `gh-issues.json` are deployment artifacts, not
-  repository source files.
+- Generated `gh-stats.json`, `gh-issues.json`, and `catalog-stats.json` are
+  deployment artifacts, not repository source files.

@@ -45,10 +45,19 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: bash scripts/fetch-gh-issues.sh mlcast-community dist/gh-issues.json
 
-      # --- MyST / Jupyter Book docs -> dist/docs/ ---
       - uses: astral-sh/setup-uv@v5
         with:
           python-version: '3.13'
+
+      # --- Dataset catalog impact stats (Zarr metadata only, no data download) ---
+      - name: Compute catalog stats
+        run: |
+          uv run --with s3fs --with pyyaml \
+            python scripts/fetch-catalog-stats.py \
+            "https://raw.githubusercontent.com/mlcast-community/mlcast-datasets/main/src/mlcast_datasets/catalog/precipitation/catalog.yml" \
+            dist/catalog-stats.json
+
+      # --- MyST / Jupyter Book docs -> dist/docs/ ---
       - name: Build Jupyter Book
         env:
           # Served under <pages-url>/docs, so links must resolve against that subpath

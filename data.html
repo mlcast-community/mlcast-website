@@ -98,22 +98,22 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
                 <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
                     <span class="material-symbols-outlined text-primary-fixed text-3xl">travel_explore</span>
-                    <p class="mt-3 text-3xl font-bold text-primary">5</p>
+                    <p id="stat-countries" class="mt-3 text-3xl font-bold text-primary">5</p>
                     <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Countries</p>
                 </div>
                 <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
                     <span class="material-symbols-outlined text-primary-fixed text-3xl">calendar_month</span>
-                    <p class="mt-3 text-3xl font-bold text-primary">~70</p>
+                    <p id="stat-years" class="mt-3 text-3xl font-bold text-primary">~70</p>
                     <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Cumulative Years</p>
                 </div>
                 <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
                     <span class="material-symbols-outlined text-primary-fixed text-3xl">timeline</span>
-                    <p class="mt-3 text-3xl font-bold text-primary">6M+</p>
+                    <p id="stat-timesteps" class="mt-3 text-3xl font-bold text-primary">6M+</p>
                     <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Time Steps</p>
                 </div>
                 <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
                     <span class="material-symbols-outlined text-primary-fixed text-3xl">sync</span>
-                    <p class="mt-3 text-3xl font-bold text-primary">5 min</p>
+                    <p id="stat-cadence" class="mt-3 text-3xl font-bold text-primary">5 min</p>
                     <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Best Cadence</p>
                 </div>
             </div>
@@ -543,7 +543,34 @@
         updateDot();
     })();
 </script>
+<!-- Dataset Impact Spotlight: build-time stats from catalog Zarr metadata.
+     Producer: scripts/fetch-catalog-stats.py -> catalog-stats.json.
+     On any failure the hard-coded fallback values in the cards are kept. -->
 <script>
+    (function () {
+        const setStat = (id, value) => {
+            const el = document.getElementById(id);
+            if (el && value != null) el.textContent = value;
+        };
+        const formatTimeSteps = (n) => {
+            if (n >= 1e6) return (Math.floor(n / 1e5) / 10) + "M+";
+            if (n >= 1e3) return Math.floor(n / 1e3) + "K+";
+            return String(n);
+        };
+        const formatCadence = (min) => (min >= 60 && min % 60 === 0)
+            ? (min / 60) + (min === 60 ? " hr" : " hrs")
+            : min + " min";
+
+        fetch("catalog-stats.json", { cache: "no-cache" })
+            .then((r) => r.ok ? r.json() : Promise.reject())
+            .then((s) => {
+                setStat("stat-countries", s.countries);
+                if (s.cumulative_years != null) setStat("stat-years", "~" + s.cumulative_years);
+                if (s.time_steps != null) setStat("stat-timesteps", formatTimeSteps(s.time_steps));
+                if (s.best_cadence_minutes != null) setStat("stat-cadence", formatCadence(s.best_cadence_minutes));
+            })
+            .catch(() => { /* keep static fallback values */ });
+    })();
 </script>
 </body>
 </html>
