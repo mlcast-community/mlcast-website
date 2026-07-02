@@ -4,18 +4,18 @@
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>MLCast Community - ML Meteorological Nowcasting</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
+
     <!-- Material Symbols -->
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    
+
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect"/>
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
-    
+
     <!-- Collegamento al CSS Esterno -->
     <link rel="stylesheet" href="home.css">
     <script src="header.js" defer></script>
@@ -46,20 +46,21 @@
             <a href="#get-started" data-section-link>Overview</a>
             <a href="#objectives" data-section-link>The MLCast Plan</a>
             <a href="#mission" data-section-link>The Mission</a>
+            <a href="#networks" data-section-link>Networks</a>
         </div>
     </nav>
 
     <main class="flex-grow">
         <!-- Sezione Hero: Layout diviso -->
 <section class="relative min-h-[calc(100vh-6rem)] flex items-center pt-32 px-margin-mobile md:px-margin-desktop md:pt-24">
-    
+
     <!-- Canvas Background rimane fisso -->
     <div class="absolute inset-0 w-full h-full opacity-30 mix-blend-multiply -z-10">
         <canvas id="shader-canvas" class="w-full h-full"></canvas>
     </div>
 
     <div class="w-full max-w-[1440px] mx-auto flex flex-col lg:flex-row items-center gap-12">
-        
+
         <!-- TESTO A SINISTRA -->
 <div class="w-full lg:w-[55%] flex flex-col gap-lg border-l-4 border-primary-fixed pl-6">
 
@@ -68,17 +69,17 @@
     <span class="whitespace-nowrap">Weather <span class="text-primary-fixed text-glow">Nowcasting</span></span><br />
     <span class="whitespace-nowrap">with <span class="text-primary-fixed text-glow">Machine</span> <span class="text-primary-fixed text-glow">Learning</span></span>
     </h1>
-    
+
     <p class="text-lg text-on-surface-variant max-w-2xl">
-        A collaborative effort dedicated to advancing short-term weather prediction through machine learning and high-resolution observational data.
+        MLCast was initiated through a joint Working Group of the EUMETNET Nowcasting Programme and the E-AI Programme, bringing together operational meteorology and machine learning expertise to advance short-term weather prediction.
     </p>
-            
+
             <div class="flex flex-col sm:flex-row gap-md mt-4">
                 <a class="flex items-center justify-center gap-2 bg-primary-fixed text-on-primary-fixed px-8 py-3 min-h-[44px] rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity" href="community.html">
                     <span class="material-symbols-outlined text-[18px]">terminal</span>
                     Join the community
                 </a>
-                <a class="flex items-center justify-center gap-2 border border-outline-variant text-primary px-8 py-3 min-h-[44px] rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:border-primary-fixed hover:text-primary-fixed transition-colors" 
+                <a class="flex items-center justify-center gap-2 border border-outline-variant text-primary px-8 py-3 min-h-[44px] rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:border-primary-fixed hover:text-primary-fixed transition-colors"
                    href="https://github.com/mlcast-community" target="_blank" rel="noreferrer">
                     <span class="material-symbols-outlined text-[18px]">code</span>
                     Get Started
@@ -93,10 +94,10 @@
     <source src="video/Recording.mp4" type="video/mp4">
 </video>
         <!-- Overlay HUD decorativo -->
-        
+
     </div>
 </div>
-        
+
     </div>
 </section>
         <!-- What is MLCast section -->
@@ -361,7 +362,7 @@
 
         <!-- Griglia dei Punti Chiave -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
+
             <!-- Card 1 -->
             <div class="glass-card p-6 border border-outline-variant/30 rounded-xl hover:border-primary-fixed/50 transition-all">
                 <div class="text-primary-fixed mb-2"><span class="material-symbols-outlined">layers</span></div>
@@ -427,7 +428,7 @@
             <p class="font-body-md text-on-surface-variant leading-relaxed">
                 Our mission is to democratize access to advanced meteorological prediction tools. By fostering an open-source community, we aim to accelerate innovation in weather nowcasting, bridging the gap between academic research and real-world requirements.
             </p>
-            
+
             <ul class="flex flex-col gap-4 mt-8">
                 <li class="flex items-start gap-4">
                     <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
@@ -436,6 +437,10 @@
                 <li class="flex items-start gap-4">
                     <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
                     <span class="font-body-md font-bold text-on-surface">Modular approch, supporting customizable architectures.</span>
+                </li>
+                <li class="flex items-start gap-4">
+                    <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
+                    <span class="font-body-md font-bold text-on-surface">Transparent evaluation frameworks preventing "black box" science.</span>
                 </li>
                 <li class="flex items-start gap-4">
                     <span class="material-symbols-outlined text-primary-fixed mt-1">check_circle</span>
@@ -514,6 +519,27 @@
     </div>
 </section>
 
+<!-- Section: European networks and data infrastructure -->
+<section class="py-24 px-margin-mobile md:px-margin-desktop w-full max-w-[1440px] mx-auto" id="networks">
+    <div class="mb-10">
+        <div class="font-label-tag text-label-tag text-primary-fixed mb-4 uppercase tracking-widest">[EUROPEAN NETWORKS]</div>
+        <h2 class="font-headline-xl text-4xl md:text-5xl font-bold text-primary">Integrated into European Meteorological Networks</h2>
+    </div>
+    <div class="grid grid-cols-1 gap-10 items-start">
+        <div>
+            <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                MLCast is embedded in the European meteorological networks <a class="text-primary-fixed font-semibold hover:underline" href="https://www.eumetnet.eu/" target="_blank" rel="noreferrer">EUMETNET</a>
+                with the <a class="text-primary-fixed font-semibold hover:underline" href="https://www.eumetnet.eu/forecasting-and-climate/nowcasting/" target="_blank" rel="noreferrer">Nowcasting</a>
+                and <a class="text-primary-fixed font-semibold hover:underline" href="https://www.eumetnet.eu/forecasting-and-climate/artificial-intelligence/" target="_blank" rel="noreferrer">E-AI Programmes</a>.
+                This connection supports coordination between national meteorological services, research communities, and operational nowcasting experts, helping to align open-source machine-learning developments with operational requirements.
+            </p>
+            <p class="mt-5 font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                The community leverages the <a class="text-primary-fixed font-semibold hover:underline" href="https://europeanweather.cloud/" target="_blank" rel="noreferrer">European Weather Cloud</a> for hosting and accessing shared datasets. In collaboration with <a class="text-primary-fixed font-semibold hover:underline" href="https://www.eumetsat.int/" target="_blank" rel="noreferrer">EUMETSAT</a>, MLCast also supports the provision of satellite data, including Meteosat Third Generation products, for machine-learning-based nowcasting.
+            </p>
+        </div>
+    </div>
+</section>
+
 <!-- Footer: Elegante e professionale -->
 <div id="site-footer"></div>
 <!-- La sezione "Our Mission" è stata eliminata come richiesto -->
@@ -530,7 +556,7 @@
         const parent = canvas.parentElement;
         canvas.width = parent.clientWidth;
         canvas.height = parent.clientHeight;
-        
+
         particles = Array.from({ length: 60 }, () => ({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
@@ -540,9 +566,9 @@
     }
 
     function draw() {
-        ctx.fillStyle = 'rgba(247, 237, 226, 0.3)'; 
+        ctx.fillStyle = 'rgba(247, 237, 226, 0.3)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-        
+
         ctx.strokeStyle = 'rgba(238, 150, 75, 0.25)';
         ctx.lineWidth = 1;
 
@@ -567,7 +593,7 @@
     }
 
     window.addEventListener('resize', () => init());
-    
+
     setTimeout(() => {
         init();
         draw();
@@ -611,7 +637,7 @@
         const text = textElement.innerText;
         navigator.clipboard.writeText(text).then(() => {
             const originalContent = btn.innerHTML;
-            
+
             // Feedback visivo
             btn.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span> Copied';
             btn.classList.remove('text-primary');
@@ -625,7 +651,7 @@
         });
     }
 
-    
+
   const video = document.getElementById('hero-video');
   // Imposta la velocità: 0.5 è metà velocità, 0.75 è più fluido
   video.playbackRate = 0.5;
