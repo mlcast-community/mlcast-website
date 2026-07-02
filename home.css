@@ -246,21 +246,7 @@ canvas {
 
 @media (max-width: 767.98px) {
     .section-nav {
-        left: 8px;
-    }
-    .section-nav__dot {
-        width: 18px;
-        height: 18px;
-        min-width: 18px;
-        min-height: 18px;
-    }
-    .section-nav__panel {
-        left: 16px;
-        padding: 12px 14px;
-    }
-    .section-nav__panel a {
-        font-size: 12px;
-        padding: 5px 10px 5px 0;
+        display: none;
     }
 }
 
@@ -293,6 +279,7 @@ canvas {
 @media (max-width: 767.98px) {
     .hamburger-btn {
         display: inline-flex;
+        margin-left: 12px;
     }
 }
 
