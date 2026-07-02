@@ -522,7 +522,7 @@ footer {
     min-height: 44px;
 }
 
-footer a:not(.footer-brand) {
+footer a:not(.footer-brand):not(.footer-cta) {
     display: inline-block;
     padding: 10px 0;
     min-height: 44px;

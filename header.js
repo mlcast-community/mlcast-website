@@ -103,22 +103,10 @@
         "    <div>" +
         '      <h4 class="font-bold text-primary mb-md">Legal</h4>' +
         '      <p class="text-on-surface-variant text-xs italic">© 2026 MLCast Community. Released under MIT License.</p>' +
-        "    </div>" +
-        "  </div>" +
-        // Placeholder contact details pending a real inbox/address from the team.
-        '  <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mt-xl pt-lg border-t border-outline-variant/20 flex flex-col md:flex-row md:items-center md:justify-end gap-md text-sm">' +
-        '    <div class="text-on-surface-variant md:text-right">' +
-        '      <p class="font-bold text-primary">Get in touch</p>' +
-        '      <p><a href="mailto:hello@mlcast-community.org" class="hover:text-primary-fixed">hello@mlcast-community.org</a></p>' +
-        "    </div>" +
-        '    <div class="flex flex-col sm:flex-row gap-sm">' +
-        '      <a class="flex items-center justify-center gap-2 bg-primary-fixed text-on-primary-fixed px-6 py-3 min-h-[44px] rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity" href="' + SLACK_URL + '" target="_blank" rel="noreferrer">' +
+        '      <p class="mt-lg font-bold text-primary text-xs uppercase tracking-widest">Get in touch</p>' +
+        '      <a class="footer-cta mt-sm inline-flex items-center justify-center gap-2 bg-primary-fixed text-on-primary-fixed px-8 py-4 min-h-[44px] rounded-lg font-bold text-sm uppercase tracking-wider hover:opacity-90 transition-opacity" href="' + SLACK_URL + '" target="_blank" rel="noreferrer">' +
         '        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">forum</span>' +
         "        Join Slack" +
-        "      </a>" +
-        '      <a class="flex items-center justify-center gap-2 border border-outline-variant text-primary px-6 py-3 min-h-[44px] rounded-DEFAULT font-bold text-sm uppercase tracking-wider hover:border-primary-fixed hover:text-primary-fixed transition-colors" href="' + SLACK_URL + '" target="_blank" rel="noreferrer">' +
-        '        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">groups</span>' +
-        "        Slack Community" +
         "      </a>" +
         "    </div>" +
         "  </div>" +
