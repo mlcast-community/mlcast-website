@@ -40,7 +40,9 @@
     var markup =
         '<header class="fixed top-0 z-50 w-full border-b border-outline-variant/20 bg-background/80 backdrop-blur-xl">' +
         '  <div class="flex justify-between items-center px-margin-mobile md:px-margin-desktop py-md w-full max-w-[1440px] mx-auto">' +
-        '    <a href="home.html" class="text-2xl font-bold text-primary-fixed tracking-tight hover:opacity-80 transition-opacity">MLCast Community</a>' +
+        '    <a href="home.html" class="flex items-center hover:opacity-80 transition-opacity shrink-0">' +
+        '      <img src="img/Logo_linea.svg" alt="MLCast Community" class="h-8 w-auto" />' +
+        "    </a>" +
         '    <nav class="hidden md:flex items-center gap-lg">' + desktopLinks + "</nav>" +
         '    <div class="navbar-actions" aria-label="Project links">' +
         '      <a class="navbar-icon-link navbar-icon-link--labeled" href="' + GITHUB_URL + '" target="_blank" rel="noreferrer" aria-label="MLCast GitHub community" title="GitHub community">' +
@@ -76,7 +78,7 @@
         '<footer class="border-t border-outline-variant/20 bg-surface-creme py-xl mt-24">' +
         '  <div class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-lg text-sm">' +
         '    <div class="col-span-2 md:col-span-1">' +
-        '      <h4 class="font-bold text-primary mb-md">MLCast Community</h4>' +
+        '      <img src="img/Logo_linea.svg" alt="MLCast Community" class="h-7 w-auto mb-md" />' +
         '      <p class="text-on-surface-variant leading-relaxed">Advancing meteorological intelligence through open-source collaboration and high-resolution data.</p>' +
         "    </div>" +
         "    <div>" +
