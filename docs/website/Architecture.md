@@ -38,7 +38,7 @@ the website source has not changed.
 | `data.html` | Dataset overview, remote precipitation catalog browser, and impact-spotlight counters loaded from `catalog-stats.json`. |
 | `software_and_data.html` | Legacy combined overview for software and dataset details. Not linked from the primary header nav or from `software.html`/`data.html`; reachable only by direct URL. |
 | `community.html` | Community introduction, scroll-linked story, testimonials, and contact links. |
-| `contributing.html` | Contributor paths and starter issues loaded from `gh-issues.json`. |
+| `contributing.html` | Contributor paths and current infrastructure-support credits. |
 | `faq.html` | Static FAQ using native `<details>` elements. |
 
 ## Shared files
@@ -105,13 +105,17 @@ data.html
 ### `contributing.html`
 
 - Contributor-path navigation with click locking and scroll synchronization.
-- Fetches same-origin `gh-issues.json`, renders issue cards, and falls back to a
-  GitHub search link.
 - The "Share Data" coverage map is a static display (live-country flags only); it
   has no pan/zoom script and no expansion markers.
+- No longer renders a starter-issues section (removed as repetitive with the
+  "Ways to Contribute" paths above it); see [Integration.md](Integration.md)
+  for the now-orphaned `gh-issues.json` producer this left behind.
 
-The dataset/repository/contributor fields currently present in the support card
-have no updater and remain static placeholders.
+The "Support the Community" card lists current infrastructure support (EWC S3
+storage via DWD, GPU hours via CINECA on Leonardo HPC) as static text and
+partner logos loaded from `img/dwd-logo.png`, `img/eumetnet-logo.png`,
+`img/cineca-logo.png`, and `img/leonardo-logo.png`; update both the copy and
+these four files together if the support arrangement changes.
 
 ### `software.html`
 

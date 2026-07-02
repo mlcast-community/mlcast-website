@@ -67,49 +67,41 @@ contributor lists, so a JSON file may contain partial contribution totals.
 - Test `home.html` with valid, missing, malformed, and partial `gh-stats.json`.
 - Verify all counters and four optional avatars.
 
-## Good-first issues
+## Good-first issues (producer orphaned)
 
-### Purpose
+### Status
 
-Populate the contributor page with a small current set of open issues while
-avoiding anonymous browser requests to GitHub's Search API.
+`contributing.html` dropped its "Current good first issues" section (judged
+repetitive with the "Ways to Contribute" paths earlier on the same page). The
+producer below still runs at every deployment and still writes
+`dist/gh-issues.json`; nothing currently fetches that file. The next time this
+area is touched, either remove the producer/workflow step together or give the
+file a consumer again — don't leave it generating an unread artifact
+indefinitely.
 
 ### Locations
 
 - Producer: `scripts/fetch-gh-issues.sh`
 - Deployment call: `.github/workflows/deploy.yml`
 - Generated artifact: `dist/gh-issues.json`
-- Consumer: issue-loading script in `contributing.html`
-- DOM target: `#issue-list`
+- Consumer: none
 
-### How it works
+### How the producer works
 
-1. The producer searches GitHub for open `good first issue` items in the
+1. It searches GitHub for open `good first issue` items in the
    `mlcast-community` organization, sorted by recent updates.
 2. The default limit is six issues.
 3. `jq` reduces each result to `{repo, title, number, url}` and adds a
    `generated` timestamp.
-4. `contributing.html` fetches `gh-issues.json`, escapes remote text, and renders
-   cards linking to the issue URLs.
+4. If GitHub returns no usable `items` payload, the producer leaves the output
+   file unwritten.
 
-### Failure handling
+### If reintroducing a consumer
 
-If GitHub returns no usable `items` payload, the producer leaves the output file
-unwritten. A missing, non-OK, malformed, or empty JSON response makes the page
-render one actionable link to the equivalent GitHub web search.
-
-### Safe modification notes
-
-- Keep remote text escaped before assigning generated markup to `innerHTML`.
-- Validate issue URLs before changing their use in `href`.
-- Change the producer limit and page layout together.
-- Preserve the fallback search link.
-
-### Testing checklist
-
-- Validate populated, empty, malformed, missing, and offline JSON behavior.
-- Check long titles and repository names at mobile and desktop widths.
-- Confirm issue links and the fallback search URL.
+- Escape remote text before assigning generated markup to `innerHTML`.
+- Validate issue URLs before using them in `href`.
+- Render an explicit fallback (e.g. a GitHub search link) for missing, non-OK,
+  malformed, or empty JSON.
 
 ## Dataset catalog
 
@@ -225,7 +217,7 @@ hard-coded fallback values baked into the cards (mirroring `gh-stats.json`).
 
 | Service | Use |
 | --- | --- |
-| GitHub REST API | Build-time repositories, contributor totals, and starter issues. |
+| GitHub REST API | Build-time repositories and contributor totals; the starter-issues fetch still runs but is currently unconsumed (see "Good-first issues" above). |
 | GitHub profile images | Browser-loaded top-contributor avatars. |
 | Raw GitHub content | Browser-loaded precipitation YAML; build-time catalog read. |
 | ECMWF S3 (object store) | Build-time Zarr metadata reads for catalog impact stats. |
@@ -236,8 +228,6 @@ hard-coded fallback values baked into the cards (mirroring `gh-stats.json`).
 
 ## Current non-integrations
 
-- The dataset/repository/contributor placeholders in `contributing.html` are not
-  populated by a script.
 - There is no analytics beacon, iframe, WebSocket, EventSource, query-parameter
   reader, authenticated browser request, or native form-submission script.
 - Generated `gh-stats.json`, `gh-issues.json`, and `catalog-stats.json` are
