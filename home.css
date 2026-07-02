@@ -106,52 +106,6 @@ canvas {
     white-space: nowrap;
 }
 
-.back-to-software-data {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 44px;
-    max-width: 100%;
-    padding: 0 16px;
-    border: 1px solid rgba(232, 221, 212, 0.9);
-    border-radius: 9999px;
-    color: #005B63;
-    background: rgba(247, 237, 226, 0.8);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    line-height: 1.2;
-    text-decoration: none;
-    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
-}
-
-.back-to-software-data:hover {
-    color: #EE964B;
-    border-color: #EE964B;
-    background: rgba(238, 150, 75, 0.1);
-    transform: translateX(-2px);
-}
-
-.back-to-software-data:focus-visible {
-    outline: 3px solid rgba(238, 150, 75, 0.3);
-    outline-offset: 3px;
-}
-
-.back-to-software-data .material-symbols-outlined {
-    flex: 0 0 auto;
-    font-size: 20px;
-    line-height: 1;
-}
-
-@media (max-width: 480px) {
-    .back-to-software-data {
-        padding: 0 14px;
-        font-size: 11px;
-        letter-spacing: 0.02em;
-    }
-}
-
 /* Section nav (indice laterale) */
 /* Section nav: dot + hover-expand panel overlay */
 .section-nav {

@@ -36,6 +36,7 @@ the website source has not changed.
 | `home.html` | Landing page, coverage map, project overview, and community summary loaded from `gh-stats.json`. |
 | `software.html` | Software ecosystem, copyable commands, step navigation, and client-side configuration preview. |
 | `data.html` | Dataset overview, remote precipitation catalog browser, and impact-spotlight counters loaded from `catalog-stats.json`. |
+| `software_and_data.html` | Legacy combined overview for software and dataset details. Not linked from the primary header nav or from `software.html`/`data.html`; reachable only by direct URL. |
 | `community.html` | Community introduction, scroll-linked story, testimonials, and contact links. |
 | `contributing.html` | Contributor paths and starter issues loaded from `gh-issues.json`. |
 | `faq.html` | Static FAQ using native `<details>` elements. |
@@ -128,8 +129,8 @@ have no updater and remain static placeholders.
 - Retains an effectively empty page-local script block; shared behavior belongs
   in `header.js`.
 - Not included in the primary header nav (`header.js` links directly to
-  `software.html` and `data.html`); this page remains reachable only via the
-  "back to overview" links on those two pages and by direct URL.
+  `software.html` and `data.html`), and `software.html`/`data.html` no longer
+  link back to it; this page is reachable only by direct URL.
 
 ### `faq.html`
 
