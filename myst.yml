@@ -14,7 +14,6 @@ project:
     - file: docs/documentation/overview.md
     - title: mlcast (library & models)
       children:
-        - file: docs/documentation/how-it-works.md
         - file: docs/documentation/model-architecture.md
         - file: docs/documentation/usage.md
         - file: docs/documentation/api-reference.md

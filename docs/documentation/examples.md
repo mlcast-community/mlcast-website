@@ -1,23 +1,8 @@
 # Examples
 
-## Run the default experiment with tweaks
-
-```python
-import fiddle as fdl
-from mlcast.config import training_experiment, train_from_config
-from mlcast.config.fiddlers import use_random_sampler
-
-cfg = training_experiment.as_buildable()
-
-# Apply a fiddler to switch the dataset sampler
-use_random_sampler(cfg)
-
-# Override individual parameters directly on the config graph
-cfg.data.batch_size = 32
-cfg.trainer.max_epochs = 50
-
-train_from_config(cfg)
-```
+See [Usage](usage.md) for the default-experiment and CLI examples. This page
+covers the one worked example not shown there: swapping in a fully custom
+network architecture.
 
 ## Custom network architecture
 
@@ -90,23 +75,4 @@ cfg.pl_module.network = fdl.Config(
 )
 
 train_from_config(cfg)
-```
-
-## CLI one-liners
-
-```bash
-# Override dataset path and batch size
-mlcast train \
-    --config set:data.dataset_factory.zarr_path=/data/radar.zarr \
-    --config set:data.batch_size=32
-
-# Switch to random sampler and log to MLflow
-mlcast train \
-    --config fiddler:use_random_sampler \
-    --config fiddler:use_mlflow_logger
-
-# Resume from a saved config with an epoch override
-mlcast train \
-    --config logs/mlcast/version_0/config.yaml \
-    --config set:trainer.max_epochs=50
 ```

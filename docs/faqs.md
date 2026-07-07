@@ -1,51 +1,15 @@
 # FAQs
 
-# What is MLCast?
-- MLCast is an open-source community developing machine learning models for weather nowcasting. By combining expertise, computing resources, and collaborative development, we aim to make state-of-the-art weather prediction models accessible to researchers, developers, and organizations around the world.
-# Why weather nowcasting?
-- Weather nowcasting focuses on predicting weather conditions over the next few minutes to several hours. These short-term forecasts are critical for monitoring rapidly changing events such as thunderstorms, heavy rainfall, hail, and severe weather. Machine learning models can capture complex weather patterns and provide fast, accurate predictions to complement traditional forecasting methods.
-# How do I get started?
-- Start by exploring the project documentation and repositories. Follow the installation guide to set up your development environment, then review the available tutorials and examples. If you're interested in contributing, look for beginner-friendly issues or read the contribution guidelines to learn how the project is organized.
-# How can I contribute?
-- There are many ways to contribute, regardless of your experience level. You can:
-  - Develop new features or improve existing code
-  - Train and evaluate machine learning models
-  - Improve documentation and tutorials
-  - Test new features and report bugs
-  - Contribute datasets or validation tools
-  - Review pull requests and participate in community discussions
-- Every contribution helps strengthen the project.
-# Do I need a GPU?
-- Not necessarily. While training large machine learning models typically requires GPU resources, many other contributions—such as documentation, software development, testing, data processing, and model evaluation—can be done on a standard computer. Community members with GPU access can also help train models for everyone to use.
-# How do I train a model?
-- Training instructions vary by model, but the general workflow is:
-1. Install the project and its dependencies.
-2. Download and prepare the required datasets.
-3. Validate and preprocess the data.
-4. Configure the training parameters.
-5. Run the training script.
-6. Monitor training progress and evaluate the resulting model.
-- Detailed training guides for each model are available in the model documentation.
-# Where does the data come from?
-- The data comes from verified weather radar scans. Righ now, there are only 5 countries from Europe contributing to this collection, but more are soon to come. Similarly, satellite imagery will soon be available for more analysis. Before they are implemented, all datasets should be converted to zarr format and validated.
-# How are models evaluated?
-- Models are evaluated using separate validation and test datasets that were not used during training. Performance is measured using standard machine learning and meteorological metrics, allowing fair comparisons between models and ensuring they generalize well to new weather events.
-# How do I use a pretrained model?
-- Pretrained models can be downloaded from the project's model repository. After installing the required package, load the model using the provided API and run inference on weather data. Example notebooks and quick-start guides are available to help you get started.
-# Where can I ask for help?
-- If you have questions or run into issues, you can:
-  - Browse the project documentation.
-  - Search existing GitHub Issues and Discussions.
-  - Open a new issue if you've found a bug.
-  - Ask questions in the community discussion channels, such as [Slack](https://mlcast.slack.com/join/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg#/shared-invite/email), or during monthly MicrosoftTeams meetings
--The community is always happy to help new contributors get started.
+This book already answers most common questions in context rather than a
+separate list:
 
+- **What is MLCast, and why nowcasting?** → [Overview](documentation/overview.md)
+- **How do I install it and train a model?** → [Get Started](get-started.md),
+  [Usage](documentation/usage.md)
+- **How can I contribute, and do I need a GPU?** → [Collaborate](collaborate.md)
+- **Where does the data come from, and how is it validated?** →
+  [Data](documentation/data.md), [Validator](documentation/validator.md)
+- **How are models evaluated?** → [Evaluation](documentation/evaluation.md)
 
-
-
-
-
-
-
-
+For anything else, ask on [Slack](https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg).
 
