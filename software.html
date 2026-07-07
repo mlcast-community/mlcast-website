@@ -460,22 +460,21 @@
                 </div>
                 <div class="step-panel hidden" data-step="2">
                     <h3 class="text-xl font-bold text-primary mb-3">Prepare your data</h3>
-                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Use the dataset sampler to create a training-ready Zarr store from one of the available Intake catalog sources.</p>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Scan a local Zarr copy of a catalog source with <code class="text-primary-fixed text-xs">mlcast stats</code> to produce the per-datacube stats Parquet that training reads from.</p>
                     <div class="relative">
                         <div class="terminal-window font-mono text-[13px]">
-                            <span class="text-green-400/70">$</span> <span class="text-primary-fixed/50"># List available sources</span><br>
-                            <span class="text-green-400/70">$</span> python -c "import mlcast_datasets; print(list(mlcast_datasets.open_catalog()))"<br><br>
-                            <span class="text-green-400/70">$</span> <span class="text-primary-fixed/50"># Sample a dataset to Zarr</span><br>
-                            <span class="text-green-400/70">$</span> mlcast-dataset-sampler \<br>
-                            &nbsp;&nbsp;--source dmi_dk_radar_precipitation \<br>
-                            &nbsp;&nbsp;--output ./data/radar.zarr \<br>
-                            &nbsp;&nbsp;--time-range 2020-2024
+                            <span class="text-green-400/70">$</span> <span class="text-primary-fixed/50"># List available radar sources</span><br>
+                            <span class="text-green-400/70">$</span> python -c "import mlcast_datasets; print(list(mlcast_datasets.open_catalog().precipitation))"<br><br>
+                            <span class="text-green-400/70">$</span> <span class="text-primary-fixed/50"># Scan it and write per-datacube stats</span><br>
+                            <span class="text-green-400/70">$</span> mlcast stats ./data/radar.zarr \<br>
+                            &nbsp;&nbsp;--start-date 2020-01-01 \<br>
+                            &nbsp;&nbsp;--end-date 2024-12-31
                         </div>
                         <button onclick="copySnippet('step2-code', this)" class="terminal-control btn-press no-focus-outline absolute top-2 right-3 flex items-center gap-1 rounded px-2 py-1 text-[10px] transition-all">
                             <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
                         </button>
                     </div>
-                    <div id="step2-code" class="hidden">python -c "import mlcast_datasets; print(list(mlcast_datasets.open_catalog()))" && mlcast-dataset-sampler --source dmi_dk_radar_precipitation --output ./data/radar.zarr --time-range 2020-2024</div>
+                    <div id="step2-code" class="hidden">python -c "import mlcast_datasets; print(list(mlcast_datasets.open_catalog().precipitation))" && mlcast stats ./data/radar.zarr --start-date 2020-01-01 --end-date 2024-12-31</div>
                 </div>
                 <div class="step-panel hidden" data-step="3">
                     <h3 class="text-xl font-bold text-primary mb-3">Configure your experiment</h3>
@@ -493,8 +492,6 @@
                             <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Loss Function</label>
                             <select id="cfg-loss" class="hidden">
                                 <option value="crps">CRPS</option>
-                                <option value="mse">MSE</option>
-                                <option value="mae">MAE</option>
                                 <option value="afcrps">AFCRPS</option>
                             </select>
                             <div class="custom-select" data-select-id="cfg-loss"></div>
