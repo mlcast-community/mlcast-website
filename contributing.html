@@ -252,12 +252,11 @@
                         </div>
                     </div>
 
-                    <div id="build-software" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
+                    <div id="build-software" class="contribution-card">
                         <div class="min-w-0">
                             <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Contribute Code</h3>
-                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Turn ideas and models into real tools, features, APIs, and integrations.</p>
-                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">You help make mlcast more usable, stable, and ready for real-world workflows.</p>
-                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Even a small improvement can make the whole project easier to adopt.</p>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Turn ideas and models into real tools, features, APIs, and integrations that the whole community can build on. You help make mlcast more usable, stable, and ready for real-world nowcasting workflows — from research notebooks to operational pipelines and even a small improvement can make the whole project easier to adopt, whether it is a cleaner API, better error messages, or a missing test.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">No contribution is too small: a bug fix, a new model architecture, or a refactor all move the ecosystem forward.</p>
                             <p class="mt-6 font-label-tag text-[11px] uppercase tracking-[0.2em] text-primary-fixed">Things you can do</p>
                             <ul class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
                                 <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">network_intelligence</span>Add a new model architecture</li>
@@ -270,27 +269,10 @@
                                 <span class="material-symbols-outlined text-[18px]" aria-hidden="true">code</span>
                             </a>
                         </div>
-                        <div class="w-full min-w-0 rounded-lg overflow-hidden shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:self-stretch lg:justify-self-end terminal-window" style="padding:42px 18px 18px!important;background:#0D2D31!important;border:1px solid rgba(255,255,255,0.06)!important;border-radius:12px!important">
-                            <pre class="text-xs sm:text-sm leading-relaxed overflow-x-auto font-label-tag text-[#C8D6D8]"><code><span class="text-[#569CD6]">import</span> <span class="text-[#8A9CA6]">torch</span>
-<span class="text-[#569CD6]">import</span> <span class="text-[#8A9CA6]">torch.nn</span> <span class="text-[#569CD6]">as</span> <span class="text-[#8A9CA6]">nn</span>
-
-
-<span class="text-[#569CD6]">class</span> <span class="text-[#EE964B]">NowcastModel</span>(nn.Module):
-    <span class="text-[#6B969B]">"""Your nowcasting model goes here."""</span>
-
-    <span class="text-[#569CD6]">def</span> <span class="text-[#4EC9B0]">__init__</span>(self, in_channels=<span class="text-[#EE964B]">1</span>):
-        super().__init__()
-        <span class="text-[#6B969B]"># TODO: build your architecture</span>
-        self.net = <span class="rounded bg-[#EE964B]/15 px-1 text-[#EE964B]">...</span>
-
-    <span class="text-[#569CD6]">def</span> <span class="text-[#4EC9B0]">forward</span>(self, x):
-        <span class="text-[#6B969B]"># TODO: your idea here 💡</span>
-        <span class="text-[#569CD6]">raise</span> <span class="text-[#4EC9B0]">NotImplementedError</span></code></pre>
-                        </div>
                     </div>
 
-                    <div id="improve-models" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
-                        <div class="min-w-0">
+                    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-12">
+                    <div id="improve-models" class="contribution-card min-w-0">
                             <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Train a Model</h3>
                             <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Try new architectures, tune parameters, and explore different nowcasting approaches.</p>
                             <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">You help improve accuracy, stability, and the overall performance of the models.</p>
@@ -307,103 +289,7 @@
                                 <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
                             </a>
                         </div>
-                        <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-surface-creme p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
-                            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
-                                <div>
-                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Experiment Run</p>
-                                    <h4 class="mt-2 text-lg font-bold text-primary">ConvGRU baseline sweep</h4>
-                                </div>
-                                <span class="rounded-full border border-primary-fixed/30 bg-primary-fixed/10 px-3 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Best</span>
-                            </div>
-
-                            <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3">
-                                <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
-                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">CRPS</p>
-                                    <p class="mt-2 text-2xl font-bold text-primary-fixed">-0.09</p>
-                                </div>
-                                <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
-                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">MAE</p>
-                                    <p class="mt-2 text-2xl font-bold text-primary">-0.12</p>
-                                </div>
-                                <div class="rounded border border-outline-variant/25 bg-background/45 p-3">
-                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Lead</p>
-                                    <p class="mt-2 text-2xl font-bold text-primary">+15m</p>
-                                </div>
-                            </div>
-
-                            <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
-                            <div class="rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
-                                <div class="mb-3 flex items-center justify-between gap-4">
-                                    <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Loss curve</span>
-                                    <span class="flex items-center gap-3 font-label-tag text-[10px]">
-                                        <span class="flex items-center gap-1.5 text-primary-fixed"><span class="h-0.5 w-3 rounded bg-primary-fixed"></span>train</span>
-                                        <span class="flex items-center gap-1.5 text-on-surface-variant/70"><span class="h-0.5 w-3 rounded bg-on-surface-variant/70" style="border-top:1px dashed"></span>val</span>
-                                    </span>
-                                </div>
-                                <svg viewBox="0 0 300 120" class="h-28 w-full" preserveAspectRatio="none" aria-hidden="true">
-                                    <g stroke="rgba(186,202,195,0.12)" stroke-width="1">
-                                        <line x1="0" y1="30" x2="300" y2="30"/>
-                                        <line x1="0" y1="60" x2="300" y2="60"/>
-                                        <line x1="0" y1="90" x2="300" y2="90"/>
-                                    </g>
-                                    <polyline points="0,12 30,40 60,58 90,68 120,75 150,80 180,84 210,87 240,89 270,91 300,92" fill="none" stroke="#EE964B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-                                    <polyline points="0,8 30,32 60,48 90,58 120,64 150,68 180,70 210,71 240,71 270,70 300,68" fill="none" stroke="rgba(186,202,195,0.75)" stroke-width="1.6" stroke-dasharray="4 3" stroke-linejoin="round" stroke-linecap="round"/>
-                                </svg>
-                                <div class="mt-1 flex justify-between font-label-tag text-[10px] text-on-surface-variant/40"><span>epoch 0</span><span>epoch 24</span></div>
-                            </div>
-
-                            <div class="rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
-                                <div class="mb-3 flex items-center justify-between gap-4">
-                                    <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Gradient descent</span>
-                                    <span class="font-label-tag text-[10px] text-primary-fixed">→ minimum</span>
-                                </div>
-                                <svg viewBox="0 0 300 120" class="h-28 w-full" aria-hidden="true">
-                                    <!-- loss landscape contours -->
-                                    <g fill="none" stroke="#EE964B">
-                                        <ellipse cx="205" cy="70" rx="86" ry="48" stroke-opacity="0.10"/>
-                                        <ellipse cx="205" cy="70" rx="66" ry="37" stroke-opacity="0.14"/>
-                                        <ellipse cx="205" cy="70" rx="47" ry="26" stroke-opacity="0.18"/>
-                                        <ellipse cx="205" cy="70" rx="29" ry="16" stroke-opacity="0.24"/>
-                                        <ellipse cx="205" cy="70" rx="13" ry="7" stroke-opacity="0.32"/>
-                                    </g>
-                                    <!-- descent path -->
-                                    <polyline points="40,14 78,40 120,26 150,54 178,44 196,64 205,60 208,70" fill="none" stroke="#EE964B" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-                                    <g fill="#EE964B">
-                                        <circle cx="40" cy="14" r="2.4" fill-opacity="0.5"/>
-                                        <circle cx="78" cy="40" r="2.4" fill-opacity="0.55"/>
-                                        <circle cx="120" cy="26" r="2.4" fill-opacity="0.6"/>
-                                        <circle cx="150" cy="54" r="2.4" fill-opacity="0.65"/>
-                                        <circle cx="178" cy="44" r="2.4" fill-opacity="0.7"/>
-                                        <circle cx="196" cy="64" r="2.4" fill-opacity="0.8"/>
-                                    </g>
-                                    <!-- minimum -->
-                                    <circle cx="205" cy="70" r="3.6" fill="#EE964B"/>
-                                    <circle cx="205" cy="70" r="7" fill="none" stroke="#EE964B" stroke-opacity="0.5"/>
-                                    <text x="205" y="70" dx="11" dy="3" fill="#6B7F82" font-size="9" font-family="JetBrains Mono">θ*</text>
-                                    <text x="40" y="14" dx="-4" dy="-5" fill="#6B7F82" font-size="9" font-family="JetBrains Mono" text-anchor="end">θ₀</text>
-                                </svg>
-                            </div>
-                            </div>
-
-                            <div class="mt-3 rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
-                                <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">ConvGRU pipeline</span>
-                                <div class="mt-3 flex items-center gap-1.5 overflow-x-auto text-center text-[10px] font-label-tag">
-                                    <span class="flex-1 rounded border border-outline-variant/30 bg-background/45 px-2 py-2 text-on-surface-variant">Radar<br>frames</span>
-                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant/40" aria-hidden="true">chevron_right</span>
-                                    <span class="flex-1 rounded border border-outline-variant/30 bg-background/45 px-2 py-2 text-on-surface-variant">Conv<br>encoder</span>
-                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant/40" aria-hidden="true">chevron_right</span>
-                                    <span class="flex-1 rounded border border-primary-fixed/40 bg-primary-fixed/10 px-2 py-2 font-semibold text-primary-fixed">ConvGRU<br>×k</span>
-                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant/40" aria-hidden="true">chevron_right</span>
-                                    <span class="flex-1 rounded border border-outline-variant/30 bg-background/45 px-2 py-2 text-on-surface-variant">Conv<br>decoder</span>
-                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant/40" aria-hidden="true">chevron_right</span>
-                                    <span class="flex-1 rounded border border-outline-variant/30 bg-background/45 px-2 py-2 text-on-surface-variant">Fore-<br>cast</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="validate-results" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
-                        <div class="min-w-0">
+                    <div id="validate-results" class="contribution-card min-w-0">
                             <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Validate Results</h3>
                             <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Before any dataset reaches the public catalog, it passes through the <span class="font-semibold text-primary">dataset validator</span>: an automated check that verifies schema, spatial and temporal coverage, units, and missing-data ratios so every contribution stays consistent and reusable.</p>
                             <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">The same rigor applies to models. Forecasts are scored against shared baselines with standard nowcasting metrics — <span class="font-semibold text-primary">MSE</span>, <span class="font-semibold text-primary">MAE</span>, <span class="font-semibold text-primary">CRPS</span>, and <span class="font-semibold text-primary">AFCRPS</span> — across lead times and extreme-rainfall cases, so performance claims are reproducible and comparable.</p>
@@ -412,71 +298,7 @@
                                 View mlcast-benchmarks
                                 <span class="material-symbols-outlined text-[18px]" aria-hidden="true">verified</span>
                             </a>
-                        </div>
-                        <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-surface-creme p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
-                            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
-                                <div>
-                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Validation Pipeline</p>
-                                    <h4 class="mt-2 text-lg font-bold text-primary">From contribution to catalog</h4>
-                                </div>
-                                <span class="material-symbols-outlined rounded-full border border-primary-fixed/30 bg-primary-fixed/10 p-2 text-[20px] text-primary-fixed" aria-hidden="true">verified</span>
-                            </div>
-
-                            <div class="mt-5 rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
-                                <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Dataset validator</span>
-                                <div class="mt-3 flex items-center gap-1.5 overflow-x-auto text-center text-[10px] font-label-tag">
-                                    <span class="flex-1 rounded border border-outline-variant/30 bg-background/45 px-2 py-2 text-on-surface-variant">Dataset<br>creation</span>
-                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant/40" aria-hidden="true">chevron_right</span>
-                                    <span class="flex-1 rounded border border-primary-fixed/40 bg-primary-fixed/10 px-2 py-2 font-semibold text-primary-fixed">Schema<br>checks</span>
-                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant/40" aria-hidden="true">chevron_right</span>
-                                    <span class="flex-1 rounded border border-primary-fixed/40 bg-primary-fixed/10 px-2 py-2 font-semibold text-primary-fixed">Coverage<br>&amp; units</span>
-                                    <span class="material-symbols-outlined text-[16px] text-on-surface-variant/40" aria-hidden="true">chevron_right</span>
-                                    <span class="flex-1 rounded border border-outline-variant/30 bg-background/45 px-2 py-2 text-on-surface-variant">Public<br>catalog</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-3 rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
-                                <div class="mb-3 flex items-center justify-between gap-4">
-                                    <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Validator checks</span>
-                                    <span class="font-label-tag text-[10px] text-primary-fixed">4 / 4 passed</span>
-                                </div>
-                                <div class="grid grid-cols-[1fr_auto] gap-x-4 gap-y-2.5 text-sm">
-                                    <span class="text-on-surface-variant">Schema &amp; variables</span>
-                                    <span class="font-label-tag text-primary-fixed">valid</span>
-                                    <span class="text-on-surface-variant">Spatial / temporal coverage</span>
-                                    <span class="font-label-tag text-primary-fixed">complete</span>
-                                    <span class="text-on-surface-variant">Units &amp; calibration</span>
-                                    <span class="font-label-tag text-primary-fixed">consistent</span>
-                                    <span class="text-on-surface-variant">Missing-data ratio</span>
-                                    <span class="font-label-tag text-primary-fixed">&lt; 2%</span>
-                                </div>
-                            </div>
-
-                            <div class="mt-3 rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
-                                <div class="mb-3 flex items-center justify-between gap-4">
-                                    <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Model metrics</span>
-                                    <span class="font-label-tag text-[10px] text-primary-fixed">vs. baseline</span>
-                                </div>
-                                <div class="grid grid-cols-2 gap-3 sm:grid-cols-4">
-                                    <div class="rounded border border-outline-variant/25 bg-background/45 p-2.5 text-center">
-                                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">MSE</p>
-                                        <p class="mt-1.5 text-xl font-bold text-primary">-11%</p>
-                                    </div>
-                                    <div class="rounded border border-outline-variant/25 bg-background/45 p-2.5 text-center">
-                                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">MAE</p>
-                                        <p class="mt-1.5 text-xl font-bold text-primary-fixed">-9%</p>
-                                    </div>
-                                    <div class="rounded border border-outline-variant/25 bg-background/45 p-2.5 text-center">
-                                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">CRPS</p>
-                                        <p class="mt-1.5 text-xl font-bold text-primary">-7%</p>
-                                    </div>
-                                    <div class="rounded border border-outline-variant/25 bg-background/45 p-2.5 text-center">
-                                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">AFCRPS</p>
-                                        <p class="mt-1.5 text-xl font-bold text-primary-fixed">-6%</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    </div>
                     </div>
 
                     <div id="documentation" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
