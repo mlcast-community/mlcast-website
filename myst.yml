@@ -6,7 +6,7 @@ project:
   # description:
   # keywords: []
   # authors: []
-  github: https://github.com/WebValley2026/mlcast-website
+  github: https://github.com/mlcast-community/mlcast-website
   # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
   toc:
     - file: docs/home.md
