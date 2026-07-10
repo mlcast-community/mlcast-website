@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Find your path into the MLCast community and make your first contribution."/>
+    <title>MLCast Community - Contribute</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="tailwind-config.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="home.css"/>
+    <script src="header.js" defer></script>
+
+    <style>
+        html {
+            scroll-padding-top: 96px;
+        }
+
+        .path-nav {
+            position: relative;
+            z-index: 1;
+            scrollbar-width: none;
+            min-height: 80px;
+            box-shadow: 0 0 28px rgba(238, 150, 75, 0.06);
+        }
+
+        .path-nav-shell {
+            isolation: isolate;
+        }
+
+        .path-nav-shell::after {
+            content: "";
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            top: -14px;
+            bottom: -34px;
+            z-index: 0;
+            pointer-events: none;
+            border-radius: 9999px;
+            background: rgba(238, 150, 75, 0.12);
+            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(12px);
+            -webkit-mask-image: radial-gradient(ellipse at center, #000 0%, rgba(0, 0, 0, 0.75) 48%, transparent 78%);
+            mask-image: radial-gradient(ellipse at center, #000 0%, rgba(0, 0, 0, 0.75) 48%, transparent 78%);
+        }
+
+        .path-nav::-webkit-scrollbar {
+            display: none;
+        }
+
+        .path-link {
+            align-items: center;
+            display: inline-flex;
+            justify-content: center;
+            min-height: 56px;
+            padding: 0.5rem 0;
+            color: #6B7F82;
+            line-height: 1;
+            white-space: nowrap;
+        }
+
+        .path-link:hover {
+            color: #005B63;
+        }
+
+        .path-link[aria-current="true"] {
+            color: #FFFFFF;
+            background: #EE964B;
+            box-shadow: 0 0 24px rgba(238, 150, 75, 0.16);
+        }
+
+        .contribution-card {
+            scroll-margin-top: 172px;
+        }
+
+        .contribution-card:hover .path-icon {
+            color: #EE964B;
+            border-color: rgba(238, 150, 75, 0.55);
+            background: rgba(238, 150, 75, 0.08);
+        }
+
+        .issue-card {
+            background: rgba(247, 237, 226, 0.85);
+        }
+
+        @media (max-width: 767.98px) {
+            html {
+                scroll-padding-top: 96px;
+            }
+
+            .contribution-card {
+                scroll-margin-top: 96px;
+            }
+        }
+
+
+      ::selection {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="public/Logo_pacchetto.svg">
+    <link rel="shortcut icon" href="public/favicon.ico">
+</head>
+
+<body class="bg-background text-on-surface antialiased font-sans min-h-screen flex flex-col">
+<div id="site-header"></div>
+
+    <!-- Indice di pagina (navbar sezioni, lato sinistro) -->
+    <nav class="section-nav" aria-label="Page sections">
+        <button class="section-nav__dot" aria-label="Page sections" title="On this page"></button>
+        <div class="section-nav__panel">
+            <span class="section-nav__title">On this page</span>
+            <a href="#overview" data-section-link>Overview</a>
+            <a href="#paths-heading" data-section-link>Ways to Contribute</a>
+            <a href="#unsure-heading" data-section-link>Get in Touch</a>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-[76px]">
+        <section id="overview" class="px-margin-mobile md:px-margin-desktop pt-20 pb-10 md:pt-28 md:pb-12">
+            <div class="max-w-[1180px] mx-auto">
+                <div class="max-w-4xl border-l-4 border-primary-fixed pl-6 md:pl-8">
+                    <div class="font-label-tag text-[11px] text-primary-fixed mb-5 uppercase tracking-[0.2em]">[CONTRIBUTE TO MLCAST]</div>
+                    <h1 class="font-headline-xl text-5xl md:text-7xl font-bold text-primary tracking-[-0.04em] leading-[1.02]">
+                        There is more than one way to contribute.
+                    </h1>
+                    <p class="mt-7 max-w-3xl text-lg md:text-xl text-on-surface-variant leading-relaxed">
+                        MLCast is a collaborative community advancing weather nowcasting through machine learning by openly sharing datasets, software, experiments, and expertise.
+                    </p>
+                    <h2 class="mt-8 max-w-3xl font-headline-xl text-2xl md:text-3xl font-bold text-primary leading-tight">
+                        Scientists, researchers, software engineers, and curious builders can all contribute in different ways.
+                    </h2>
+                    <div class="mt-8 flex flex-wrap items-center gap-5">
+                        <a href="#build-software" class="inline-flex items-center gap-2 rounded bg-primary-fixed px-6 py-3 min-h-[44px] text-sm font-bold uppercase tracking-wider text-on-primary-fixed transition-opacity hover:opacity-90">
+                            Find your path
+                            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">south</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-margin-mobile md:px-margin-desktop pb-24" aria-labelledby="paths-heading">
+            <div class="max-w-[1180px] mx-auto">
+                <h2 id="paths-heading" class="sr-only">Ways to contribute to MLCast</h2>
+
+                <div class="path-nav-shell sticky top-[100px] z-40 mb-24 pointer-events-none">
+                    <nav class="path-nav pointer-events-auto flex items-center md:justify-between gap-1.5 max-w-[1180px] mx-auto overflow-x-auto rounded-full border border-outline-variant/30 bg-surface-creme/90 px-2 py-2 backdrop-blur-xl" aria-label="Contribution paths">
+                                                <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#share-data" aria-current="true">Share data</a>
+
+                        <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#build-software">Contribute code</a>
+                        <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#improve-models">Train a model</a>
+                        <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#validate-results">Validate results</a>
+                        <a class="path-link rounded-full px-5 text-[15px] md:text-base font-bold transition-[color,background-color,box-shadow]" href="#documentation">Support the community</a>
+                    </nav>
+                </div>
+
+                <div class="flex flex-col gap-[200px]">
+                    <div id="share-data" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(34rem,44rem)] lg:items-start lg:gap-10">
+                        <div class="min-w-0">
+                            <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Share Data</h3>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Contribute datasets, ingestion pipelines, or data schemas that help the project grow.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Your work makes testing more realistic and results more useful for everyone.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">A well-prepared dataset can become the foundation for many new experiments.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Right now we focus on gathering <span class="font-semibold text-primary">radar precipitation</span> across Europe — and we're working to grow that coverage country by country.</p>
+                            <div class="mt-5 flex items-center gap-3 rounded-lg border border-primary-fixed/25 bg-primary-fixed/5 p-4">
+                                <span class="material-symbols-outlined text-primary-fixed" aria-hidden="true">satellite_alt</span>
+                                <p class="text-base text-on-surface-variant leading-relaxed"><span class="font-semibold text-primary">Satellite data support is coming soon</span> — broadening MLCast beyond radar for richer, global nowcasting.</p>
+                            </div>
+                            <a href="https://github.com/mlcast-community/mlcast-datasets/issues/new/choose" target="_blank" rel="noreferrer" class="mt-6 inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 min-h-[44px] text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
+                                Propose a dataset
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">add_circle</span>
+                            </a>
+                        </div>
+                        <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-surface-creme p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
+                            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
+                                <div>
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Dataset Catalog</p>
+                                    <h4 class="mt-2 text-lg font-bold text-primary">Radar precipitation</h4>
+                                </div>
+                                <span class="rounded-full border border-primary-fixed/30 bg-primary-fixed/10 px-3 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Expanding</span>
+                            </div>
+
+                            <div id="contrib-coverage-viewport" class="relative mt-5 aspect-[3600/1393] w-full select-none overflow-hidden rounded border border-outline-variant/25 bg-[#F0E8DE] touch-none cursor-grab" style="background-image:radial-gradient(rgba(120,160,220,0.08) 1px,transparent 1px);background-size:16px 16px;">
+                                <div id="contrib-coverage-map" class="absolute inset-0 origin-top-left will-change-transform" style="transform:translate(0px,0px) scale(1);">
+                                <img src="img/world.svg" alt="World map" class="absolute inset-0 h-full w-full rounded object-contain opacity-90" draggable="false" aria-hidden="true">
+
+                                <!-- Covered countries — rebuilt from catalog-data.json by coverage-map.js; these static markers are the fallback -->
+                                <div data-coverage-markers data-coverage-variant="plain">
+                                <div class="absolute -translate-x-1/2 -translate-y-1/2" style="left:49.1%;top:20.2%">
+                                    <span class="relative flex h-4 w-4 items-center justify-center">
+                                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40"></span>
+                                        <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/gb.svg" alt="UK" loading="lazy" class="h-full w-full object-cover"></span>
+                                    </span>
+                                </div>
+                                <div class="absolute -translate-x-1/2 -translate-y-1/2" style="left:53.2%;top:19.6%">
+                                    <span class="relative flex h-4 w-4 items-center justify-center">
+                                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40" style="animation-delay:.4s"></span>
+                                        <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/dk.svg" alt="Denmark" loading="lazy" class="h-full w-full object-cover"></span>
+                                    </span>
+                                </div>
+                                <div class="absolute -translate-x-1/2 -translate-y-1/2" style="left:51.2%;top:23.7%">
+                                    <span class="relative flex h-4 w-4 items-center justify-center">
+                                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40" style="animation-delay:.8s"></span>
+                                        <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/be.svg" alt="Belgium" loading="lazy" class="h-full w-full object-cover"></span>
+                                    </span>
+                                </div>
+                                <div class="absolute -translate-x-1/2 -translate-y-1/2" style="left:52.9%;top:23.3%">
+                                    <span class="relative flex h-4 w-4 items-center justify-center">
+                                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40" style="animation-delay:1.2s"></span>
+                                        <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/de.svg" alt="Germany" loading="lazy" class="h-full w-full object-cover"></span>
+                                    </span>
+                                </div>
+                                <div class="absolute -translate-x-1/2 -translate-y-1/2" style="left:53.5%;top:29.9%">
+                                    <span class="relative flex h-4 w-4 items-center justify-center">
+                                        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-fixed/40" style="animation-delay:1.6s"></span>
+                                        <span class="relative inline-flex h-4 w-4 overflow-hidden rounded-full border border-primary-fixed/60 bg-surface-creme shadow-[0_4px_16px_rgba(0,0,0,0.5)]"><img src="https://flagcdn.com/it.svg" alt="Italy" loading="lazy" class="h-full w-full object-cover"></span>
+                                    </span>
+                                </div>
+                                </div>
+                                </div>
+
+                                <div class="pointer-events-none absolute bottom-2 left-2 z-30 flex items-center gap-3 rounded bg-[#F0E8DE]/80 px-2.5 py-1.5 text-[10px] font-label-tag uppercase tracking-widest">
+                                    <span class="flex items-center gap-1.5 text-primary-fixed"><span class="h-2 w-2 rounded-full bg-primary-fixed"></span>Live</span>
+                                </div>
+
+                                <!-- Stats overlay (fixed to viewport, bottom) -->
+                                <div class="pointer-events-none absolute bottom-2 right-2 z-30 flex gap-1.5">
+                                    <div class="rounded border border-outline-variant/25 bg-[#F0E8DE]/85 px-2.5 py-1.5 backdrop-blur-sm">
+                                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Countries</p>
+                                        <p data-coverage-stat="countries" class="mt-0.5 text-lg font-bold leading-none text-primary">5</p>
+                                    </div>
+                                    <div class="rounded border border-outline-variant/25 bg-[#F0E8DE]/85 px-2.5 py-1.5 backdrop-blur-sm">
+                                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Years of rain</p>
+                                        <p data-coverage-stat="years" class="mt-0.5 text-lg font-bold leading-none text-primary-fixed">~70</p>
+                                    </div>
+                                    <div class="rounded border border-outline-variant/25 bg-[#F0E8DE]/85 px-2.5 py-1.5 backdrop-blur-sm">
+                                        <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Cadence</p>
+                                        <p data-coverage-stat="cadence" class="mt-0.5 text-lg font-bold leading-none text-primary">5m</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p class="mt-3 text-center text-sm text-on-surface-variant">Help us <span class="font-semibold text-primary">expand coverage</span> — is your country missing?</p>
+                        </div>
+                    </div>
+
+                    <div id="build-software" class="contribution-card">
+                        <div class="min-w-0">
+                            <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Contribute Code</h3>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Turn ideas and models into real tools, features, APIs, and integrations that the whole community can build on. You help make mlcast more usable, stable, and ready for real-world nowcasting workflows — from research notebooks to operational pipelines and even a small improvement can make the whole project easier to adopt, whether it is a cleaner API, better error messages, or a missing test.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">No contribution is too small: a bug fix, a new model architecture, or a refactor all move the ecosystem forward.</p>
+                            <p class="mt-6 font-label-tag text-[11px] uppercase tracking-[0.2em] text-primary-fixed">Things you can do</p>
+                            <ul class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                                <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">network_intelligence</span>Add a new model architecture</li>
+                                <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">bug_report</span>Fix bugs</li>
+                                <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">tune</span>Improve the codebase</li>
+                                <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">conversion_path</span>Build data pipelines</li>
+                            </ul>
+                            <a href="https://github.com/mlcast-community" target="_blank" rel="noreferrer" class="mt-6 inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 min-h-[44px] text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
+                                Browse the repositories
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">code</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:gap-12">
+                    <div id="improve-models" class="contribution-card min-w-0">
+                            <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Train a Model</h3>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Try new architectures, tune parameters, and explore different nowcasting approaches.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">You help improve accuracy, stability, and the overall performance of the models.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Watch the <span class="font-semibold text-primary">loss curves</span> converge, keep an eye on <span class="font-semibold text-primary">gradient flow</span>, and push spatio-temporal backbones like ConvGRU further.</p>
+                            <p class="mt-6 font-label-tag text-[11px] uppercase tracking-[0.2em] text-primary-fixed">Things you can do</p>
+                            <ul class="mt-4 grid grid-cols-1 gap-2.5 sm:grid-cols-2">
+                                <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">architecture</span>Try new architectures</li>
+                                <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">tune</span>Tune hyperparameters</li>
+                                <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">function</span>Design new loss functions</li>
+                                <li class="flex items-center gap-2.5 rounded-lg border border-outline-variant/25 bg-surface-container/40 px-3 py-2.5 text-sm text-on-surface-variant"><span class="material-symbols-outlined text-[18px] text-primary-fixed" aria-hidden="true">timeline</span>Extend the forecast horizon</li>
+                            </ul>
+                            <a href="docs/usage/" class="mt-6 inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 min-h-[44px] text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
+                                Read the training docs
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">menu_book</span>
+                            </a>
+                        </div>
+                    <div id="validate-results" class="contribution-card min-w-0">
+                            <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Validate Results</h3>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">Before any dataset reaches the public catalog, it passes through the <span class="font-semibold text-primary">dataset validator</span>: an automated check that verifies schema, spatial and temporal coverage, units, and missing-data ratios so every contribution stays consistent and reusable.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">The same rigor applies to models. Forecasts are scored against shared baselines with standard nowcasting metrics — <span class="font-semibold text-primary">MSE</span>, <span class="font-semibold text-primary">MAE</span>, <span class="font-semibold text-primary">CRPS</span>, and <span class="font-semibold text-primary">AFCRPS</span> — across lead times and extreme-rainfall cases, so performance claims are reproducible and comparable.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed">Reviewing these checks, spotting edge cases, and improving the validator keeps the project on a stronger, more trustworthy foundation. Your critical eye helps the community understand what truly works and what needs improvement.</p>
+                            <a href="https://github.com/mlcast-community/mlcast-benchmarks" target="_blank" rel="noreferrer" class="mt-6 inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 min-h-[44px] text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
+                                View mlcast-benchmarks
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">verified</span>
+                            </a>
+                    </div>
+                    </div>
+
+                    <div id="documentation" class="contribution-card grid grid-cols-1 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(28rem,34rem)] lg:items-start lg:gap-10">
+                        <div class="min-w-0">
+                            <h3 class="text-4xl md:text-5xl font-bold text-primary tracking-tight">Support the Community</h3>
+                            <p class="mt-5 text-lg text-on-surface-variant leading-relaxed">MLCast grows on shared effort and shared resources. There are many ways to keep the project moving forward.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed"><span class="font-semibold text-primary">Help us obtain GPU hours</span> so we can train, tune, and benchmark larger nowcasting models the community can reuse.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed"><span class="font-semibold text-primary">Improve the documentation</span> with guides, examples, and clear explanations that lower the barrier for new contributors.</p>
+                            <p class="mt-3 text-lg text-on-surface-variant leading-relaxed"><span class="font-semibold text-primary">Help spread the word</span> to bring in more datasets, ideas, and people who can push the project further.</p>
+
+                            <a href="https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg" target="_blank" rel="noreferrer" class="mt-6 inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 min-h-[44px] text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
+                                Join Slack
+                                <span class="material-symbols-outlined text-[18px]" aria-hidden="true">forum</span>
+                            </a>
+                        </div>
+                        <div class="w-full min-w-0 rounded-lg border border-outline-variant/30 bg-surface-creme p-4 shadow-[0_24px_80px_rgba(0,0,0,0.22)] lg:justify-self-end">
+                            <div class="flex items-start justify-between gap-4 border-b border-outline-variant/20 pb-4">
+                                <div>
+                                    <p class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">Current Support</p>
+                                    <h4 class="mt-2 text-lg font-bold text-primary">Infrastructure powering MLCast</h4>
+                                </div>
+                                <span class="material-symbols-outlined rounded-full border border-primary-fixed/30 bg-primary-fixed/10 p-2 text-[20px] text-primary-fixed" aria-hidden="true">hub</span>
+                            </div>
+
+                            <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+                                <div class="rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
+                                    <div class="flex items-center gap-2 text-primary-fixed">
+                                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">cloud_done</span>
+                                        <span class="font-label-tag text-[10px] uppercase tracking-widest">Storage</span>
+                                    </div>
+                                    <p class="mt-3 text-2xl font-bold text-primary">DWD</p>
+                                    <p class="mt-1 text-xs text-on-surface-variant/70">EWC S3 allocation for MLCast datasets</p>
+                                </div>
+                                <div class="rounded border border-outline-variant/25 bg-[#F0E8DE] p-4">
+                                    <div class="flex items-center gap-2 text-primary-fixed">
+                                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">memory</span>
+                                        <span class="font-label-tag text-[10px] uppercase tracking-widest">GPU hours</span>
+                                    </div>
+                                    <p class="mt-3 text-2xl font-bold text-primary">CINECA</p>
+                                    <p class="mt-1 text-xs text-on-surface-variant/70">10,000 GPU hours on Leonardo HPC</p>
+                                </div>
+                            </div>
+
+                            <div class="mt-4 border-t border-outline-variant/20 pt-4">
+                                <p class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">Enabled via EUMETNET E-AI &middot; Working Group 6</p>
+                                <div class="mt-3 flex flex-wrap items-center gap-6">
+                                    <div class="flex h-12 w-20 items-center justify-center">
+                                        <img src="img/dwd-logo.png" alt="DWD logo" class="max-h-full max-w-full rounded-sm object-contain"/>
+                                    </div>
+                                    <div class="flex h-12 w-24 items-center justify-center">
+                                        <img src="img/eumetnet-logo.png" alt="EUMETNET logo" class="max-h-full max-w-full object-contain"/>
+                                    </div>
+                                    <div class="flex h-12 w-24 items-center justify-center">
+                                        <img src="img/cineca-logo.png" alt="CINECA logo" class="max-h-full max-w-full object-contain"/>
+                                    </div>
+                                    <div class="flex h-12 w-20 items-center justify-center">
+                                        <img src="img/leonardo-logo.png" alt="Leonardo HPC logo" class="max-h-full max-w-full object-contain"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="px-margin-mobile md:px-margin-desktop pb-24" aria-labelledby="unsure-heading">
+            <div class="max-w-[1180px] mx-auto overflow-hidden rounded-2xl border border-primary-fixed/30 bg-primary-fixed/[0.06] p-7 md:p-10">
+                <div class="grid lg:grid-cols-[1fr_auto] lg:items-center gap-8">
+                    <div>
+                        <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[NOT SURE WHERE YOU FIT?]</div>
+                        <h2 id="unsure-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">Start with a conversation.</h2>
+                        <p class="mt-4 max-w-2xl text-on-surface-variant">You do not need a finished idea. Tell us what you are interested in and we’ll help you find a useful first step.</p>
+                    </div>
+                    <div class="flex flex-col sm:flex-row lg:flex-col gap-3">
+                        <a href="https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg" target="_blank" rel="noreferrer" class="inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-5 py-3 min-h-[44px] text-sm font-bold text-on-primary-fixed transition-opacity hover:opacity-90">
+                            Join Slack
+                            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">forum</span>
+                        </a>
+                        <a href="mailto:mlcast.community@gmail.com" class="inline-flex items-center justify-center gap-2 rounded border border-outline-variant px-5 py-3 min-h-[44px] text-sm font-semibold text-primary hover:border-primary-fixed hover:text-primary-fixed transition-colors">
+                            Send us an email
+                            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">mail</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+  
+    <!-- Footer: Elegante e professionale -->
+<div id="site-footer"></div>
+
+    <script>
+        const pathNav = document.querySelector(".path-nav");
+        const pathLinks = Array.from(document.querySelectorAll(".path-link"));
+        const pathSections = pathLinks
+            .map((link) => document.querySelector(link.getAttribute("href")))
+            .filter(Boolean);
+        let activePathId = "share-data";
+        let pathSyncQueued = false;
+        let lockedPathId = null;
+        let lockedPathUntil = 0;
+
+        const revealPathLink = (link) => {
+            if (!pathNav || pathNav.scrollWidth <= pathNav.clientWidth) return;
+
+            const navRect = pathNav.getBoundingClientRect();
+            const linkRect = link.getBoundingClientRect();
+            const edgeInset = 8;
+            let leftDelta = 0;
+
+            if (linkRect.left < navRect.left + edgeInset) {
+                leftDelta = linkRect.left - navRect.left - edgeInset;
+            } else if (linkRect.right > navRect.right - edgeInset) {
+                leftDelta = linkRect.right - navRect.right + edgeInset;
+            }
+
+            if (leftDelta) {
+                pathNav.scrollBy({ left: leftDelta, behavior: "smooth" });
+            }
+        };
+
+        const setActivePath = (sectionId) => {
+            if (!sectionId || sectionId === activePathId) return;
+
+            activePathId = sectionId;
+            pathLinks.forEach((link) => {
+                const isActive = link.getAttribute("href") === `#${sectionId}`;
+                link.setAttribute("aria-current", isActive ? "true" : "false");
+                if (isActive) revealPathLink(link);
+            });
+        };
+
+        const getPathTargetY = () => {
+            const scrollPaddingTop = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop);
+            return Number.isNaN(scrollPaddingTop) ? 172 : scrollPaddingTop;
+        };
+
+        const getPathActivationY = () => Math.min(window.innerHeight * 0.45, getPathTargetY() + 220);
+
+        const getCurrentPathId = () => {
+            if (!pathSections.length) return activePathId;
+            if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) {
+                return pathSections[pathSections.length - 1].id;
+            }
+
+            const activationY = getPathActivationY();
+            let currentSection = pathSections[0];
+
+            for (const section of pathSections) {
+                if (section.getBoundingClientRect().top <= activationY) {
+                    currentSection = section;
+                } else {
+                    break;
+                }
+            }
+
+            return currentSection.id;
+        };
+
+        const syncActivePath = () => {
+            pathSyncQueued = false;
+
+            if (lockedPathId && Date.now() < lockedPathUntil) {
+                const lockedSection = document.getElementById(lockedPathId);
+                const hasReachedTarget = lockedSection
+                    && lockedSection.getBoundingClientRect().top <= getPathActivationY() + 24;
+
+                if (!hasReachedTarget) return;
+            }
+
+            lockedPathId = null;
+            lockedPathUntil = 0;
+            setActivePath(getCurrentPathId());
+        };
+
+        const requestPathSync = () => {
+            if (pathSyncQueued) return;
+            pathSyncQueued = true;
+            requestAnimationFrame(syncActivePath);
+        };
+
+        const releasePathLock = () => {
+            lockedPathId = null;
+            lockedPathUntil = 0;
+            requestPathSync();
+        };
+
+        pathLinks.forEach((link) => {
+            link.addEventListener("click", () => {
+                lockedPathId = link.getAttribute("href").slice(1);
+                lockedPathUntil = Date.now() + 2200;
+                setActivePath(lockedPathId);
+            });
+        });
+        window.addEventListener("scroll", requestPathSync, { passive: true });
+        window.addEventListener("resize", requestPathSync);
+        window.addEventListener("wheel", releasePathLock, { passive: true });
+        window.addEventListener("touchstart", releasePathLock, { passive: true });
+        window.addEventListener("keydown", (event) => {
+            const scrollKeys = ["ArrowDown", "ArrowUp", "End", "Home", "PageDown", "PageUp", " "];
+            if (scrollKeys.includes(event.key)) releasePathLock();
+        });
+        requestPathSync();
+
+    </script>
+<!-- Coverage map: markers + Countries/Years/Cadence from catalog-data.json -->
+<script src="coverage-map.js"></script>
+<script>renderCoverageMap("contrib-coverage-viewport");</script>
+</body>
+</html>

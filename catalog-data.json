@@ -1,0 +1,140 @@
+{
+  "countries": 5,
+  "country_codes": [
+    "be",
+    "de",
+    "dk",
+    "gb",
+    "it"
+  ],
+  "cumulative_years": 92,
+  "time_steps": 6959729,
+  "best_cadence_minutes": 5,
+  "datasets_count": 6,
+  "resolved_count": 6,
+  "markers": [
+    {
+      "country": "be",
+      "flag": "be",
+      "x": 51.23,
+      "y": 23.73
+    },
+    {
+      "country": "de",
+      "flag": "de",
+      "x": 52.9,
+      "y": 23.3
+    },
+    {
+      "country": "dk",
+      "flag": "dk",
+      "x": 53.23,
+      "y": 19.64
+    },
+    {
+      "country": "gb",
+      "flag": "gb",
+      "x": 49.11,
+      "y": 20.22
+    },
+    {
+      "country": "it",
+      "flag": "it",
+      "x": 53.48,
+      "y": 29.91
+    }
+  ],
+  "datasets": [
+    {
+      "sourceName": "be_rmi_radclim_mfb_5min",
+      "description": "RMI (Royal Meteorological Institute of Belgium) RADCLIM 1 km radar-rain-gauge merged rain rate with mean-field bias (MFB) correction (5-min, Belgian Lambert EPSG:3812), hosted on ECMWF S3",
+      "driver": "zarr",
+      "urlpath": "s3://mlcast-source-datasets/radar_precipitation/BE-RMI-radclim-mfb/v0.1.1/5_minutes.zarr/",
+      "endpointUrl": "https://object-store.os-api.cci2.ecmwf.int",
+      "consolidated": true,
+      "flag": "be",
+      "cadence_minutes": 5,
+      "resolution_m": 1000.0,
+      "resolution": "1 km",
+      "steps": 726332,
+      "years": 6.9,
+      "resolved": true
+    },
+    {
+      "sourceName": "dmi_10_minutes",
+      "description": "DMI (Danmarks Meteorologiske Institute) 10-Minute radar reflectivity data ",
+      "driver": "zarr",
+      "urlpath": "s3://mlcast-source-datasets/dmi/v0.1.1/dmi_10_minutes.zarr/",
+      "endpointUrl": "https://object-store.os-api.cci2.ecmwf.int",
+      "consolidated": true,
+      "flag": "dk",
+      "cadence_minutes": 10,
+      "resolution_m": 500.0,
+      "resolution": "500 m",
+      "steps": 517536,
+      "years": 9.8,
+      "resolved": true
+    },
+    {
+      "sourceName": "it_dpc_sri_5min",
+      "description": "Italian Radar Surface Rainfall Intensity (SRI) from Dipartimento Protezione Civile (DPC), hosted on ECMWF S3",
+      "driver": "zarr",
+      "urlpath": "s3://mlcast-source-datasets/IT-DPC-SRI/v0.1.0/italian-radar-dpc-sri.zarr/",
+      "endpointUrl": "https://object-store.os-api.cci2.ecmwf.int",
+      "consolidated": true,
+      "flag": "it",
+      "cadence_minutes": 5,
+      "resolution_m": 1000.0,
+      "resolution": "1 km",
+      "steps": 1039785,
+      "years": 9.9,
+      "resolved": true
+    },
+    {
+      "sourceName": "radklim_5_minutes",
+      "description": "RADKLIM 5-Minute Precipitation Data from Deutscher Wetterdienst (DWD), hosted on ECMWF S3",
+      "driver": "zarr",
+      "urlpath": "s3://mlcast-source-datasets/radklim/v0.1.1/5_minutes.zarr/",
+      "endpointUrl": "https://object-store.os-api.cci2.ecmwf.int",
+      "consolidated": true,
+      "flag": "de",
+      "cadence_minutes": 5,
+      "resolution_m": 1000.0,
+      "resolution": "1 km",
+      "steps": 2419200,
+      "years": 23.0,
+      "resolved": true
+    },
+    {
+      "sourceName": "radklim_hourly",
+      "description": "RADKLIM Hourly Precipitation Data from Deutscher Wetterdienst (DWD), hosted on ECMWF S3",
+      "driver": "zarr",
+      "urlpath": "s3://mlcast-source-datasets/radklim/v0.1.1/hourly.zarr/",
+      "endpointUrl": "https://object-store.os-api.cci2.ecmwf.int",
+      "consolidated": true,
+      "flag": "de",
+      "cadence_minutes": 60,
+      "resolution_m": 1000.0,
+      "resolution": "1 km",
+      "steps": 201600,
+      "years": 23.0,
+      "resolved": true
+    },
+    {
+      "sourceName": "uk_metoffice_5min",
+      "description": "UK Met Office C-band rain radar 1 km composite (5-min, OSGB 1 km), hosted on ECMWF S3",
+      "driver": "zarr",
+      "urlpath": "s3://mlcast-source-datasets/UK-METOFFICE-RADAR/v0.1.0/uk-metoffice-c-band-rain-radar.zarr/",
+      "endpointUrl": "https://object-store.os-api.cci2.ecmwf.int",
+      "consolidated": true,
+      "flag": "gb",
+      "cadence_minutes": 5,
+      "resolution_m": 1000.0,
+      "resolution": "1 km",
+      "steps": 2055276,
+      "years": 19.5,
+      "resolved": true
+    }
+  ],
+  "generated": "2026-07-09T08:53:21+00:00"
+}

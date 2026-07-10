@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MLCast Community - AI Meteorological Nowcasting</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+    
+    <!-- Collegamento al CSS Esterno -->
+    <link rel="stylesheet" href="home.css">
+    <script src="header.js" defer></script>
+
+    <script src="tailwind-config.js"></script>
+    <style>
+    .dataset-search-input::-webkit-search-cancel-button {
+        cursor: pointer;
+    }
+ 
+
+      ::selection {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
+</style>
+<link rel="icon" type="image/svg+xml" href="public/Logo_pacchetto.svg">
+<link rel="shortcut icon" href="public/favicon.ico">
+</head>
+<body class="bg-background text-on-surface antialiased font-sans">
+    
+<div id="site-header"></div><!-- Indice di pagina (navbar sezioni, lato sinistro) -->
+    <nav class="section-nav" aria-label="Page sections">
+        <button class="section-nav__dot" aria-label="Page sections" title="On this page"></button>
+        <div class="section-nav__panel">
+            <span class="section-nav__title">On this page</span>
+            <a href="#dataset-catalog" data-section-link>Dataset Catalog</a>
+            <a href="#access" data-section-link>Accessing Data</a>
+        </div>
+    </nav>
+
+    <main class="pt-32 pb-24">
+        <!-- Hero Section: Data Catalog -->
+        <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto text-center mb-20">
+            <span class="text-primary-fixed font-mono text-sm tracking-[0.3em] uppercase">[MLCAST_DATASETS]</span>
+            <h1 class="text-5xl md:text-7xl font-bold text-primary mt-6 tracking-tighter">Community Dataset Catalog</h1>
+            <p class="text-on-surface-variant text-lg mt-6 max-w-2xl mx-auto leading-relaxed">
+                A curated collection of high resolution (sub-hourly, km scale) observational datasets designed for meteorological machine learning workflows.
+                Analysis Ready and Cloud-Optimized (ARCO), and directly accessible via Python thanks to the <a href="https://europeanweather.cloud/" target="_blank" rel="noopener" class="underline decoration-primary-fixed/40 hover:text-primary-fixed">European Weather Cloud</a> (EWC).
+            </p>
+        </section>
+
+
+
+
+    
+        <section id="dataset-catalog" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-16" aria-labelledby="dataset-catalog-heading">
+
+            <!-- Dataset Impact Spotlight (verified data from MLCast) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
+                    <span class="material-symbols-outlined text-primary-fixed text-3xl">travel_explore</span>
+                    <p id="stat-countries" class="mt-3 text-3xl font-bold text-primary">5</p>
+                    <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Countries</p>
+                </div>
+                <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
+                    <span class="material-symbols-outlined text-primary-fixed text-3xl">calendar_month</span>
+                    <p id="stat-years" class="mt-3 text-3xl font-bold text-primary">~70</p>
+                    <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Cumulative Years</p>
+                </div>
+                <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
+                    <span class="material-symbols-outlined text-primary-fixed text-3xl">timeline</span>
+                    <p id="stat-timesteps" class="mt-3 text-3xl font-bold text-primary">6M+</p>
+                    <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Time Steps</p>
+                </div>
+                <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
+                    <span class="material-symbols-outlined text-primary-fixed text-3xl">sync</span>
+                    <p id="stat-cadence" class="mt-3 text-3xl font-bold text-primary">5 min</p>
+                    <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Best Cadence</p>
+                </div>
+            </div>
+
+        <!-- Access Methods -->
+        <section id="access" class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            <div class="glass-card p-8 rounded-2xl border border-outline-variant/30 hover:border-primary-fixed/30 transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="material-symbols-outlined text-primary-fixed text-2xl">package_2</span>
+                    <h3 class="text-xl font-bold text-primary">Option A: Python Package</h3>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-6">Install our stable <code class="text-primary-fixed">mlcast-datasets</code> package from PyPI for consistent versioning.</p>
+                <div class="terminal-window font-mono text-xs">
+                    pip install mlcast-datasets<br><br>
+                    import mlcast_datasets<br>
+                    cat = mlcast_datasets.open_catalog()
+                </div>
+            </div>
+
+            <div class="glass-card p-8 rounded-2xl border border-outline-variant/30 hover:border-primary-fixed/30 transition-all duration-300">
+                <div class="flex items-center gap-3 mb-4">
+                    <span class="material-symbols-outlined text-primary-fixed text-2xl">cloud</span>
+                    <h3 class="text-xl font-bold text-primary">Option B: Direct Catalog Access</h3>
+                </div>
+                <p class="text-on-surface-variant text-sm mb-6">Use the most recent version of the catalog directly from our source repository.</p>
+                <div class="terminal-window font-mono text-xs">
+                    pip install intake intake-xarray zarr jinja2<br><br>
+                    import intake<br>
+                    cat = intake.open_catalog("https://raw.githubusercontent.com/mlcast-community/mlcast-datasets/main/src/mlcast_datasets/catalog/catalog.yml")
+                </div>
+            </div>
+        </section>
+
+
+
+            <div class="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+                <div>
+                    <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase tracking-widest">[INTAKE CATALOG SOURCES]</div>
+                    <h2 id="dataset-catalog-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">Available precipitation datasets</h2>
+                    <p class="mt-4 max-w-2xl text-on-surface-variant">
+                        Every dataset in the catalog is versioned, documented, and ready to load. Each entry includes the source description, driver, and direct access path.
+                    </p>
+                </div>
+
+                <div class="relative w-full lg:max-w-sm">
+                    <label for="dataset-search" class="sr-only">Search catalog datasets</label>
+                    <span class="material-symbols-outlined pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-[20px] text-on-surface-variant/70" aria-hidden="true">search</span>
+                    <input id="dataset-search" type="search" autocomplete="off" placeholder="Search datasets..." class="dataset-search-input w-full rounded-lg border border-outline-variant/40 bg-[#F0E8DE] py-3 min-h-[44px] pl-12 pr-4 text-sm text-primary placeholder:text-on-surface-variant/55 transition-colors focus:border-primary-fixed focus:ring-primary-fixed/30"/>
+                </div>
+            </div>
+
+            <div class="mt-8 overflow-hidden rounded-xl border border-outline-variant/30 bg-surface-creme/70 shadow-[0_24px_80px_rgba(0,0,0,0.18)]">
+                <div class="flex flex-col gap-2 border-b border-outline-variant/20 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
+                    <span id="dataset-catalog-count" class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed">Loading catalog sources</span>
+                    <a href="https://mlcast-community.github.io/mlcast-datasets/" target="_blank" rel="noreferrer" class="inline-flex items-center gap-2 text-sm font-semibold text-primary-fixed hover:text-primary transition-colors">
+                        View catalog file
+                        <span class="material-symbols-outlined text-[18px]" aria-hidden="true">open_in_new</span>
+                    </a>
+                </div>
+
+                <div id="dataset-catalog-list" class="divide-y divide-outline-variant/20" aria-live="polite">
+                    <div class="p-5">
+                        <p class="text-sm text-on-surface-variant">Loading catalog datasets...</p>
+                    </div>
+                </div>
+                <p id="dataset-catalog-status" class="sr-only" aria-live="polite">Loading catalog datasets.</p>
+            </div>
+        </section>
+
+
+        <!-- Why MLCast Data Section -->
+<section class="py-20 px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="glass-card p-8 rounded-2xl border border-primary-fixed/20">
+            <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-fixed">cloud_upload</span> ARCO Standard
+            </h3>
+            <p class="text-sm text-on-surface-variant">We adopt the ARCO (Analysis-Ready, Cloud-Optimized) pattern. Our data is stored in Zarr format, enabling partial reads and streaming directly from the cloud without massive local storage.</p>
+        </div>
+        <div class="glass-card p-8 rounded-2xl border border-primary-fixed/20">
+            <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-fixed">storage</span> EWC Infrastructure
+            </h3>
+            <p class="text-sm text-on-surface-variant">Hosted on the <strong><a href="https://europeanweather.cloud/" target="_blank" rel="noopener" class="underline decoration-primary-fixed/40 hover:text-primary-fixed">European Weather Cloud</a></strong>, our datasets benefit from high-throughput connectivity to meteorological supercomputers, minimizing egress latency.</p>
+        </div>
+        <div class="glass-card p-8 rounded-2xl border border-primary-fixed/20">
+            <h3 class="text-primary font-bold mb-3 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-fixed">code</span> Code-Addressable
+            </h3>
+            <p class="text-sm text-on-surface-variant">Data is not a static file; it's an object in your Python pipeline. Using <code>intake</code>, every dataset is queryable, version-controlled, and ready for training.</p>
+        </div>
+    </div>
+</section>
+
+    </main>
+
+    
+    <!-- Footer: Elegante e professionale -->
+<div id="site-footer"></div>
+<script>
+    const escapeHtml = (value) => String(value).replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#039;"
+    })[character]);
+
+    function copySnippet(elementId, btn) {
+        const textElement = document.getElementById(elementId);
+        if (!textElement) return;
+
+        const text = textElement.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span> Copied';
+            btn.classList.remove('text-primary');
+            btn.classList.add('text-green-500');
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.classList.remove('text-green-500');
+                btn.classList.add('text-primary');
+            }, 2000);
+        });
+    }
+
+    // Build-time catalog data (producer: scripts/fetch-catalog-stats.py). The
+    // full dataset list, per-dataset country/flag, and impact stats all come
+    // from this same-origin JSON — no client-side YAML parsing.
+    const CATALOG_DATA_URL = "catalog-data.json";
+    const CATALOG_PAGE_URL = "https://github.com/mlcast-community/mlcast-datasets/blob/main/src/mlcast_datasets/catalog/precipitation/catalog.yml";
+    const datasetSearch = document.getElementById("dataset-search");
+    const datasetCatalogList = document.getElementById("dataset-catalog-list");
+    const datasetCatalogCount = document.getElementById("dataset-catalog-count");
+    const datasetCatalogStatus = document.getElementById("dataset-catalog-status");
+    let datasetCatalogLinks = [];
+    window.datasetCatalogLinks = datasetCatalogLinks;
+
+    const formatDatasetName = (sourceName) => sourceName
+        .replace(/(\d+)min\b/g, "$1 min")
+        .split("_")
+        .filter(Boolean)
+        .map((part) => {
+            const normalized = part.toLowerCase();
+            const acronymParts = new Set(["be", "dmi", "dpc", "it", "mfb", "radclim", "radklim", "rmi", "sri", "uk"]);
+
+            if (acronymParts.has(normalized)) return normalized.toUpperCase();
+            if (normalized === "metoffice") return "Met Office";
+            if (normalized === "minutes") return "Minutes";
+            if (normalized === "hourly") return "Hourly";
+            if (/^\d+$/.test(normalized)) return normalized;
+
+            return normalized.charAt(0).toUpperCase() + normalized.slice(1);
+        })
+        .join(" ");
+
+    const mapCatalogDataset = (dataset) => ({
+        name: formatDatasetName(dataset.sourceName),
+        label: formatDatasetName(dataset.sourceName),
+        sourceName: dataset.sourceName,
+        description: dataset.description || "No description available.",
+        driver: dataset.driver || null,
+        urlpath: dataset.urlpath || null,
+        endpointUrl: dataset.endpointUrl || null,
+        consolidated: dataset.consolidated === true,
+        flag: dataset.flag || null,
+        resolution: dataset.resolution || null,
+        href: CATALOG_PAGE_URL,
+        url: CATALOG_PAGE_URL
+    });
+
+    const getDatasetCatalogLinks = async () => {
+        const response = await fetch(CATALOG_DATA_URL, { cache: "no-cache" });
+
+        if (!response.ok) {
+            throw new Error(`Catalog request failed with status ${response.status}`);
+        }
+
+        const data = await response.json();
+        const datasets = Array.isArray(data.datasets) ? data.datasets : [];
+
+        if (!datasets.length) {
+            throw new Error("Catalog data did not contain any datasets");
+        }
+
+        return datasets
+            .map(mapCatalogDataset)
+            .sort((a, b) => a.name.localeCompare(b.name));
+    };
+
+    const getDatasetSearchText = (dataset) => [
+        dataset.name,
+        dataset.sourceName,
+        dataset.description,
+        dataset.driver || "",
+        dataset.urlpath || "",
+        dataset.endpointUrl || ""
+    ].join(" ").toLowerCase();
+
+    const getVisibleDatasetLinks = () => {
+        const query = datasetSearch.value.trim().toLowerCase();
+        if (!query) return datasetCatalogLinks;
+
+        return datasetCatalogLinks.filter((dataset) => getDatasetSearchText(dataset).includes(query));
+    };
+
+    const updateDatasetCount = (visibleDatasets) => {
+        const total = datasetCatalogLinks.length;
+        const visible = visibleDatasets.length;
+        const label = total === 1 ? "catalog source" : "catalog sources";
+        datasetCatalogCount.textContent = total ? `${visible} of ${total} ${label}` : "No catalog sources";
+        datasetCatalogStatus.textContent = total ? `${visible} catalog datasets shown.` : "No catalog datasets loaded.";
+    };
+
+    const getDatasetIcon = () => "rainy";
+
+    const getDatasetImpacts = (sourceName) => {
+        const s = sourceName.toLowerCase();
+        if (s.includes("radklim") && s.includes("hourly")) return [
+            { label: "Provider", value: "DWD" },
+            { label: "Range", value: "2001–2023" },
+            { label: "Cadence", value: "Hourly" },
+            { label: "Variable", value: "Rainfall" }
+        ];
+        if (s.includes("radklim")) return [
+            { label: "Provider", value: "DWD" },
+            { label: "Range", value: "2001–2023" },
+            { label: "Cadence", value: "5 min" },
+            { label: "Variable", value: "Rainfall" }
+        ];
+        if (s.includes("dmi")) return [
+            { label: "Provider", value: "DMI" },
+            { label: "Range", value: "2016–2025" },
+            { label: "Cadence", value: "10 min" },
+            { label: "Variable", value: "Reflectivity" }
+        ];
+        if (s.includes("dpc") || s.includes("it")) return [
+            { label: "Provider", value: "DPC" },
+            { label: "Range", value: "2010–2025" },
+            { label: "Cadence", value: "5 min" },
+            { label: "Variable", value: "Rain rate" }
+        ];
+        if (s.includes("metoffice") || s.includes("uk")) return [
+            { label: "Provider", value: "Met Office" },
+            { label: "Range", value: "2005–2025" },
+            { label: "Cadence", value: "5 min" },
+            { label: "Variable", value: "Rain rate" }
+        ];
+        if (s.includes("rmi") || s.includes("be")) return [
+            { label: "Provider", value: "RMI" },
+            { label: "Range", value: "2017–2023" },
+            { label: "Cadence", value: "5 min" },
+            { label: "Variable", value: "Rain rate" }
+        ];
+        return [
+            { label: "Range", value: "Varies" }
+        ];
+    };
+
+    const renderDatasetCatalogLinks = () => {
+        const visibleDatasets = getVisibleDatasetLinks();
+        updateDatasetCount(visibleDatasets);
+
+        if (!visibleDatasets.length) {
+            const hasQuery = datasetSearch.value.trim().length > 0;
+            datasetCatalogList.innerHTML = `
+                <div class="p-10 text-center">
+                    <span class="material-symbols-outlined text-4xl text-on-surface-variant/30">search_off</span>
+                    <p class="mt-3 text-sm text-on-surface-variant">${hasQuery ? "No catalog datasets match your search." : "No catalog datasets found."}</p>
+                </div>`;
+            return;
+        }
+
+        datasetCatalogList.innerHTML = visibleDatasets.map((dataset) => {
+            const icon = getDatasetIcon(dataset.sourceName);
+            const flagCode = dataset.flag;
+            const impacts = getDatasetImpacts(dataset.sourceName);
+            if (dataset.resolution) impacts.push({ label: "Resolution", value: dataset.resolution });
+            const driverMeta = dataset.driver ? escapeHtml(dataset.driver) : "";
+            const consolidatedMeta = dataset.consolidated === true ? "Consolidated" : "";
+            const endpointMeta = dataset.endpointUrl ? "ECMWF S3" : "";
+            const urlpath = dataset.urlpath || "";
+            const codeId = `xr-code-${dataset.sourceName}`;
+            const IND = "&nbsp;&nbsp;&nbsp;&nbsp;";
+            const codeLines = ["import xarray as xr", ""];
+            if (urlpath && dataset.endpointUrl) {
+                codeLines.push(
+                    "ds = xr.open_dataset(",
+                    `${IND}"${escapeHtml(urlpath)}",`,
+                    `${IND}engine="zarr",`,
+                    `${IND}storage_options={`,
+                    `${IND}${IND}"anon": True,`,
+                    `${IND}${IND}"client_kwargs": {"endpoint_url": "${escapeHtml(dataset.endpointUrl)}"},`,
+                    `${IND}},`,
+                    ")"
+                );
+            } else if (urlpath) {
+                codeLines.push(`ds = xr.open_dataset("${escapeHtml(urlpath)}", engine="zarr")`);
+            } else {
+                codeLines.push("ds = xr.open_dataset(...)  # see catalog for path");
+            }
+            const codeHtml = codeLines.join("<br>");
+
+            return `
+                <div class="block p-5">
+                    <div class="flex items-start gap-4">
+                        <div class="hidden sm:flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-primary-fixed/10 text-primary-fixed">
+                            <span class="material-symbols-outlined text-2xl">${icon}</span>
+                        </div>
+                        <div class="min-w-0 flex-1">
+                            <div class="flex flex-wrap items-center gap-2">
+                                ${flagCode ? `<span class="flex h-5 w-7 overflow-hidden rounded-sm border border-outline-variant/30 shrink-0"><img src="https://flagcdn.com/${flagCode}.svg" alt="" loading="lazy" class="h-full w-full object-cover"></span>` : ""}
+                                <span class="text-lg font-bold text-primary">${escapeHtml(dataset.label)}</span>
+                                <span class="rounded-full border border-outline-variant/40 px-2.5 py-0.5 font-label-tag text-[10px] text-on-surface-variant">${escapeHtml(dataset.sourceName)}</span>
+                            </div>
+                            <p class="mt-1.5 text-sm leading-relaxed text-on-surface-variant/80">${escapeHtml(dataset.description)}</p>
+                            <div class="mt-3">
+                                <div class="flex justify-between items-center mb-1 px-1">
+                                    <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">How to Open</span>
+                                    <button onclick="copySnippet('${codeId}', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
+                                        <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                                    </button>
+                                </div>
+                                <div id="${codeId}" class="terminal-window font-mono text-[12px]">${codeHtml}</div>
+                            </div>
+                            <div class="mt-3 flex flex-wrap items-center gap-3">
+                                ${impacts.map(imp => `
+                                    <span class="inline-flex items-center gap-1.5 rounded-md border border-outline-variant/20 bg-background/40 px-2.5 py-1">
+                                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-on-surface-variant/60">${imp.label}</span>
+                                        <span class="text-xs font-semibold text-primary">${imp.value}</span>
+                                    </span>
+                                `).join("")}
+                                <span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">GeoZarr</span>
+                                <span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">ARCO</span>
+                                ${driverMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">${driverMeta}</span>` : ""}
+                                ${consolidatedMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">${consolidatedMeta}</span>` : ""}
+                                ${endpointMeta ? `<span class="inline-flex items-center gap-1 rounded-md border border-primary-fixed/20 bg-primary-fixed/5 px-2.5 py-1 font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/80">${endpointMeta}</span>` : ""}
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+        }).join("");
+    };
+
+    datasetSearch.addEventListener("input", renderDatasetCatalogLinks);
+
+    getDatasetCatalogLinks()
+        .then((links) => {
+            datasetCatalogLinks = links;
+            window.datasetCatalogLinks = datasetCatalogLinks;
+            renderDatasetCatalogLinks();
+        })
+        .catch((error) => {
+            console.error(error);
+            datasetCatalogLinks = [];
+            window.datasetCatalogLinks = datasetCatalogLinks;
+            datasetCatalogCount.textContent = "Unable to load catalog";
+            datasetCatalogStatus.textContent = "Unable to load catalog datasets right now.";
+            datasetCatalogList.innerHTML = `
+                <div class="p-5">
+                    <p class="text-sm text-on-surface-variant">Unable to load catalog datasets right now.</p>
+                </div>`;
+        });
+</script>
+
+<!-- Scrollspy: evidenzia la sezione attiva nell'indice di pagina -->
+<script>
+    (function () {
+        const links = Array.from(document.querySelectorAll(".section-nav [data-section-link]"));
+        if (!links.length) return;
+        const map = new Map();
+        links.forEach(function (link) {
+            const target = document.querySelector(link.getAttribute("href"));
+            if (target) map.set(target, link);
+        });
+        const observer = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (!entry.isIntersecting) return;
+                links.forEach(function (l) { l.classList.remove("is-active"); });
+                const active = map.get(entry.target);
+                if (active) active.classList.add("is-active");
+            });
+        }, { rootMargin: "-45% 0px -50% 0px", threshold: 0 });
+        map.forEach(function (link, target) { observer.observe(target); });
+    })();
+</script>
+
+<!-- Dot position tracking -->
+<script>
+    (function () {
+        const nav = document.querySelector(".section-nav");
+        const links = Array.from(document.querySelectorAll(".section-nav [data-section-link]"));
+        if (!nav || links.length < 2) return;
+        let ticking = false;
+        function updateDot() {
+            ticking = false;
+            const rangeTop = 0.25;
+            const rangeBottom = 0.75;
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const progress = docHeight > 0 ? Math.min(1, scrollTop / docHeight) : 0;
+            const top = (rangeTop + progress * (rangeBottom - rangeTop)) * window.innerHeight;
+            nav.style.top = top + "px";
+        }
+        function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(updateDot); } }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        window.addEventListener("resize", updateDot);
+        updateDot();
+    })();
+</script>
+<!-- Dataset Impact Spotlight: build-time stats from catalog Zarr metadata.
+     Producer: scripts/fetch-catalog-stats.py -> catalog-data.json.
+     On any failure the hard-coded fallback values in the cards are kept. -->
+<script>
+    (function () {
+        const setStat = (id, value) => {
+            const el = document.getElementById(id);
+            if (el && value != null) el.textContent = value;
+        };
+        const formatTimeSteps = (n) => {
+            if (n >= 1e6) return (Math.floor(n / 1e5) / 10) + "M+";
+            if (n >= 1e3) return Math.floor(n / 1e3) + "K+";
+            return String(n);
+        };
+        const formatCadence = (min) => (min >= 60 && min % 60 === 0)
+            ? (min / 60) + (min === 60 ? " hr" : " hrs")
+            : min + " min";
+
+        fetch("catalog-data.json", { cache: "no-cache" })
+            .then((r) => r.ok ? r.json() : Promise.reject())
+            .then((s) => {
+                setStat("stat-countries", s.countries);
+                if (s.cumulative_years != null) setStat("stat-years", "~" + s.cumulative_years);
+                if (s.time_steps != null) setStat("stat-timesteps", formatTimeSteps(s.time_steps));
+                if (s.best_cadence_minutes != null) setStat("stat-cadence", formatCadence(s.best_cadence_minutes));
+            })
+            .catch(() => { /* keep static fallback values */ });
+    })();
+</script>
+</body>
+</html>

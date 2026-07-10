@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>MLCast Community - Software</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+    
+    <!-- Collegamento al CSS Esterno -->
+    <link rel="stylesheet" href="home.css">
+    <script src="header.js" defer></script>
+
+    <script src="tailwind-config.js"></script>
+    <style>
+      .card-icon-box {
+        background-color: #F7EDE2;
+        border: 1px solid #E8DDD4;
+      }
+      .card-btn-secondary {
+        background-color: #F7EDE2;
+        border: 1px solid #E8DDD4;
+      }
+      .font-headline-md { font-size: 1.25rem; font-weight: 700; }
+      .font-body-sm { font-size: 0.875rem; }
+      .text-body-sm { font-size: 0.875rem; line-height: 1.5; }
+      .font-label-tag { font-family: 'JetBrains Mono', monospace; }
+
+      input, textarea {
+        outline: none;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+      input:focus, textarea:focus {
+        border-color: #EE964B !important;
+        box-shadow: 0 0 0 2px rgba(238, 150, 75, 0.2);
+      }
+      .custom-select {
+        position: relative;
+        cursor: pointer;
+        user-select: none;
+      }
+      .custom-select .select-trigger {
+        width: 100%;
+        padding: 0.5rem;
+        background: #F0E8DE;
+        border: 1px solid rgba(232, 221, 212, 0.4);
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        color: #005B63;
+        font-family: 'JetBrains Mono', monospace;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        transition: border-color 0.15s ease, box-shadow 0.15s ease;
+      }
+      .custom-select .select-trigger:hover {
+        border-color: rgba(238, 150, 75, 0.5);
+      }
+      .custom-select.is-open .select-trigger {
+        border-color: #EE964B !important;
+        box-shadow: 0 0 0 2px rgba(238, 150, 75, 0.2);
+      }
+      .custom-select .select-trigger .arrow {
+        font-size: 14px;
+        color: #6B7F82;
+        transition: transform 0.2s ease;
+      }
+      .custom-select.is-open .select-trigger .arrow {
+        transform: rotate(180deg);
+      }
+      .custom-select .select-dropdown {
+        display: none;
+        position: absolute;
+        top: calc(100% + 4px);
+        left: 0;
+        right: 0;
+        z-index: 50;
+        background: #F7EDE2;
+        border: 1px solid rgba(238, 150, 75, 0.3);
+        border-radius: 0.25rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        max-height: 200px;
+        overflow-y: auto;
+      }
+      .custom-select.is-open .select-dropdown {
+        display: block;
+      }
+      .custom-select .select-dropdown .option {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.875rem;
+        color: #005B63;
+        font-family: 'JetBrains Mono', monospace;
+        transition: background 0.1s ease;
+      }
+      .custom-select .select-dropdown .option:hover {
+        background: rgba(238, 150, 75, 0.2);
+      }
+      .custom-select .select-dropdown .option.is-selected {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
+      .custom-select.is-open .select-trigger {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      ::selection {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="public/Logo_pacchetto.svg">
+    <link rel="shortcut icon" href="public/favicon.ico">
+</head>
+<body class="bg-background text-on-surface antialiased font-sans min-h-screen flex flex-col">
+
+<div id="site-header"></div>
+
+<main class="flex-grow pt-32 pb-24">
+    <!-- Hero -->
+    <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto text-center mb-20">
+        <span class="text-primary-fixed font-mono text-sm tracking-[0.3em] uppercase">[MLCAST_STACK]</span>
+        <h1 class="text-5xl md:text-6xl font-bold text-primary mt-6 tracking-tighter">MLCast Software Suite</h1>
+        <p class="mt-5 text-lg text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
+            We are building a modular Python ecosystem for ML-based weather nowcasting — from data ingestion to model training and operational inference.
+        </p>
+    </section>
+
+    <!-- 3 Cards: horizontal row -->
+    <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+            
+            <!-- Card: DATASET -->
+            <div class="glass-card rounded-2xl p-lg flex flex-col gap-md transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-fixed group-hover:bg-primary-fixed/10 transition-colors">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dataset</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-primary mt-2 min-h-[3.5rem]">Dataset Catalog</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant min-h-[96px]">
+                    Standardized, high-res radar archives for ML. Access data streams via our Python interface with dask-backed xarray support.
+                </p>
+
+                <div class="mt-4">
+                    <div class="flex justify-between items-center mb-1 px-1">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">How to Install</span>
+                        <button onclick="copySnippet('dataset-install', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="dataset-install" class="terminal-window font-mono text-[12px] min-h-[124px]">
+                        <span class="text-primary-fixed/50"># Install the catalog package</span><br>
+                        pip install mlcast-datasets
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <div class="flex justify-between items-center mb-1 px-1">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">How to Use</span>
+                        <button onclick="copySnippet('dataset-use', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="dataset-use" class="terminal-window font-mono text-[12px] min-h-[148px]">
+                        <span class="text-primary-fixed/50"># Open and list available sources</span><br>
+                        import mlcast_datasets<br>
+                        cat = mlcast_datasets.open_catalog()<br>
+                        list(cat)
+                    </div>
+                </div>
+
+                <div class="flex gap-sm pt-2 mt-auto">
+                    <a href="docs/data/" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
+                        <span class="material-symbols-outlined text-[14px]">menu_book</span> Catalog
+                    </a>
+                    <a href="https://github.com/mlcast-community/mlcast-datasets" target="_blank" rel="noreferrer" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Repo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card: VALIDATOR -->
+            <div class="glass-card rounded-2xl p-lg flex flex-col gap-md transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-fixed group-hover:bg-primary-fixed/10 transition-colors">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-primary mt-2 min-h-[3.5rem]">Data Validator</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant min-h-[96px]">
+                    Verify dataset compliance. Automated checks for Zarr specs, metadata integrity, and geospatial tool-chain interoperability.
+                </p>
+
+                <div class="mt-4">
+                    <div class="flex justify-between items-center mb-1 px-1">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">How to Install</span>
+                        <button onclick="copySnippet('validator-install', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="validator-install" class="terminal-window font-mono text-[12px] min-h-[124px]">
+                        <span class="text-primary-fixed/50"># Install the validator tool</span><br>
+                        uv tool install mlcast-dataset-validator
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <div class="flex justify-between items-center mb-1 px-1">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">How to Use</span>
+                        <button onclick="copySnippet('validator-use', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="validator-use" class="terminal-window font-mono text-[12px] min-h-[148px]">
+                        <span class="text-primary-fixed/50"># Validate a local Zarr dataset</span><br>
+                        mlcast.validate_dataset source_data \<br>
+                        radar_precipitation path/to/dataset.zarr
+                    </div>
+                </div>
+
+                <div class="flex gap-sm pt-2 mt-auto">
+                    <a href="https://mlcast-community.github.io/mlcast-dataset-validator/specs/source_data/radar_precipitation/" target="_blank" rel="noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
+                        <span class="material-symbols-outlined text-[14px]">menu_book</span> Specs
+                    </a>
+                    <a href="https://github.com/mlcast-community/mlcast-dataset-validator" target="_blank" rel="noreferrer" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Repo
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card: MACHINE LEARNING -->
+            <div class="glass-card rounded-2xl p-lg flex flex-col gap-md transition-all duration-300 group">
+                <div class="w-12 h-12 rounded-lg bg-surface-container-high border border-outline-variant flex items-center justify-center text-primary-fixed group-hover:bg-primary-fixed/10 transition-colors">
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">analytics</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-primary mt-2 min-h-[3.5rem]">Model Training and Inference</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant min-h-[96px]">
+                    Streamlined Python package for building ML nowcasting models. Run training experiments using Fiddle-based configurations, with existing architectures or plug in your own.
+                </p>
+
+                <div class="mt-4">
+                    <div class="flex justify-between items-center mb-1 px-1">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">How to Install</span>
+                        <button onclick="copySnippet('ml-install', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="ml-install" class="terminal-window font-mono text-[12px] min-h-[124px]">
+                        <span class="text-primary-fixed/50"># Create venv &amp; install</span><br>
+                        uv venv &amp;&amp; source .venv/bin/activate<br>
+                        uv pip install mlcast
+                    </div>
+                </div>
+
+                <div class="mt-3">
+                    <div class="flex justify-between items-center mb-1 px-1">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60">How to Use</span>
+                        <button onclick="copySnippet('ml-use', this)" class="btn-press no-focus-outline flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="ml-use" class="terminal-window font-mono text-[12px] min-h-[148px]">
+                        <span class="text-primary-fixed/50"># Run initial training test</span><br>
+                        mlcast train --config fiddler:use_random_sampler
+                    </div>
+                </div>
+
+                <div class="flex gap-sm pt-2 mt-auto">
+                    <a href="docs/usage/" class="flex-1 flex items-center justify-center gap-2 py-2 bg-surface-container-high border border-outline-variant rounded text-[11px] font-bold uppercase tracking-wider hover:border-primary-fixed transition-colors">
+                        <span class="material-symbols-outlined text-[14px]">menu_book</span> Docs
+                    </a>
+                    <a href="https://github.com/mlcast-community/mlcast" target="_blank" rel="noreferrer" class="github-btn no-focus-outline flex-1 flex items-center justify-center gap-2 py-2 rounded text-[11px] font-bold uppercase tracking-wider transition-all">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        Repo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Model Architectures -->
+    <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
+        <div class="rounded-3xl border border-outline-variant/30 bg-surface-creme/50 p-10 backdrop-blur-md hover:border-primary-fixed/30 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="p-3 rounded-xl bg-primary-fixed/10 text-primary-fixed">
+                    <span class="material-symbols-outlined text-3xl">layers</span>
+                </div>
+                <h2 class="text-3xl font-bold text-primary">Model Architectures</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+                <div class="glass-card rounded-xl p-md">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="material-symbols-outlined text-primary-fixed">neurology</span>
+                        <h3 class="text-xl font-bold text-primary">ConvGRU</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Built-in encoder-decoder with 4 ConvGRU blocks. Encoder uses PixelUnshuffle for downsampling; decoder unrolls in latent space and materializes frames via PixelShuffle. Supports ensemble prediction with configurable ensemble size.</p>
+                </div>
+                <div class="glass-card rounded-xl p-md">
+                    <div class="flex items-center gap-3 mb-3">
+                        <span class="material-symbols-outlined text-primary-fixed">extension</span>
+                        <h3 class="text-xl font-bold text-primary">Custom Networks</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Plug any external architecture by replacing <code class="text-primary-fixed text-xs">cfg.pl_module.network</code> with a <code class="text-primary-fixed text-xs">fdl.Config</code> node. Your model only needs a <code class="text-primary-fixed text-xs">forward(x, steps, ensemble_size)</code> method. Example integration with mfai.HalfUNet available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLI & Configuration -->
+    <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
+        <div class="rounded-3xl border border-outline-variant/30 bg-surface-creme/50 p-10 backdrop-blur-md hover:border-primary-fixed/30 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="p-3 rounded-xl bg-primary-fixed/10 text-primary-fixed">
+                    <span class="material-symbols-outlined text-3xl">terminal</span>
+                </div>
+                <h2 class="text-3xl font-bold text-primary">CLI &amp; Configuration</h2>
+            </div>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold text-primary mb-2">Single Command</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-3">All training functionality is accessible via the <code class="text-primary-fixed text-xs">mlcast train</code> CLI. Configuration uses Google Fiddle for composable, reproducible experiments.</p>
+                    <div class="terminal-window font-mono text-[12px]">
+                        <span class="text-primary-fixed/50"># Train with defaults</span><br>
+                        mlcast train<br><br>
+                        <span class="text-primary-fixed/50"># Override parameters inline</span><br>
+                        mlcast train --config set:data.batch_size=32 --config set:trainer.max_epochs=50<br><br>
+                        <span class="text-primary-fixed/50"># Use a semantic fiddler</span><br>
+                        mlcast train --config fiddler:use_random_sampler --config fiddler:use_mlflow_logger<br><br>
+                        <span class="text-primary-fixed/50"># Reload a saved experiment</span><br>
+                        mlcast train --config path/to/saved/config.yaml
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-md mt-6">
+                    <div class="glass-card rounded-xl p-md">
+                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/60">Fiddlers</span>
+                        <ul class="mt-2 space-y-1 text-sm text-on-surface-variant">
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">check</span> <span><strong class="text-primary">use_random_sampler</strong> — on-the-fly random sampling</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">check</span> <span><strong class="text-primary">use_mlflow_logger</strong> — MLflow tracking</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">check</span> <span><strong class="text-primary">use_anon_s3_dataset</strong> — anonymous S3 access</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">check</span> <span><strong class="text-primary">toggle_masking</strong> — mask-aware loss</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">check</span> <span><strong class="text-primary">set_variables</strong> — input variable selection</span></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card rounded-xl p-md">
+                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/60">Config Consistency</span>
+                        <ul class="mt-2 space-y-1 text-sm text-on-surface-variant">
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">sync</span> <span>Input channels match dataset variables</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">sync</span> <span>Width divisible by <code class="text-primary-fixed text-xs">2<sup>num_blocks</sup></code></span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">sync</span> <span>Ensemble models use CRPS/AFCRPS loss</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">sync</span> <span>Mask flag synchronized with loss</span></li>
+                        </ul>
+                    </div>
+                    <div class="glass-card rounded-xl p-md">
+                        <span class="font-label-tag text-[10px] uppercase tracking-widest text-primary-fixed/60">Experiment Tracking</span>
+                        <ul class="mt-2 space-y-1 text-sm text-on-surface-variant">
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">assessment</span> <span>TensorBoard (default)</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">assessment</span> <span>MLflow (optional)</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">assessment</span> <span>W&amp;B (optional)</span></li>
+                            <li class="flex items-start gap-2"><span class="material-symbols-outlined text-[14px] text-primary-fixed mt-0.5">assessment</span> <span>YAML config persistence + reload</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Training Pipeline & Losses -->
+    <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
+        <div class="rounded-3xl border border-outline-variant/30 bg-surface-creme/50 p-10 backdrop-blur-md hover:border-primary-fixed/30 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="p-3 rounded-xl bg-primary-fixed/10 text-primary-fixed">
+                    <span class="material-symbols-outlined text-3xl">speed</span>
+                </div>
+                <h2 class="text-3xl font-bold text-primary">Training Pipeline</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-lg mb-8">
+                <div>
+                    <h3 class="text-lg font-bold text-primary mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-primary-fixed text-xl">bolt</span> Lightning-Powered</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">The training loop is built on PyTorch Lightning with ModelCheckpoint, EarlyStopping (patience=100), and LearningRateMonitor. Defaults: 100 epochs, batch size 16, Adam lr=1e-4 with ReduceLROnPlateau scheduler.</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-bold text-primary mb-3 flex items-center gap-2"><span class="material-symbols-outlined text-primary-fixed text-xl">grid_view</span> Data Pipeline</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Zarr-backed PyTorch datasets with CF-convention variable resolution. Supports precomputed CSV sampling and on-the-fly random sampling. Features 70/15/15 temporal splits, random augmentation (rotations + flips), and Marshall-Palmer Z-R normalization.</p>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-primary mb-4">Loss Functions</h3>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-md">
+                    <div class="glass-card rounded-xl p-md text-center">
+                        <span class="text-2xl font-bold text-primary-fixed">MSE</span>
+                        <p class="text-xs text-on-surface-variant mt-1">Mean Squared Error</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-md text-center">
+                        <span class="text-2xl font-bold text-primary-fixed">MAE</span>
+                        <p class="text-xs text-on-surface-variant mt-1">Mean Absolute Error</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-md text-center">
+                        <span class="text-2xl font-bold text-primary-fixed">CRPS</span>
+                        <p class="text-xs text-on-surface-variant mt-1">Continuous Ranked Probability Score</p>
+                    </div>
+                    <div class="glass-card rounded-xl p-md text-center">
+                        <span class="text-2xl font-bold text-primary-fixed">AFCRPS</span>
+                        <p class="text-xs text-on-surface-variant mt-1">Almost Fair CRPS</p>
+                    </div>
+                </div>
+                <p class="text-sm text-on-surface-variant/60 mt-4 text-center italic">All losses support optional masking via the <code class="text-primary-fixed text-xs">masked_loss</code> parameter.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Training Walkthrough -->
+    <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
+        <div class="rounded-3xl border border-outline-variant/30 bg-surface-creme/50 p-10 backdrop-blur-md hover:border-primary-fixed/30 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="p-3 rounded-xl bg-primary-fixed/10 text-primary-fixed">
+                    <span class="material-symbols-outlined text-3xl">play_circle</span>
+                </div>
+                <h2 class="text-3xl font-bold text-primary">Quick Start: Train Your First Model</h2>
+            </div>
+
+            <!-- Step indicators -->
+            <div id="step-indicators" class="flex gap-2 mb-8">
+                <button data-step="1" class="step-btn active-step flex-1 py-3 min-h-[44px] rounded-lg text-center text-sm font-bold transition-all bg-primary-fixed text-on-primary-fixed">1. Install</button>
+                <button data-step="2" class="step-btn flex-1 py-3 min-h-[44px] rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">2. Prepare Data</button>
+                <button data-step="3" class="step-btn flex-1 py-3 min-h-[44px] rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">3. Configure</button>
+                <button data-step="4" class="step-btn flex-1 py-3 min-h-[44px] rounded-lg text-center text-sm font-bold transition-all bg-surface-creme border border-outline-variant/40 text-on-surface-variant hover:border-primary-fixed/40">4. Train</button>
+            </div>
+
+            <!-- Step content -->
+            <div id="step-content" class="mb-6">
+                <div class="step-panel" data-step="1">
+                    <h3 class="text-xl font-bold text-primary mb-3">Set up your environment</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Create a virtual environment and install the core MLCast package along with its dependencies.</p>
+                    <div class="relative">
+                        <div class="terminal-window font-mono text-[13px]">
+                            <span class="text-green-400/70">$</span> uv venv<br>
+                            <span class="text-green-400/70">$</span> source .venv/bin/activate<br>
+                            <span class="text-green-400/70">$</span> uv pip install mlcast<br>
+                            <span class="text-green-400/70">$</span> uv pip install mlcast-datasets
+                        </div>
+                        <button onclick="copySnippet('step1-code', this)" class="terminal-control btn-press no-focus-outline absolute top-2 right-3 flex items-center gap-1 rounded px-2 py-1 text-[10px] transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="step1-code" class="hidden">uv venv && source .venv/bin/activate && uv pip install mlcast mlcast-datasets</div>
+                </div>
+                <div class="step-panel hidden" data-step="2">
+                    <h3 class="text-xl font-bold text-primary mb-3">Prepare your data</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Scan a local Zarr copy of a catalog source with <code class="text-primary-fixed text-xs">mlcast stats</code> to produce the per-datacube stats Parquet that training reads from.</p>
+                    <div class="relative">
+                        <div class="terminal-window font-mono text-[13px]">
+                            <span class="text-green-400/70">$</span> <span class="text-primary-fixed/50"># List available radar sources</span><br>
+                            <span class="text-green-400/70">$</span> python -c "import mlcast_datasets; print(list(mlcast_datasets.open_catalog().precipitation))"<br><br>
+                            <span class="text-green-400/70">$</span> <span class="text-primary-fixed/50"># Scan it and write per-datacube stats</span><br>
+                            <span class="text-green-400/70">$</span> mlcast stats ./data/radar.zarr \<br>
+                            &nbsp;&nbsp;--start-date 2020-01-01 \<br>
+                            &nbsp;&nbsp;--end-date 2024-12-31
+                        </div>
+                        <button onclick="copySnippet('step2-code', this)" class="terminal-control btn-press no-focus-outline absolute top-2 right-3 flex items-center gap-1 rounded px-2 py-1 text-[10px] transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="step2-code" class="hidden">python -c "import mlcast_datasets; print(list(mlcast_datasets.open_catalog().precipitation))" && mlcast stats ./data/radar.zarr --start-date 2020-01-01 --end-date 2024-12-31</div>
+                </div>
+                <div class="step-panel hidden" data-step="3">
+                    <h3 class="text-xl font-bold text-primary mb-3">Configure your experiment</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Override training parameters and apply semantic fiddlers to customize your run. Use the config builder below to generate your CLI command.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-md mb-4">
+                        <div>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Batch Size</label>
+                            <input id="cfg-batch" type="number" value="16" min="1" max="256" class="w-full p-2 bg-[#F0E8DE] border border-outline-variant/40 rounded text-sm text-primary font-mono">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Max Epochs</label>
+                            <input id="cfg-epochs" type="number" value="50" min="1" max="500" class="w-full p-2 bg-[#F0E8DE] border border-outline-variant/40 rounded text-sm text-primary font-mono">
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Loss Function</label>
+                            <select id="cfg-loss" class="hidden">
+                                <option value="crps">CRPS</option>
+                                <option value="afcrps">AFCRPS</option>
+                            </select>
+                            <div class="custom-select" data-select-id="cfg-loss"></div>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold uppercase tracking-widest text-on-surface-variant/60 block mb-1">Sampler</label>
+                            <select id="cfg-sampler" class="hidden">
+                                <option value="">Precomputed (CSV)</option>
+                                <option value="fiddler:use_random_sampler">Random (on-the-fly)</option>
+                            </select>
+                            <div class="custom-select" data-select-id="cfg-sampler"></div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <div id="cfg-preview" class="terminal-window font-mono text-[13px]">
+                            mlcast train \<br>
+                            &nbsp;&nbsp;--config set:data.batch_size=16 \<br>
+                            &nbsp;&nbsp;--config set:trainer.max_epochs=50 \<br>
+                            &nbsp;&nbsp;--config set:pl_module.loss_class=crps \<br>
+                            &nbsp;&nbsp;--config fiddler:use_random_sampler
+                        </div>
+                        <button onclick="copySnippet('step3-code', this)" class="terminal-control btn-press no-focus-outline absolute top-2 right-3 flex items-center gap-1 rounded px-2 py-1 text-[10px] transition-all">
+                            <span class="material-symbols-outlined text-[14px]">content_copy</span> Copy
+                        </button>
+                    </div>
+                    <div id="step3-code" class="hidden"></div>
+                </div>
+                <div class="step-panel hidden" data-step="4">
+                    <h3 class="text-xl font-bold text-primary mb-3">Launch training</h3>
+                    <p class="text-sm text-on-surface-variant leading-relaxed mb-4">Run your experiment. The CLI will validate config consistency, log metrics to your chosen tracker, and save the best checkpoint.</p>
+                    <div class="relative">
+                        <div id="terminal-output" class="terminal-window font-mono text-[13px]" style="max-height: 320px; overflow-y: auto;">
+                            <div class="text-green-400/70">$ mlcast train --config fiddler:use_random_sampler</div>
+                            <div class="text-on-surface-variant/70 mt-1">[INFO] Config consistency check passed ✓</div>
+                            <div class="text-on-surface-variant/70">[INFO] Using random sampler (on-the-fly)</div>
+                            <div class="text-on-surface-variant/70">[INFO] Logger: TensorBoard</div>
+                            <div class="text-primary-fixed/90 mt-1">Epoch 1/100 ━━━━━━━━━━━━━━ 156/156 0:32 • loss: 0.2841 • val_loss: 0.2612</div>
+                            <div class="text-primary-fixed/90">Epoch 2/100 ━━━━━━━━━━━━━━ 156/156 0:31 • loss: 0.2453 • val_loss: 0.2387</div>
+                            <div class="text-primary-fixed/90">Epoch 3/100 ━━━━━━━━━━━━━━ 156/156 0:31 • loss: 0.2218 • val_loss: 0.2145</div>
+                            <div class="text-primary-fixed/90">Epoch 4/100 ━━━━━━━━━━━━━━ 156/156 0:31 • loss: 0.2012 • val_loss: 0.1978</div>
+                            <div class="text-primary-fixed/90">Epoch 5/100 ━━━━━━━━━━━━━━ 156/156 0:31 • loss: 0.1876 • val_loss: 0.1832</div>
+                            <div class="text-on-surface-variant/70 mt-1">[INFO] Early stopping triggered (patience=100)</div>
+                            <div class="text-on-surface-variant/70">[INFO] Best checkpoint saved (epoch 5, val_loss: 0.1832)</div>
+                            <div class="text-green-400/70 mt-1">✓ Training complete. Config saved to: logs/tb/2026-06-30/config.yaml</div>
+                        </div>
+                        <button onclick="document.getElementById('terminal-output').classList.toggle('max-h-[320px]'); this.querySelector('span').textContent = this.querySelector('span').textContent === 'expand_more' ? 'expand_less' : 'expand_more'" class="btn-press no-focus-outline absolute top-2 right-2 flex items-center gap-1 text-[10px] text-primary hover:text-primary-fixed transition-all bg-surface-creme/80 px-2 py-1 rounded">
+                            <span class="material-symbols-outlined text-[14px]">expand_more</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 rounded-lg bg-primary-fixed/5 border border-primary-fixed/20 flex items-start gap-3">
+                <span class="material-symbols-outlined text-primary-fixed text-xl">lightbulb</span>
+                <p class="text-sm text-on-surface-variant leading-relaxed">After training, reload any saved experiment with <code class="text-primary-fixed text-xs">mlcast train --config path/to/config.yaml</code> for full reproducibility.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ecosystem Overview -->
+    <section class="px-margin-mobile md:px-margin-desktop max-w-[1440px] mx-auto mb-24">
+        <div class="rounded-3xl border border-outline-variant/30 bg-surface-creme/50 p-10 backdrop-blur-md hover:border-primary-fixed/30 transition-all duration-300">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="p-3 rounded-xl bg-primary-fixed/10 text-primary-fixed">
+                    <span class="material-symbols-outlined text-3xl">widgets</span>
+                </div>
+                <h2 class="text-3xl font-bold text-primary">Ecosystem Packages</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-md">
+                <a href="https://github.com/mlcast-community/mlcast-dataset-sampler" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary-fixed">content_paste_go</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">Dataset Sampler</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Utility to sample source datasets (from the Intake catalog) and generate training-ready data in Zarr format.</p>
+                </a>
+                <a href="https://github.com/mlcast-community/mlcast-dataset-validator" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary-fixed">verified</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">Dataset Validator</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Automated compliance checks for Zarr specs, metadata integrity, and geospatial interoperability.</p>
+                </a>
+                <a href="https://github.com/mlcast-community/mlcast-benchmarks" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary-fixed">leaderboard</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">Benchmarks</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">(Coming soon) Community benchmarks for standardized evaluation of nowcasting models.</p>
+                </a>
+                <a href="https://github.com/mlcast-community/mlcast-dataset-tiff2zarr" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary-fixed">transform</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">tiff2zarr</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Generic GeoTIFF to mlcast-compliant Zarr v3 converter for ingesting new data sources.</p>
+                </a>
+                <a href="https://github.com/orgs/mlcast-community/repositories?q=dataset" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary-fixed">map</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">Dataset Converters</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Source-specific converters that turn provider radar archives into mlcast-compliant Zarr — one per dataset, growing as new sources join.</p>
+                </a>
+                <a href="https://github.com/mlcast-community/mlcast" target="_blank" rel="noreferrer" class="glass-card rounded-xl p-md block group hover:border-primary-fixed/40 transition-all">
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="material-symbols-outlined text-primary-fixed">model_training</span>
+                        <h3 class="text-lg font-bold text-primary group-hover:text-primary-fixed">Model Training</h3>
+                    </div>
+                    <p class="text-sm text-on-surface-variant leading-relaxed">Core package to build, train, and run ML nowcasting models with Fiddle-based configs and pluggable architectures.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<!-- FOOTER -->
+<div id="site-footer"></div>
+
+<script>
+    function copySnippet(elementId, btn) {
+        const textElement = document.getElementById(elementId);
+        if (!textElement) return;
+
+        const text = textElement.innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const originalContent = btn.innerHTML;
+            btn.innerHTML = '<span class="material-symbols-outlined text-[14px]">check</span> Copied';
+            btn.classList.remove('text-primary');
+            btn.classList.add('text-green-500');
+            setTimeout(() => {
+                btn.innerHTML = originalContent;
+                btn.classList.remove('text-green-500');
+                btn.classList.add('text-primary');
+            }, 2000);
+        });
+    }
+
+    // Step navigation
+    const stepBtns = document.querySelectorAll('.step-btn');
+    const stepPanels = document.querySelectorAll('.step-panel');
+
+    stepBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const step = btn.dataset.step;
+            stepBtns.forEach(b => {
+                b.classList.remove('active-step', 'bg-primary-fixed', 'text-on-primary-fixed');
+                b.classList.add('bg-surface-creme', 'border', 'border-outline-variant/40', 'text-on-surface-variant');
+            });
+            btn.classList.add('active-step', 'bg-primary-fixed', 'text-on-primary-fixed');
+            btn.classList.remove('bg-surface-creme', 'border', 'border-outline-variant/40', 'text-on-surface-variant');
+            stepPanels.forEach(p => p.classList.add('hidden'));
+            document.querySelector(`.step-panel[data-step="${step}"]`).classList.remove('hidden');
+        });
+    });
+
+    // Config builder
+    const cfgBatch = document.getElementById('cfg-batch');
+    const cfgEpochs = document.getElementById('cfg-epochs');
+    const cfgLoss = document.getElementById('cfg-loss');
+    const cfgSampler = document.getElementById('cfg-sampler');
+    const cfgPreview = document.getElementById('cfg-preview');
+    const step3Code = document.getElementById('step3-code');
+
+    function updateConfigPreview() {
+        const batch = cfgBatch.value || 16;
+        const epochs = cfgEpochs.value || 50;
+        const loss = cfgLoss.value;
+        const sampler = cfgSampler.value;
+        let cmd = `mlcast train \\<br>&nbsp;&nbsp;--config set:data.batch_size=${batch} \\<br>&nbsp;&nbsp;--config set:trainer.max_epochs=${epochs} \\<br>&nbsp;&nbsp;--config set:pl_module.loss_class=${loss}`;
+        if (sampler) cmd += ` \\<br>&nbsp;&nbsp;--config ${sampler}`;
+        cfgPreview.innerHTML = cmd;
+        step3Code.textContent = `mlcast train --config set:data.batch_size=${batch} --config set:trainer.max_epochs=${epochs} --config set:pl_module.loss_class=${loss}${sampler ? ' --config ' + sampler : ''}`;
+    }
+
+    cfgBatch.addEventListener('input', updateConfigPreview);
+    cfgEpochs.addEventListener('input', updateConfigPreview);
+    cfgLoss.addEventListener('change', updateConfigPreview);
+    cfgSampler.addEventListener('change', updateConfigPreview);
+
+    // Custom select initializer
+    (function () {
+        var selectors = document.querySelectorAll('.custom-select');
+        selectors.forEach(function (wrapper) {
+            var selectId = wrapper.getAttribute('data-select-id');
+            var select = document.getElementById(selectId);
+            if (!select) return;
+
+            function render() {
+                var selected = select.options[select.selectedIndex];
+                wrapper.innerHTML =
+                    '<div class="select-trigger">' +
+                    '<span>' + (selected ? selected.text : '') + '</span>' +
+                    '<span class="material-symbols-outlined arrow">expand_more</span>' +
+                    '</div>' +
+                    '<div class="select-dropdown"></div>';
+
+                var trigger = wrapper.querySelector('.select-trigger');
+                var dropdown = wrapper.querySelector('.select-dropdown');
+
+                for (var i = 0; i < select.options.length; i++) {
+                    var opt = document.createElement('div');
+                    opt.className = 'option' + (i === select.selectedIndex ? ' is-selected' : '');
+                    opt.textContent = select.options[i].text;
+                    opt.dataset.index = i;
+                    opt.addEventListener('click', function (e) {
+                        var idx = parseInt(this.dataset.index);
+                        select.selectedIndex = idx;
+                        select.dispatchEvent(new Event('change'));
+                        wrapper.classList.remove('is-open');
+                        render();
+                        e.stopPropagation();
+                    });
+                    dropdown.appendChild(opt);
+                }
+
+                trigger.addEventListener('click', function (e) {
+                    var isOpen = wrapper.classList.contains('is-open');
+                    closeAllCustomSelects();
+                    if (!isOpen) wrapper.classList.add('is-open');
+                    e.stopPropagation();
+                });
+            }
+
+            render();
+        });
+
+        function closeAllCustomSelects() {
+            document.querySelectorAll('.custom-select.is-open').forEach(function (el) {
+                el.classList.remove('is-open');
+            });
+        }
+
+        document.addEventListener('click', closeAllCustomSelects);
+    })();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+# Troubleshooting
+
+- Common errors
+- Fixes

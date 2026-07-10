@@ -4,22 +4,86 @@ on:
   push:
     branches: ['main']
   workflow_dispatch:
+  schedule:
+    # Daily 06:00 UTC — refresh community stats even without pushes.
+    - cron: '0 6 * * *'
 
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# Allow one concurrent deployment, cancel in-progress runs for the same ref
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      # --- Static site (repo root) -> dist/ ---
+      - name: Assemble static site
+        run: |
+          mkdir -p dist
+          cp -r *.html *.css *.js img video dist/
+          # Site entry point: home.html is the landing page; the nav brand
+          # links to index.html, so publish home.html as index.html too.
+          cp dist/home.html dist/index.html
+          # Serve the icon at the web root too: browsers (notably Firefox)
+          # auto-request /favicon.ico regardless of the <link> tag.
+          cp public/favicon.ico dist/favicon.ico
+
+      # --- Community stats fetched at build time (authenticated: 5000 req/hr) ---
+      - name: Fetch GitHub community stats
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/fetch-gh-stats.sh mlcast-community dist/gh-stats.json
+
+      # --- "Good first issue" list fetched at build time (same rationale) ---
+      - name: Fetch GitHub good-first-issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: bash scripts/fetch-gh-issues.sh mlcast-community dist/gh-issues.json
+
+      - uses: astral-sh/setup-uv@v5
         with:
-          node-version: 20
-      - run: npm ci
-      - run: npm run build
+          python-version: '3.13'
+
+      # --- Catalog data: dataset list, per-country map markers, and impact
+      #     stats (Zarr metadata + the tiny x/y coord arrays for resolution;
+      #     never the bulk data). Feeds data.html's dataset list + spotlight
+      #     and the home/contributing coverage maps.
+      #     Marker positions are read from the staged dist/img/world.svg via
+      #     svgpathtools, and its covered-country highlight rule is rewritten in
+      #     place — so this must run after img/ is copied into dist/. ---
+      - name: Compute catalog data
+        run: |
+          uv run --with s3fs --with pyyaml --with svgpathtools --with zarr \
+            python scripts/fetch-catalog-stats.py \
+            "https://raw.githubusercontent.com/mlcast-community/mlcast-datasets/main/src/mlcast_datasets/catalog/precipitation/catalog.yml" \
+            dist/catalog-data.json \
+            dist/img/world.svg
+
+      # --- MyST / Jupyter Book docs -> dist/docs/ ---
+      - name: Build Jupyter Book
+        env:
+          # Served under <pages-url>/docs, so links must resolve against that subpath
+          BASE_URL: /mlcast-website/docs
+        run: uv run jupyter book build --html --ci
+      - name: Stage book into site
+        run: |
+          echo "=== _build tree ==="
+          find _build -maxdepth 2 || true
+          if [ ! -f _build/html/index.html ]; then
+            echo "::error::_build/html/index.html missing — book build produced no static HTML"
+            exit 1
+          fi
+          mkdir -p dist/docs
+          cp -r _build/html/. dist/docs/
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist

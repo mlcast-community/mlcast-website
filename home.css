@@ -1,0 +1,584 @@
+/* home.css — Light theme (teal/orange/creme) */
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FFFFFF;
+    font-family: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+}
+
+canvas {
+    display: block;
+}
+
+/* Glass card — light variant */
+.glass-card {
+    position: relative;
+    z-index: 0;
+    background: rgba(247, 237, 226, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(232, 221, 212, 0.5);
+    border-radius: 0.5rem;
+    transition: border-color 0.3s ease;
+}
+
+.glass-card:has(.output-popover[open]) {
+    z-index: 20;
+}
+
+.output-popover {
+    z-index: 30;
+}
+
+.glass-card:hover {
+    border-color: #EE964B;
+}
+
+.text-glow {
+    text-shadow: 0 0 10px rgba(238, 150, 75, 0.3);
+}
+
+.grid-gap-custom {
+    gap: 24px;
+}
+
+.font-label-code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+}
+
+.navbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 16px;
+    border-left: 1px solid rgba(232, 221, 212, 0.6);
+}
+
+.navbar-icon-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(232, 221, 212, 0.8);
+    border-radius: 9999px;
+    color: #6B7F82;
+    background: rgba(247, 237, 226, 0.6);
+    transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.navbar-icon-link:hover {
+    color: #EE964B;
+    border-color: #EE964B;
+    background-color: rgba(238, 150, 75, 0.1);
+}
+
+.navbar-icon-link svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.navbar-icon-link .material-symbols-outlined {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.navbar-icon-link--labeled {
+    width: auto;
+    gap: 8px;
+    padding: 0 16px;
+    height: 44px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Section nav (indice laterale) */
+/* Section nav: dot + hover-expand panel overlay */
+.section-nav {
+    position: fixed;
+    z-index: 40;
+    left: 16px;
+    margin-top: 0;
+}
+
+/* The dot trigger */
+.section-nav__dot {
+    display: block;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #EE964B;
+    border: 3px solid #F7EDE2;
+    box-shadow: 0 0 10px rgba(238, 150, 75, 0.35);
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+    min-width: 22px;
+    min-height: 22px;
+}
+
+.section-nav__dot:hover,
+.section-nav__dot:focus-visible {
+    transform: scale(1.25);
+    box-shadow: 0 0 22px rgba(238, 150, 75, 0.6);
+}
+
+/* The expanded panel - hidden by default, shown on hover/focus */
+.section-nav__panel {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%) translateX(-6px);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    background: #F7EDE2;
+    border: 1px solid #E8DDD4;
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+    max-width: min(280px, calc(100vw - 80px));
+}
+
+.section-nav:hover .section-nav__panel,
+.section-nav:focus-within .section-nav__panel {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(-50%) translateX(0);
+}
+
+.section-nav__panel .section-nav__title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(238, 150, 75, 0.5);
+    padding: 0 0 6px 0;
+    display: block;
+    white-space: nowrap;
+}
+
+.section-nav__panel a {
+    position: relative;
+    display: block;
+    padding: 6px 14px 6px 0;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #6B7F82;
+    text-decoration: none;
+    border-right: 2px solid transparent;
+    transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.section-nav__panel a:hover {
+    color: #005B63;
+}
+
+.section-nav__panel a.is-active {
+    color: #EE964B;
+    font-weight: 700;
+    border-right-color: #EE964B;
+}
+
+@media (max-width: 767.98px) {
+    .section-nav {
+        display: none;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .navbar-actions {
+        padding-left: 0;
+        border-left: 0;
+    }
+}
+
+/* Mobile hamburger menu */
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #005B63;
+    padding: 8px;
+    margin: -8px;
+    min-width: 44px;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+}
+
+.hamburger-btn .material-symbols-outlined {
+    font-size: 28px;
+}
+
+@media (max-width: 767.98px) {
+    .hamburger-btn {
+        display: inline-flex;
+        margin-left: 12px;
+    }
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(320px, 85vw);
+    height: 100vh;
+    z-index: 100;
+    background: #F7EDE2;
+    border-left: 1px solid #E8DDD4;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 24px 24px;
+    gap: 4px;
+    overflow-y: auto;
+}
+
+.mobile-menu.open {
+    transform: translateX(0);
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.mobile-menu-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: #6B7F82;
+    transition: color 0.15s, background-color 0.15s;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a:active {
+    color: #005B63;
+    background: rgba(0, 91, 99, 0.06);
+}
+
+.mobile-menu .mobile-menu-actions {
+    margin-top: auto;
+    padding-top: 16px;
+    border-top: 1px solid #E8DDD4;
+    display: flex;
+    gap: 12px;
+}
+
+.mobile-menu .mobile-menu-actions a {
+    flex: 1;
+    justify-content: center;
+    gap: 8px;
+    border: 1px solid #E8DDD4;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+#shader-canvas {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Pulsanti */
+.btn-press:active {
+    transform: scale(0.95);
+}
+
+.transition-all {
+    transition: all 0.2s ease-in-out;
+}
+
+.no-focus-outline:focus:not(:focus-visible) {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.no-focus-outline:focus-visible {
+    outline: 2px solid #EE964B;
+    outline-offset: 2px;
+    border-radius: 6px;
+}
+
+.github-btn {
+    transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: transparent;
+    border: 1px solid rgba(0, 91, 99, 0.2);
+    color: #005B63;
+}
+
+.github-btn:hover {
+    background-color: #EE964B;
+    border-color: #EE964B;
+    color: #FFFFFF;
+}
+
+.github-btn:hover svg {
+    fill: #FFFFFF;
+}
+
+summary:focus:not(:focus-visible) {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+summary:focus-visible {
+    outline: 2px solid #EE964B;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+summary {
+    cursor: pointer;
+    user-select: none;
+}
+
+footer a {
+    transition: color 0.2s ease-in-out;
+}
+footer a:hover {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+/* Sections */
+section {
+    background-color: #FFFFFF;
+}
+
+.hero-gradient {
+    background: linear-gradient(to bottom, rgba(247, 237, 226, 0.3), rgba(255, 255, 255, 0.6), #FFFFFF);
+}
+
+.video-container {
+    background-color: #F7EDE2;
+    border: 1px solid rgba(232, 221, 212, 0.5);
+    overflow: hidden;
+}
+
+.hud-overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    z-index: 10;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: rgba(238, 150, 75, 0.7);
+    background-color: rgba(247, 237, 226, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 4px 8px;
+    border: 1px solid rgba(238, 150, 75, 0.2);
+}
+
+footer {
+    background-color: #F7EDE2 !important;
+}
+
+#shader-canvas {
+    z-index: -1;
+}
+
+#datasets .glass-card {
+    background: rgba(247, 237, 226, 0.6) !important;
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(238, 150, 75, 0.15);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#datasets .glass-card:hover {
+    transform: translateY(-10px);
+    border-color: rgba(238, 150, 75, 0.4);
+}
+
+.code-container {
+    background: #F0E8DE !important;
+    border: 1px solid rgba(238, 150, 75, 0.2);
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+}
+
+.text-primary-fixed {
+    color: #EE964B !important;
+}
+
+.glass-card {
+    background: linear-gradient(180deg, rgba(247, 237, 226, 0.6) 0%, rgba(255, 255, 255, 0.4) 100%);
+    backdrop-filter: blur(20px);
+    transition: all 0.5s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.text-gray-400 {
+    color: #6B7F82;
+}
+
+/* Touch target sizing */
+.navbar-icon-link:not(.navbar-icon-link--labeled) {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+.btn-press {
+    min-height: 44px;
+    min-width: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.github-btn {
+    min-height: 44px;
+}
+
+footer a:not(.footer-brand):not(.footer-cta) {
+    display: inline-block;
+    padding: 10px 0;
+    min-height: 44px;
+}
+
+/* Terminal window: macOS style with traffic-light dots */
+.terminal-window {
+    position: relative;
+    padding: 42px 18px 18px !important;
+    border: 1px solid rgba(255, 255, 255, 0.06) !important;
+    border-radius: 12px !important;
+    background: #0D2D31 !important;
+    color: #C8D6D8 !important;
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.7;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.04) !important;
+    overflow-x: auto;
+    scrollbar-color: #1F4A4E #0D2D31;
+}
+
+/* macOS traffic-light dots */
+.terminal-window::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    left: 18px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #FF5F56;
+    box-shadow: 16px 0 0 #FFBD2E, 32px 0 0 #27C93F;
+    z-index: 1;
+}
+
+.terminal-window--card {
+    display: flex;
+    min-height: 224px;
+    flex-direction: column;
+}
+
+.terminal-window--card .terminal-code {
+    width: max-content;
+    min-width: 100%;
+    margin: auto 0;
+}
+
+.terminal-window [class*="text-primary-fixed/50"],
+.terminal-window .terminal-comment {
+    color: #6B969B !important;
+}
+
+.terminal-window [class*="text-primary-fixed/90"],
+.terminal-window .terminal-highlight,
+.terminal-window .terminal-string {
+    color: #EE964B !important;
+}
+
+.terminal-window [class*="text-green-400"],
+.terminal-window .terminal-prompt {
+    color: #4EC9B0 !important;
+}
+
+.terminal-window [class*="text-on-surface-variant"],
+.terminal-window .terminal-output {
+    color: #8A9CA6 !important;
+}
+
+.terminal-window .terminal-keyword {
+    color: #569CD6 !important;
+}
+
+/* Copy button on dark terminal */
+.terminal-control {
+    color: #8A9CA6 !important;
+    background: #1A3E42 !important;
+    border: 1px solid #2A5257;
+}
+
+.terminal-control:hover {
+    color: #EE964B !important;
+    border-color: #EE964B;
+}
+
+/* Copy-to-clipboard toast (shown by header.js copy-on-select). */
+.copy-toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(80px);
+    background: #005B63;
+    color: #FFFFFF;
+    padding: 10px 24px;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    pointer-events: none;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+.copy-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}

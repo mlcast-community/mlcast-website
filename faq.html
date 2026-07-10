@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Frequently asked questions about MLCast, open-source machine learning for weather nowcasting."/>
+    <title>MLCast Community - FAQ</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="tailwind-config.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="home.css"/>
+    <script src="header.js" defer></script>
+
+    <style>
+        details.faq-item summary { list-style: none; cursor: pointer; }
+        details.faq-item summary::-webkit-details-marker { display: none; }
+        details.faq-item[open] .faq-icon { transform: rotate(180deg); }
+        .faq-icon { transition: transform 0.2s ease; }
+      ::selection {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="public/Logo_pacchetto.svg">
+    <link rel="shortcut icon" href="public/favicon.ico">
+</head>
+
+<body class="bg-background text-on-surface antialiased font-sans min-h-screen flex flex-col">
+<div id="site-header"></div><main class="flex-grow pt-[76px]">
+    <section class="px-margin-mobile py-16 md:px-margin-desktop md:py-20 lg:py-24" aria-labelledby="faq-heading">
+        <div class="mx-auto w-full max-w-[1180px]">
+            <div class="max-w-4xl">
+                <div class="font-label-tag mb-5 text-[11px] uppercase text-primary-fixed">[FREQUENTLY ASKED QUESTIONS]</div>
+                <h1 id="faq-heading" class="font-headline-xl text-4xl font-bold leading-[1.05] text-primary md:text-6xl">
+                    Questions &amp; Answers.
+                </h1>
+                <p class="mt-5 max-w-3xl text-base leading-relaxed text-on-surface-variant md:text-lg">
+                    Everything you need to know about MLCast, weather nowcasting, and how to get involved in the community.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-t border-outline-variant/20 bg-[#F0E8DE] px-margin-mobile py-16 md:px-margin-desktop md:py-20" aria-label="Frequently asked questions">
+        <div class="mx-auto max-w-[860px]">
+            <div class="space-y-4">
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40" open>
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">What is MLCast?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        MLCast is an open-source community building shared datasets, software, and machine-learning models for weather nowcasting. It started as a grassroots effort among researchers in September 2024 and has since also become the official Working Group 6 on Nowcasting in the EUMETNET E-AI Optional Programme — while staying open to anyone, anywhere. The community and its code live at <a href="https://github.com/mlcast-community" target="_blank" rel="noreferrer" class="text-primary-fixed font-semibold hover:underline">github.com/mlcast-community</a>.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">What doesn't MLCast do?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        MLCast is intentionally scoped:
+                    </p>
+                    <ul class="mt-3 list-disc space-y-2 pl-5 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        <li>No operational forecasts or real-time data delivery — MLCast is a research and development community for operational tools, not a forecasting or data service.</li>
+                        <li>Observation-to-observation only — the focus is high-resolution predictions (sometimes called DOP, direct observation prediction), not full numerical weather prediction.</li>
+                        <li>Short-range only — the focus is nowcasting (0–6h lead times), extending at most to sub-daily horizons. No medium-range, (sub)seasonal, or climate forecasting; for that, see our friends at <a href="https://github.com/ecmwf/anemoi" target="_blank" rel="noreferrer" class="text-primary-fixed font-semibold hover:underline">anemoi</a> at ECMWF.</li>
+                        <li>Machine-learning methods only — for classical, non-ML nowcasting techniques, see our friends at the <a href="https://github.com/pySTEPS/pysteps" target="_blank" rel="noreferrer" class="text-primary-fixed font-semibold hover:underline">pysteps</a> community.</li>
+                    </ul>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">Why weather nowcasting?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        Weather nowcasting focuses on predicting weather conditions over the next few minutes to several hours. These predictions are vital for tracking severe weather events and complement traditional forecasting approaches.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">How do I get started?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        Join the conversation on <a href="https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg" target="_blank" rel="noreferrer" class="text-primary-fixed font-semibold hover:underline">Slack</a> (try #start-here), or browse the repositories at <a href="https://github.com/mlcast-community" target="_blank" rel="noreferrer" class="text-primary-fixed font-semibold hover:underline">github.com/mlcast-community</a>. Our <a href="contributing.html" class="text-primary-fixed font-semibold hover:underline">Contributing page</a> lays out concrete paths — sharing data, writing code, training models, validating results — so you can pick whatever matches your skills.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">How can I contribute?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        Contributions include sharing datasets, writing code, training models, validating results, improving documentation, and supporting the community — see the paths laid out on our <a href="contributing.html" class="text-primary-fixed font-semibold hover:underline">Contributing page</a>. All experience levels are welcome.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">Do I need a GPU?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        GPUs aren't required for many contributions, like documentation, testing, dataset validation, and data work. Training and benchmarking models does need GPU access, but not your own — MLCast pools shared compute, including allocations on CINECA's Leonardo HPC, that contributors can use.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">How do I train a model?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        Install <code class="text-primary-fixed">mlcast</code> and <code class="text-primary-fixed">mlcast-datasets</code>, pull or sample a dataset from the catalog, configure your experiment (architecture, loss, sampler), and launch training through the CLI. The <a href="software.html" class="text-primary-fixed font-semibold hover:underline">Software page</a> walks through each step with copyable commands.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">Where does the data come from?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        Data comes from national meteorological services, hosted on the <a href="https://europeanweather.cloud/" target="_blank" rel="noreferrer" class="text-primary-fixed font-semibold hover:underline">European Weather Cloud</a> — currently five countries and growing, see the live <a href="data.html#dataset-catalog" class="text-primary-fixed font-semibold hover:underline">Dataset Catalog</a> for the full list. Satellite imagery (including Meteosat Third Generation products) is in progress too. Every dataset is converted to a common Zarr format and validated before being added to the catalog.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">How are models evaluated?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        Models are evaluated on held-out validation and test data using standard machine-learning and meteorological verification metrics, so results stay comparable across architectures trained on the same datasets. A shared benchmarking suite (<code class="text-primary-fixed">mlcast-benchmarks</code>) is in development to standardize this further across the community.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">How do I use a pretrained model?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        The <code class="text-primary-fixed">mlcast</code> package itself is still pre-1.0 — a ConvGRU baseline is landing now, with a latent-diffusion architecture at an early proof-of-concept stage — so packaged pretrained weights for one-line inference aren't there yet. In the meantime, several architectures used within the community (DGMR, LDCast, GPTCast) already have pretrained weights in their own repositories; check the links on the <a href="software.html" class="text-primary-fixed font-semibold hover:underline">Software page</a> or ask on Slack for the current best starting point.
+                    </p>
+                </details>
+
+                <details class="faq-item group rounded-lg border border-outline-variant/40 bg-background/60 p-5 transition-colors hover:border-primary-fixed/40">
+                    <summary class="flex items-center justify-between gap-4">
+                        <h2 class="font-headline-xl text-lg font-bold text-primary md:text-xl">Where can I ask for help?</h2>
+                        <span class="material-symbols-outlined faq-icon shrink-0 text-primary-fixed" aria-hidden="true">expand_more</span>
+                    </summary>
+                    <p class="mt-4 text-sm leading-relaxed text-on-surface-variant md:text-base">
+                        Ask on <a href="https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg" target="_blank" rel="noreferrer" class="text-primary-fixed font-semibold hover:underline">Slack</a>, open a GitHub Issue or Discussion on the relevant repository, or join the mailing list to get the monthly meeting invite and Teams link.
+                    </p>
+                </details>
+
+            </div>
+
+            <div class="mt-12 rounded-lg border border-primary-fixed/30 bg-background/60 p-6 text-center">
+                <h2 class="font-headline-xl text-xl font-bold text-primary">Still have questions?</h2>
+                <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">
+                    Join the conversation on Slack or reach out through our community channels.
+                </p>
+                <a href="https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg" target="_blank" rel="noreferrer" class="mt-5 inline-flex items-center justify-center gap-2 rounded bg-primary-fixed px-6 py-3 text-sm font-bold uppercase text-on-primary-fixed transition-opacity hover:opacity-90">
+                    Join Slack
+                    <span class="material-symbols-outlined text-[18px]" aria-hidden="true">forum</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div id="site-footer"></div>
+</body>
+</html>

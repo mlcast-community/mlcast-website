@@ -1,0 +1,44 @@
+# See docs at: https://mystmd.org/guide/frontmatter
+version: 1
+project:
+  id: 43d19784-023c-433e-926f-4a77779b499e
+  # title:
+  # description:
+  # keywords: []
+  # authors: []
+  github: https://github.com/mlcast-community/mlcast-website
+  # To autogenerate a Table of Contents, run "jupyter book init --write-toc"
+  toc:
+    - file: docs/home.md
+    - file: docs/get-started.md
+    - file: docs/documentation/overview.md
+    - title: mlcast (library & models)
+      children:
+        - file: docs/documentation/model-architecture.md
+        - file: docs/documentation/usage.md
+        - file: docs/documentation/api-reference.md
+        - file: docs/documentation/examples.md
+        - file: docs/documentation/evaluation.md
+        - file: docs/documentation/troubleshooting.md
+    - title: Datasets
+      children:
+        - file: docs/documentation/data.md
+        - file: docs/documentation/datasets/radklim_precipitation.ipynb
+        - file: docs/documentation/datasets/dmi_precipitation.ipynb
+        - file: docs/documentation/datasets/it_dpc_precipitation.ipynb
+        - file: docs/documentation/datasets/uk_metoffice_precipitation.ipynb
+        - file: docs/documentation/datasets/be_rmi_precipitation.ipynb
+    - title: Validator
+      children:
+        - file: docs/documentation/validator.md
+    - file: docs/collaborate.md
+    - file: docs/faqs.md
+    - file: docs/community-and-news.md
+    - file: docs/quick-links.md
+
+site:
+  template: book-theme
+  options:
+    favicon: public/favicon.ico
+    logo: public/Logo_linea.svg
+    hide_footer_links: true

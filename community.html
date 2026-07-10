@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="description" content="Meet the MLCast community and learn how to stay connected."/>
+    <title>MLCast Community - Community</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="tailwind-config.js"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="home.css"/>
+    <script src="header.js" defer></script>
+
+    <style>
+        .community-portrait {
+            background:
+                linear-gradient(145deg, rgba(238, 150, 75, 0.22), rgba(0, 91, 99, 0.08)),
+                radial-gradient(circle at 35% 25%, rgba(255, 255, 255, 0.45), transparent 34%),
+                #F7EDE2;
+        }
+
+        /* --- Who / What / Why scroll stepper --- */
+        .www-line {
+            position: absolute;
+            left: 11px;
+            top: 10px;
+            bottom: 10px;
+            width: 2px;
+            background: #E8DDD4;
+            border-radius: 2px;
+            overflow: hidden;
+        }
+        .www-line-fill {
+            position: absolute;
+            inset: 0;
+            background: #EE964B;
+            transform: scaleY(0);
+            transform-origin: top;
+            transition: transform .5s cubic-bezier(.22, .61, .36, 1);
+        }
+        .www-step {
+            position: relative;
+            padding-left: 44px;
+            cursor: pointer;
+        }
+        .www-dot {
+            position: absolute;
+            left: 3px;
+            top: 6px;
+            width: 18px;
+            height: 18px;
+            border-radius: 9999px;
+            background: #F0E8DE;
+            border: 2px solid #E8DDD4;
+            transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
+        }
+        .www-step.active .www-dot {
+            background: #EE964B;
+            border-color: #EE964B;
+            box-shadow: 0 0 0 6px rgba(238, 150, 75, .16);
+        }
+        @media (min-width: 1024px) {
+            .www-rail-inner {
+                position: sticky;
+                top: 108px;
+            }
+            .is-enhanced .www-step {
+                opacity: .35;
+                transition: opacity .45s ease;
+            }
+            .is-enhanced .www-step.active {
+                opacity: 1;
+            }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .www-line-fill,
+            .www-dot,
+            .is-enhanced .www-step {
+                transition: none !important;
+            }
+        }
+      ::selection {
+        background: #EE964B;
+        color: #FFFFFF;
+      }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="public/Logo_pacchetto.svg">
+    <link rel="shortcut icon" href="public/favicon.ico">
+</head>
+
+<body class="bg-background text-on-surface antialiased font-sans min-h-screen flex flex-col">
+<div id="site-header"></div>
+
+<main class="flex-grow pt-[76px]">
+    <section class="px-margin-mobile py-16 md:px-margin-desktop md:py-20 lg:py-24" aria-labelledby="community-heading">
+        <div class="mx-auto w-full max-w-[1180px]">
+            <div class="max-w-4xl">
+                <div class="font-label-tag mb-5 text-[11px] uppercase text-primary-fixed">[MLCAST COMMUNITY]</div>
+                <h1 id="community-heading" class="font-headline-xl text-4xl font-bold leading-[1.05] text-primary md:text-6xl">
+                    The MLCast Community.
+                </h1>
+                <p class="mt-5 font-headline-xl text-xl font-semibold leading-snug text-primary md:text-2xl">
+                    Building open weather nowcasting together.
+                </p>
+                <p class="mt-5 max-w-3xl text-base leading-relaxed text-on-surface-variant md:text-lg">
+                    MLCast is a community of researchers, meteorologists, software engineers, students, and public-data stewards working on practical machine-learning tools for short-term weather forecasting.
+                </p>
+            </div>
+
+            <div class="mt-12 border-y border-outline-variant/30 py-8">
+                <div class="grid grid-cols-1 gap-6 sm:grid-cols-3 sm:gap-0">
+                    <div class="flex flex-col items-start sm:pr-8">
+                        <h2 class="text-base font-bold text-primary">Community chat</h2>
+                        <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">
+                            Join day-to-day conversations and meet other MLCast members.
+                        </p>
+                        <a href="https://join.slack.com/t/mlcast/shared_invite/zt-42iu8odsi-lim6KkEULzZt_KbcxoiTZg" target="_blank" rel="noreferrer" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded bg-primary-fixed px-6 py-3 text-sm font-bold uppercase text-on-primary-fixed transition-opacity hover:opacity-90 sm:w-auto">
+                            Join Slack
+                            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">forum</span>
+                        </a>
+                    </div>
+
+                    <div class="flex flex-col items-start border-t border-outline-variant/30 pt-6 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0">
+                        <h2 class="text-base font-bold text-primary">Monthly community meeting</h2>
+                        <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">
+                            Join the mailing list to receive the monthly calendar reminders and Teams link.
+                        </p>
+                        <a href="mailto:mlcastcommunity%2Bsubscribe@googlegroups.com" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded border border-outline-variant px-6 py-3 text-sm font-bold uppercase text-primary transition-colors hover:border-primary-fixed hover:text-primary-fixed sm:w-auto">
+                            Subscribe by email
+                            <span class="material-symbols-outlined text-[18px]" aria-hidden="true">mail</span>
+                        </a>
+                    </div>
+                    <div class="flex flex-col items-start border-t border-outline-variant/30 pt-6 sm:border-l sm:border-t-0 sm:pl-8 sm:pt-0">
+                            <h2 class="text-base font-bold text-primary">European Framework</h2>
+                            <p class="mt-2 text-sm leading-relaxed text-on-surface-variant">
+                                European National Meteorological Services collaborate in MLCast through EUMETNET.
+                            </p>
+                            <a href="https://www.eumetnet.eu/" target="_blank" rel="noreferrer" class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded bg-primary px-6 py-3 text-sm font-bold uppercase text-white transition-opacity hover:opacity-90 sm:w-auto">
+                                Visit EUMETNET
+                                <span class="material-symbols-outlined text-[16px]" aria-hidden="true">open_in_new</span>
+                            </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ethos" class="border-y border-outline-variant/20 bg-[#F0E8DE] px-margin-mobile py-20 md:px-margin-desktop md:py-28" aria-labelledby="ethos-heading">
+        <div class="mx-auto max-w-[1180px]">
+            <div class="max-w-3xl">
+                <div class="font-label-tag text-[10px] uppercase text-primary-fixed mb-3">[ WHO · WHAT · WHY ]</div>
+                <h2 id="ethos-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">What we're about.</h2>
+                <p class="mt-4 text-base md:text-lg leading-relaxed text-on-surface-variant">
+                    MLCast started as a handful of researchers comparing notes on nowcasting models and grew into an open, cross-institution community. Here's who we are, what we build together, and why it matters.
+                </p>
+            </div>
+
+            <div id="www-grid" class="mt-14 grid grid-cols-1 gap-10 md:mt-16 lg:grid-cols-[minmax(380px,460px)_1fr] lg:gap-16">
+                <!-- LEFT: sticky progress rail -->
+                <div class="www-rail">
+                    <div class="www-rail-inner">
+                        <div class="relative">
+                            <div class="www-line" aria-hidden="true"><div class="www-line-fill" id="www-fill"></div></div>
+                            <ol class="list-none pl-0 m-0 flex flex-col gap-12 lg:gap-24">
+                                <li class="www-step active" data-step="0">
+                                    <span class="www-dot" aria-hidden="true"></span>
+                                    <div class="font-label-tag text-[11px] text-primary-fixed">01</div>
+                                    <h3 class="mt-1 font-headline-xl text-2xl md:text-3xl font-bold text-primary">Who we are</h3>
+                                    <p class="mt-2 text-sm md:text-base leading-relaxed text-on-surface-variant">
+                                        An open network of researchers, meteorologists, software engineers, students, and public-data stewards — 90+ members from 30+ national weather services, universities, and research institutes in 20+ countries across four continents. No membership fees, no gatekeeping — anyone working on open weather nowcasting is welcome.
+                                    </p>
+                                    <div class="mt-4 flex items-center gap-3 rounded-lg border border-outline-variant/30 bg-surface-creme px-4 py-3">
+                                        <span class="material-symbols-outlined text-[20px] text-primary-fixed" aria-hidden="true">verified</span>
+                                        <p class="text-sm text-on-surface-variant"><span class="font-semibold text-primary">Independent and official:</span> MLCast started as a grassroots community and still runs that way — it has since also become the official Working Group 6 on Nowcasting in the EUMETNET E-AI Optional Programme.</p>
+                                    </div>
+                                    <img src="img/MLCast-Group-Picture.png" alt="MLCast community members gathered at the Copenhagen conference" loading="lazy" class="mt-5 aspect-[4/3] w-full rounded-lg object-cover shadow-lg lg:hidden"/>
+                                </li>
+
+                                <li class="www-step" data-step="1">
+                                    <span class="www-dot" aria-hidden="true"></span>
+                                    <div class="font-label-tag text-[11px] text-primary-fixed">02</div>
+                                    <h3 class="mt-1 font-headline-xl text-2xl md:text-3xl font-bold text-primary">What we do</h3>
+                                    <p class="mt-2 text-sm md:text-base leading-relaxed text-on-surface-variant">
+                                        We build shared datasets, validation tools, model code, and worked examples that let teams train and benchmark short-term weather forecasts on common ground. We meet at conferences, trade fixes on Slack, and keep the tooling open so results stay reproducible.
+                                    </p>
+                                    <img src="img/Copenhagen-Conference.png" alt="A presentation on machine-learning nowcasting at the Copenhagen conference" loading="lazy" class="mt-5 aspect-[4/3] w-full rounded-lg object-cover shadow-lg lg:hidden"/>
+                                </li>
+
+                                <li class="www-step" data-step="2">
+                                    <span class="www-dot" aria-hidden="true"></span>
+                                    <div class="font-label-tag text-[11px] text-primary-fixed">03</div>
+                                    <h3 class="mt-1 font-headline-xl text-2xl md:text-3xl font-bold text-primary">Why it matters</h3>
+                                    <p class="mt-2 text-sm md:text-base leading-relaxed text-on-surface-variant">
+                                        Accurate nowcasts give people more lead time before storms and floods. Open, verifiable tools let any group — not just those with big budgets — reproduce results, build on each other's work, and turn research into forecasts that protect communities.
+                                    </p>
+                                    <img src="img/Group-Restaurant-Picture.jpeg" alt="MLCast community members sharing a meal at a restaurant" loading="lazy" class="mt-5 aspect-[4/3] w-full rounded-lg object-cover shadow-lg lg:hidden"/>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RIGHT: scrolling photos (desktop) -->
+                <div class="hidden lg:block" aria-hidden="true">
+                    <div class="flex flex-col">
+                        <div class="www-media-panel flex min-h-[80vh] items-center" data-step="0">
+                            <img src="img/MLCast-Group-Picture.png" alt="" loading="lazy" class="ml-auto aspect-[4/3] w-full max-w-[540px] rounded-xl object-cover shadow-2xl"/>
+                        </div>
+                        <div class="www-media-panel flex min-h-[80vh] items-center" data-step="1">
+                            <img src="img/Copenhagen-Conference.png" alt="" loading="lazy" class="ml-auto aspect-[4/3] w-full max-w-[540px] rounded-xl object-cover shadow-2xl"/>
+                        </div>
+                        <div class="www-media-panel flex min-h-[80vh] items-center" data-step="2">
+                            <img src="img/Group-Restaurant-Picture.jpeg" alt="" loading="lazy" class="ml-auto aspect-[4/3] w-full max-w-[540px] rounded-xl object-cover shadow-2xl"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="border-y border-outline-variant/20 bg-background px-margin-mobile py-24 md:px-margin-desktop md:py-28" aria-labelledby="voices-heading">
+        <div class="max-w-[1180px] mx-auto">
+            <div class="max-w-3xl">
+                <div class="font-label-tag text-[10px] text-primary-fixed mb-3 uppercase">[COMMUNITY VOICES]</div>
+                <h2 id="voices-heading" class="font-headline-xl text-3xl md:text-4xl font-bold text-primary">What people bring to MLCast.<br/>What MLCast brings to people.</h2>
+            </div>
+
+            <div id="voices-list" class="mt-12 border-b border-outline-variant md:mt-16">
+                <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
+                    <img src="img/people/Gabriele-Franch.png" alt="Gabriele Franch" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
+                    <div class="min-w-0">
+                        <p class="text-base font-bold text-primary md:text-lg">Gabriele Franch</p>
+                        <blockquote class="mt-4 font-headline-xl text-lg font-semibold leading-snug text-primary md:text-xl">
+                            <span class="text-primary-fixed" aria-hidden="true">“</span>MLCast is the missing link between operational meteorology and machine learning research. As a machine learning researcher, I have found in MLCast a home where scientific knowledge can be turned into operational tools.<span class="text-primary-fixed" aria-hidden="true">”</span>
+                        </blockquote>
+                    </div>
+                    <div class="col-start-2 mt-5 flex flex-col gap-4 lg:col-start-3 lg:row-start-1 lg:mt-0 lg:self-center">
+                        <div class="flex items-center gap-3">
+                            <img src="img/FBK_Logo.jpeg" alt="FBK logo" class="h-11 w-11 shrink-0 rounded-full border border-primary-fixed/40 object-cover"/>
+                            <div class="min-w-0">
+                                <div class="font-label-tag text-[9px] uppercase tracking-wider text-primary-fixed">Organisation</div>
+                                <p class="mt-1 text-sm font-semibold text-primary">FBK</p>
+                                <p class="mt-1 text-xs text-on-surface-variant">Trento, Italy</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
+                    <img src="img/people/Leif.png" alt="Leif Denby" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
+                    <div class="min-w-0">
+                        <p class="text-base font-bold text-primary md:text-lg">Leif Denby</p>
+                        <blockquote class="mt-4 font-headline-xl text-lg font-semibold leading-snug text-primary md:text-xl">
+                            <span class="text-primary-fixed" aria-hidden="true">”</span>MLCast to me is about the true scientific pursuit: building deep learning models together to further our collective ability to model weather in a changing world<span class="text-primary-fixed" aria-hidden="true">”</span>
+                        </blockquote>
+                    </div>
+                    <div class="col-start-2 mt-5 flex flex-col gap-4 lg:col-start-3 lg:row-start-1 lg:mt-0 lg:self-center">
+                        <div class="flex items-center gap-3">
+                            <img src="img/University_of_leeds_logo.png" alt="University of Leeds logo" class="h-11 w-11 shrink-0 rounded-full border border-primary-fixed/40 object-cover"/>
+                            <div class="min-w-0">
+                                <div class="font-label-tag text-[9px] uppercase tracking-wider text-primary-fixed">Organisation</div>
+                                <p class="mt-1 text-sm font-semibold text-primary">University of Leeds</p>
+                                <p class="mt-1 text-xs text-on-surface-variant">Leeds, UK</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <img src="img/DMI_Logo.png" alt="DMI logo" class="h-11 w-11 shrink-0 rounded-full border border-primary-fixed/40 object-cover"/>
+                            <div class="min-w-0">
+                                <div class="font-label-tag text-[9px] uppercase tracking-wider text-primary-fixed">Organisation</div>
+                                <p class="mt-1 text-sm font-semibold text-primary">DMI</p>
+                                <p class="mt-1 text-xs text-on-surface-variant">Copenhagen, Denmark</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="grid grid-cols-[80px_minmax(0,1fr)] items-start gap-x-5 border-t border-outline-variant py-8 md:grid-cols-[104px_minmax(0,1fr)] md:gap-x-8 md:py-10 lg:grid-cols-[112px_minmax(0,1fr)_190px] lg:gap-x-12 lg:py-12">
+                    <img src="img/people/Irene.png" alt="Irene Livia Kruse" class="h-20 w-20 rounded-lg border border-primary-fixed/30 object-cover md:h-[104px] md:w-[104px] lg:h-28 lg:w-28"/>
+                    <div class="min-w-0">
+                        <p class="text-base font-bold text-primary md:text-lg">Irene Livia Kruse</p>
+                        <blockquote class="mt-4 font-headline-xl text-lg font-semibold leading-snug text-primary md:text-xl">
+                            <span class="text-primary-fixed" aria-hidden="true">“</span>Weather doesn't stop at borders, and neither should innovation. I help bring together weather services, researchers, and organizations across borders to build better weather nowcasting, because together we can achieve far more than any of us could alone.<span class="text-primary-fixed" aria-hidden="true">”</span>
+                        </blockquote>
+                    </div>
+                    <div class="col-start-2 mt-5 flex flex-col gap-4 lg:col-start-3 lg:row-start-1 lg:mt-0 lg:self-center">
+                        <div class="flex items-center gap-3">
+                            <img src="img/DMI_Logo.png" alt="DMI logo" class="h-11 w-11 shrink-0 rounded-full border border-primary-fixed/40 object-cover"/>
+                            <div class="min-w-0">
+                                <div class="font-label-tag text-[9px] uppercase tracking-wider text-primary-fixed">Organisation</div>
+                                <p class="mt-1 text-sm font-semibold text-primary">DMI</p>
+                                <p class="mt-1 text-xs text-on-surface-variant">Copenhagen, Denmark</p>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<div id="site-footer"></div>
+<script>
+
+    // Who / What / Why scroll stepper
+    (function() {
+        const grid = document.getElementById('www-grid');
+        if (!grid) return;
+        const steps = Array.prototype.slice.call(document.querySelectorAll('.www-step'));
+        const panels = Array.prototype.slice.call(document.querySelectorAll('.www-media-panel'));
+        const fill = document.getElementById('www-fill');
+        const line = document.querySelector('.www-line');
+        if (!steps.length) return;
+
+        grid.classList.add('is-enhanced');
+
+        function activate(i) {
+            steps.forEach(function(s, idx) { s.classList.toggle('active', idx === i); });
+            if (!fill || !line) return;
+            const dot = steps[i].querySelector('.www-dot');
+            const lr = line.getBoundingClientRect();
+            const dr = dot.getBoundingClientRect();
+            let frac = (dr.top + dr.height / 2 - lr.top) / lr.height;
+            frac = Math.max(0, Math.min(1, frac));
+            fill.style.transform = 'scaleY(' + frac + ')';
+        }
+
+        // Click a step to jump to its photo panel (desktop)
+        steps.forEach(function(s, idx) {
+            s.addEventListener('click', function() {
+                if (panels[idx]) panels[idx].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+        });
+
+        if (panels.length && 'IntersectionObserver' in window) {
+            const io = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) activate(parseInt(e.target.dataset.step, 10));
+                });
+            }, { rootMargin: '-45% 0px -45% 0px', threshold: 0 });
+            panels.forEach(function(p) { io.observe(p); });
+        }
+
+        window.addEventListener('load', function() { activate(0); });
+        activate(0);
+    })();
+</script>
+
+<script>
+    (function () {
+        var container = document.getElementById("voices-list");
+        if (!container) return;
+        var articles = Array.from(container.querySelectorAll("article"));
+        if (articles.length < 2) return;
+        for (var i = articles.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            container.appendChild(articles[j]);
+            articles.splice(j, 1);
+        }
+    })();
+</script>
+
+</body>
+</html>
