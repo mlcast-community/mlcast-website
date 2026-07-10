@@ -133,8 +133,8 @@
 
             <!-- Interactive zoom/pan map -->
             <div id="coverage-viewport" class="relative mt-5 aspect-[4/3] w-full select-none overflow-hidden rounded border border-outline-variant/25 bg-[#F0E8DE] touch-none cursor-grab" style="background-image:radial-gradient(rgba(120,160,220,0.08) 1px,transparent 1px);background-size:18px 18px;">
-                <div id="coverage-map" class="absolute inset-0 origin-top-left will-change-transform" style="transform:translate(0px,0px) scale(1);">
-                    <img src="img/world.svg" alt="World map" class="absolute inset-0 h-full w-full object-fill opacity-90" draggable="false" aria-hidden="true">
+                <div id="coverage-map" class="absolute left-0 top-0 w-full aspect-[3600/1393] origin-top-left will-change-transform" style="transform:translate(0px,0px) scale(1);">
+                    <img src="img/world.svg" alt="World map" class="absolute inset-0 h-full w-full object-contain opacity-90" draggable="false" aria-hidden="true">
 
                     <!-- Covered countries — rebuilt from catalog-data.json by coverage-map.js; these static markers are the fallback -->
                     <div data-coverage-markers data-coverage-variant="rich">
@@ -308,14 +308,24 @@
             const map = document.getElementById("coverage-map");
             if (!viewport || !map) return;
 
-            const MIN = 1, MAX = 6;
+            const MAX = 6;
             let scale = 1, tx = 0, ty = 0;
             let dragging = false, moved = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
 
+            // The map keeps its true aspect ratio; the squarer viewport crops it.
+            // clientWidth/Height are the unscaled layout size (transform excluded).
+            function mapW() { return map.clientWidth || viewport.clientWidth; }
+            function mapH() { return map.clientHeight || viewport.clientHeight; }
+            // Smallest scale that still covers the viewport in both axes, so panning
+            // never exposes empty background beside or above/below the map.
+            function minScale() {
+                return Math.max(viewport.clientWidth / mapW(), viewport.clientHeight / mapH());
+            }
+
             function clamp() {
-                scale = Math.min(MAX, Math.max(MIN, scale));
+                scale = Math.min(MAX, Math.max(minScale(), scale));
                 const w = viewport.clientWidth, h = viewport.clientHeight;
-                const minTx = w - w * scale, minTy = h - h * scale;
+                const minTx = w - mapW() * scale, minTy = h - mapH() * scale;
                 tx = Math.min(0, Math.max(minTx, tx));
                 ty = Math.min(0, Math.max(minTy, ty));
             }
@@ -333,21 +343,21 @@
             }
             function zoomAt(cx, cy, factor) {
                 const prev = scale;
-                scale *= factor;
-                scale = Math.min(MAX, Math.max(MIN, scale));
+                scale = Math.min(MAX, Math.max(minScale(), scale * factor));
                 const ratio = scale / prev;
                 // keep point under cursor fixed
                 tx = cx - (cx - tx) * ratio;
                 ty = cy - (cy - ty) * ratio;
                 apply();
             }
-            // Default framing: zoom over Europe
-            const EU_FX = 0.535, EU_FY = 0.245, EU_SCALE = 2.3;
+            // Default framing: zoom over Europe. Fractions are of the map, same basis
+            // as the marker left/top percents.
+            const EU_FX = 0.54, EU_FY = 0.235, EU_SCALE = 4.3;
             function focusEurope() {
                 const w = viewport.clientWidth, h = viewport.clientHeight;
-                scale = EU_SCALE;
-                tx = w / 2 - EU_FX * w * scale;
-                ty = h / 2 - EU_FY * h * scale;
+                scale = Math.max(minScale(), EU_SCALE);
+                tx = w / 2 - EU_FX * mapW() * scale;
+                ty = h / 2 - EU_FY * mapH() * scale;
                 apply();
             }
 

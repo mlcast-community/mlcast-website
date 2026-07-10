@@ -243,10 +243,12 @@ resolved, and consumers leave those specific numbers on their fallback.
 - `img/world.svg` is an equirectangular (plate carrée) map; if it is regenerated
   at a different projection, scale, or crop, update `SVG_VIEWBOX_X/Y/W/H` in the
   script and the static fallback marker `left/top` percents in `home.html` and
-  `contributing.html` to match. The map-box aspect itself is decoupled: percents
-  are viewBox-relative, so `home.html` (`aspect-[4/3]`, `object-fill`) and
-  `contributing.html` (`aspect-[3600/1393]`, `object-contain`) stay aligned
-  without recomputing markers.
+  `contributing.html` to match. The map is always rendered undistorted
+  (`#coverage-map` keeps the viewBox aspect, `object-contain`); the outer
+  viewport shape is decoupled — `home.html` crops a true-aspect map inside an
+  `aspect-[4/3]` viewport (default Europe zoom), `contributing.html` shows the
+  whole map in a matching `aspect-[3600/1393]` viewport — so markers stay aligned
+  without recomputing.
 - Version the producer schema and all consumers (`data.html`, `coverage-map.js`)
   together.
 - Keep the `time` read metadata-only; do not switch to

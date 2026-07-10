@@ -65,11 +65,14 @@ the website source has not changed.
 - `img/` and `video/` contain published media. `img/world.svg` is the shared
   coverage-map base: a high-resolution equirectangular (plate carrée) Natural
   Earth map whose `<path id>` is each country's ISO 3166-1 alpha-2 code, viewBox
-  `-1800 -835.6 3600 1393.5`. `home.html` renders it into a squarer
-  `aspect-[4/3]` box (`object-fill`, default view zoomed to Europe);
-  `contributing.html` uses a `aspect-[3600/1393]` box (`object-contain`). Marker
-  `left/top` percents are viewBox-relative, so alignment holds at any box aspect.
-  Covered
+  `-1800 -835.6 3600 1393.5` (aspect ≈ 2.585, `preserveAspectRatio` kept as
+  `xMidYMid meet` so the map is never distorted). The inner `#coverage-map`
+  always keeps that true aspect (`aspect-[3600/1393]`, `object-contain`); pages
+  vary only the outer viewport. `home.html` uses a squarer `aspect-[4/3]`
+  viewport that crops the map and defaults to a Europe-framed zoom (see the
+  pan/zoom notes below); `contributing.html` uses a matching `aspect-[3600/1393]`
+  viewport that shows the whole map. Marker `left/top` percents are viewBox- and
+  map-relative, so they stay aligned regardless of viewport shape. Covered
   countries are filled via an id-selector rule in its `<style>` that the deploy
   step regenerates from the catalog; markers overlay it by `left/top` percent.
 - Page-local `<style>` and `<script>` blocks own behavior that is not shared.
@@ -105,9 +108,14 @@ data.html
 
 ### `home.html`
 
-- Local coverage-map pan and zoom. Markers counter-scale with zoom (set via the
-  `--marker-scale` CSS variable on `#coverage-map`) so pins/tooltips shrink
-  partially when zooming in and grow when zooming out, clamped at both ends. The
+- Local coverage-map pan and zoom. The `aspect-[4/3]` viewport crops the true-
+  aspect map; the zoom is clamped to a dynamic minimum (`minScale()`, derived
+  from the live viewport/map dimensions) that always covers the viewport, so
+  panning never exposes blank background, and it defaults to a Europe-framed zoom
+  (`focusEurope`, `EU_FX/EU_FY/EU_SCALE`). Markers counter-scale with zoom (set
+  via the `--marker-scale` CSS variable on `#coverage-map`) so pins/tooltips
+  shrink partially when zooming in and grow when zooming out, clamped at both
+  ends. The
   dashed expansion ("Help us with your data!") markers are links to
   `contributing.html`, each tagged `data-wanted-code="<iso2>"`; `coverage-map.js`
   hides the one for any country that becomes covered so it doesn't sit under the
