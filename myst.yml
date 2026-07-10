@@ -39,6 +39,6 @@ project:
 site:
   template: book-theme
   options:
-    favicon: public/Logo_pacchetto.svg
+    favicon: public/favicon.ico
     logo: public/Logo_linea.svg
     hide_footer_links: true

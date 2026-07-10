@@ -34,7 +34,7 @@ jobs:
           cp dist/home.html dist/index.html
           # Serve the icon at the web root too: browsers (notably Firefox)
           # auto-request /favicon.ico regardless of the <link> tag.
-          cp img/favicon.ico dist/favicon.ico
+          cp public/favicon.ico dist/favicon.ico
 
       # --- Community stats fetched at build time (authenticated: 5000 req/hr) ---
       - name: Fetch GitHub community stats
