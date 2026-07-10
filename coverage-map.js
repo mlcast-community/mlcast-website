@@ -93,6 +93,22 @@
     if (el) el.textContent = value;
   }
 
+  // Hide any static "wanted" (+) marker whose country is now covered, so a
+  // freshly-added catalog country shows only its flag instead of a flag plus a
+  // stale "help us" pin on the same spot. Codes are matched case-insensitively
+  // against each marker's ISO alpha-2 (country, falling back to flag).
+  function hideCoveredWanted(root, markers) {
+    var covered = {};
+    markers.forEach(function (m) {
+      var code = String(m.country || m.flag || "").toLowerCase();
+      if (code) covered[code] = true;
+    });
+    root.querySelectorAll("[data-wanted-code]").forEach(function (el) {
+      var code = (el.getAttribute("data-wanted-code") || "").toLowerCase();
+      el.hidden = !!covered[code];
+    });
+  }
+
   function apply(root, data) {
     var container = root.querySelector("[data-coverage-markers]");
     if (container && Array.isArray(data.markers) && data.markers.length) {
@@ -100,6 +116,7 @@
       container.innerHTML = data.markers.map(function (m, i) {
         return markerHtml(m, i, variant);
       }).join("");
+      hideCoveredWanted(root, data.markers);
     }
     setStat(root, "countries", data.countries);
     setStat(root, "years", data.cumulative_years == null ? null : "~" + data.cumulative_years);

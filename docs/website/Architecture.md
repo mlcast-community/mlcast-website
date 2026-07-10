@@ -23,8 +23,10 @@ dataset catalog is fetched by the visitor's browser.
    `dist/gh-issues.json` when GitHub returns usable data.
 4. Run `scripts/fetch-catalog-stats.py` (via `uv run`) to read the precipitation
    catalog plus its Zarr metadata and produce `dist/catalog-data.json` (dataset
-   list, per-country coverage-map markers computed from `img/world.svg`, and
-   impact stats).
+   list, per-country coverage-map markers computed from the staged
+   `dist/img/world.svg`, and impact stats). The same step rewrites the
+   covered-country highlight rule inside `dist/img/world.svg` in place, so it
+   runs after step 1 has copied `img/` into `dist/`.
 5. Build the MyST site and stage it in `dist/docs/`.
 6. Upload and deploy the combined artifact.
 
@@ -60,7 +62,16 @@ the website source has not changed.
   [Integration.md](Integration.md)).
 - `home.css` contains shared navigation, cards, focus states, terminal styling,
   section navigation, responsive rules, and common interaction styles.
-- `img/` and `video/` contain published media.
+- `img/` and `video/` contain published media. `img/world.svg` is the shared
+  coverage-map base: a high-resolution equirectangular (plate carrée) Natural
+  Earth map whose `<path id>` is each country's ISO 3166-1 alpha-2 code, viewBox
+  `-1800 -835.6 3600 1393.5`. `home.html` renders it into a squarer
+  `aspect-[4/3]` box (`object-fill`, default view zoomed to Europe);
+  `contributing.html` uses a `aspect-[3600/1393]` box (`object-contain`). Marker
+  `left/top` percents are viewBox-relative, so alignment holds at any box aspect.
+  Covered
+  countries are filled via an id-selector rule in its `<style>` that the deploy
+  step regenerates from the catalog; markers overlay it by `left/top` percent.
 - Page-local `<style>` and `<script>` blocks own behavior that is not shared.
 - UI conventions are documented in [UI_UX_Instructions.md](UI_UX_Instructions.md).
 
@@ -98,7 +109,9 @@ data.html
   `--marker-scale` CSS variable on `#coverage-map`) so pins/tooltips shrink
   partially when zooming in and grow when zooming out, clamped at both ends. The
   dashed expansion ("Help us with your data!") markers are links to
-  `contributing.html`.
+  `contributing.html`, each tagged `data-wanted-code="<iso2>"`; `coverage-map.js`
+  hides the one for any country that becomes covered so it doesn't sit under the
+  new flag.
 - `coverage-map.js` (`renderCoverageMap("coverage-viewport")`) rebuilds the live
   flag markers and Countries/Years/Cadence overlays from `catalog-data.json`,
   keeping the static markers/numbers on failure.

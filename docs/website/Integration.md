@@ -179,7 +179,8 @@ instead of maintaining any of that by hand.
 - Deployment call: `.github/workflows/deploy.yml` (`uv run --with s3fs --with
   pyyaml --with svgpathtools --with zarr`), passed the catalog URL,
   `dist/catalog-data.json`, and `img/world.svg`.
-- Generated artifact: `dist/catalog-data.json`
+- Generated artifact: `dist/catalog-data.json`. The producer also rewrites the
+  covered-country highlight rule inside the passed `img/world.svg` in place.
 - Consumers: the dataset list + impact spotlight in `data.html`; `coverage-map.js`
   on `home.html` and `contributing.html`.
 - Impact DOM targets: `#stat-countries`, `#stat-years`, `#stat-timesteps`,
@@ -203,10 +204,15 @@ instead of maintaining any of that by hand.
    `resolution_m` and a formatted `resolution` (`"1 km"`, `"500 m"`); both are
    `null` when not derivable.
 4. For each covered country it computes a map marker position from
-   `img/world.svg`: the bounding-box centre of that country's named `<path>`
-   (via `svgpathtools`) as a percent of the `950×620` viewBox — exactly the
-   `left`/`top` percent the maps use. The ISO→SVG-path-id map is `SVG_COUNTRY_ID`
-   in the script.
+   `img/world.svg` (a high-resolution equirectangular Natural Earth map whose
+   `<path id>` is each country's ISO 3166-1 alpha-2 code): the bounding-box
+   centre of that country's `<path>` (via `svgpathtools`), offset by the viewBox
+   origin and expressed as a percent of the `-1800 -835.6 3600 1393.5` viewBox —
+   exactly the `left`/`top` percent the maps use. Codes normally match the path
+   id directly; `SVG_COUNTRY_ID` holds overrides only for genuine id mismatches
+   (currently empty). It also stamps the covered set back into `img/world.svg`'s
+   teal highlight rule (`restyle_covered`), so the filled countries stay in sync
+   with the catalog without a hand-edited list.
 5. It writes `{countries, country_codes, cumulative_years, time_steps,
    best_cadence_minutes, datasets_count, resolved_count, markers[], datasets[],
    generated}` to `dist/catalog-data.json`.
@@ -229,8 +235,18 @@ resolved, and consumers leave those specific numbers on their fallback.
 
 ### Safe modification notes
 
-- The cadence and country heuristics are keyed on source names; update them, and
-  add an `SVG_COUNTRY_ID` entry for any new country, when upstream changes.
+- The cadence and country heuristics are keyed on source names; update them when
+  upstream changes. A new country needs no map edit — it positions its marker and
+  highlights its `<path>` automatically once its ISO alpha-2 code has a matching
+  path id in `img/world.svg`; add an `SVG_COUNTRY_ID` override only for a code
+  that differs from the path id.
+- `img/world.svg` is an equirectangular (plate carrée) map; if it is regenerated
+  at a different projection, scale, or crop, update `SVG_VIEWBOX_X/Y/W/H` in the
+  script and the static fallback marker `left/top` percents in `home.html` and
+  `contributing.html` to match. The map-box aspect itself is decoupled: percents
+  are viewBox-relative, so `home.html` (`aspect-[4/3]`, `object-fill`) and
+  `contributing.html` (`aspect-[3600/1393]`, `object-contain`) stay aligned
+  without recomputing markers.
 - Version the producer schema and all consumers (`data.html`, `coverage-map.js`)
   together.
 - Keep the `time` read metadata-only; do not switch to
@@ -256,6 +272,8 @@ catalog data, so the maps track coverage without editing three HTML files.
 - DOM contract: one `[data-coverage-markers]` container per map (its
   `data-coverage-variant` is `rich` or `plain`; its static children are the
   fallback), plus `[data-coverage-stat="countries|years|cadence"]` value nodes.
+  `home.html` also carries static `[data-wanted-code="<iso2>"]` "+" expansion
+  pins; the renderer hides any whose code matches a now-covered country.
 
 ### How it works
 
@@ -265,7 +283,10 @@ catalog data, so the maps track coverage without editing three HTML files.
    (provider, resolution, data range) comes from `COUNTRY_META` in the script — a
    covered country missing from `COUNTRY_META` still renders, with a reduced
    tooltip.
-3. On any failure the static HTML markers and numbers are left untouched.
+3. It then hides each `[data-wanted-code]` "+" pin whose ISO alpha-2 matches a
+   marker's `country` (or `flag`), so a newly-covered country shows only its
+   flag, not a flag plus a stale "help us" pin on the same spot.
+4. On any failure the static HTML markers and numbers are left untouched.
 
 ### Safe modification notes
 

@@ -25,12 +25,14 @@ Two data sources are combined:
      touched and the step between their first two samples (normalised to metres
      via the coordinate `units`) is the pixel size. Works for Zarr v2 and v3.
 
-Marker positions are read straight from the geometry of `img/world.svg` (the
-Wikimedia "World map - low resolution", which ships a named `<path>` per
-country): the bounding-box centre of a country's path, expressed as a percent
-of the 950x620 viewBox, is exactly the `left`/`top` percent the maps use. A new
-covered country therefore places itself automatically once its ISO code is
-mapped to the SVG path id in SVG_COUNTRY_ID below.
+Marker positions are read straight from the geometry of `img/world.svg` (a
+high-resolution equirectangular Natural Earth map whose `<path id>` is each
+country's ISO 3166-1 alpha-2 code): the bounding-box centre of a country's
+path, expressed as a percent of the viewBox (origin included), is exactly the
+`left`/`top` percent the maps use. The same covered set is stamped back into the
+map's teal highlight rule (restyle_covered). A new covered country therefore
+both places its marker and highlights itself automatically -- no HTML or map
+edit -- as soon as its ISO alpha-2 code appears in the catalog.
 
 Every catalog source is always included in the dataset list; a source whose
 Zarr metadata cannot be read simply contributes no steps/years (its list entry
@@ -59,20 +61,20 @@ DEFAULT_WORLD_SVG = os.path.join(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "img", "world.svg"
 )
 YEAR_MINUTES = 60 * 24 * 365.25
-# world.svg viewBox — markers are positioned as a percent of these dimensions,
-# which matches the 95/62 aspect box the maps render the SVG into.
-SVG_VIEWBOX_W = 950.0
-SVG_VIEWBOX_H = 620.0
+# img/world.svg viewBox — an equirectangular (plate carree) Natural Earth map
+# whose `<path id>` is each country's ISO 3166-1 alpha-2 code. Markers are a
+# percent of these dimensions (origin included), matching the aspect box the
+# maps render the SVG into.
+SVG_VIEWBOX_X = -1800.0
+SVG_VIEWBOX_Y = -835.6
+SVG_VIEWBOX_W = 3600.0
+SVG_VIEWBOX_H = 1393.5
 
-# ISO 3166-1 alpha-2 (also the FlagCDN code) -> `<path id>` in img/world.svg.
-# Extend this as coverage grows; the position is then computed automatically.
-SVG_COUNTRY_ID = {
-    "gb": "britain",
-    "dk": "denmark",
-    "be": "belgium",
-    "de": "germany",
-    "it": "italy",
-}
+# Per-country override for cases where the FlagCDN/ISO alpha-2 code differs from
+# the `<path id>` in img/world.svg. Empty because the map already keys every
+# country by its ISO alpha-2 code; any covered code positions itself
+# automatically. Add an entry only for a genuine id mismatch.
+SVG_COUNTRY_ID = {}
 
 
 def cadence_minutes(name):
@@ -187,8 +189,8 @@ def svg_marker_positions(svg_path, codes):
     by_id = {a.get("id"): p for p, a in zip(paths, attrs) if a.get("id")}
     positions = {}
     for code in codes:
-        svg_id = SVG_COUNTRY_ID.get(code)
-        path = by_id.get(svg_id) if svg_id else None
+        svg_id = SVG_COUNTRY_ID.get(code, code)
+        path = by_id.get(svg_id)
         if path is None:
             print(f"no SVG path for {code} (id={svg_id})", file=sys.stderr)
             continue
@@ -197,11 +199,45 @@ def svg_marker_positions(svg_path, codes):
         except Exception as exc:  # noqa: BLE001
             print(f"bbox failed for {code}: {exc}", file=sys.stderr)
             continue
+        cx = (xmin + xmax) / 2
+        cy = (ymin + ymax) / 2
         positions[code] = {
-            "x": round((xmin + xmax) / 2 / SVG_VIEWBOX_W * 100, 2),
-            "y": round((ymin + ymax) / 2 / SVG_VIEWBOX_H * 100, 2),
+            "x": round((cx - SVG_VIEWBOX_X) / SVG_VIEWBOX_W * 100, 2),
+            "y": round((cy - SVG_VIEWBOX_Y) / SVG_VIEWBOX_H * 100, 2),
         }
     return positions
+
+
+# The covered-country fill rule inside world.svg's <style>: a comma list of
+# `#<iso2>` selectors immediately before `{fill:#5ffbd6`.
+COVERED_RULE_RE = re.compile(r"#[a-z]{2}(?:,#[a-z]{2})*(\{fill:#5ffbd6)")
+
+
+def restyle_covered(svg_path, codes):
+    """Rewrite world.svg so exactly the covered countries are highlighted.
+
+    Keeps the map's teal fill in sync with the catalog (no hand-edited country
+    list). A country highlights automatically once its ISO alpha-2 code has a
+    matching `<path id>` in the map. No-op if the file or rule is missing.
+    """
+    ids = [c for c in codes if re.fullmatch(r"[a-z]{2}", c)]
+    if not ids:
+        return
+    try:
+        with open(svg_path, encoding="utf-8") as fh:
+            svg = fh.read()
+    except OSError as exc:  # noqa: BLE001 — highlight is optional enrichment
+        print(f"could not read {svg_path} to restyle: {exc}", file=sys.stderr)
+        return
+    selector = ",".join("#" + c for c in ids)
+    new_svg, n = COVERED_RULE_RE.subn(selector + r"\1", svg, count=1)
+    if not n:
+        print(f"no covered-fill rule in {svg_path}; not restyled", file=sys.stderr)
+        return
+    if new_svg != svg:
+        with open(svg_path, "w", encoding="utf-8") as fh:
+            fh.write(new_svg)
+        print(f"restyled {svg_path}: highlighted {selector}", file=sys.stderr)
 
 
 def main():
@@ -296,6 +332,7 @@ def main():
         datasets.append(entry)
 
     country_codes = sorted(countries)
+    restyle_covered(world_svg, country_codes)
     positions = svg_marker_positions(world_svg, country_codes)
     markers = [
         {"country": code, "flag": code, **positions[code]}
