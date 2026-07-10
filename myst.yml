@@ -39,6 +39,6 @@ project:
 site:
   template: book-theme
   options:
-    favicon: public/favicon.ico
-    logo: public/mlcast-logo.png
+    favicon: public/Logo_pacchetto.svg
+    logo: public/Logo_linea.svg
     hide_footer_links: true
