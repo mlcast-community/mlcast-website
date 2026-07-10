@@ -3,20 +3,25 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: ['main']
+  # PRs run the build job only (see the deploy job's `if`) so breakage is
+  # caught before merge instead of on the production deploy.
+  pull_request:
+    branches: ['main']
   workflow_dispatch:
   schedule:
     # Daily 06:00 UTC — refresh community stats even without pushes.
     - cron: '0 6 * * *'
 
+# Job-level permissions grant the rest: the build job runs repo scripts and
+# freshly-resolved PyPI packages, so it must not hold deploy credentials.
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
-# Allow one concurrent deployment, cancel in-progress runs for the same ref
+# One concurrency group per ref: PR builds never cancel a production deploy.
+# Production runs queue rather than cancel so an in-flight deploy completes.
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: pages-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -28,7 +33,7 @@ jobs:
       - name: Assemble static site
         run: |
           mkdir -p dist
-          cp -r *.html *.css *.js img video dist/
+          cp -r *.html *.css *.js img video public dist/
           # Site entry point: home.html is the landing page; the nav brand
           # links to index.html, so publish home.html as index.html too.
           cp dist/home.html dist/index.html
@@ -61,8 +66,7 @@ jobs:
       #     place — so this must run after img/ is copied into dist/. ---
       - name: Compute catalog data
         run: |
-          uv run --with s3fs --with pyyaml --with svgpathtools --with zarr \
-            python scripts/fetch-catalog-stats.py \
+          uv run python scripts/fetch-catalog-stats.py \
             "https://raw.githubusercontent.com/mlcast-community/mlcast-datasets/main/src/mlcast_datasets/catalog/precipitation/catalog.yml" \
             dist/catalog-data.json \
             dist/img/world.svg
@@ -70,8 +74,9 @@ jobs:
       # --- MyST / Jupyter Book docs -> dist/docs/ ---
       - name: Build Jupyter Book
         env:
-          # Served under <pages-url>/docs, so links must resolve against that subpath
-          BASE_URL: /mlcast-website/docs
+          # The site serves at the custom domain mlcast.org (Pages settings),
+          # so the book lives at mlcast.org/docs — no repo-name subpath.
+          BASE_URL: /docs
         run: uv run jupyter book build --html --ci
       - name: Stage book into site
         run: |
@@ -89,8 +94,13 @@ jobs:
           path: ./dist
 
   deploy:
+    # PRs only validate the build; deploying is for main (push/schedule/manual).
+    if: github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
