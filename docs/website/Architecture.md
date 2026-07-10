@@ -48,8 +48,10 @@ the website source has not changed.
 ## Shared files
 
 - `header.js` injects the shared header, desktop/mobile navigation, footer,
-  mobile-menu behavior, and copy-on-select behavior for terminal windows. Pages
-  provide `#site-header` and `#site-footer` mount elements. The header "Docs"
+  mobile-menu behavior, copy-on-select behavior for terminal windows, and the
+  fixed "Improve this site" pill (top right, under the header) linking to the
+  website's own GitHub repo so visitors can propose changes. Pages provide
+  `#site-header` and `#site-footer` mount elements. The header "Docs"
   link uses the relative `docs/` path (not a hardcoded origin) so it resolves
   against whatever base serves the site — matching the inline `docs/...` links
   in `software.html`/`contributing.html`.
