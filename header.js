@@ -92,6 +92,10 @@
         '    <div class="col-span-2 md:col-span-1">' +
         '      <img src="img/Logo_linea.svg" alt="MLCast Community" class="h-7 w-auto mb-md" />' +
         '      <p class="text-on-surface-variant leading-relaxed">Advancing meteorological intelligence through open-source collaboration and high-resolution data.</p>' +
+        '      <a href="https://www.eumetnet.eu/" target="_blank" rel="noreferrer" class="mt-md mb-md inline-flex items-center gap-3 transition-opacity hover:opacity-90">' +
+        '        <img src="img/eumetnet-logo.png" alt="EUMETNET logo" class="h-9 w-auto max-w-[130px] object-contain" />' +
+        '        <span class="text-xs leading-relaxed text-on-surface-variant">MLCast is part of the European EUMETNET E-AI program</span>' +
+        "      </a>" +
         "    </div>" +
         "    <div>" +
         '      <h4 class="font-bold text-primary mb-md">Resources</h4>' +
