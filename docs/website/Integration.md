@@ -144,8 +144,10 @@ metadata could not be read.
 - A static Intake example in `data.html` references `catalog/catalog.yml`,
   whereas the producer reads `catalog/precipitation/catalog.yml`; verify both
   paths when upstream changes.
-- Provider/range details shown in cards (`getDatasetImpacts`) are still
-  hard-coded presentation data, not read from the catalog.
+- Provider/range details shown in cards (`getDatasetImpacts`) and the acronym
+  list in `formatDatasetName` are still hard-coded presentation data, not read
+  from the catalog; a dataset without an entry renders as "Range: Varies" with a
+  title-cased name. See [Adding a catalog dataset](#adding-a-catalog-dataset).
 
 ### Failure handling
 
@@ -206,7 +208,10 @@ instead of maintaining any of that by hand.
 4. For each covered country it computes a map marker position from
    `img/world.svg` (a high-resolution equirectangular Natural Earth map whose
    `<path id>` is each country's ISO 3166-1 alpha-2 code): the bounding-box
-   centre of that country's `<path>` (via `svgpathtools`), offset by the viewBox
+   centre of the largest connected piece of that country's `<path>` (via
+   `svgpathtools`), so overseas territories and remote islands (French Guiana,
+   the Canary Islands, Svalbard) do not pull the marker off the mainland, offset
+   by the viewBox
    origin and expressed as a percent of the `-1800 -835.6 3600 1393.5` viewBox —
    exactly the `left`/`top` percent the maps use. Codes normally match the path
    id directly; `SVG_COUNTRY_ID` holds overrides only for genuine id mismatches
@@ -236,7 +241,8 @@ resolved, and consumers leave those specific numbers on their fallback.
 ### Safe modification notes
 
 - The cadence and country heuristics are keyed on source names; update them when
-  upstream changes. A new country needs no map edit — it positions its marker and
+  upstream changes. A source whose name matches no country rule still appears in
+  the list, but without a flag, map marker, highlight, or country count. A new country needs no map edit — it positions its marker and
   highlights its `<path>` automatically once its ISO alpha-2 code has a matching
   path id in `img/world.svg`; add an `SVG_COUNTRY_ID` override only for a code
   that differs from the path id.
@@ -297,6 +303,31 @@ catalog data, so the maps track coverage without editing three HTML files.
 - `COUNTRY_META` is presentation-only; the covered set, positions, and flags are
   data-driven.
 - Marker HTML is generated with `escapeHtml`; keep it around all injected values.
+
+## Adding a catalog dataset
+
+The dataset list and the aggregate numbers follow the catalog automatically,
+but several presentation details are hand-written. When a dataset is added
+upstream, check each of these:
+
+1. `scripts/fetch-catalog-stats.py` — `country()` must map the source name to
+   its ISO alpha-2 code (new country or new naming pattern). Run the producer
+   locally and confirm the marker lands inside the country.
+2. `data.html` — add a `getDatasetImpacts` entry (provider, range, cadence,
+   variable) and any new acronyms to `formatDatasetName`; update the fallback
+   `#stat-*` numbers.
+3. `coverage-map.js` — add the country to `COUNTRY_META` for the tooltip.
+4. `home.html` and `contributing.html` — add a static fallback marker at the
+   producer's position, update the fallback overlay counters, and remove any
+   `[data-wanted-code]` "+" pin for the newly covered country.
+5. `faq.html` — the country count in the data-source answer.
+6. Docs — the dataset table, a dataset section, and the converter table in
+   `docs/documentation/data.md`; an **executed** copy of the dataset notebook
+   from `mlcast-datasets/docs/` in `docs/documentation/datasets/` (the book is
+   built without executing notebooks, and upstream notebooks are stored without
+   outputs) and its entry in `myst.yml`.
+7. Regenerate the committed `catalog-data.json` and `img/world.svg` used for
+   local preview by running the producer against the catalog URL.
 
 ## Shared external dependencies
 

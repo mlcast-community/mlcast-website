@@ -99,6 +99,8 @@ def country(name):
         return "gb"
     if "dpc" in n or n.startswith("it"):
         return "it"
+    if n.startswith("fr_") or "_mf_" in n:
+        return "fr"
     if "rmi" in n or "mfb" in n or ("be" in n and "radclim" in n):
         return "be"
     if "radklim" in n:
@@ -170,9 +172,11 @@ def format_resolution(metres):
 def svg_marker_positions(svg_path, codes):
     """Map each covered ISO code to a {x, y} percent on the world map.
 
-    Reads the bounding-box centre of the country's `<path>` in world.svg. Codes
-    without an SVG mapping or a readable path are skipped (the maps then keep
-    their static fallback marker for that spot).
+    Reads the bounding-box centre of the largest connected piece of the
+    country's `<path>` in world.svg, so overseas territories and remote islands
+    (French Guiana, the Canary Islands, Svalbard, ...) do not drag the marker off
+    the mainland. Codes without an SVG mapping or a readable path are skipped
+    (the maps then keep their static fallback marker for that spot).
     """
     try:
         from svgpathtools import svg2paths
@@ -195,7 +199,10 @@ def svg_marker_positions(svg_path, codes):
             print(f"no SVG path for {code} (id={svg_id})", file=sys.stderr)
             continue
         try:
-            xmin, xmax, ymin, ymax = path.bbox()
+            xmin, xmax, ymin, ymax = max(
+                (piece.bbox() for piece in path.continuous_subpaths()),
+                key=lambda b: (b[1] - b[0]) * (b[3] - b[2]),
+            )
         except Exception as exc:  # noqa: BLE001
             print(f"bbox failed for {code}: {exc}", file=sys.stderr)
             continue

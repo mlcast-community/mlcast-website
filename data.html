@@ -68,17 +68,17 @@
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
                 <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
                     <span class="material-symbols-outlined text-primary-fixed text-3xl">travel_explore</span>
-                    <p id="stat-countries" class="mt-3 text-3xl font-bold text-primary">5</p>
+                    <p id="stat-countries" class="mt-3 text-3xl font-bold text-primary">6</p>
                     <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Countries</p>
                 </div>
                 <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
                     <span class="material-symbols-outlined text-primary-fixed text-3xl">calendar_month</span>
-                    <p id="stat-years" class="mt-3 text-3xl font-bold text-primary">~70</p>
+                    <p id="stat-years" class="mt-3 text-3xl font-bold text-primary">~97</p>
                     <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Cumulative Years</p>
                 </div>
                 <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
                     <span class="material-symbols-outlined text-primary-fixed text-3xl">timeline</span>
-                    <p id="stat-timesteps" class="mt-3 text-3xl font-bold text-primary">6M+</p>
+                    <p id="stat-timesteps" class="mt-3 text-3xl font-bold text-primary">7.4M+</p>
                     <p class="text-xs text-on-surface-variant/70 font-label-tag uppercase tracking-widest mt-1">Time Steps</p>
                 </div>
                 <div class="rounded-xl border border-primary-fixed/20 bg-primary-fixed/[0.04] p-5 text-center hover:border-primary-fixed/40 transition-colors">
@@ -228,7 +228,7 @@
         .filter(Boolean)
         .map((part) => {
             const normalized = part.toLowerCase();
-            const acronymParts = new Set(["be", "dmi", "dpc", "it", "mfb", "radclim", "radklim", "rmi", "sri", "uk"]);
+            const acronymParts = new Set(["be", "dmi", "dpc", "fr", "it", "mf", "mfb", "prate", "radclim", "radklim", "rmi", "sri", "uk"]);
 
             if (acronymParts.has(normalized)) return normalized.toUpperCase();
             if (normalized === "metoffice") return "Met Office";
@@ -319,6 +319,12 @@
             { label: "Range", value: "2016–2025" },
             { label: "Cadence", value: "10 min" },
             { label: "Variable", value: "Reflectivity" }
+        ];
+        if (s.startsWith("fr_") || s.includes("_mf_")) return [
+            { label: "Provider", value: "Météo-France" },
+            { label: "Range", value: "2020–2024" },
+            { label: "Cadence", value: "5 min" },
+            { label: "Variable", value: "Rain rate" }
         ];
         if (s.includes("dpc") || s.includes("it")) return [
             { label: "Provider", value: "DPC" },
