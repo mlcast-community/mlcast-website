@@ -87,7 +87,7 @@ Attributes:
 
 ## Available datasets
 
-The catalog currently exposes five open-source weather-radar precipitation
+The catalog currently exposes six open-source weather-radar precipitation
 datasets covering different European regions. Each is documented in the
 [mlcast-datasets intake catalog](https://mlcast-community.github.io/mlcast-datasets/intro.html),
 maintained by the MLCast Community WG6 of the EUMETNET E-AI Optional Programme.
@@ -99,6 +99,7 @@ maintained by the MLCast Community WG6 of the EUMETNET E-AI Optional Programme.
 | IT-DPC | Italy | rainfall rate | 5 min | 1200 × 1400 (1 km) | 2010–2025 | ~7 TB | CC-BY-SA-4.0 |
 | UK Met Office | United Kingdom | rainfall rate | 5 min | 1725 × 2175 (1 km) | 2005–2025 | ~31 TB | OGL-UK-3.0 |
 | BE RMI RADCLIM | Belgium | rain rate (mm/h) | 5 min | 700 × 700 (1 km) | 2017–2023 | — | CC-BY-4.0 |
+| Météo-France | France | rainfall rate | 5 min | 1536 × 1536 (1 km) | 2020–2024 | ~50 GB | CC-BY-4.0 |
 
 ### RadKlim — precipitation over Germany
 
@@ -169,6 +170,21 @@ References:
   rainfall analysis of the 2021 mid-July flood event in Belgium. *Hydrol. Earth
   Syst. Sci.* 27(17), 3169–3189. <https://doi.org/10.5194/hess-27-3169-2023>
 
+### Météo-France — rainfall rate over mainland France
+
+5-minute rainfall from the Météo-France radar composite over mainland France,
+distributed by Météo-France on
+[Hugging Face](https://huggingface.co/datasets/meteofrance/fr-radar-rainfall)
+as 5-minute accumulations in hundredths of a millimetre and converted to a
+rate. Variable `prate` (kg m⁻² h⁻¹, float32, standard name
+`precipitation_flux`), 5-minute steps, 2020-01-01 → 2024-12-31T23:55
+(525,787 timesteps, 389 missing), grid 1536 × 1536 at 1 km, polar
+stereographic (standard parallel 45°N, central meridian 0°), covering
+39.5–54.2°N, 10.0°W–14.5°E. ~50 GB. Identifier `FR-MF-prate`, catalog name
+`fr_mf_prate_5min`. Processed by WebValley 2026, Fondazione Bruno Kessler.
+Converter:
+[mlcast-dataset-FR-MF](https://github.com/mlcast-community/mlcast-dataset-FR-MF).
+
 ## Format
 
 Datasets are stored as **GeoZarr** (Zarr v2/v3 with proper georeferencing),
@@ -198,26 +214,25 @@ names and their GitHub descriptions:
 | `mlcast-dataset-tiff2zarr` | Generic GeoTIFF → mlcast-compliant Zarr v3 converter |
 | `mlcast-dataset-metoffice-nimrod` | Download and convert UK Met Office NIMROD radar data to mlcast-compliant GeoTIFF |
 | `mlcast-dataset-BE-RMI-radclim` | This project contains the needed source code to create a mlcast-dataset zarr archive of the Belgian RMI RADCLIM dataset |
+| `mlcast-dataset-FR-MF` | Code to convert the .npz files from the Météo-France radar composite dataset to Zarr format. |
 
 ## Sampling training-ready data
 
-[mlcast-dataset-sampler](https://github.com/mlcast-community/mlcast-dataset-sampler)
-turns a source Zarr dataset into a CSV of `(t, x, y)` indices that point directly
-into the source data — ready for a PyTorch `Dataset`. It runs in two steps.
+The [mlcast](https://github.com/mlcast-community/mlcast) package turns a source
+Zarr dataset into training samples in two stages: an offline **sampling index**
+built once per dataset, and a **candidate selector** applied when training
+starts. Full details are in the
+[mlcast README](https://github.com/mlcast-community/mlcast#preparing-training-data);
+the commands below run from a clone of the repository.
 
-Run directly with `uvx` (no installation needed):
+### Step 1 — Build the sampling index
 
-```bash
-uvx --from "git+https://github.com/mlcast-community/mlcast-dataset-sampler" mlcast.sample_dataset --help
-```
-
-### Step 1 — Filter valid datacubes
-
-Scan the dataset and identify valid datacube coordinates (handles time gaps and
-NaN regions):
+Scan the dataset and list every valid datacube (no time gaps, NaNs within
+budget) together with its sample stats (`nan_count`, `sum`, `mean`,
+`frac_wet`):
 
 ```bash
-uv run mlcast.sample_dataset filter-nan /path/to/radar.zarr \
+uv run mlcast build-sampling-index /path/to/radar.zarr \
     --start-date 2021-01-01 \
     --end-date 2024-12-31 \
     --time-depth 24 \
@@ -226,24 +241,22 @@ uv run mlcast.sample_dataset filter-nan /path/to/radar.zarr \
     --max-nan 10000
 ```
 
-This outputs a CSV of valid `(t, x, y)` coordinates.
+This writes a parquet file whose metadata records the sampling parameters;
+`uv run mlcast validate-sampling-index <file>` checks it against the contract.
 
-### Step 2 — Importance sampling
+### Step 2 — Select candidates for training
 
-Weight samples by rain intensity:
-
-```bash
-uv run mlcast.sample_dataset sample /path/to/radar.zarr \
-    valid_datacubes_2021-01-01-2024-12-31_24x256x256_3x16x16_10000.csv \
-    --q-min 1e-4 \
-    --mean-weight 0.1
-```
+Point the training config's `index_path` at the parquet file. When the
+datasets are created, the `train_selector` (an `ImportanceSelector` by default)
+keeps each candidate with a probability that rises with its mean rain rate,
+while validation and test use a `UniformSelector` so they stay representative.
+The selection happens once, so the training set is fixed for the whole run.
 
 **Why importance sampling?** Equal-frequency sampling gives every precipitation
 intensity the same probability, which causes models to hallucinate thunderstorms
 after ~30 minutes of lead time. Importance sampling sets a minimum selection
-probability (`--q-min`) for all samples and adds a weighted contribution based on
-mean rain rate (`--mean-weight`), keeping low-intensity samples in training while
+probability (`q_min`) for all samples and adds a weighted contribution based on
+mean rain rate (`mean_weight`), keeping low-intensity samples in training while
 oversampling interesting meteorological events.
 
 ## Contributing a dataset

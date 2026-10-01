@@ -1,17 +1,18 @@
 {
-  "countries": 5,
+  "countries": 6,
   "country_codes": [
     "be",
     "de",
     "dk",
+    "fr",
     "gb",
     "it"
   ],
-  "cumulative_years": 92,
-  "time_steps": 6959729,
+  "cumulative_years": 97,
+  "time_steps": 7485516,
   "best_cadence_minutes": 5,
-  "datasets_count": 6,
-  "resolved_count": 6,
+  "datasets_count": 7,
+  "resolved_count": 7,
   "markers": [
     {
       "country": "be",
@@ -28,20 +29,26 @@
     {
       "country": "dk",
       "flag": "dk",
-      "x": 53.23,
-      "y": 19.64
+      "x": 52.65,
+      "y": 19.57
+    },
+    {
+      "country": "fr",
+      "flag": "fr",
+      "x": 50.47,
+      "y": 26.43
     },
     {
       "country": "gb",
       "flag": "gb",
-      "x": 49.11,
-      "y": 20.22
+      "x": 49.39,
+      "y": 20.97
     },
     {
       "country": "it",
       "flag": "it",
       "x": 53.48,
-      "y": 29.91
+      "y": 29.46
     }
   ],
   "datasets": [
@@ -73,6 +80,21 @@
       "resolution": "500 m",
       "steps": 517536,
       "years": 9.8,
+      "resolved": true
+    },
+    {
+      "sourceName": "fr_mf_prate_5min",
+      "description": "M\u00e9t\u00e9o-France 1 km radar rainfall amount dataset (mm*10^-2) converted in precipitation rate (mm/h)",
+      "driver": "zarr",
+      "urlpath": "s3://mlcast-source-datasets/FR-MF-prate/v0.1.0/fr-mf-prate-5min.zarr/",
+      "endpointUrl": "https://object-store.os-api.cci2.ecmwf.int",
+      "consolidated": true,
+      "flag": "fr",
+      "cadence_minutes": 5,
+      "resolution_m": 1000.0,
+      "resolution": "1 km",
+      "steps": 525787,
+      "years": 5.0,
       "resolved": true
     },
     {
@@ -136,5 +158,5 @@
       "resolved": true
     }
   ],
-  "generated": "2026-07-09T08:53:21+00:00"
+  "generated": "2026-10-01T11:51:22+00:00"
 }

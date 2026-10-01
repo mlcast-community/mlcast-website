@@ -28,6 +28,7 @@ project:
         - file: docs/documentation/datasets/it_dpc_precipitation.ipynb
         - file: docs/documentation/datasets/uk_metoffice_precipitation.ipynb
         - file: docs/documentation/datasets/be_rmi_precipitation.ipynb
+        - file: docs/documentation/datasets/fr_mf_precipitation.ipynb
     - title: Validator
       children:
         - file: docs/documentation/validator.md

@@ -28,10 +28,11 @@
   // grows. Country codes/positions/flags themselves come from catalog-data.json.
   var COUNTRY_META = {
     gb: { name: "United Kingdom", provider: "Met Office", range: "2005–2025", cadence: "5 min", resolution: "1 km" },
-    dk: { name: "Denmark", provider: "DMI", range: "2016–2025", cadence: "10 min", resolution: "2 km" },
-    be: { name: "Belgium", provider: "RMI", range: "2017–2023", cadence: "5 min", resolution: "600 m" },
+    dk: { name: "Denmark", provider: "DMI", range: "2016–2025", cadence: "10 min", resolution: "500 m" },
+    be: { name: "Belgium", provider: "RMI", range: "2017–2023", cadence: "5 min", resolution: "1 km" },
     de: { name: "Germany", provider: "DWD", range: "2001–2023", cadence: "5 min", resolution: "1 km" },
-    it: { name: "Italy", provider: "DPC", range: "2010–2025", cadence: "5 min", resolution: "1 km" }
+    it: { name: "Italy", provider: "DPC", range: "2010–2025", cadence: "5 min", resolution: "1 km" },
+    fr: { name: "France", provider: "Météo-France", range: "2020–2024", cadence: "5 min", resolution: "1 km" }
   };
 
   var DATA_URL = "catalog-data.json";
